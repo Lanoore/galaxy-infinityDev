@@ -8,7 +8,10 @@ class ControllerBase
 {
 
     public function tamponView($view, $data = null){
+        if(!empty($data)){
+            extract($data);
 
+        }
         ob_start();
         require $view;
         return $view = ob_get_clean();

@@ -33,7 +33,7 @@ class ControllerUser
         */
         $connexion = '../plugins/user/src/view/connexionView.php';
         $connexion = $this->controllerBase->tamponView($connexion);
-        $this->controllerBase->afficheView([$connexion]);
+        $this->templateViewUser([$connexion]);
     }
 
     public function afficheInscription(){
@@ -42,7 +42,7 @@ class ControllerUser
         */
         $inscription = '../plugins/user/src/view/inscriptionView.php';
         $inscription = $this->controllerBase->tamponView($inscription);
-        $this->controllerBase->afficheView([$inscription]);
+        $this->templateViewUser([$inscription]);
     }
 
     public function createUser(){
@@ -59,7 +59,7 @@ class ControllerUser
             if ($password === $repeatPassword) {
                 $this->managerUser->pseudo = $_POST['pseudo'];
                 $this->managerUser->email = $_POST['email'];
-                $this->managerUser->verifUserExist($this->managerUser->pseudo,$this->managerUser->$email);
+                $this->managerUser->verifUserExist($this->managerUser->pseudo,$this->managerUser->email);
                 if($this->managerUser->existUser == 0){
                     $password = password_hash($password, PASSWORD_DEFAULT);
                     $this->managerUser->pseudo = $pseudo;
@@ -70,7 +70,11 @@ class ControllerUser
                     if($addUser == true){
                         header('Location:index.php?user=afficheConnexion');
                     }
+                    else{
+                        echo('test');
+                    }
                 }
+                
                 
 
 
@@ -97,7 +101,7 @@ class ControllerUser
                 $_SESSION['email'] = $this->managerUser->email;
                 $_SESSION['lastConnexion'] = $this->managerUser->lastConnexion;
                 $_SESSION['dateInscription'] = $this->managerUser->dateInscription;
-                header('Location:index.php?user=afficheUser'); //Changer si vous voulez modifier votre page de direction une fois la connexion effectuer
+                header('Location:index.php?forum=afficheCategories'); //Changer si vous voulez modifier votre page de direction une fois la connexion effectuer
                 
                 
             }
@@ -137,5 +141,11 @@ class ControllerUser
         }
         
     }
+
+
+
+    public function templateViewUser($views = null){
+        require '../plugins/user/src/view/templateViewUser.php';
+    }   
     
 }
