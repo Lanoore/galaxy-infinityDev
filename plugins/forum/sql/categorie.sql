@@ -1,0 +1,5 @@
+CREATE TABLE IF NOT EXISTS `mydb`.`categorie` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `nom` VARCHAR(70) NULL,
+  PRIMARY KEY (`id`))
+ENGINE = InnoDB

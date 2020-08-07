@@ -1,0 +1,30 @@
+body{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.divConnexion{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+
+.divConnexion p,form,a{
+    margin-top: 1%;
+    margin-bottom: 1%;
+}
+
+a{
+    text-decoration: none;
+}
+
+form{
+    display: flex;
+    justify-content: center;
+
+}
+
+

@@ -1,6 +1,17 @@
+<link rel="stylesheet" href="../plugins/user/public/css/connexionView.css">
+
+
+
 
 <div>
-    <p>Page de connexion</p>
+
+    <h4>Galaxy Infinity</h4>
+    <p>Galaxy Infinity est un jeux de gestion de civilisation</p>
+
+</div>
+
+
+<div class='divConnexion'>
 
 
     <form action="index.php?user=connectUser" method="POST">
@@ -16,12 +27,11 @@
         <div>
             <input type="submit">
         </div>
-        <a href="index.php?user=afficheInscription">S'inscrire</a>
-    </form>
 
+    </form>
+    <a href="index.php?user=afficheInscription">S'inscrire</a>
 </div>
 
 
 
 
-<link rel="stylesheet" href="../plugins/user/public/css/connexionView.css">

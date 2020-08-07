@@ -1,5 +1,7 @@
+<link rel="stylesheet" href="../plugins/user/public/css/inscriptionView.css">
 
-<div>
+
+<div class='divInscription'>
 <p>Page d'inscription</p>
 
 <form action="index.php?user=createUser" method="POST">
@@ -19,13 +21,12 @@
             <label for="repeatPassword">Répétez le mot de passe</label>
             <input type="password" id="repeatPassword" name="repeatPassword">
         </div>
-        <div>
-            <input type="submit">
-        </div>
-        <a href="index.php?user=afficheConnexion">Se connecter</a> <!--Vous pouvez également mettre votre page d'accueil-->
+
+            <input  type="submit">
+
+        
     </form>
+    <a href="index.php?user=afficheConnexion">Se connecter</a> <!--Vous pouvez également mettre votre page d'accueil-->
 </div>
 
 
-
-<link rel="stylesheet" href="../plugins/user/public/css/inscriptionView.css">

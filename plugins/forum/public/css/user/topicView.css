@@ -1,0 +1,84 @@
+body{
+    text-align: center;
+}
+
+.topic{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.divTopic{
+    background-color: #eeeeee;
+    width: 50%;
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 4%;
+}
+
+.divTopic p{
+    padding: 3%;
+}
+
+.divTopic div{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    line-height: 1.68em;
+    padding: 1%;
+    text-align: left;
+}
+
+
+.divTopic div p{
+    margin: 0;
+    padding: 0;
+}
+
+.pDateTopic{
+    font-size: 0.8em;
+
+}
+
+.divCommentaireCreate{
+    width: 50%;
+    margin-bottom: 4%;
+}
+
+
+
+.divCommentaires{
+    width: 50%;
+}
+
+.commentaire{
+    display: flex;
+    flex-direction: row;
+
+}
+
+.commentaire div{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    line-height: 1.8em;
+    padding: 1%;
+    text-align: left;
+}
+.commentaire p{
+    padding: 3%;
+}
+
+.commentaire div p{
+    margin: 0;
+    padding: 0;
+}
+
+.dateCommentaire{
+    font-size: 0.8em;
+}
+
+.divTopic div a:last-child{
+    align-self: flex-end;
+}
