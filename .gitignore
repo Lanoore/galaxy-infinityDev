@@ -1,4 +1,2 @@
-.idea/
-/vendor/
 config/online.php
 public/index.php
