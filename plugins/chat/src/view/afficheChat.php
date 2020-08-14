@@ -8,7 +8,7 @@
         <input class='messageInput' type="text" id="message" name="message" placeholder="Entrez votre message">
         <input type="submit">
     </form>
-    <div class='messagesChat'>
+    <div class='messagesChat' id='messagesChat'>
     <?php
         
         foreach ($data as $message) {?>
@@ -22,6 +22,12 @@
        <?php }
     ?>
     </div>
-    
+
+
 </div>
+
+<script type='text/javascript' src='../plugins/chat/public/js/gestionChat.js'></script>
+<script type='text/javascript' src='../plugins/chat/public/js/mainChat.js'></script>
+
+
 
