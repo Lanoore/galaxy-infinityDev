@@ -11,6 +11,9 @@ use App\plugins\admin\src\controller\ControllerAdmin;
 use App\plugins\chat\src\controller\ControllerChat;
 use App\plugins\forum\src\controller\ControllerForum;
 use App\plugins\forum\src\controller\ControllerForumAdmin;
+use App\plugins\galaxyInfinity\admin\src\controller\controllerAdminGalaxyInfinity;
+use App\plugins\galaxyInfinity\admin\src\controller\controllerAdminGIBatiment;
+use App\plugins\galaxyInfinity\admin\src\controller\controllerAdminGICraft;
 
 
 
@@ -24,7 +27,9 @@ class Router
     private $controllerChat;
     private $controllerForum;
     private $controllerForumAdmin;
-
+    private $controllerAdminGalaxyInfinity;
+    private $controllerAdminGIBatiment;
+    private $controllerAdminGICraft;
 
     public function __construct(){
         $this->controllerBase = new ControllerBase();
@@ -33,6 +38,9 @@ class Router
         $this->controllerChat = new ControllerChat();
         $this->controllerForum = new ControllerForum();
         $this->controllerForumAdmin = new ControllerForumAdmin();
+        $this->controllerAdminGalaxyInfinity = new ControllerAdminGalaxyInfinity();
+        $this->controllerAdminGIBatiment = new ControllerAdminGIBatiment();
+        $this->controllerAdminGICraft = new ControllerAdminGICraft();
 
     }
 
@@ -93,7 +101,6 @@ class Router
                 switch ($_GET['chat']) {
                     case 'afficheChat':
                         $this->controllerChat->afficheChat();
-                        
                         break;
                     case 'addMessage':
                         $this->controllerChat->addMessage();
@@ -157,6 +164,45 @@ class Router
                         break;
                 }
             }
+            elseif(isset($_GET['galaxyInfinity'])){
+                //Gestion partie admin
+
+                    switch ($_GET['galaxyInfinity']) {
+                        case 'afficheAdminGalaxyInfinityGestion':
+                                $this->controllerAdminGalaxyInfinity->afficheAdminGestionGI();
+                            break;
+                        //Partie batiment    
+                        case 'afficheAdminGestionBatiment':
+                            $this->controllerAdminGIBatiment->adminGestionBat();
+                            break;
+                        case 'createBatBase':
+                            $this->controllerAdminGIBatiment->createBatBase();
+                            break;
+                        case 'supprBatimentBase':
+                            $this->controllerAdminGIBatiment->supprBatBase($_GET['idBatiment']);
+                            break;
+                        case 'adminAjoutNiveau':
+                            $this->controllerAdminGalaxyInfinity->adminAjoutNiveau();
+                            break;
+                        // Partie Craft
+                        case 'afficheAdminGestionCraft':
+                            $this->controllerAdminGICraft->adminGestionCraft();
+                            break;
+                        case 'createCraftBase':
+                            $this->controllerAdminGICraft->createCraftBase();
+                            break;
+                        case 'supprCraftBase':
+                            $this->controllerAdminGICraft->supprCraftBase($_GET['idCraft']);
+                            break;
+                        case 'modifCraftBase':                  
+                            $this->controllerAdminGICraft->modifCraftBase();
+                            break;   
+                    //Gestion partie user
+                        default:
+                            # code...
+                            break;
+                    }
+                }
             else{
                 $this->controllerUser->afficheConnexion();
             }

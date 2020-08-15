@@ -7,6 +7,7 @@
         <!--Affichez en lien ici tout les plugins disposant d'une partie administration-->
         
         <a href="index.php?forum=afficheAdminForumGestion">Gestion Forum</a>
+        <a href="index.php?galaxyInfinity=afficheAdminGalaxyInfinityGestion">Gestion Galaxy Infinity</a>
 
     </div>
 </div>
