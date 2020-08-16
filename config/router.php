@@ -14,6 +14,7 @@ use App\plugins\forum\src\controller\ControllerForumAdmin;
 use App\plugins\galaxyInfinity\admin\src\controller\controllerAdminGalaxyInfinity;
 use App\plugins\galaxyInfinity\admin\src\controller\controllerAdminGIBatiment;
 use App\plugins\galaxyInfinity\admin\src\controller\controllerAdminGICraft;
+use App\plugins\galaxyInfinity\admin\src\controller\controllerAdminGIItems;
 
 
 
@@ -30,6 +31,7 @@ class Router
     private $controllerAdminGalaxyInfinity;
     private $controllerAdminGIBatiment;
     private $controllerAdminGICraft;
+    private $controllerAdminGIItems;
 
     public function __construct(){
         $this->controllerBase = new ControllerBase();
@@ -41,6 +43,7 @@ class Router
         $this->controllerAdminGalaxyInfinity = new ControllerAdminGalaxyInfinity();
         $this->controllerAdminGIBatiment = new ControllerAdminGIBatiment();
         $this->controllerAdminGICraft = new ControllerAdminGICraft();
+        $this->controllerAdminGIItems = new ControllerAdminGIItems();
 
     }
 
@@ -196,7 +199,20 @@ class Router
                             break;
                         case 'modifCraftBase':                  
                             $this->controllerAdminGICraft->modifCraftBase();
-                            break;   
+                            break;
+                        // Partie Items
+                        case 'afficheAdminGestionItems':
+                            $this->controllerAdminGIItems->adminGestionItems();
+                            break;
+                        case 'createItemBase':
+                            $this->controllerAdminGIItems->createItemBase();
+                            break;
+                        case 'supprItemBase':
+                            $this->controllerAdminGIItems->supprItemBase($_GET['idItem']);
+                            break;
+                        case 'modifItemBase':
+                            $this->controllerAdminGIItems->modifItemBase();
+                            break;
                     //Gestion partie user
                         default:
                             # code...
