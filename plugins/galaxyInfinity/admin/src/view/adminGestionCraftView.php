@@ -2,10 +2,9 @@
 
 
 <div>
-    <p><a href="index.php?admin=adminGestionView">Revenir à l'administration</a></p>
+    <p><a href="index.php?galaxyInfinity=afficheAdminGalaxyInfinityGestion">Revenir à l'administration</a></p>
 
     <div class="createCraft">
-        <div>
             <h4>Création Craft Base</h4>
             <form action="index.php?galaxyInfinity=createCraftBase" method="post">
                 <div>
@@ -28,7 +27,6 @@
                     <input type="submit">
                 </div>
             </form>
-        </div>
     </div>
     <div>
         <h4>Modification Craft</h4>
