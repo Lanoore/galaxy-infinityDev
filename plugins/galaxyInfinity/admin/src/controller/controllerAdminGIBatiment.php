@@ -2,19 +2,29 @@
 
 namespace App\plugins\galaxyInfinity\admin\src\controller;
 
+use App\plugins\galaxyInfinity\admin\src\model\ManagerAdminGalaxyInfinity;
 use App\plugins\galaxyInfinity\admin\src\model\ManagerAdminGIBatiment;
+use App\plugins\galaxyInfinity\admin\src\model\ManagerAdminGICraft;
+use App\plugins\galaxyInfinity\admin\src\model\ManagerAdminGIItems;
+
 
 use App\config\themes\controller\controllerBase;
 
 class ControllerAdminGIBatiment
 {
+    private $managerAdminGalaxyInfinity;
     private $managerAdminGIBatiment;
+    private $managerAdminGICraft;
+    private $managerAdminGIItems;
 
     private $controllerBase;
 
     public function __construct(){
         
+        $this->managerAdminGalaxyInfinity = new ManagerAdminGalaxyInfinity();
         $this->managerAdminGIBatiment = new ManagerAdminGIBatiment();
+        $this->managerAdminGICraft = new managerAdminGICraft();
+        $this->managerAdminGIItems = new managerAdminGIItems();
 
         $this->controllerBase = new ControllerBase();
     }
@@ -22,13 +32,17 @@ class ControllerAdminGIBatiment
     public function adminGestionBat(){
         if(isset($_SESSION['identifiantAdmin'])){
 
-    
+            
             $adminBatBase = $this->managerAdminGIBatiment->getBatBaseAdmin();
             $adminBatNiveau = $this->managerAdminGIBatiment->getBatNiveauAdmin(); 
-            $adminBatTempsNiveau = $this->managerAdminGIBatiment->getBatTempsNiveauAdmin(); 
+            $adminBatTempsNiveau = $this->managerAdminGIBatiment->getBatTempsNiveauAdmin();
+
+            $niveaux = $this->managerAdminGalaxyInfinity->getNiveaux();
+            $crafts = $this->managerAdminGICraft->getCraftBaseAdmin();
+            $items = $this->managerAdminGIItems->getItems();
 
             $adminGI = '../plugins/galaxyInfinity/admin/src/view/adminGestionBatimentView.php';
-            $adminGI = $this->controllerBase->tamponView($adminGI, ['adminBatBase' => $adminBatBase,'adminBatNiveau' =>$adminBatNiveau, 'adminBatTempsNiveau' => $adminBatTempsNiveau]);
+            $adminGI = $this->controllerBase->tamponView($adminGI, ['niveaux'=>$niveaux, 'crafts' => $crafts, 'items' => $items,'adminBatBase' => $adminBatBase,'adminBatNiveau' =>$adminBatNiveau, 'adminBatTempsNiveau' => $adminBatTempsNiveau]);
             $this->controllerBase->afficheView([$adminGI]);
 
         }
@@ -38,7 +52,7 @@ class ControllerAdminGIBatiment
     }
     
     
-    function createBatBase(){
+    public function createBatBase(){
         if(isset($_SESSION['identifiantAdmin'])){
             if(!empty($_POST['nom']) && !empty($_POST['descr']) && !empty($_POST['tier'])){
                 if(!preg_match("#[<>1-9]#", $_POST['nom']) && !preg_match("#[<>1-9]#",$_POST['descr'])){
@@ -69,7 +83,7 @@ class ControllerAdminGIBatiment
         }
     }
     
-    function supprBatBase($idBatiment){
+    public function supprBatBase($idBatiment){
         if(isset($_SESSION['identifiantAdmin'])){
             $this->managerAdminGIBatiment->idBatiment = $idBatiment;
             $batimentExist = $this->managerAdminGIBatiment->verifBatExist();
@@ -86,65 +100,150 @@ class ControllerAdminGIBatiment
             
         }
     }   
-    function modifBatBase($idBatiment){
+    public function modifBatBase(){
             if(isset($_SESSION['identifiantAdmin'])){
+                $this->managerAdminGIBatiment->idBat = $_POST['idBat'];
+                $this->managerAdminGIBatiment->getBatBaseById();
 
+                if(!empty($_POST['nomBat'])){$this->managerAdminGIBatiment->nomBat = htmlentities($_POST['nomBat']);}
+                if(!empty($_POST['descr'])){$this->managerAdminGIBatiment->descrBat = htmlentities($_POST['descr']);}
+                if(!empty($_POST['tier'])){$this->managerAdminGIBatiment->tierBat = htmlentities($_POST['tier']);}
+
+                $confirmModif = $this->managerAdminGIBatiment->modifBatBase();
+
+                if($confirmModif){
+                    header('Location:index.php?galaxyInfinity=afficheAdminGestionBatiment');
+                }
             }
     }
     
-    function createBatNiveau(){
+    public function createBatCraftNiveau(){
         if(isset($_SESSION['identifiantAdmin'])){
-            if(!empty($_POST['idBat']) && !empty($_POST['niveauBat']) && isset($_POST['craftId']) && isset($_POST['nombreCraft'])&& isset($_POST['itemsId'])&& isset($_POST['nombreItems'])){
-                if($_POST['idBat'] >= 1 && $_POST['niveauBat']>= 1){
-                    $adminBat = new AdminBatiment(null);
-                    $adminBat->idBat = $_POST['idBat'];
-                    $adminBat->niveauBat = $_POST['niveauBat'];
-                    $adminBat->craftId = $_POST['craftId'];
-                    $adminBat->itemsId = $_POST['itemsId'];
-                    $adminBat->tempsNiveau = $_POST['tempsNiveau'];
-                    if(!empty($_POST['craftId'])){$adminBat->craftId = $_POST['craftId'];}else{$adminBat->craftId = null;}
-                    if(!empty($_POST['nombreCraft'])){$adminBat->nombreCraft = $_POST['nombreCraft'];}else{$adminBat->nombreCraft = null;}
-                    if(!empty($_POST['itemsId'])){$adminBat->itemsId = $_POST['itemsId'];}else{$adminBat->itemsId = null;}
-                    if(!empty($_POST['nombreItems'])){$adminBat->nombreItems = $_POST['nombreItems'];}else{$adminBat->nombreItems = null;}
-                    $adminBat->verifBatNiveauExist();
-                    if($adminBat->batNiveauExist == 0){
-                        $insertBatNiveau = $adminBat->insertBatNiveau();
-                        if($insertBatNiveau == true){
-                            header('Location:index.php?admin=adminGestionBat');
-                        }
-                        else{
-                            echo('Injection échoué');
-                        }
-                    }
-                    else{
-                        echo('Cette ligne existe déjà');
-                    }
-                }
-                else{
-                    echo('erreur 2');
-                }
+            
+            $this->managerAdminGIBatiment->idBat = htmlentities($_POST['idBat']);
+            $this->managerAdminGIBatiment->niveauBat = htmlentities($_POST['niveauBat']);
+
+            if(!empty($_POST['nombreCraft'])){
+                if(!empty($_POST['idCraft'])){$this->managerAdminGIBatiment->idCraft = htmlentities($_POST['idCraft']);}else{$this->managerAdminGIBatiment->idCraft = null;}
+                $this->managerAdminGIBatiment->nombreCraft = htmlentities($_POST['nombreCraft']);
             }
             else{
-                echo('Erreur 3');
+                $this->managerAdminGIBatiment->idCraft = null;
+                $this->managerAdminGIBatiment->nombreCraft = null;
             }
-        }
-        else{
-            echo('erreur 4');
+            
+            if(!empty($_POST['nombreItem'])){
+                if(!empty($_POST['idItem'])){$this->managerAdminGIBatiment->idItem = htmlentities($_POST['idItem']);}else{$this->managerAdminGIBatiment->idItem = null;}
+                $this->managerAdminGIBatiment->nombreItem = htmlentities($_POST['nombreItem']);
+            }
+            else{
+                $this->managerAdminGIBatiment->idItem = null;
+                $this->managerAdminGIBatiment->nombreItem = null;
+            }
+            
+            $verifExist = $this->managerAdminGIBatiment->verifBatCraftNiveauExist();
+            
+            if($verifExist === 0){
+                var_dump($this->managerAdminGIBatiment->idItem);
+                $confirmAdd = $this->managerAdminGIBatiment->createBatCraftNiveau();
+                
+                if($confirmAdd){
+                    header('Location:index.php?galaxyInfinity=afficheAdminGestionBatiment');
+                }
+            }
         }
     }
-    function actionBatNiveau($idLigne){
+
+    public function supprBatCraftNiveau($idLigne){
         if(isset($_SESSION['identifiantAdmin'])){
-            if(isset($_POST['Modifier'])){
-                $adminBat = new AdminBatiment(null);
-                $adminBat->idLigne = $idLigne;
-                $adminBat->getBatNiveauById();
-    
-                require('plugins/admin/view/modif/modifBatNiveauView.php');
+            $this->managerAdminGIBatiment->idLigne = $idLigne;
+
+            $LigneExist = $this->managerAdminGIBatiment->verifBatCraftNiveauExistById();
+            
+            if($LigneExist){
+                if(isset($_POST['Supprimer'])){
+
+                    $this->managerAdminGIBatiment->supprBatCraftNiveau();
+                    header("Location:index.php?galaxyInfinity=afficheAdminGestionBatiment");
+                }
+                else{
+                    echo 'erreur';
+                }
             }
-            elseif (isset($_POST['Supprimer'])) {
-                $adminBat = AdminBatiment::supprBatNiveau($idLigne);
-                if($adminBat === true){
-                    header("Location:index.php?admin=adminGestionBat");
+            
+        }
+    }
+
+
+    public function modifBatCraftNiveau(){
+        if(isset($_SESSION['identifiantAdmin'])){
+
+            $this->managerAdminGIBatiment->idLigne = htmlentities($_POST['idLigne']);
+            $this->managerAdminGIBatiment->idBat = htmlentities($_POST['idBat']);
+            $this->managerAdminGIBatiment->niveauBat = htmlentities($_POST['niveauBat']);
+            if(!empty($_POST['nombreCraft'])){
+                if(!empty($_POST['idCraft'])){$this->managerAdminGIBatiment->idCraft = htmlentities($_POST['idCraft']);}else{$this->managerAdminGIBatiment->idCraft = null;}
+                $this->managerAdminGIBatiment->nombreCraft = htmlentities($_POST['nombreCraft']);
+            }
+            else{
+                $this->managerAdminGIBatiment->idCraft = null;
+                $this->managerAdminGIBatiment->nombreCraft = null;
+            }
+            
+            if(!empty($_POST['nombreItem'])){
+                if(!empty($_POST['idItem'])){$this->managerAdminGIBatiment->idItem = htmlentities($_POST['idItem']);}else{$this->managerAdminGIBatiment->idItem = null;}
+                $this->managerAdminGIBatiment->nombreItem = htmlentities($_POST['nombreItem']);
+            }
+            else{
+                $this->managerAdminGIBatiment->idItem = null;
+                $this->managerAdminGIBatiment->nombreItem = null;
+            }
+            $ligneExist = $this->managerAdminGIBatiment->verifBatCraftNiveauExistById();
+
+            echo($this->managerAdminGIBatiment->nombreItem);
+            if($ligneExist){
+                
+                $confirmModif = $this->managerAdminGIBatiment->modifBatCraftNiveau();
+                
+                if($confirmModif){
+                    header('Location:index.php?galaxyInfinity=afficheAdminGestionBatiment');
+                }
+            }
+
+        }
+    }
+    
+
+    public function createBatTempsNiveau(){
+        if(isset($_SESSION['identifiantAdmin'])){
+            $this->managerAdminGIBatiment->idBat = htmlentities($_POST['idBat']);
+            $this->managerAdminGIBatiment->niveauBat = htmlentities($_POST['niveauBat']);
+            $this->managerAdminGIBatiment->tempsConstruction = htmlentities($_POST['tempsConstruction']);
+            
+            $verifExist = $this->managerAdminGIBatiment->verifBatTempsNiveauExist();
+            
+            if($verifExist === 0){
+                
+                $confirmAdd = $this->managerAdminGIBatiment->createBatTempsNiveau();
+                if($confirmAdd){
+                    header('Location:index.php?galaxyInfinity=afficheAdminGestionBatiment');
+                }
+            }
+        }
+    }
+
+    public function supprBatTempsNiveau($idBatiment,$idNiveau){
+        if(isset($_SESSION['identifiantAdmin'])){
+            $this->managerAdminGIBatiment->idBat = $idBatiment;
+            $this->managerAdminGIBatiment->niveauBat = $idNiveau;
+
+            $verifExist = $this->managerAdminGIBatiment->verifBatTempsNiveauExist();
+
+            if($verifExist === 1){
+                if(isset($_POST['Supprimer'])){
+
+                    $this->managerAdminGIBatiment->supprBatTempsNiveau();
+                    header("Location:index.php?galaxyInfinity=afficheAdminGestionBatiment");
                 }
                 else{
                     echo 'erreur';
@@ -152,37 +251,23 @@ class ControllerAdminGIBatiment
             }
         }
     }
-    
-    function modifBatNiveau($idLigne){
+
+    public function modifBatTempsNiveau(){
+        
         if(isset($_SESSION['identifiantAdmin'])){
-            $adminBat = new AdminBatiment(null);
-            $adminBat->idLigne = $idLigne;
-            $adminBat->idBat = $_POST['idBat'];
-            $adminBat->niveauBat = $_POST['niveauBat'];
-            $adminBat->tempsNiveau = $_POST['tempsNiveau'];
-            if(!empty($_POST['craftId'])){$adminBat->idCraft = $_POST['craftId'];}else{$adminBat->idCraft = null;}
-            if(!empty($_POST['nombreCraft'])){$adminBat->nombreCraft = $_POST['nombreCraft'];}else{$adminBat->nombreCraft = null;}
-            if(!empty($_POST['itemsId'])){$adminBat->idItems = $_POST['itemsId'];}else{$adminBat->idItems = null;}
-            if(!empty($_POST['nombreItems'])){$adminBat->nombreItems = $_POST['nombreItems'];}else{$adminBat->nombreItems = null;}
-    
-            $confirmModif = $adminBat->modifBatNiveau();
-    
-            if($confirmModif == true){
-                header("Location:index.php?admin=adminGestionBat");
-            }
-            else{
-                echo('erreur');
+            $this->managerAdminGIBatiment->idBat = htmlentities($_POST['idBat']);
+            $this->managerAdminGIBatiment->niveauBat = htmlentities($_POST['niveauBat']);
+            $this->managerAdminGIBatiment->tempsConstruction = htmlentities($_POST['tempsConstruction']);
+            
+            $verifExist = $this->managerAdminGIBatiment->verifBatTempsNiveauExist();
+            
+            if($verifExist === 1){
+                $confirmModif =$this->managerAdminGIBatiment->modifBatTempsNiveau();
+                if($confirmModif){
+                    header('Location:index.php?galaxyInfinity=afficheAdminGestionBatiment');
+                }
             }
         }
     }
-    
-    
-    
-    function createTempsBatNiveau(){
-        if(isset($_SESSION['identifiantAdmin'])){
-            $adminBat = new AdminBatiment(null);
-        }
-    }
-    
 
 }

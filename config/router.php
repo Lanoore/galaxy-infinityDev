@@ -174,6 +174,9 @@ class Router
                         case 'afficheAdminGalaxyInfinityGestion':
                                 $this->controllerAdminGalaxyInfinity->afficheAdminGestionGI();
                             break;
+                        case 'adminAjoutNiveau':
+                            $this->controllerAdminGalaxyInfinity->adminAjoutNiveau();
+                            break;
                         //Partie batiment    
                         case 'afficheAdminGestionBatiment':
                             $this->controllerAdminGIBatiment->adminGestionBat();
@@ -184,8 +187,26 @@ class Router
                         case 'supprBatimentBase':
                             $this->controllerAdminGIBatiment->supprBatBase($_GET['idBatiment']);
                             break;
-                        case 'adminAjoutNiveau':
-                            $this->controllerAdminGalaxyInfinity->adminAjoutNiveau();
+                        case 'modifBatBase':
+                            $this->controllerAdminGIBatiment->modifBatBase();
+                            break;
+                        case 'createBatCraftNiveau':
+                            $this->controllerAdminGIBatiment->createBatCraftNiveau();
+                            break;
+                        case 'supprBatCraftNiveau':
+                            $this->controllerAdminGIBatiment->supprBatCraftNiveau($_GET['idLigne']);
+                            break;
+                        case 'modifBatCraftNiveau':
+                            $this->controllerAdminGIBatiment->modifBatCraftNiveau();
+                            break;
+                        case 'createBatTempsNiveau':
+                            $this->controllerAdminGIBatiment->createBatTempsNiveau();
+                            break;
+                        case 'supprBatTempsNiveau':
+                            $this->controllerAdminGIBatiment->supprBatTempsNiveau($_GET['idBatiment'],$_GET['idNiveau']);
+                            break;
+                        case 'modifBatTempsNiveau':
+                            $this->controllerAdminGIBatiment->modifBatTempsNiveau();
                             break;
                         // Partie Craft
                         case 'afficheAdminGestionCraft':
@@ -215,7 +236,7 @@ class Router
                             break;
                     //Gestion partie user
                         default:
-                            # code...
+                        $this->controllerUser->afficheConnexion();
                             break;
                     }
                 }
