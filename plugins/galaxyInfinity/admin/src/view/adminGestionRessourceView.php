@@ -1,7 +1,7 @@
 
 
 <div>
-
+<p><a href="index.php?galaxyInfinity=afficheAdminGalaxyInfinityGestion">Revenir à l'administration</a></p>
         <div>
             <h4>Création Ressource Base</h4>
             <form action="index.php?galaxyInfinity=createRessourceBase" method="post">

@@ -144,7 +144,7 @@ class ControllerAdminGIBatiment
             $verifExist = $this->managerAdminGIBatiment->verifBatCraftNiveauExist();
             
             if($verifExist === 0){
-                var_dump($this->managerAdminGIBatiment->idItem);
+                
                 $confirmAdd = $this->managerAdminGIBatiment->createBatCraftNiveau();
                 
                 if($confirmAdd){
@@ -200,7 +200,7 @@ class ControllerAdminGIBatiment
             }
             $ligneExist = $this->managerAdminGIBatiment->verifBatCraftNiveauExistById();
 
-            echo($this->managerAdminGIBatiment->nombreItem);
+
             if($ligneExist){
                 
                 $confirmModif = $this->managerAdminGIBatiment->modifBatCraftNiveau();

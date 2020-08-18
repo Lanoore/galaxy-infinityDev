@@ -4,6 +4,7 @@ namespace App\plugins\galaxyInfinity\admin\src\controller;
 
 /* Ajoutez ici tout les manager (dossier model du plugin) */
 use App\plugins\galaxyInfinity\admin\src\model\ManagerAdminGICraft;
+use App\plugins\galaxyInfinity\admin\src\model\ManagerAdminGIRessource;
 
 /* Ajoutez ici tout les controller (dossier controller du plugin ou extérieur si nécessire) */
 
@@ -12,6 +13,7 @@ use App\config\themes\controller\controllerBase;
 class ControllerAdminGICraft{
     /* Mettre ici les variables privates pour les manager */
     private $managerAdminGICraft;
+    private $managerAdminGIRessource;
 
     /* Mettre ici les variables privates pour les controller */
     private $controllerBase;
@@ -19,6 +21,7 @@ class ControllerAdminGICraft{
 
     public function __construct(){
         $this->managerAdminGICraft = new managerAdminGICraft();
+        $this->managerAdminGIRessource = new ManagerAdminGIRessource();
 
         $this->controllerBase = new ControllerBase();
     }
@@ -27,9 +30,11 @@ class ControllerAdminGICraft{
         if(isset($_SESSION['identifiantAdmin'])){
 
             $crafts = $this->managerAdminGICraft->getCraftBaseAdmin();
+            $craftCrafts = $this->managerAdminGICraft->getCraftCraftAdmin();
+            $ressources = $this->managerAdminGIRessource->getRessources();
 
             $adminGI = '../plugins/galaxyInfinity/admin/src/view/adminGestionCraftView.php';
-            $adminGI = $this->controllerBase->tamponView($adminGI, ['crafts' => $crafts]);
+            $adminGI = $this->controllerBase->tamponView($adminGI, ['craftCrafts' =>$craftCrafts,'ressources' =>$ressources,'crafts' => $crafts]);
             $this->controllerBase->afficheView([$adminGI]);
 
         }
@@ -90,6 +95,90 @@ class ControllerAdminGICraft{
                 
             }
 
+        }
+    }
+
+    public function createCraftCraft(){
+        if(isset($_SESSION['identifiantAdmin'])){
+            $this->managerAdminGICraft->idCraft = htmlentities($_POST['idCraft']);
+            
+            if(!empty($_POST['nombreRessource'])){
+                if(!empty($_POST['idRessource'])){$this->managerAdminGICraft->idRessource = htmlentities($_POST['idRessource']);}else{$this->managerAdminGICraft->idRessource = null;}
+                $this->managerAdminGICraft->nombreRessource = htmlentities($_POST['nombreRessource']);
+            }
+            else{
+                $this->managerAdminGICraft->idRessource = null;
+                $this->managerAdminGICraft->nombreRessource = null;
+            }
+            
+            if(!empty($_POST['nombreCraftTravail'])){
+                if(!empty($_POST['craftTravail'])){$this->managerAdminGICraft->craftTravail = htmlentities($_POST['craftTravail']);}else{$this->managerAdminGICraft->craftTravail = null;}
+                $this->managerAdminGICraft->nombreCraftTravail = htmlentities($_POST['nombreCraftTravail']);
+            }
+            else{
+                $this->managerAdminGICraft->craftTravail = null;
+                $this->managerAdminGICraft->nombreCraftTravail = null;
+            }
+
+            $verifExist = $this->managerAdminGICraft->verifCraftCraftExist();
+            if($verifExist == 0){
+                
+                $confirmAdd = $this->managerAdminGICraft->createCraftCraft();
+                echo('test');
+                if($confirmAdd){
+                    header('Location:index.php?galaxyInfinity=afficheAdminGestionCraft');
+                }
+            }
+        }
+    }
+
+    public function supprCraftCraft($idLigne){
+        if(isset($_SESSION['identifiantAdmin'])){
+            $this->managerAdminGICraft->idLigne = $idLigne;
+
+            $verifExist = $this->managerAdminGICraft->verifExistCraftCraftById();
+            if($verifExist == 1){
+                $confirmSuppr = $this->managerAdminGICraft->supprCraftCraft();
+                if($confirmSuppr){
+                    header('Location:index.php?galaxyInfinity=afficheAdminGestionCraft');
+                }
+            }
+        }
+    }
+
+    public function modifCraftCraft(){
+        
+        if(isset($_SESSION['identifiantAdmin'])){
+            
+            $this->managerAdminGICraft->idLigne = $_POST['idLigne'];
+            $this->managerAdminGICraft->idCraft = $_POST['idCraft'];
+
+            if(!empty($_POST['nombreRessource'])){
+                if(!empty($_POST['idRessource'])){$this->managerAdminGICraft->idRessource = htmlentities($_POST['idRessource']);}else{$this->managerAdminGICraft->idRessource = null;}
+                $this->managerAdminGICraft->nombreRessource = htmlentities($_POST['nombreRessource']);
+            }
+            else{
+                $this->managerAdminGICraft->idRessource = null;
+                $this->managerAdminGICraft->nombreRessource = null;
+            }
+            
+            if(!empty($_POST['nombreCraftTravail'])){
+                if(!empty($_POST['craftTravail'])){$this->managerAdminGICraft->craftTravail = htmlentities($_POST['craftTravail']);}else{$this->managerAdminGICraft->craftTravail = null;}
+                $this->managerAdminGICraft->nombreCraftTravail = htmlentities($_POST['nombreCraftTravail']);
+            }
+            else{
+                $this->managerAdminGICraft->craftTravail = null;
+                $this->managerAdminGICraft->nombreCraftTravail = null;
+            }
+            
+            $verifExist = $this->managerAdminGICraft->verifExistCraftCraftById();
+            
+            if($verifExist){
+                $confirmModif = $this->managerAdminGICraft->modifCraftCraft();
+                if($confirmModif){
+                    header('Location:index.php?galaxyInfinity=afficheAdminGestionCraft');
+                }
+            }
         }
     }
 

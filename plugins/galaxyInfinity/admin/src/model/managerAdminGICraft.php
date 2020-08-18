@@ -66,4 +66,40 @@ class ManagerAdminGICraft extends ManagerBDD
     
             return $result;
         }
+
+        public function getCraftCraftAdmin(){
+            $sql = 'SELECT * FROM craft_craft';
+            $result = $this->createQuery($sql);
+            return $result->fetchAll();
+        }
+
+        public function verifCraftCraftExist(){
+            $sql = 'SELECT ressource_id, craft_id FROM craft_craft WHERE craft_id = ? AND ressource_id =? OR craft_id_travail =?';
+            $result = $this->createQuery($sql,[$this->idCraft,$this->idRessource,$this->craftTravail]);
+            return $result->rowCount();
+        }
+        
+        public function createCraftCraft(){
+            $sql = 'INSERT INTO craft_craft(craft_id,ressource_id,nombre_ressource,craft_id_travail,nombre_craft_travail)VALUES(?,?,?,?,?)';
+            $result = $this->createQuery($sql,[$this->idCraft,$this->idRessource,$this->nombreRessource,$this->craftTravail,$this->nombreCraftTravail]);
+            return $result;
+        }
+
+        public function verifExistCraftCraftById(){
+            $sql = 'SELECT id FROM craft_craft WHERE id = ?';
+            $result = $this->createQuery($sql,[$this->idLigne]);
+            return $result->rowCount();
+        }
+
+        public function supprCraftCraft(){
+            $sql = 'DELETE FROM craft_craft WHERE id = ?';
+            $result = $this->createQuery($sql,[$this->idLigne]);
+            return $result;
+        }
+
+        public function modifCraftCraft(){
+            $sql = 'UPDATE craft_craft SET craft_id = ?, ressource_id = ?, nombre_ressource = ?, craft_id_travail = ?,nombre_craft_travail =? WHERE id =?';
+            $result = $this->createQuery($sql,[$this->idCraft,$this->idRessource,$this->nombreRessource,$this->craftTravail,$this->nombreCraftTravail,$this->idLigne]);
+            return $result;
+        }
 }
