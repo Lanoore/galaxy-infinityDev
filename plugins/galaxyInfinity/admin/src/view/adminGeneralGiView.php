@@ -7,6 +7,7 @@
     <a href="index.php?galaxyInfinity=afficheAdminGestionCraft">Craft</a>
     <a href="index.php?galaxyInfinity=afficheAdminGestionItems">Items</a>
     <a href="index.php?galaxyInfinity=afficheAdminGestionMissions">Missions</a>
+    <a href="index.php?galaxyInfinity=afficheAdminGestionRessource">Ressources</a>
 
 
     <a href="index.php?galaxyInfinity=adminAjoutNiveau"><input type="button" value='Ajout Niveau'></a>

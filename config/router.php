@@ -15,6 +15,7 @@ use App\plugins\galaxyInfinity\admin\src\controller\controllerAdminGalaxyInfinit
 use App\plugins\galaxyInfinity\admin\src\controller\controllerAdminGIBatiment;
 use App\plugins\galaxyInfinity\admin\src\controller\controllerAdminGICraft;
 use App\plugins\galaxyInfinity\admin\src\controller\controllerAdminGIItems;
+use App\plugins\galaxyInfinity\admin\src\controller\controllerAdminGIRessource;
 
 
 
@@ -32,6 +33,7 @@ class Router
     private $controllerAdminGIBatiment;
     private $controllerAdminGICraft;
     private $controllerAdminGIItems;
+    private $controllerAdminGIRessource;
 
     public function __construct(){
         $this->controllerBase = new ControllerBase();
@@ -44,6 +46,7 @@ class Router
         $this->controllerAdminGIBatiment = new ControllerAdminGIBatiment();
         $this->controllerAdminGICraft = new ControllerAdminGICraft();
         $this->controllerAdminGIItems = new ControllerAdminGIItems();
+        $this->controllerAdminGIRessource = new ControllerAdminGIRessource();
 
     }
 
@@ -176,6 +179,19 @@ class Router
                             break;
                         case 'adminAjoutNiveau':
                             $this->controllerAdminGalaxyInfinity->adminAjoutNiveau();
+                            break;
+                        //Partie Ressource
+                        case 'afficheAdminGestionRessource':
+                            $this->controllerAdminGIRessource->adminGestionRessource();
+                            break;
+                        case 'createRessourceBase':
+                            $this->controllerAdminGIRessource->createRessourceBase();
+                            break;    
+                        case 'supprRessourceBase':
+                            $this->controllerAdminGIRessource->supprRessourceBase($_GET['idRessource']);
+                            break;
+                        case 'modifRessourceBase':
+                            $this->controllerAdminGIRessource->modifRessourceBase();
                             break;
                         //Partie batiment    
                         case 'afficheAdminGestionBatiment':
