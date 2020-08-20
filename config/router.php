@@ -17,6 +17,7 @@ use App\plugins\galaxyInfinity\admin\src\controller\controllerAdminGICraft;
 use App\plugins\galaxyInfinity\admin\src\controller\controllerAdminGIItems;
 use App\plugins\galaxyInfinity\admin\src\controller\controllerAdminGIRessource;
 use App\plugins\galaxyInfinity\admin\src\controller\controllerAdminGITechnologie;
+use App\plugins\galaxyInfinity\admin\src\controller\controllerAdminGIGalaxie;
 
 
 
@@ -36,6 +37,7 @@ class Router
     private $controllerAdminGIItems;
     private $controllerAdminGIRessource;
     private $controllerAdminGITechnologie;
+    private $controllerAdminGIGalaxie;
 
     public function __construct(){
         $this->controllerBase = new ControllerBase();
@@ -50,6 +52,7 @@ class Router
         $this->controllerAdminGIItems = new ControllerAdminGIItems();
         $this->controllerAdminGIRessource = new ControllerAdminGIRessource();
         $this->controllerAdminGITechnologie = new ControllerAdminGITechnologie();
+        $this->controllerAdminGIGalaxie =  new ControllerAdminGIGalaxie();
 
     }
 
@@ -292,6 +295,19 @@ class Router
                             break;
                         case 'modifItemBase':
                             $this->controllerAdminGIItems->modifItemBase();
+                            break;
+                        //Partie Galaxie
+                        case 'afficheAdminGestionGalaxie':
+                            $this->controllerAdminGIGalaxie->adminGestionGalaxie();
+                            break;
+                        case 'createSystemePlanete':
+                            $this->controllerAdminGIGalaxie->createSystemePlanete();
+                            break;
+                        case 'supprPlanete':
+                            $this->controllerAdminGIGalaxie->supprPlanete($_GET['idPlanete']);
+                            break;
+                        case 'modifSituationPlanete':
+                            $this->controllerAdminGIGalaxie->modifSituationPlanete();
                             break;
                     //Gestion partie user
                         default:
