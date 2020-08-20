@@ -16,6 +16,7 @@ use App\plugins\galaxyInfinity\admin\src\controller\controllerAdminGIBatiment;
 use App\plugins\galaxyInfinity\admin\src\controller\controllerAdminGICraft;
 use App\plugins\galaxyInfinity\admin\src\controller\controllerAdminGIItems;
 use App\plugins\galaxyInfinity\admin\src\controller\controllerAdminGIRessource;
+use App\plugins\galaxyInfinity\admin\src\controller\controllerAdminGITechnologie;
 
 
 
@@ -34,6 +35,7 @@ class Router
     private $controllerAdminGICraft;
     private $controllerAdminGIItems;
     private $controllerAdminGIRessource;
+    private $controllerAdminGITechnologie;
 
     public function __construct(){
         $this->controllerBase = new ControllerBase();
@@ -47,6 +49,7 @@ class Router
         $this->controllerAdminGICraft = new ControllerAdminGICraft();
         $this->controllerAdminGIItems = new ControllerAdminGIItems();
         $this->controllerAdminGIRessource = new ControllerAdminGIRessource();
+        $this->controllerAdminGITechnologie = new ControllerAdminGITechnologie();
 
     }
 
@@ -223,6 +226,37 @@ class Router
                             break;
                         case 'modifBatTempsNiveau':
                             $this->controllerAdminGIBatiment->modifBatTempsNiveau();
+                            break;
+                        //Partie Technologie    
+                        case 'afficheAdminGestionTechnologie':
+                            $this->controllerAdminGITechnologie->adminGestionTechnologie();
+                            break;
+                        case 'createTechnologieBase':
+                            $this->controllerAdminGITechnologie->createTechnologieBase();
+                            break;
+                        case 'supprTechnologieBase':
+                            $this->controllerAdminGITechnologie->supprTechnologieBase($_GET['idTechnologie']);
+                            break;
+                        case 'modifTechnologieBase':
+                            $this->controllerAdminGITechnologie->modifTechnologieBase();
+                            break;
+                        case 'createTechnologieCraftNiveau':
+                            $this->controllerAdminGITechnologie->createTechnologieCraftNiveau();
+                            break;
+                        case 'supprTechnologieCraftNiveau':
+                            $this->controllerAdminGITechnologie->supprTechnologieCraftNiveau($_GET['idLigne']);
+                            break;
+                        case 'modifTechnologieCraftNiveau':
+                            $this->controllerAdminGITechnologie->modifTechnologieCraftNiveau();
+                            break;
+                        case 'createTechnologieTempsNiveau':
+                            $this->controllerAdminGITechnologie->createTechnologieTempsNiveau();
+                            break;
+                        case 'supprTechnologieTempsNiveau':
+                            $this->controllerAdminGITechnologie->supprTechnologieTempsNiveau($_GET['idTechnologie'],$_GET['idNiveau']);
+                            break;
+                        case 'modifTechnologieTempsNiveau':
+                            $this->controllerAdminGITechnologie->modifTechnologieTempsNiveau();
                             break;
                         // Partie Craft
                         case 'afficheAdminGestionCraft':
