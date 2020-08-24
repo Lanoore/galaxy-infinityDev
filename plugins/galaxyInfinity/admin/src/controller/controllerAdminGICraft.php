@@ -5,6 +5,9 @@ namespace App\plugins\galaxyInfinity\admin\src\controller;
 /* Ajoutez ici tout les manager (dossier model du plugin) */
 use App\plugins\galaxyInfinity\admin\src\model\ManagerAdminGICraft;
 use App\plugins\galaxyInfinity\admin\src\model\ManagerAdminGIRessource;
+use App\plugins\galaxyInfinity\admin\src\model\ManagerAdminGIBatiment;
+use App\plugins\galaxyInfinity\admin\src\model\ManagerAdminGITechnologie;
+use App\plugins\galaxyInfinity\admin\src\model\ManagerAdminGalaxyInfinity;
 
 /* Ajoutez ici tout les controller (dossier controller du plugin ou extérieur si nécessire) */
 
@@ -14,6 +17,9 @@ class ControllerAdminGICraft{
     /* Mettre ici les variables privates pour les manager */
     private $managerAdminGICraft;
     private $managerAdminGIRessource;
+    private $managerAdminGIBatiment;
+    private $managerAdminGalaxyInfinity;
+    private $managerAdminGITechnologie;
 
     /* Mettre ici les variables privates pour les controller */
     private $controllerBase;
@@ -22,6 +28,9 @@ class ControllerAdminGICraft{
     public function __construct(){
         $this->managerAdminGICraft = new managerAdminGICraft();
         $this->managerAdminGIRessource = new ManagerAdminGIRessource();
+        $this->managerAdminGalaxyInfinity = new ManagerAdminGalaxyInfinity();
+        $this->managerAdminGITechnologie = new ManagerAdminGITechnologie();
+        $this->managerAdminGIBatiment = new ManagerAdminGIBatiment();
 
         $this->controllerBase = new ControllerBase();
     }
@@ -31,10 +40,15 @@ class ControllerAdminGICraft{
 
             $crafts = $this->managerAdminGICraft->getCraftBaseAdmin();
             $craftCrafts = $this->managerAdminGICraft->getCraftCraftAdmin();
+            $craftsPR = $this->managerAdminGICraft->getCraftPRAdmin();
+
             $ressources = $this->managerAdminGIRessource->getRessources();
+            $technologies = $this->managerAdminGITechnologie->getTechnologieBaseAdmin();
+            $niveaux = $this->managerAdminGalaxyInfinity->getNiveaux();
+            $adminBatBase = $this->managerAdminGIBatiment->getBatBaseAdmin();
 
             $adminGI = '../plugins/galaxyInfinity/admin/src/view/adminGestionCraftView.php';
-            $adminGI = $this->controllerBase->tamponView($adminGI, ['craftCrafts' =>$craftCrafts,'ressources' =>$ressources,'crafts' => $crafts]);
+            $adminGI = $this->controllerBase->tamponView($adminGI, ['craftsPR'=>$craftsPR,'technologies'=>$technologies,'adminBatBase'=>$adminBatBase,'niveaux'=>$niveaux,'craftCrafts' =>$craftCrafts,'ressources' =>$ressources,'crafts' => $crafts]);
             $this->controllerBase->afficheView([$adminGI]);
 
         }
@@ -175,6 +189,93 @@ class ControllerAdminGICraft{
             
             if($verifExist){
                 $confirmModif = $this->managerAdminGICraft->modifCraftCraft();
+                if($confirmModif){
+                    header('Location:index.php?galaxyInfinity=afficheAdminGestionCraft');
+                }
+            }
+        }
+    }
+
+
+    public function createCraftPR(){
+        if(isset($_SESSION['identifiantAdmin'])){
+            $this->managerAdminGICraft->idCraft = htmlentities($_POST['idCraft']);
+            
+            if(!empty($_POST['niveauBatPR'])){
+                if(!empty($_POST['idBatPR'])){$this->managerAdminGICraft->idBatPR = htmlentities($_POST['idBatPR']);}else{$this->managerAdminGICraft->idBatPR = null;}
+                $this->managerAdminGICraft->niveauBatPR = htmlentities($_POST['niveauBatPR']);
+            }
+            else{
+                $this->managerAdminGICraft->idBatPR = null;
+                $this->managerAdminGICraft->niveauBatPR = null;
+            }
+            
+            if(!empty($_POST['niveauTechnoPR'])){
+                if(!empty($_POST['idTechnoPR'])){$this->managerAdminGICraft->idTechnoPR = htmlentities($_POST['idTechnoPR']);}else{$this->managerAdminGICraft->idTechnoPR = null;}
+                $this->managerAdminGICraft->niveauTechnoPR = htmlentities($_POST['niveauTechnoPR']);
+            }
+            else{
+                $this->managerAdminGICraft->idTechnoPR = null;
+                $this->managerAdminGICraft->niveauTechnoPR = null;
+            }
+            echo('test');
+            $verifExist = $this->managerAdminGICraft->verifCraftPRExist();
+                
+            if($verifExist == 0){
+                
+                $confirmAdd = $this->managerAdminGICraft->createCraftPR();
+                
+                if($confirmAdd){
+                    header('Location:index.php?galaxyInfinity=afficheAdminGestionCraft');
+                }
+            }
+
+        }
+    }
+
+    public function supprCraftPR($idLigne){
+        if(isset($_SESSION['identifiantAdmin'])){
+            $this->managerAdminGICraft->idLigne = $idLigne;
+            
+            $verifExist = $this->managerAdminGICraft->verifCraftPRExistById();
+            echo('test');
+            if($verifExist == 1){
+                $confirmSuppr = $this->managerAdminGICraft->supprCraftPR();
+                if($confirmSuppr){
+                    header('Location:index.php?galaxyInfinity=afficheAdminGestionCraft');
+                }
+            }
+        }
+    }
+
+    public function modifCraftPR(){
+        if(isset($_SESSION['identifiantAdmin'])){
+            $this->managerAdminGICraft->idLigne = htmlentities($_POST['idLigne']);
+            $this->managerAdminGICraft->idCraft = htmlentities($_POST['idCraft']);
+
+            if(!empty($_POST['niveauBatPR'])){
+                if(!empty($_POST['idBatPR'])){$this->managerAdminGICraft->idBatPR = htmlentities($_POST['idBatPR']);}else{$this->managerAdminGICraft->idBatPR = null;}
+                $this->managerAdminGICraft->niveauBatPR = htmlentities($_POST['niveauBatPR']);
+            }
+            else{
+                $this->managerAdminGICraft->idBatPR = null;
+                $this->managerAdminGICraft->niveauBatPR = null;
+            }
+            
+            if(!empty($_POST['niveauTechnoPR'])){
+                if(!empty($_POST['idTechnoPR'])){$this->managerAdminGICraft->idTechnoPR = htmlentities($_POST['idTechnoPR']);}else{$this->managerAdminGICraft->idTechnoPR = null;}
+                $this->managerAdminGICraft->niveauTechnoPR = htmlentities($_POST['niveauTechnoPR']);
+            }
+            else{
+                $this->managerAdminGICraft->idTechnoPR = null;
+                $this->managerAdminGICraft->niveauTechnoPR = null;
+            }
+            
+            $verifExist = $this->managerAdminGICraft->verifCraftPRExistById();
+            
+            if($verifExist == 1){
+                $confirmModif = $this->managerAdminGICraft->modifCraftPR();
+                
                 if($confirmModif){
                     header('Location:index.php?galaxyInfinity=afficheAdminGestionCraft');
                 }

@@ -102,4 +102,47 @@ class ManagerAdminGICraft extends ManagerBDD
             $result = $this->createQuery($sql,[$this->idCraft,$this->idRessource,$this->nombreRessource,$this->craftTravail,$this->nombreCraftTravail,$this->idLigne]);
             return $result;
         }
+
+
+        public function getCraftPRAdmin(){
+            $sql = 'SELECT * FROM pre_requis_craft ORDER BY craft_id ASC';
+            $result = $this->createQuery($sql);
+            return $result->fetchAll();
+        }
+    
+        public function verifCraftPRExist(){
+            $sql = 'SELECT batiment_id_requis, technologie_id_requis FROM pre_requis_craft WHERE craft_id AND batiment_id_requis OR technologie_id_requis';
+            $result = $this->createQuery($sql,[$this->idCraft,$this->idBatPR,$this->idTechnoPR]);
+            return $result->rowCount();
+        }
+    
+        public function createCraftPR(){
+           
+            $sql = 'INSERT INTO pre_requis_craft(craft_id,batiment_id_requis,niveau_id_batiment,technologie_id_requis,niveau_id_technologie)VALUES (?,?,?,?,?)';
+            $result = $this->createQuery($sql,[$this->idCraft,$this->idBatPR,$this->niveauBatPR,$this->idTechnoPR,$this->niveauTechnoPR]);
+           
+            return $result;
+        }
+    
+        public function verifCraftPRExistById(){
+            
+            $sql = 'SELECT id FROM pre_requis_craft WHERE id = ?';
+            
+            $result = $this->createQuery($sql,[$this->idLigne]);
+           
+            return $result->rowCount();
+        }
+    
+        public function supprCraftPR(){
+            $sql= 'DELETE FROM pre_requis_craft WHERE id = ?';
+            $result = $this->createQuery($sql,[$this->idLigne]);
+            return $result;
+        }
+    
+        public function modifCraftPR(){
+            
+            $sql='UPDATE pre_requis_craft SET craft_id = ?, batiment_id_requis = ?, niveau_id_batiment = ?, technologie_id_requis = ?, niveau_id_technologie = ? WHERE id = ?';
+            $result = $this->createQuery($sql,[$this->idCraft,$this->idBatPR,$this->niveauBatPR,$this->idTechnoPR,$this->niveauTechnoPR,$this->idLigne]);
+            return $result;
+        }
 }

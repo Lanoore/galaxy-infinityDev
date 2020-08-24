@@ -301,6 +301,15 @@ class Router
                         case 'modifCraftCraft':
                             $this->controllerAdminGICraft->modifCraftCraft();
                             break;
+                        case 'createCraftPR':
+                            $this->controllerAdminGICraft->createCraftPR();
+                            break;
+                        case 'supprCraftPR':
+                            $this->controllerAdminGICraft->supprCraftPR($_GET['idLigne']);
+                            break;
+                        case 'modifCraftPR':
+                            $this->controllerAdminGICraft->modifCraftPR();
+                            break;
                         // Partie Items
                         case 'afficheAdminGestionItems':
                             $this->controllerAdminGIItems->adminGestionItems();
