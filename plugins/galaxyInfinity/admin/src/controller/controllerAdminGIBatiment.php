@@ -352,7 +352,7 @@ class ControllerAdminGIBatiment
 
             if($verifExist == 1){
                 $confirmModif = $this->managerAdminGIBatiment->modifBatPR();
-                echo('test');
+                
                 if($confirmModif){
                     header('Location:index.php?galaxyInfinity=afficheAdminGestionBatiment');
                 }

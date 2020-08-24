@@ -235,6 +235,7 @@ class Router
                             break;
                         case 'supprBatPR':
                             $this->controllerAdminGIBatiment->supprBatPR($_GET['idLigne']);
+                            break;
                         case 'modifBatPR':
                             $this->controllerAdminGIBatiment->modifBatPR();
                             break;
@@ -268,6 +269,15 @@ class Router
                             break;
                         case 'modifTechnologieTempsNiveau':
                             $this->controllerAdminGITechnologie->modifTechnologieTempsNiveau();
+                            break;
+                        case 'createTechnologiePR':
+                            $this->controllerAdminGITechnologie->createTechnologiePR();
+                            break;
+                        case 'supprTechnologiePR':
+                            $this->controllerAdminGITechnologie->supprTechnologiePR($_GET['idLigne']);
+                            break;
+                        case 'modifTechnologiePR':
+                            $this->controllerAdminGITechnologie->modifTechnologiePR();
                             break;
                         // Partie Craft
                         case 'afficheAdminGestionCraft':

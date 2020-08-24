@@ -6,6 +6,7 @@ use App\plugins\galaxyInfinity\admin\src\model\ManagerAdminGalaxyInfinity;
 use App\plugins\galaxyInfinity\admin\src\model\ManagerAdminGITechnologie;
 use App\plugins\galaxyInfinity\admin\src\model\ManagerAdminGICraft;
 use App\plugins\galaxyInfinity\admin\src\model\ManagerAdminGIItems;
+use App\plugins\galaxyInfinity\admin\src\model\ManagerAdminGIBatiment;
 
 
 use App\config\themes\controller\controllerBase;
@@ -16,6 +17,7 @@ class ControllerAdminGITechnologie
     private $managerAdminGITechnologie;
     private $managerAdminGICraft;
     private $managerAdminGIItems;
+    private $managerAdminGIBatiment;
 
     private $controllerBase;
 
@@ -25,6 +27,7 @@ class ControllerAdminGITechnologie
         $this->managerAdminGITechnologie = new ManagerAdminGITechnologie();
         $this->managerAdminGICraft = new managerAdminGICraft();
         $this->managerAdminGIItems = new managerAdminGIItems();
+        $this->managerAdminGIBatiment = new ManagerAdminGIBatiment();
 
         $this->controllerBase = new ControllerBase();
     }
@@ -36,13 +39,15 @@ class ControllerAdminGITechnologie
             $adminTechnologieBase = $this->managerAdminGITechnologie->getTechnologieBaseAdmin();
             $adminTechnologieNiveau = $this->managerAdminGITechnologie->getTechnologieNiveauAdmin(); 
             $adminTechnologieTempsNiveau = $this->managerAdminGITechnologie->getTechnologieTempsNiveauAdmin();
+            $adminTechnologiePR = $this->managerAdminGITechnologie->getTechnologiePRAdmin();
 
             $niveaux = $this->managerAdminGalaxyInfinity->getNiveaux();
             $crafts = $this->managerAdminGICraft->getCraftBaseAdmin();
             $items = $this->managerAdminGIItems->getItems();
+            $adminBatBase = $this->managerAdminGIBatiment->getBatBaseAdmin();
 
             $adminGI = '../plugins/galaxyInfinity/admin/src/view/adminGestionTechnologieView.php';
-            $adminGI = $this->controllerBase->tamponView($adminGI, ['niveaux'=>$niveaux, 'crafts' => $crafts, 'items' => $items,'adminTechnologieBase' => $adminTechnologieBase,'adminTechnologieNiveau' =>$adminTechnologieNiveau, 'adminTechnologieTempsNiveau' => $adminTechnologieTempsNiveau]);
+            $adminGI = $this->controllerBase->tamponView($adminGI, ['adminTechnologiePR'=>$adminTechnologiePR,'adminBatBase'=>$adminBatBase,'niveaux'=>$niveaux, 'crafts' => $crafts, 'items' => $items,'adminTechnologieBase' => $adminTechnologieBase,'adminTechnologieNiveau' =>$adminTechnologieNiveau, 'adminTechnologieTempsNiveau' => $adminTechnologieTempsNiveau]);
             $this->controllerBase->afficheView([$adminGI]);
 
         }
@@ -265,6 +270,95 @@ class ControllerAdminGITechnologie
             
             if($verifExist === 1){
                 $confirmModif =$this->managerAdminGITechnologie->modifTechnologieTempsNiveau();
+                if($confirmModif){
+                    header('Location:index.php?galaxyInfinity=afficheAdminGestionTechnologie');
+                }
+            }
+        }
+    }
+
+
+
+
+    public function createTechnologiePR(){
+        if(isset($_SESSION['identifiantAdmin'])){
+            $this->managerAdminGITechnologie->idTechno = htmlentities($_POST['idTechno']);
+            
+            if(!empty($_POST['niveauBatPR'])){
+                if(!empty($_POST['idBatPR'])){$this->managerAdminGITechnologie->idBatPR = htmlentities($_POST['idBatPR']);}else{$this->managerAdminGITechnologie->idBatPR = null;}
+                $this->managerAdminGITechnologie->niveauBatPR = htmlentities($_POST['niveauBatPR']);
+            }
+            else{
+                $this->managerAdminGITechnologie->idBatPR = null;
+                $this->managerAdminGITechnologie->niveauBatPR = null;
+            }
+            
+            if(!empty($_POST['niveauTechnoPR'])){
+                if(!empty($_POST['idTechnoPR'])){$this->managerAdminGITechnologie->idTechnoPR = htmlentities($_POST['idTechnoPR']);}else{$this->managerAdminGITechnologie->idTechnoPR = null;}
+                $this->managerAdminGITechnologie->niveauTechnoPR = htmlentities($_POST['niveauTechnoPR']);
+            }
+            else{
+                $this->managerAdminGITechnologie->idTechnoPR = null;
+                $this->managerAdminGITechnologie->niveauTechnoPR = null;
+            }
+
+            $verifExist = $this->managerAdminGITechnologie->verifTechnologiePRExist();
+            
+            if($verifExist == 0){
+                
+                $confirmAdd = $this->managerAdminGITechnologie->createTechnologiePR();
+                
+                if($confirmAdd){
+                    header('Location:index.php?galaxyInfinity=afficheAdminGestionTechnologie');
+                }
+            }
+
+        }
+    }
+
+    public function supprTechnologiePR($idLigne){
+        if(isset($_SESSION['identifiantAdmin'])){
+            $this->managerAdminGITechnologie->idLigne = $idLigne;
+            
+            $verifExist = $this->managerAdminGITechnologie->verifTechnologiePRExistById();
+            echo('test');
+            if($verifExist == 1){
+                $confirmSuppr = $this->managerAdminGITechnologie->supprTechnologiePR();
+                if($confirmSuppr){
+                    header('Location:index.php?galaxyInfinity=afficheAdminGestionTechnologie');
+                }
+            }
+        }
+    }
+
+    public function modifTechnologiePR(){
+        if(isset($_SESSION['identifiantAdmin'])){
+            $this->managerAdminGITechnologie->idLigne = htmlentities($_POST['idLigne']);
+            $this->managerAdminGITechnologie->idTechno = htmlentities($_POST['idTechno']);
+
+            if(!empty($_POST['niveauBatPR'])){
+                if(!empty($_POST['idBatPR'])){$this->managerAdminGITechnologie->idBatPR = htmlentities($_POST['idBatPR']);}else{$this->managerAdminGITechnologie->idBatPR = null;}
+                $this->managerAdminGITechnologie->niveauBatPR = htmlentities($_POST['niveauBatPR']);
+            }
+            else{
+                $this->managerAdminGITechnologie->idBatPR = null;
+                $this->managerAdminGITechnologie->niveauBatPR = null;
+            }
+            
+            if(!empty($_POST['niveauTechnoPR'])){
+                if(!empty($_POST['idTechnoPR'])){$this->managerAdminGITechnologie->idTechnoPR = htmlentities($_POST['idTechnoPR']);}else{$this->managerAdminGITechnologie->idTechnoPR = null;}
+                $this->managerAdminGITechnologie->niveauTechnoPR = htmlentities($_POST['niveauTechnoPR']);
+            }
+            else{
+                $this->managerAdminGITechnologie->idTechnoPR = null;
+                $this->managerAdminGITechnologie->niveauTechnoPR = null;
+            }
+            
+            $verifExist = $this->managerAdminGITechnologie->verifTechnologiePRExistById();
+            
+            if($verifExist == 1){
+                $confirmModif = $this->managerAdminGITechnologie->modifTechnologiePR();
+                
                 if($confirmModif){
                     header('Location:index.php?galaxyInfinity=afficheAdminGestionTechnologie');
                 }

@@ -121,6 +121,69 @@
                     </div>
                 </form>
         </div>
+        <div>
+            <h4>Pré requis Technologie</h4>
+                <form action="index.php?galaxyInfinity=createTechnologiePR" method="post">
+                    <div>
+                        <label for = "idTechno"> Nom Technologie</label><br/>
+                        <select name="idTechno" id="idTechno">
+                        <option value=""></option>
+                            <?php
+                                foreach($adminTechnologieBase as $technoBase){?>
+                                    <option value="<?=$technoBase['id']?>"><?=$technoBase['nom']?></option>
+                               <?php }
+                            ?>
+                        </select>
+                    </div>
+                    <div>
+                        <label for = "idBatPR"> Nom Batiment Pré requis</label><br/>
+                        <select name="idBatPR" id="idBatPR">
+                        <option value=""></option>
+                            <?php
+                                foreach($adminBatBase as $batBase){?>
+                                    <option value="<?=$batBase['id']?>"><?=$batBase['nom']?></option>
+                               <?php }
+                            ?>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="niveauBatPR">Niveau Batiment Pré requis</label><br/>
+                        <select name="niveauBatPR" id="niveauBatPR">
+                        <option value=""></option>
+                        <?php
+                            foreach($niveaux as $niveau){?>
+                                <option value="<?=$niveau['id']?>"><?=$niveau['niveau']?></option>
+                           <?php }
+                        ?>
+                    </select>
+                    </div>
+                    <div>
+                        <label for = "idTechnoPR"> Nom Technologie Pré Requis</label><br/>
+                        <select name="idTechnoPR" id="idTechnoPR">
+                        <option value=""></option>
+                            <?php
+                                foreach($adminTechnologieBase as $techno){?>
+                                    <option value="<?=$techno['id']?>"><?=$techno['nom']?></option>
+                               <?php }
+                            ?>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="niveauTechnoPR">Niveau Technologie Pré requis</label><br/>
+                        <select name="niveauTechnoPR" id="niveauTechnoPR">
+                        <option value=""></option>
+                        <?php
+                            foreach($niveaux as $niveau){?>
+                                <option value="<?=$niveau['id']?>"><?=$niveau['niveau']?></option>
+                           <?php }
+                        ?>
+                    </select>
+                    </div>
+                    <div>
+                        <input type="submit">
+                    </div>
+                </form>
+        </div>
     </div>
     <div class="modifTechno">
         <div>
@@ -260,6 +323,80 @@
                     </div>
                 </form>
         </div>
+        <div>
+            <h4>Modification Pré requis Technologie</h4>
+                <form action="index.php?galaxyInfinity=modifTechnologiePR" method="post">
+                    <div>
+                        <label for="idLigne">Id de la ligne cible</label>
+                        <select name="idLigne" id="idLigne">
+                            <option value=""></option>
+                            <?php
+                                foreach($adminTechnologiePR as $technoPR){?>
+                                    <option value="<?=$technoPR['id']?>"><?=$technoPR['id']?></option>
+                                <?php }
+                            ?>
+                        </select>
+                    </div> 
+                    <div>
+                        <label for = "idTechno"> Nom Technologie</label><br/>
+                        <select name="idTechno" id="idTechno">
+                        <option value=""></option>
+                            <?php
+                                foreach($adminTechnologieBase as $technoBase){?>
+                                    <option value="<?=$technoBase['id']?>"><?=$technoBase['nom']?></option>
+                               <?php }
+                            ?>
+                        </select>
+                    </div>
+                    <div>
+                        <label for = "idBatPR"> Nom Batiment Pré requis</label><br/>
+                        <select name="idBatPR" id="idBatPR">
+                        <option value=""></option>
+                            <?php
+                                foreach($adminBatBase as $batBase){?>
+                                    <option value="<?=$batBase['id']?>"><?=$batBase['nom']?></option>
+                               <?php }
+                            ?>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="niveauBatPR">Niveau Batiment Pré requis</label><br/>
+                        <select name="niveauBatPR" id="niveauBatPR">
+                        <option value=""></option>
+                        <?php
+                            foreach($niveaux as $niveau){?>
+                                <option value="<?=$niveau['id']?>"><?=$niveau['niveau']?></option>
+                           <?php }
+                        ?>
+                    </select>
+                    </div>
+                    <div>
+                        <label for = "idTechnoPR"> Nom Technologie Pré Requis</label><br/>
+                        <select name="idTechnoPR" id="idTechnoPR">
+                        <option value=""></option>
+                            <?php
+                                foreach($adminTechnologieBase as $techno){?>
+                                    <option value="<?=$techno['id']?>"><?=$techno['nom']?></option>
+                               <?php }
+                            ?>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="niveauTechnoPR">Niveau Technologie Pré requis</label><br/>
+                        <select name="niveauTechnoPR" id="niveauTechnoPR">
+                        <option value=""></option>
+                        <?php
+                            foreach($niveaux as $niveau){?>
+                                <option value="<?=$niveau['id']?>"><?=$niveau['niveau']?></option>
+                           <?php }
+                        ?>
+                    </select>
+                    </div>
+                    <div>
+                        <input type="submit">
+                    </div>
+                </form>
+        </div>
     </div>            
 
     <div>
@@ -344,6 +481,36 @@
                             <td><?=$technoTemps['niveau_id']?></td>
                             <td><?=$technoTemps['temps_construction']?></td>
                             <td><form action="index.php?galaxyInfinity=supprTechnologieTempsNiveau&idTechnologie=<?=$technoTemps['technologie_id']?>&idNiveau=<?=$technoTemps['niveau_id']?>" method='post'><input type="submit" name="Supprimer" value="Supprimer"></form></td>
+                        </tr>
+                  <?php  } ?>
+                    
+                </tbody>
+            </table>
+        </div>
+        <div>
+            <table id='table_4'>
+                <thead>
+                    <tr>
+                        <th>Id de la ligne</th>
+                        <th>Id Technologie</th>
+                        <th>Id Batiment PR</th>
+                        <th>Niveau Batiment PR</th>
+                        <th>Id Technologie PR</th>
+                        <th>Niveau Technologie PR</th>
+                        <th>Action ?</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php
+                    foreach($adminTechnologiePR as $technoPR){?>
+                        <tr>
+                            <td><?=$technoPR['id']?></td>
+                            <td><?=$technoPR['technologie_id']?></td>
+                            <td><?=$technoPR['batiment_id_requis']?></td>
+                            <td><?=$technoPR['niveau_id_batiment']?></td>
+                            <td><?=$technoPR['technologie_id_requis']?></td>
+                            <td><?=$technoPR['niveau_id_technologie']?></td>
+                            <td><form action="index.php?galaxyInfinity=supprTechnologiePR&idLigne=<?=$technoPR['id']?>" method='post'><input type="submit" name="Supprimer" value="Supprimer"></form></td>
                         </tr>
                   <?php  } ?>
                     

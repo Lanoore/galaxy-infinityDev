@@ -136,4 +136,46 @@ class ManagerAdminGITechnologie extends ManagerBDD
         $result = $this->createQuery($sql,[$this->idTechno,$this->niveauTechno,$this->tempsConstruction,$this->idTechno,$this->niveauTechno]);
         return $result;
     }
+
+    public function getTechnologiePRAdmin(){
+        $sql = 'SELECT * FROM pre_requis_technologie ORDER BY technologie_id ASC';
+        $result = $this->createQuery($sql);
+        return $result->fetchAll();
+    }
+
+    public function verifTechnologiePRExist(){
+        $sql = 'SELECT batiment_id_requis, technologie_id_requis FROM pre_requis_technologie WHERE technologie_id AND batiment_id_requis OR technologie_id_requis';
+        $result = $this->createQuery($sql,[$this->idTechno,$this->idBatPR,$this->idTechnoPR]);
+        return $result->rowCount();
+    }
+
+    public function createTechnologiePR(){
+       
+        $sql = 'INSERT INTO pre_requis_technologie(technologie_id,batiment_id_requis,niveau_id_batiment,technologie_id_requis,niveau_id_technologie)VALUES (?,?,?,?,?)';
+        $result = $this->createQuery($sql,[$this->idTechno,$this->idBatPR,$this->niveauBatPR,$this->idTechnoPR,$this->niveauTechnoPR]);
+       
+        return $result;
+    }
+
+    public function verifTechnologiePRExistById(){
+        
+        $sql = 'SELECT id FROM pre_requis_technologie WHERE id = ?';
+        
+        $result = $this->createQuery($sql,[$this->idLigne]);
+       
+        return $result->rowCount();
+    }
+
+    public function supprTechnologiePR(){
+        $sql= 'DELETE FROM pre_requis_technologie WHERE id = ?';
+        $result = $this->createQuery($sql,[$this->idLigne]);
+        return $result;
+    }
+
+    public function modifTechnologiePR(){
+        
+        $sql='UPDATE pre_requis_technologie SET technologie_id = ?, batiment_id_requis = ?, niveau_id_batiment = ?, technologie_id_requis = ?, niveau_id_technologie = ? WHERE id = ?';
+        $result = $this->createQuery($sql,[$this->idTechno,$this->idBatPR,$this->niveauBatPR,$this->idTechnoPR,$this->niveauTechnoPR,$this->idLigne]);
+        return $result;
+    }
 }
