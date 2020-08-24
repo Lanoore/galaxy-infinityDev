@@ -6,6 +6,7 @@ use App\plugins\galaxyInfinity\admin\src\model\ManagerAdminGalaxyInfinity;
 use App\plugins\galaxyInfinity\admin\src\model\ManagerAdminGIBatiment;
 use App\plugins\galaxyInfinity\admin\src\model\ManagerAdminGICraft;
 use App\plugins\galaxyInfinity\admin\src\model\ManagerAdminGIItems;
+use App\plugins\galaxyInfinity\admin\src\model\ManagerAdminGITechnologie;
 
 
 use App\config\themes\controller\controllerBase;
@@ -25,6 +26,7 @@ class ControllerAdminGIBatiment
         $this->managerAdminGIBatiment = new ManagerAdminGIBatiment();
         $this->managerAdminGICraft = new managerAdminGICraft();
         $this->managerAdminGIItems = new managerAdminGIItems();
+        $this->managerAdminGITechnologie = new ManagerAdminGITechnologie();
 
         $this->controllerBase = new ControllerBase();
     }
@@ -36,13 +38,15 @@ class ControllerAdminGIBatiment
             $adminBatBase = $this->managerAdminGIBatiment->getBatBaseAdmin();
             $adminBatNiveau = $this->managerAdminGIBatiment->getBatNiveauAdmin(); 
             $adminBatTempsNiveau = $this->managerAdminGIBatiment->getBatTempsNiveauAdmin();
+            $adminBatPR = $this->managerAdminGIBatiment->getBatPRAdmin();
 
             $niveaux = $this->managerAdminGalaxyInfinity->getNiveaux();
             $crafts = $this->managerAdminGICraft->getCraftBaseAdmin();
             $items = $this->managerAdminGIItems->getItems();
+            $technologies = $this->managerAdminGITechnologie->getTechnologieBaseAdmin();
 
             $adminGI = '../plugins/galaxyInfinity/admin/src/view/adminGestionBatimentView.php';
-            $adminGI = $this->controllerBase->tamponView($adminGI, ['niveaux'=>$niveaux, 'crafts' => $crafts, 'items' => $items,'adminBatBase' => $adminBatBase,'adminBatNiveau' =>$adminBatNiveau, 'adminBatTempsNiveau' => $adminBatTempsNiveau]);
+            $adminGI = $this->controllerBase->tamponView($adminGI, ['adminBatPR'=>$adminBatPR,'technologies' => $technologies,'niveaux'=>$niveaux, 'crafts' => $crafts, 'items' => $items,'adminBatBase' => $adminBatBase,'adminBatNiveau' =>$adminBatNiveau, 'adminBatTempsNiveau' => $adminBatTempsNiveau]);
             $this->controllerBase->afficheView([$adminGI]);
 
         }
@@ -263,6 +267,92 @@ class ControllerAdminGIBatiment
             
             if($verifExist === 1){
                 $confirmModif =$this->managerAdminGIBatiment->modifBatTempsNiveau();
+                if($confirmModif){
+                    header('Location:index.php?galaxyInfinity=afficheAdminGestionBatiment');
+                }
+            }
+        }
+    }
+
+    public function createBatPR(){
+        if(isset($_SESSION['identifiantAdmin'])){
+            $this->managerAdminGIBatiment->idBat = htmlentities($_POST['idBat']);
+            
+            if(!empty($_POST['niveauBatPR'])){
+                if(!empty($_POST['idBatPR'])){$this->managerAdminGIBatiment->idBatPR = htmlentities($_POST['idBatPR']);}else{$this->managerAdminGIBatiment->idBatPR = null;}
+                $this->managerAdminGIBatiment->niveauBatPR = htmlentities($_POST['niveauBatPR']);
+            }
+            else{
+                $this->managerAdminGIBatiment->idBatPR = null;
+                $this->managerAdminGIBatiment->niveauBatPR = null;
+            }
+            
+            if(!empty($_POST['niveauTechnoPR'])){
+                if(!empty($_POST['idTechnoPR'])){$this->managerAdminGIBatiment->idTechnoPR = htmlentities($_POST['idTechnoPR']);}else{$this->managerAdminGIBatiment->idTechnoPR = null;}
+                $this->managerAdminGIBatiment->niveauTechnoPR = htmlentities($_POST['niveauTechnoPR']);
+            }
+            else{
+                $this->managerAdminGIBatiment->idTechnoPR = null;
+                $this->managerAdminGIBatiment->niveauTechnoPR = null;
+            }
+
+            $verifExist = $this->managerAdminGIBatiment->verifBatPRExist();
+            
+            if($verifExist == 0){
+                
+                $confirmAdd = $this->managerAdminGIBatiment->createBatPR();
+                
+                if($confirmAdd){
+                    header('Location:index.php?galaxyInfinity=afficheAdminGestionBatiment');
+                }
+            }
+
+        }
+    }
+
+    public function supprBatPR($idLigne){
+        if(isset($_SESSION['identifiantAdmin'])){
+            $this->managerAdminGIBatiment->idLigne = $idLigne;
+            
+            $verifExist = $this->managerAdminGIBatiment->verifBatPRExistById();
+            echo('test');
+            if($verifExist == 1){
+                $confirmSuppr = $this->managerAdminGIBatiment->supprBatPR();
+                if($confirmSuppr){
+                    header('Location:index.php?galaxyInfinity=afficheAdminGestionBatiment');
+                }
+            }
+        }
+    }
+
+    public function modifBatPR(){
+        if(isset($_SESSION['identifiantAdmin'])){
+            $this->managerAdminGIBatiment->idLigne = htmlentities($_POST['idLigne']);
+            $this->managerAdminGIBatiment->idBat = htmlentities($_POST['idBat']);
+
+            if(!empty($_POST['niveauBatPR'])){
+                if(!empty($_POST['idBatPR'])){$this->managerAdminGIBatiment->idBatPR = htmlentities($_POST['idBatPR']);}else{$this->managerAdminGIBatiment->idBatPR = null;}
+                $this->managerAdminGIBatiment->niveauBatPR = htmlentities($_POST['niveauBatPR']);
+            }
+            else{
+                $this->managerAdminGIBatiment->idBatPR = null;
+                $this->managerAdminGIBatiment->niveauBatPR = null;
+            }
+            
+            if(!empty($_POST['niveauTechnoPR'])){
+                if(!empty($_POST['idTechnoPR'])){$this->managerAdminGIBatiment->idTechnoPR = htmlentities($_POST['idTechnoPR']);}else{$this->managerAdminGIBatiment->idTechnoPR = null;}
+                $this->managerAdminGIBatiment->niveauTechnoPR = htmlentities($_POST['niveauTechnoPR']);
+            }
+            else{
+                $this->managerAdminGIBatiment->idTechnoPR = null;
+                $this->managerAdminGIBatiment->niveauTechnoPR = null;
+            }
+
+            $verifExist = $this->managerAdminGIBatiment->verifBatPRExistById();
+
+            if($verifExist == 1){
+                $confirmModif = $this->managerAdminGIBatiment->modifBatPR();
+                echo('test');
                 if($confirmModif){
                     header('Location:index.php?galaxyInfinity=afficheAdminGestionBatiment');
                 }

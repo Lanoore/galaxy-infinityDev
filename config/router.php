@@ -230,6 +230,14 @@ class Router
                         case 'modifBatTempsNiveau':
                             $this->controllerAdminGIBatiment->modifBatTempsNiveau();
                             break;
+                        case 'createBatPR':
+                            $this->controllerAdminGIBatiment->createBatPR();
+                            break;
+                        case 'supprBatPR':
+                            $this->controllerAdminGIBatiment->supprBatPR($_GET['idLigne']);
+                        case 'modifBatPR':
+                            $this->controllerAdminGIBatiment->modifBatPR();
+                            break;
                         //Partie Technologie    
                         case 'afficheAdminGestionTechnologie':
                             $this->controllerAdminGITechnologie->adminGestionTechnologie();

@@ -136,4 +136,45 @@ class ManagerAdminGIBatiment extends ManagerBDD
         $result = $this->createQuery($sql,[$this->idBat,$this->niveauBat,$this->tempsConstruction,$this->idBat,$this->niveauBat]);
         return $result;
     }
+
+    public function getBatPRAdmin(){
+        $sql = 'SELECT * FROM pre_requis_batiment ORDER BY batiment_id ASC';
+        $result = $this->createQuery($sql);
+        return $result->fetchAll();
+    }
+
+    public function verifBatPRExist(){
+        $sql = 'SELECT batiment_id_requis, technologie_id_requis FROM pre_requis_batiment WHERE batiment_id AND batiment_id_requis OR technologie_id_requis';
+        $result = $this->createQuery($sql,[$this->idBat,$this->idBatPR,$this->idTechnoPR]);
+        return $result->rowCount();
+    }
+
+    public function createBatPR(){
+       
+        $sql = 'INSERT INTO pre_requis_batiment(batiment_id,batiment_id_requis,niveau_id_batiment,technologie_id_requis,niveau_id_technologie)VALUES (?,?,?,?,?)';
+        $result = $this->createQuery($sql,[$this->idBat,$this->idBatPR,$this->niveauBatPR,$this->idTechnoPR,$this->niveauTechnoPR]);
+       
+        return $result;
+    }
+
+    public function verifBatPRExistById(){
+        
+        $sql = 'SELECT id FROM pre_requis_batiment WHERE id = ?';
+        
+        $result = $this->createQuery($sql,[$this->idLigne]);
+       
+        return $result->rowCount();
+    }
+
+    public function supprBatPR(){
+        $sql= 'DELETE FROM pre_requis_batiment WHERE id = ?';
+        $result = $this->createQuery($sql,[$this->idLigne]);
+        return $result;
+    }
+
+    public function modifBatPR(){
+        $sql='UPDATE pre_requis_batiment SET batiment_id = ?, batiment_id_requis = ?, niveau_id_batiment = ?, technologie_id_requis = ?, niveau_id_technologie = ? WHERE id = ?';
+        $result = $this->createQuery($sql,[$this->idBat,$this->idBatPR,$this->niveauBatPR,$this->idTechnoPR,$this->niveauTechnoPR,$this->idLigne]);
+        return $result;
+    }
 }
