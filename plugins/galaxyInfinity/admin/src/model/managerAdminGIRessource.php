@@ -41,4 +41,36 @@ class ManagerAdminGIRessource extends ManagerBDD
         $result = $this->createQuery($sql,[$this->nomRessource,$this->descrRessource,$this->idRessource]);
         return $result;
     }
+
+    public function getProdRessources(){
+        $sql = 'SELECT * FROM prod_ressources ORDER BY batiment_id ASC';
+        $result = $this->createQuery($sql);
+        return $result->fetchAll();
+    }
+
+    public function verifProdExist(){
+        $sql ='SELECT prod_ressource_niveau FROM prod_ressources WHERE batiment_id = ? AND niveau_id = ? AND ressource_id = ?';
+        $result = $this->createQuery($sql,[$this->idBat,$this->idNiveau,$this->idRessource]);
+        return $result->rowCount();
+    }
+
+    public function createProdRessourceBat(){
+        $sql = 'INSERT INTO prod_ressources(batiment_id,niveau_id,ressource_id,prod_ressource_niveau)VALUES(?,?,?,?)';
+        $result = $this->createQuery($sql,[$this->idBat,$this->idNiveau,$this->idRessource, $this->prodRessource]);
+        return $result;
+
+    }
+
+    public function supprProdRessourceBat(){
+        $sql ='DELETE FROM prod_ressources WHERE batiment_id = ? AND niveau_id = ? AND ressource_id = ?';
+        $result = $this->createQuery($sql,[$this->idBat,$this->idNiveau,$this->idRessource]);
+        return $result;
+    }
+    
+    public function modifProdRessourceBat(){
+        $sql = 'UPDATE prod_ressources SET batiment_id = ?, niveau_id = ?, ressource_id = ?, prod_ressource_niveau = ? WHERE batiment_id = ? AND niveau_id = ? AND ressource_id = ?';
+        $result = $this->createQuery($sql,[$this->idBat,$this->idNiveau,$this->idRessource, $this->prodRessource,$this->idBat,$this->idNiveau,$this->idRessource]);
+        return $result;
+    }
+    
 }

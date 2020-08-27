@@ -2,18 +2,24 @@
 
 namespace App\plugins\galaxyInfinity\admin\src\controller;
 
+use App\plugins\galaxyInfinity\admin\src\model\ManagerAdminGalaxyInfinity;
 use App\plugins\galaxyInfinity\admin\src\model\managerAdminGIRessource;
+use App\plugins\galaxyInfinity\admin\src\model\managerAdminGIBatiment;
 
 use App\config\themes\controller\controllerBase;
 
 class ControllerAdminGIRessource
 {
     private $managerAdminGIRessource;
+    private $managerAdminGIBatiment;
+    private $managerAdminGalaxyInfinity;
 
     private $controllerBase;
     public function __construct(){
 
+        $this->managerAdminGalaxyInfinity = new ManagerAdminGalaxyInfinity();
         $this->managerAdminGIRessource = new ManagerAdminGIRessource();
+        $this->managerAdminGIBatiment = new ManagerAdminGIBatiment();
 
         $this->controllerBase = new ControllerBase();
     }
@@ -22,9 +28,13 @@ class ControllerAdminGIRessource
         if(isset($_SESSION['identifiantAdmin'])){
 
             $ressources = $this->managerAdminGIRessource->getRessources();
+            $prodRessources = $this->managerAdminGIRessource->getProdRessources();
+
+            $adminBatBase = $this->managerAdminGIBatiment->getBatBaseAdmin();
+            $niveaux = $this->managerAdminGalaxyInfinity->getNiveaux();
 
             $adminGI = '../plugins/galaxyInfinity/admin/src/view/adminGestionRessourceView.php';
-            $adminGI = $this->controllerBase->tamponView($adminGI,['ressources' => $ressources]);
+            $adminGI = $this->controllerBase->tamponView($adminGI,['prodRessources'=>$prodRessources,'adminBatBase'=>$adminBatBase,'niveaux'=>$niveaux,'ressources' => $ressources]);
             $this->controllerBase->afficheView([$adminGI]);
         }
     }
@@ -77,6 +87,61 @@ class ControllerAdminGIRessource
             }
             
         }
+    }
+
+    public function createProdRessourceBat(){
+        if(isset($_SESSION['identifiantAdmin'])){
+            $this->managerAdminGIRessource->idBat = htmlentities($_POST['idBat']);
+            $this->managerAdminGIRessource->idNiveau = htmlentities($_POST['idNiveau']);
+            $this->managerAdminGIRessource->idRessource = htmlentities($_POST['idRessource']);
+            $this->managerAdminGIRessource->prodRessource = htmlentities($_POST['prodBatNiveau']);
+            
+            $verifExist=$this->managerAdminGIRessource->verifProdExist();
+            if($verifExist == 0){
+                $confirmAdd = $this->managerAdminGIRessource->createProdRessourceBat();
+                if($confirmAdd){
+                    header('Location:index.php?galaxyInfinity=afficheAdminGestionRessource');
+                }
+            }
+
+        }
+    }
+
+    public function supprProdRessourceBat($idRessource,$idNiveau,$idBatiment){
+        if(isset($_SESSION['identifiantAdmin'])){
+            $this->managerAdminGIRessource->idRessource = $idRessource;
+            $this->managerAdminGIRessource->idNiveau = $idNiveau;
+            $this->managerAdminGIRessource->idBat = $idBatiment;
+        
+            $verifExist = $this->managerAdminGIRessource->verifProdExist();
+
+            if($verifExist == 1){
+                
+                $confirmSuppr = $this->managerAdminGIRessource->supprProdRessourceBat();
+                if($confirmSuppr){
+                    header('Location:index.php?galaxyInfinity=afficheAdminGestionRessource');
+                }
+            }
+        }
+    }
+
+    public function modifProdRessourceBat(){
+        if(isset($_SESSION['identifiantAdmin'])){
+            $this->managerAdminGIRessource->idBat = htmlentities($_POST['idBat']);
+            $this->managerAdminGIRessource->idNiveau = htmlentities($_POST['idNiveau']);
+            $this->managerAdminGIRessource->idRessource = htmlentities($_POST['idRessource']);
+            $this->managerAdminGIRessource->prodRessource = htmlentities($_POST['prodBatNiveau']);
+
+            $verifExist=$this->managerAdminGIRessource->verifProdExist();
+
+            if($verifExist == 1){
+                $confirmAdd = $this->managerAdminGIRessource->modifProdRessourceBat();
+                if($confirmAdd){
+                    header('Location:index.php?galaxyInfinity=afficheAdminGestionRessource');
+                }
+            }
+        
+        }   
     }
 
 }

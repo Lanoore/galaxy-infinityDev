@@ -199,6 +199,15 @@ class Router
                         case 'modifRessourceBase':
                             $this->controllerAdminGIRessource->modifRessourceBase();
                             break;
+                        case 'createProdRessourceBat':
+                            $this->controllerAdminGIRessource->createProdRessourceBat();
+                            break;
+                        case 'supprProdRessourceBat':
+                            $this->controllerAdminGIRessource->supprProdRessourceBat($_GET['idRessource'], $_GET['idNiveau'], $_GET['idBatiment']);
+                            break;
+                        case 'modifProdRessourceBat':
+                            $this->controllerAdminGIRessource->modifProdRessourceBat();
+                            break;
                         //Partie batiment    
                         case 'afficheAdminGestionBatiment':
                             $this->controllerAdminGIBatiment->adminGestionBat();
