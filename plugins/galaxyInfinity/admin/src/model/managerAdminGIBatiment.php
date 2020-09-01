@@ -177,4 +177,34 @@ class ManagerAdminGIBatiment extends ManagerBDD
         $result = $this->createQuery($sql,[$this->idBat,$this->idBatPR,$this->niveauBatPR,$this->idTechnoPR,$this->niveauTechnoPR,$this->idLigne]);
         return $result;
     }
+
+    public function getBatStartPlanete(){
+        $sql = 'SELECT * FROM bat_start_planete';
+        $result = $this->createQuery($sql);
+        return $result->fetchAll();
+    }
+
+    public function verifBatStartPlaneteExist(){
+        $sql = 'SELECT batiment_id FROM bat_start_planete WHERE batiment_id = ?';
+        $result = $this->createQuery($sql,[$this->idBat]);
+        return $result->rowCount();
+    }
+
+    public function createBatStartPlanete(){
+        $sql = 'INSERT INTO bat_start_planete(batiment_id,niveau_start_id) VALUES(?,?)';
+        $result = $this->createQuery($sql,[$this->idBat,$this->idNiveau]);
+        return $result;
+    }
+
+    public function supprBatStartPlanete(){
+        $sql = 'DELETE FROM bat_start_planete WHERE batiment_id = ?';
+        $result = $this->createQuery($sql,[$this->idBat]);
+        return $result;
+    }
+
+    public function modifBatStartPlanete(){
+        $sql = 'UPDATE bat_start_planete SET batiment_id = ?, niveau_start_id = ?';
+        $result = $this->createQuery($sql,[$this->idBat, $this->idNiveau]);
+        return $result;
+    }
 }

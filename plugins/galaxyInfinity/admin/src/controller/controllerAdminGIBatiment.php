@@ -39,6 +39,7 @@ class ControllerAdminGIBatiment
             $adminBatNiveau = $this->managerAdminGIBatiment->getBatNiveauAdmin(); 
             $adminBatTempsNiveau = $this->managerAdminGIBatiment->getBatTempsNiveauAdmin();
             $adminBatPR = $this->managerAdminGIBatiment->getBatPRAdmin();
+            $adminBatStartPlanete = $this->managerAdminGIBatiment->getBatStartPlanete();
 
             $niveaux = $this->managerAdminGalaxyInfinity->getNiveaux();
             $crafts = $this->managerAdminGICraft->getCraftBaseAdmin();
@@ -46,7 +47,7 @@ class ControllerAdminGIBatiment
             $technologies = $this->managerAdminGITechnologie->getTechnologieBaseAdmin();
 
             $adminGI = '../plugins/galaxyInfinity/admin/src/view/adminGestionBatimentView.php';
-            $adminGI = $this->controllerBase->tamponView($adminGI, ['adminBatPR'=>$adminBatPR,'technologies' => $technologies,'niveaux'=>$niveaux, 'crafts' => $crafts, 'items' => $items,'adminBatBase' => $adminBatBase,'adminBatNiveau' =>$adminBatNiveau, 'adminBatTempsNiveau' => $adminBatTempsNiveau]);
+            $adminGI = $this->controllerBase->tamponView($adminGI, ['adminBatStartPlanete' =>$adminBatStartPlanete, 'adminBatPR'=>$adminBatPR,'technologies' => $technologies,'niveaux'=>$niveaux, 'crafts' => $crafts, 'items' => $items,'adminBatBase' => $adminBatBase,'adminBatNiveau' =>$adminBatNiveau, 'adminBatTempsNiveau' => $adminBatTempsNiveau]);
             $this->controllerBase->afficheView([$adminGI]);
 
         }
@@ -354,6 +355,57 @@ class ControllerAdminGIBatiment
                 $confirmModif = $this->managerAdminGIBatiment->modifBatPR();
                 
                 if($confirmModif){
+                    header('Location:index.php?galaxyInfinity=afficheAdminGestionBatiment');
+                }
+            }
+        }
+    }
+
+    public function createBatStartPlanete(){
+        if(isset($_SESSION['identifiantAdmin'])){
+            $this->managerAdminGIBatiment->idBat = htmlentities($_POST['idBat']);
+            $this->managerAdminGIBatiment->idNiveau = htmlentities($_POST['idNiveau']);
+
+            $verifExist = $this->managerAdminGIBatiment->verifBatStartPlaneteExist();
+            if($verifExist == 0){
+                
+                $confirmAdd = $this->managerAdminGIBatiment->createBatStartPlanete();
+                
+                if($confirmAdd){
+                    header('Location:index.php?galaxyInfinity=afficheAdminGestionBatiment');
+                }
+            }
+        }
+    }
+
+
+    public function supprBatStartPlanete($idBatiment){
+        if(isset($_SESSION['identifiantAdmin'])){
+            $this->managerAdminGIBatiment->idBat = $idBatiment;
+            
+            $verifExist = $this->managerAdminGIBatiment->verifBatStartPlaneteExist();
+            
+            if($verifExist == 1){
+                $confirmSuppr = $this->managerAdminGIBatiment->supprBatStartPlanete();
+                if($confirmSuppr){
+                    header('Location:index.php?galaxyInfinity=afficheAdminGestionBatiment');
+                }
+            }
+        }
+    }
+
+    public function modifBatStartPlanete(){
+        if(isset($_SESSION['identifiantAdmin'])){
+            $this->managerAdminGIBatiment->idBat = htmlentities($_POST['idBat']);
+            $this->managerAdminGIBatiment->idNiveau = htmlentities($_POST['idNiveau']);
+
+            $verifExist = $this->managerAdminGIBatiment->verifBatStartPlaneteExist();
+            if($verifExist == 1){
+                    
+                $confirmAdd = $this->managerAdminGIBatiment->modifBatStartPlanete();
+                
+                if($confirmAdd){
+
                     header('Location:index.php?galaxyInfinity=afficheAdminGestionBatiment');
                 }
             }

@@ -9,6 +9,8 @@ use App\plugins\user\src\model\ManagerUser;
 
 use App\config\themes\controller\controllerBase;
 
+use App\plugins\galaxyInfinity\user\src\controller\controllerUserGalaxyInfinity;
+
 class ControllerUser
 {
     /* Mettre ici les variables privates pour les manager */
@@ -16,12 +18,14 @@ class ControllerUser
 
     /* Mettre ici les variables privates pour les controller */
     private $controllerBase;
+    private $controllerUserGI;
 
     public function __construct(){
         
         $this->managerUser = new ManagerUser();
 
         $this->controllerBase = new ControllerBase();
+        $this->controllerUserGI = new ControllerUserGalaxyInfinity();
     }
 
     public function afficheConnexion(){
@@ -68,6 +72,9 @@ class ControllerUser
                     $addUser = $this->managerUser->addUser();
 
                     if($addUser == true){
+                        //Ajouter ici les info de création du joueur sur GalaxyInfinity
+                        $this->controllerUserGI->pseudo = $_POST['pseudo'];
+                        $this->controllerUserGI->createUserGI();
                         header('Location:index.php?user=afficheConnexion');
                     }
                     else{

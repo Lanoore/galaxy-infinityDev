@@ -18,6 +18,7 @@ use App\plugins\galaxyInfinity\admin\src\controller\controllerAdminGIItems;
 use App\plugins\galaxyInfinity\admin\src\controller\controllerAdminGIRessource;
 use App\plugins\galaxyInfinity\admin\src\controller\controllerAdminGITechnologie;
 use App\plugins\galaxyInfinity\admin\src\controller\controllerAdminGIGalaxie;
+use App\plugins\galaxyInfinity\user\src\controller\controllerUserGalaxyInfinity;
 
 
 
@@ -38,6 +39,7 @@ class Router
     private $controllerAdminGIRessource;
     private $controllerAdminGITechnologie;
     private $controllerAdminGIGalaxie;
+    private $controllerUserGI;
 
     public function __construct(){
         $this->controllerBase = new ControllerBase();
@@ -53,6 +55,7 @@ class Router
         $this->controllerAdminGIRessource = new ControllerAdminGIRessource();
         $this->controllerAdminGITechnologie = new ControllerAdminGITechnologie();
         $this->controllerAdminGIGalaxie =  new ControllerAdminGIGalaxie();
+        $this->controllerUserGI = new ControllerUserGalaxyInfinity();
 
     }
 
@@ -248,6 +251,15 @@ class Router
                         case 'modifBatPR':
                             $this->controllerAdminGIBatiment->modifBatPR();
                             break;
+                        case 'createBatStartPlanete':
+                            $this->controllerAdminGIBatiment->createBatStartPlanete();
+                            break;
+                        case 'supprBatStartPlanete':
+                            $this->controllerAdminGIBatiment->supprBatStartPlanete($_GET['idBatiment']);    
+                            break;
+                        case 'modifBatStartPlanete':
+                            $this->controllerAdminGIBatiment->modifBatStartPlanete();
+                            break;  
                         //Partie Technologie    
                         case 'afficheAdminGestionTechnologie':
                             $this->controllerAdminGITechnologie->adminGestionTechnologie();
@@ -346,6 +358,8 @@ class Router
                             $this->controllerAdminGIGalaxie->modifSituationPlanete();
                             break;
                     //Gestion partie user
+                        
+                            
                         default:
                         $this->controllerUser->afficheConnexion();
                             break;

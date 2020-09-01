@@ -35,8 +35,8 @@
                     <select name="idBat" id="idBat">
                     <option value="null"></option>
                         <?php
-                            foreach ($adminBatBase as $bat) {?>
-                                <option value="<?=$bat['id']?>"><?=$bat['nom']?></option>
+                            foreach ($adminBatBase as $batBase) {?>
+                                <option value="<?=$batBase['id']?>"><?=$batBase['nom']?></option>
                            <?php }
                         ?>
                     </select>
@@ -96,7 +96,7 @@
                         <option value="null"></option>
                             <?php
                                 foreach($adminBatBase as $batBase){?>
-                                    <option value="<?=$bat['id']?>"><?=$bat['nom']?></option>
+                                    <option value="<?=$batBase['id']?>"><?=$batBase['nom']?></option>
                                <?php }
                             ?>
                         </select>
@@ -130,7 +130,7 @@
                         <option value=""></option>
                             <?php
                                 foreach($adminBatBase as $batBase){?>
-                                    <option value="<?=$bat['id']?>"><?=$bat['nom']?></option>
+                                    <option value="<?=$batBase['id']?>"><?=$batBase['nom']?></option>
                                <?php }
                             ?>
                         </select>
@@ -183,6 +183,36 @@
                         <input type="submit">
                     </div>
                 </form>
+        </div>
+        <div>
+            <h4>Création Batiment Start Planete</h4>
+            <form action="index.php?galaxyInfinity=createBatStartPlanete" method="post">
+                    <div>
+                        <label for = "idBat"> Nom Batiment</label><br/>
+                        <select name="idBat" id="idBat">
+                        <option value=""></option>
+                            <?php
+                                foreach($adminBatBase as $batBase){?>
+                                    <option value="<?=$batBase['id']?>"><?=$batBase['nom']?></option>
+                               <?php }
+                            ?>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="idNiveau">Niveau Batiment Start</label><br/>
+                        <select name="idNiveau" id="idNiveau">
+                        <option value=""></option>
+                        <?php
+                            foreach($niveaux as $niveau){?>
+                                <option value="<?=$niveau['id']?>"><?=$niveau['niveau']?></option>
+                           <?php }
+                        ?>
+                    </select>
+                    </div>
+                <div>
+                    <input type="submit">
+                </div>
+            </form>
         </div>
     </div>
     <div class="modifBat">
@@ -397,6 +427,36 @@
                     </div>
                 </form>
         </div>
+        <div>
+            <h4>Modification Batiment Start Planete</h4>
+            <form action="index.php?galaxyInfinity=modifBatStartPlanete" method="post">
+                    <div>
+                        <label for = "idBat"> Nom Batiment</label><br/>
+                        <select name="idBat" id="idBat">
+                        <option value=""></option>
+                            <?php
+                                foreach($adminBatBase as $batBase){?>
+                                    <option value="<?=$batBase['id']?>"><?=$batBase['nom']?></option>
+                               <?php }
+                            ?>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="idNiveau">Niveau Batiment Pré requis</label><br/>
+                        <select name="idNiveau" id="idNiveau">
+                        <option value=""></option>
+                        <?php
+                            foreach($niveaux as $niveau){?>
+                                <option value="<?=$niveau['id']?>"><?=$niveau['niveau']?></option>
+                           <?php }
+                        ?>
+                    </select>
+                    </div>
+                <div>
+                    <input type="submit">
+                </div>
+            </form>
+        </div>
     </div>            
 
     <div>
@@ -511,6 +571,28 @@
                             <td><?=$batPR['technologie_id_requis']?></td>
                             <td><?=$batPR['niveau_id_technologie']?></td>
                             <td><form action="index.php?galaxyInfinity=supprBatPR&idLigne=<?=$batPR['id']?>" method='post'><input type="submit" name="Supprimer" value="Supprimer"></form></td>
+                        </tr>
+                  <?php  } ?>
+                    
+                </tbody>
+            </table>
+        </div>
+        <div>
+            <table class="dataTable">
+                <thead>
+                    <tr>
+                        <th>Id Batiment</th>
+                        <th>Niveau</th>
+                        <th>Action ?</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php
+                    foreach($adminBatStartPlanete as $batStartPlanete){?>
+                        <tr>
+                            <td><?=$batStartPlanete['batiment_id']?></td>
+                            <td><?=$batStartPlanete['niveau_start_id']?></td>
+                            <td><form action="index.php?galaxyInfinity=supprBatStartPlanete&idBatiment=<?=$batStartPlanete['batiment_id']?>" method='post'><input type="submit" name="Supprimer" value="Supprimer"></form></td>
                         </tr>
                   <?php  } ?>
                     
