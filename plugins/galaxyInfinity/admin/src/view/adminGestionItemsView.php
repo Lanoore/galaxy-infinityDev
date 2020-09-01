@@ -41,7 +41,7 @@
     </div>
 
     <div>
-        <table id="table_1">
+        <table class="dataTable">
             <thead>
                 <tr>
                     <td>Id de l'item</td>

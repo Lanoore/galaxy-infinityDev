@@ -131,7 +131,7 @@
         </div>
 
         <div>
-            <table id="table_1">
+            <table class="dataTable">
                 <thead>
                     <tr>
                         <th>Id de la ressource</th>
@@ -157,7 +157,7 @@
             </table>
         </div>
         <div>
-            <table id="table_2">
+            <table class="dataTable">
                 <thead>
                     <tr>
                         <th>Id du batiment</th>

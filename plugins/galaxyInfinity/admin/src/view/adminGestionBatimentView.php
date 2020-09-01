@@ -401,7 +401,7 @@
 
     <div>
         <div>
-            <table id="table_1">
+            <table class="dataTable">
                 <thead>
                     <tr>
                         <th>Id du batiment</th>
@@ -429,7 +429,7 @@
             </table>
         </div>
         <div>
-            <table id="table_2">
+            <table class="dataTable">
                 <thead>
                     <tr>
                         <th>Id Ligne</th>
@@ -464,7 +464,7 @@
         </div>
 
         <div>
-            <table id="table_3">
+            <table class="dataTable">
                 <thead>
                     <tr>
                         <th>id Batiment</th>
@@ -488,7 +488,7 @@
             </table>
         </div>
         <div>
-            <table id='table_4'>
+            <table class="dataTable">
                 <thead>
                     <tr>
                         <th>Id de la ligne</th>

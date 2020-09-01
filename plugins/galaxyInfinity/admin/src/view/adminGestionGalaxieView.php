@@ -47,7 +47,7 @@
 
 
 
-    <table id="table_1">
+    <table class="dataTable">
             <thead>
                 <tr>
                     <th>Id Planete</th>

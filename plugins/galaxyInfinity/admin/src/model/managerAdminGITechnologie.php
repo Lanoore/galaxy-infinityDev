@@ -20,7 +20,7 @@ class ManagerAdminGITechnologie extends ManagerBDD
    }
 
    public function getTechnologieBaseById(){
-       $sql ='SELECT nom,description,tier FROM technologie WHERE id = ?';
+       $sql ='SELECT * FROM technologie WHERE id = ?';
        $result = $this->createQuery($sql,[$this->idTechno]);
        $result = $result->fetch();
 

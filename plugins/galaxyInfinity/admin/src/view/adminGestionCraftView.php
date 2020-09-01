@@ -309,7 +309,7 @@
                 </form>
         </div>
     <div>
-        <table id="table_1">
+        <table class="dataTable">
             <thead>
                 <tr>
                     <th>Id du craft</th>
@@ -337,7 +337,7 @@
                 ?>
             </tbody>
         </table>
-        <table id="table_2">
+        <table class="dataTable">
             <thead>
                 <tr>
                     <th>Id de la ligne</th>
@@ -369,7 +369,7 @@
         </table>
     </div>
     <div>
-            <table id='table_4'>
+            <table class="dataTable">
                 <thead>
                     <tr>
                         <th>Id de la ligne</th>

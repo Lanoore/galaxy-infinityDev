@@ -20,7 +20,7 @@ class ManagerAdminGIBatiment extends ManagerBDD
    }
 
    public function getBatBaseById(){
-       $sql ='SELECT nom,description,tier FROM batiment WHERE id = ?';
+       $sql ='SELECT * FROM batiment WHERE id = ?';
        $result = $this->createQuery($sql,[$this->idBat]);
        $result = $result->fetch();
 
