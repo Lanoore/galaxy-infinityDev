@@ -304,7 +304,7 @@ class ControllerAdminGIBatiment
             }
 
             $verifExist = $this->managerAdminGIBatiment->verifBatPRExist();
-            
+
             if($verifExist == 0){
                 
                 $confirmAdd = $this->managerAdminGIBatiment->createBatPR();
@@ -322,8 +322,9 @@ class ControllerAdminGIBatiment
             $this->managerAdminGIBatiment->idLigne = $idLigne;
             
             $verifExist = $this->managerAdminGIBatiment->verifBatPRExistById();
-            echo('test');
+            
             if($verifExist == 1){
+                
                 $confirmSuppr = $this->managerAdminGIBatiment->supprBatPR();
                 if($confirmSuppr){
                     header('Location:index.php?galaxyInfinity=afficheAdminGestionBatiment');

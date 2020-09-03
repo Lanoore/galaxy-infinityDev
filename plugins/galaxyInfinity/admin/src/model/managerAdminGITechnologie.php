@@ -143,7 +143,7 @@ class ManagerAdminGITechnologie extends ManagerBDD
     }
 
     public function verifTechnologiePRExist(){
-        $sql = 'SELECT batiment_id_requis, technologie_id_requis FROM pre_requis_technologie WHERE technologie_id AND batiment_id_requis OR technologie_id_requis';
+        $sql = 'SELECT batiment_id_requis, technologie_id_requis FROM pre_requis_technologie WHERE technologie_id =? AND batiment_id_requis = ? OR technologie_id_requis = ?';
         $result = $this->createQuery($sql,[$this->idTechno,$this->idBatPR,$this->idTechnoPR]);
         return $result->rowCount();
     }

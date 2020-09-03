@@ -144,7 +144,7 @@ class ManagerAdminGIBatiment extends ManagerBDD
     }
 
     public function verifBatPRExist(){
-        $sql = 'SELECT batiment_id_requis, technologie_id_requis FROM pre_requis_batiment WHERE batiment_id AND batiment_id_requis OR technologie_id_requis';
+        $sql = 'SELECT batiment_id_requis, technologie_id_requis FROM pre_requis_batiment WHERE batiment_id = ? AND batiment_id_requis = ? OR technologie_id_requis = ?';
         $result = $this->createQuery($sql,[$this->idBat,$this->idBatPR,$this->idTechnoPR]);
         return $result->rowCount();
     }

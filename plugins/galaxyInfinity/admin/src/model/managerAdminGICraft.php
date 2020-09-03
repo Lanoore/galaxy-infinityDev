@@ -110,7 +110,7 @@ class ManagerAdminGICraft extends ManagerBDD
         }
     
         public function verifCraftPRExist(){
-            $sql = 'SELECT batiment_id_requis, technologie_id_requis FROM pre_requis_craft WHERE craft_id AND batiment_id_requis OR technologie_id_requis';
+            $sql = 'SELECT batiment_id_requis, technologie_id_requis FROM pre_requis_craft WHERE craft_id =? AND batiment_id_requis = ? OR technologie_id_requis = ?';
             $result = $this->createQuery($sql,[$this->idCraft,$this->idBatPR,$this->idTechnoPR]);
             return $result->rowCount();
         }
