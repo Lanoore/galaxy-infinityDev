@@ -39,8 +39,8 @@ class ManagerAdminGICraft extends ManagerBDD
        public function insertCraftBase(){
            
            $sql ='INSERT INTO craft(nom,description,tier,temps_base) VALUES(?,?,?,?)';
-           $result = $this->createQuery($sql,[$this->nomCraft,$this->descrCraft,$this->tierCraft,$this->tempsCraft]);
-           return $result;
+           return $this->createQuery($sql,[$this->nomCraft,$this->descrCraft,$this->tierCraft,$this->tempsCraft]);
+           
        }
     
        
@@ -55,16 +55,15 @@ class ManagerAdminGICraft extends ManagerBDD
        public function modifCraftBase(){
 
         $sql = 'UPDATE craft SET nom = ?, description = ?, tier = ?, temps_base = ? WHERE id = ?';
-        $result = $this->createQuery($sql,[$this->nomCraft, $this->descrCraft,$this->tierCraft,$this->tempsCraft,$this->idCraft]);
+        return $this->createQuery($sql,[$this->nomCraft, $this->descrCraft,$this->tierCraft,$this->tempsCraft,$this->idCraft]);
     
-        return $result;
+        
         }
     
         public  function supprCraftBase(){
             $sql = 'DELETE FROM craft WHERE id = ?';
-            $result = $this->createQuery($sql,[$this->idCraft]);
+            return $this->createQuery($sql,[$this->idCraft]);
     
-            return $result;
         }
 
         public function getCraftCraftAdmin(){
@@ -81,8 +80,8 @@ class ManagerAdminGICraft extends ManagerBDD
         
         public function createCraftCraft(){
             $sql = 'INSERT INTO craft_craft(craft_id,ressource_id,nombre_ressource,craft_id_travail,nombre_craft_travail)VALUES(?,?,?,?,?)';
-            $result = $this->createQuery($sql,[$this->idCraft,$this->idRessource,$this->nombreRessource,$this->craftTravail,$this->nombreCraftTravail]);
-            return $result;
+            return $this->createQuery($sql,[$this->idCraft,$this->idRessource,$this->nombreRessource,$this->craftTravail,$this->nombreCraftTravail]);
+            
         }
 
         public function verifExistCraftCraftById(){
@@ -93,14 +92,14 @@ class ManagerAdminGICraft extends ManagerBDD
 
         public function supprCraftCraft(){
             $sql = 'DELETE FROM craft_craft WHERE id = ?';
-            $result = $this->createQuery($sql,[$this->idLigne]);
-            return $result;
+            return $this->createQuery($sql,[$this->idLigne]);
+            
         }
 
         public function modifCraftCraft(){
             $sql = 'UPDATE craft_craft SET craft_id = ?, ressource_id = ?, nombre_ressource = ?, craft_id_travail = ?,nombre_craft_travail =? WHERE id =?';
-            $result = $this->createQuery($sql,[$this->idCraft,$this->idRessource,$this->nombreRessource,$this->craftTravail,$this->nombreCraftTravail,$this->idLigne]);
-            return $result;
+            return $this->createQuery($sql,[$this->idCraft,$this->idRessource,$this->nombreRessource,$this->craftTravail,$this->nombreCraftTravail,$this->idLigne]);
+            
         }
 
 
@@ -119,9 +118,9 @@ class ManagerAdminGICraft extends ManagerBDD
         public function createCraftPR(){
            
             $sql = 'INSERT INTO pre_requis_craft(craft_id,batiment_id_requis,niveau_id_batiment,technologie_id_requis,niveau_id_technologie)VALUES (?,?,?,?,?)';
-            $result = $this->createQuery($sql,[$this->idCraft,$this->idBatPR,$this->niveauBatPR,$this->idTechnoPR,$this->niveauTechnoPR]);
+            return $this->createQuery($sql,[$this->idCraft,$this->idBatPR,$this->niveauBatPR,$this->idTechnoPR,$this->niveauTechnoPR]);
            
-            return $result;
+            
         }
     
         public function verifCraftPRExistById(){
@@ -135,14 +134,14 @@ class ManagerAdminGICraft extends ManagerBDD
     
         public function supprCraftPR(){
             $sql= 'DELETE FROM pre_requis_craft WHERE id = ?';
-            $result = $this->createQuery($sql,[$this->idLigne]);
-            return $result;
+            return $this->createQuery($sql,[$this->idLigne]);
+            
         }
     
         public function modifCraftPR(){
             
             $sql='UPDATE pre_requis_craft SET craft_id = ?, batiment_id_requis = ?, niveau_id_batiment = ?, technologie_id_requis = ?, niveau_id_technologie = ? WHERE id = ?';
-            $result = $this->createQuery($sql,[$this->idCraft,$this->idBatPR,$this->niveauBatPR,$this->idTechnoPR,$this->niveauTechnoPR,$this->idLigne]);
-            return $result;
+            return $this->createQuery($sql,[$this->idCraft,$this->idBatPR,$this->niveauBatPR,$this->idTechnoPR,$this->niveauTechnoPR,$this->idLigne]);
+            
         }
 }

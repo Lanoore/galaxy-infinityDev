@@ -24,8 +24,8 @@ class ManagerAdminGalaxyInfinity extends ManagerBDD
 
     public function addNiveau(){
         $sql = 'INSERT INTO niveau(niveau) VALUES (?)';
-        $result = $this->createQuery($sql, [$this->niveau]);
-        return $result;
+        return $this->createQuery($sql, [$this->niveau]);
+        
     }
 
 }

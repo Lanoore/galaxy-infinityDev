@@ -18,7 +18,14 @@ class ControllerUserGalaxyInfinity{
 
         $this->controllerBase = new ControllerBase();
     }
-
+    
+    /**
+     * createUserGI
+     *
+     * Création de l'utilisateur coté galaxy infinity
+     * 
+     * @return void
+     */
     public function createUserGI(){
         $this->managerUserGI->pseudo = $this->pseudo;
         $this->managerUserGI->getUserByPseudo();
@@ -66,7 +73,7 @@ class ControllerUserGalaxyInfinity{
         }
 
 
-        //Ajouter mine fer de niveau 1
+        
 
     }
 

@@ -28,14 +28,14 @@ class ManagerAdminGIItems extends ManagerBDD
 
     public function addItem(){
         $sql = 'INSERT INTO items(nom) VALUES(?)';
-        $result = $this->createQuery($sql,[$this->nomItems]);
-        return $result;
+        return $this->createQuery($sql,[$this->nomItems]);
+        
     }
 
     public function supprItemBase(){
         $sql = 'DELETE FROM items WHERE id = ?';
-        $result = $this->createQuery($sql,[$this->idItem]);
-        return $result;
+        return $this->createQuery($sql,[$this->idItem]);
+        
     }
 
     public function getItemById(){
@@ -47,7 +47,7 @@ class ManagerAdminGIItems extends ManagerBDD
 
     public function modifItemBase(){
         $sql = 'UPDATE items SET nom = ? WHERE id = ?';
-        $result = $this->createQuery($sql,[$this->nomItem,$this->idItem]);
-        return $result;
+        return $this->createQuery($sql,[$this->nomItem,$this->idItem]);
+        
     }
 }

@@ -109,7 +109,7 @@ class ControllerAdminGITechnologie
             if(isset($_SESSION['identifiantAdmin'])){
                 
                 $this->managerAdminGITechnologie->idTechno = $_POST['idTechno'];
-                $this->managerAdminGITechnologie->getBatBaseById();
+                $this->managerAdminGITechnologie->getTechnologieBaseById();
                 
                 if(!empty($_POST['nomBat'])){$this->managerAdminGITechnologie->nomTechno = htmlentities($_POST['nomBat']);}
                 if(!empty($_POST['descr'])){$this->managerAdminGITechnologie->descrTechno = htmlentities($_POST['descr']);}

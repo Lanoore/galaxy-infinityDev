@@ -52,7 +52,7 @@ class ControllerAdminGIBatiment
 
         }
         else{
-            throw new Exception('Varibale de session inconnue');
+        
         }
     }
     
@@ -158,8 +158,14 @@ class ControllerAdminGIBatiment
             }
         }
     }
-
-    public function supprBatCraftNiveau($idLigne){
+    
+    /**
+     * supprBatCraftNiveau
+     *
+     * @param  int $idLigne 
+     * @return void
+     */
+    public function supprBatCraftNiveau(int $idLigne){
         if(isset($_SESSION['identifiantAdmin'])){
             $this->managerAdminGIBatiment->idLigne = $idLigne;
 

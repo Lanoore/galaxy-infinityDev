@@ -24,8 +24,8 @@ class ManagerAdminGIGalaxie extends managerBdd
 
     public function createSystemePlanete(){
         $sql = 'INSERT INTO planete(systeme,position,situation)VALUES(?,?,0)';
-        $result = $this->createQuery($sql,[$this->numeroSysteme,$this->numeroPlanete]);
-        return $result; 
+        return $this->createQuery($sql,[$this->numeroSysteme,$this->numeroPlanete]);
+        
     }
 
     public function verifPlaneteExist(){
@@ -36,13 +36,13 @@ class ManagerAdminGIGalaxie extends managerBdd
 
     public function supprPlanete(){
         $sql = 'DELETE FROM planete WHERE id = ?';
-        $result = $this->createQuery($sql,[$this->idPlanete]);
-        return $result;
+        return $this->createQuery($sql,[$this->idPlanete]);
+        
     }
 
     public function modifSituationPlanete(){
         $sql = 'UPDATE planete SET situation = ? WHERE id = ?';
-        $result = $this->createQuery($sql,[$this->situationPlanete, $this->idPlanete]);
-        return $result;
+        return $this->createQuery($sql,[$this->situationPlanete, $this->idPlanete]);
+        
     }
 }

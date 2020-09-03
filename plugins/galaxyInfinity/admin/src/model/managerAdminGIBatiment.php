@@ -33,38 +33,38 @@ class ManagerAdminGIBatiment extends ManagerBDD
     
     $sql = 'SELECT id FROM batiment WHERE id = ?';
     $result = $this->createQuery($sql,[$this->idBatiment]);
-    $result = $result->rowCount();
-    return $result;
+    return $result->rowCount();
+    
     }
 
     public function insertBatBase(){
     
     $sql ='INSERT INTO batiment(nom,description,tier) VALUES(?,?,?)';
-    $result = $this->createQuery($sql,[$this->nomBat,$this->descrBat,$this->tierBat]);
-    return $result;
+    return $this->createQuery($sql,[$this->nomBat,$this->descrBat,$this->tierBat]);
+
     }
 
     public function getBatBaseAdmin(){
 
     $sql ='SELECT * FROM batiment ORDER BY tier DESC';
     $result = $this->createQuery($sql);
-    $result = $result->fetchAll();
-    return $result;
+    return $result->fetchAll();
+
     }
 
     public function supprBatBase(){
 
         $sql='DELETE FROM batiment WHERE id = ?';
-        $result= $this->createQuery($sql,[$this->idBatiment]);
+        return $this->createQuery($sql,[$this->idBatiment]);
 
-        return $result;
+        
     }
 
     public function modifBatBase(){
 
         $sql='UPDATE batiment SET nom = ?, description = ?, tier = ? WHERE id = ?';
-        $result = $this->createQuery($sql,[$this->nomBat,$this->descrBat, $this->tierBat,$this->idBat]);
-        return $result;
+        return $this->createQuery($sql,[$this->nomBat,$this->descrBat, $this->tierBat,$this->idBat]);
+        
     }
 
 
@@ -83,27 +83,27 @@ class ManagerAdminGIBatiment extends ManagerBDD
 
     public function createBatCraftNiveau(){
         $sql = 'INSERT INTO batiment_craft(batiment_id,niveau_id,craft_id,nombre_craft,items_id,nombre_items) VALUES(?,?,?,?,?,?)';
-        $result = $this->createQuery($sql,[$this->idBat,$this->niveauBat,$this->idCraft,$this->nombreCraft,$this->idItem,$this->nombreItem]);
-        return $result;
+        return $this->createQuery($sql,[$this->idBat,$this->niveauBat,$this->idCraft,$this->nombreCraft,$this->idItem,$this->nombreItem]);
+        
     }
 
     public function verifBatCraftNiveauExistById(){
         $sql = 'SELECT id FROM batiment_craft WHERE id= ?';
-        $result = $this->createQuery($sql,[$this->idLigne]);
-        return $result;
+       return $this->createQuery($sql,[$this->idLigne]);
+        
     }
 
     public function supprBatCraftNiveau(){
         $sql = 'DELETE FROM batiment_craft WHERE id = ?';
-        $result = $this->createQuery($sql,[$this->idLigne]);
-        return $result;
+        return $this->createQuery($sql,[$this->idLigne]);
+        
     }
 
     public function modifBatCraftNiveau(){
         
         $sql = 'UPDATE batiment_craft SET batiment_id = ?, niveau_id = ?, craft_id = ?,nombre_craft = ?,items_id = ?, nombre_items = ? WHERE id =?';
-        $result = $this->createQuery($sql,[$this->idBat, $this->niveauBat,$this->idCraft,$this->nombreCraft,$this->idItem,$this->nombreItem,$this->idLigne]);
-        return $result;
+        return $this->createQuery($sql,[$this->idBat, $this->niveauBat,$this->idCraft,$this->nombreCraft,$this->idItem,$this->nombreItem,$this->idLigne]);
+        
 
     }
 
@@ -121,20 +121,20 @@ class ManagerAdminGIBatiment extends ManagerBDD
 
     public function createBatTempsNiveau(){
         $sql = 'INSERT INTO batiment_niveau(batiment_id,niveau_id,temps_construction)VALUES (?,?,?)';
-        $result = $this->createQuery($sql,[$this->idBat,$this->niveauBat,$this->tempsConstruction]);
-        return $result;
+        return $this->createQuery($sql,[$this->idBat,$this->niveauBat,$this->tempsConstruction]);
+        
     }
 
     public function supprBatTempsNiveau(){
         $sql = 'DELETE FROM batiment_niveau WHERE batiment_id = ? AND niveau_id = ?';
-        $result = $this->createQuery($sql,[$this->idBat,$this->niveauBat]);
-        return $result;
+        return $this->createQuery($sql,[$this->idBat,$this->niveauBat]);
+        
     }
 
     public function modifBatTempsNiveau(){
         $sql ='UPDATE batiment_niveau SET batiment_id = ?, niveau_id = ?, temps_construction = ? WHERE batiment_id = ? AND niveau_id = ?';
-        $result = $this->createQuery($sql,[$this->idBat,$this->niveauBat,$this->tempsConstruction,$this->idBat,$this->niveauBat]);
-        return $result;
+        return $this->createQuery($sql,[$this->idBat,$this->niveauBat,$this->tempsConstruction,$this->idBat,$this->niveauBat]);
+        
     }
 
     public function getBatPRAdmin(){
@@ -152,9 +152,9 @@ class ManagerAdminGIBatiment extends ManagerBDD
     public function createBatPR(){
        
         $sql = 'INSERT INTO pre_requis_batiment(batiment_id,batiment_id_requis,niveau_id_batiment,technologie_id_requis,niveau_id_technologie)VALUES (?,?,?,?,?)';
-        $result = $this->createQuery($sql,[$this->idBat,$this->idBatPR,$this->niveauBatPR,$this->idTechnoPR,$this->niveauTechnoPR]);
+        return $this->createQuery($sql,[$this->idBat,$this->idBatPR,$this->niveauBatPR,$this->idTechnoPR,$this->niveauTechnoPR]);
        
-        return $result;
+        
     }
 
     public function verifBatPRExistById(){
@@ -169,13 +169,13 @@ class ManagerAdminGIBatiment extends ManagerBDD
     public function supprBatPR(){
         $sql= 'DELETE FROM pre_requis_batiment WHERE id = ?';
         $result = $this->createQuery($sql,[$this->idLigne]);
-        return $result;
+        
     }
 
     public function modifBatPR(){
         $sql='UPDATE pre_requis_batiment SET batiment_id = ?, batiment_id_requis = ?, niveau_id_batiment = ?, technologie_id_requis = ?, niveau_id_technologie = ? WHERE id = ?';
-        $result = $this->createQuery($sql,[$this->idBat,$this->idBatPR,$this->niveauBatPR,$this->idTechnoPR,$this->niveauTechnoPR,$this->idLigne]);
-        return $result;
+        return $this->createQuery($sql,[$this->idBat,$this->idBatPR,$this->niveauBatPR,$this->idTechnoPR,$this->niveauTechnoPR,$this->idLigne]);
+        
     }
 
     public function getBatStartPlanete(){
@@ -192,19 +192,19 @@ class ManagerAdminGIBatiment extends ManagerBDD
 
     public function createBatStartPlanete(){
         $sql = 'INSERT INTO bat_start_planete(batiment_id,niveau_start_id) VALUES(?,?)';
-        $result = $this->createQuery($sql,[$this->idBat,$this->idNiveau]);
-        return $result;
+        return $this->createQuery($sql,[$this->idBat,$this->idNiveau]);
+        
     }
 
     public function supprBatStartPlanete(){
         $sql = 'DELETE FROM bat_start_planete WHERE batiment_id = ?';
-        $result = $this->createQuery($sql,[$this->idBat]);
-        return $result;
+       return $this->createQuery($sql,[$this->idBat]);
+        
     }
 
     public function modifBatStartPlanete(){
         $sql = 'UPDATE bat_start_planete SET batiment_id = ?, niveau_start_id = ?';
-        $result = $this->createQuery($sql,[$this->idBat, $this->idNiveau]);
-        return $result;
+        return$this->createQuery($sql,[$this->idBat, $this->idNiveau]);
+        
     }
 }
