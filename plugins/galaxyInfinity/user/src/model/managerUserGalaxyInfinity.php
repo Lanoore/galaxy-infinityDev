@@ -84,4 +84,27 @@ class ManagerUserGalaxyInfinity extends ManagerBDD
         return $result;
     }
 
+    public function preRequisBaseX(){
+        $sql = 'SELECT * FROM '.$this->pRBaseTable;
+        $result = $this->createQuery($sql);
+       
+        return $result->fetchAll();
+    }
+
+
+    public function getPreRequisX(){
+        
+        
+        
+        $sql = 'SELECT  t1.id AS id, t1.'.$this->prX.' AS pRTypeX, t1.batiment_id_requis AS batiment_id_requis, t1.niveau_id_batiment AS niveau_id_batiment, t1.technologie_id_requis AS technologie_id_requis, t1.niveau_id_technologie AS niveau_id_technologie, t2.nom AS nom_batiment, t3.nom AS nom_technologie
+        FROM '.$this->pRTable.' t1
+        LEFT JOIN batiment t2 ON t1.batiment_id_requis = t2.id
+        LEFT JOIN technologie t3 ON t1.technologie_id_requis = t3.id';
+       
+
+        $result = $this->createQuery($sql);
+       
+        return $result->fetchAll();
+    }
+
 }

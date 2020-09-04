@@ -12,6 +12,8 @@
     <body>
     <nav>
        <ul>
+            <li><a href="index.php?galaxyInfinity=affichePreRequisUser&page=batiment">Pré-Requis</a></li>
+
             <li><a href="index.php?forum=afficheCategories">Forum</a></li>
             <li><a href="index.php?chat=afficheChat">Chat</a></li>
             <li><a href="index.php?user=afficheUser">Profil</a></li>

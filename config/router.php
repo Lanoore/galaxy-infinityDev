@@ -358,7 +358,9 @@ class Router
                             $this->controllerAdminGIGalaxie->modifSituationPlanete();
                             break;
                     //Gestion partie user
-                        
+                        case 'affichePreRequisUser':
+                            $this->controllerUserGI->affichePreRequisUser($_GET['page']);
+                            break;
                             
                         default:
                         $this->controllerUser->afficheConnexion();

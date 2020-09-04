@@ -69,12 +69,31 @@ class ControllerUserGalaxyInfinity{
                 $this->managerUserGI->niveau = $batStart['niveau_start_id'];
                 $this->managerUserGI->setBatStartPlaneteUser();
             }
-
         }
+    }
+
+    public function affichePreRequisUser($page){
+        if(isset($_SESSION['pseudo'])){
+            
+            
+
+            if($page == 'batiment'){$this->managerUserGI->pRTable = 'pre_requis_batiment';$this->managerUserGI->pRBaseTable = 'batiment';$this->managerUserGI->prX = 'batiment_id';}
+            elseif($page == 'technologie'){$this->managerUserGI->pRTable = 'pre_requis_technologie';$this->managerUserGI->pRBaseTable = 'technologie';$this->managerUserGI->prX = 'technologie_id';}
+            elseif($page == 'craft'){$this->managerUserGI->pRTable = 'pre_requis_craft';$this->managerUserGI->pRBaseTable = 'craft';$this->managerUserGI->prX = 'craft_id';}
+            else{echo('Variable non valide');}
+            
+            $preRequisBaseX = $this->managerUserGI->preRequisBaseX();
+            
+            $preRequisX = $this->managerUserGI->getPreRequisX();
+            
+            
 
 
-        
 
+            $preRequis = '../plugins/galaxyInfinity/user/src/view/preRequisUserView.php';
+            $preRequis = $this->controllerBase->tamponView($preRequis,['preRequisBaseX'=>$preRequisBaseX,'preRequisX'=> $preRequisX]);
+            $this->controllerBase->afficheView([$preRequis]);
+        }
     }
 
 }
