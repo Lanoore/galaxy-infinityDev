@@ -19,6 +19,7 @@ use App\plugins\galaxyInfinity\admin\src\controller\controllerAdminGIRessource;
 use App\plugins\galaxyInfinity\admin\src\controller\controllerAdminGITechnologie;
 use App\plugins\galaxyInfinity\admin\src\controller\controllerAdminGIGalaxie;
 use App\plugins\galaxyInfinity\user\src\controller\controllerUserGalaxyInfinity;
+use App\plugins\galaxyInfinity\user\src\controller\controllerUserGIBatiment;
 
 
 
@@ -40,6 +41,7 @@ class Router
     private $controllerAdminGITechnologie;
     private $controllerAdminGIGalaxie;
     private $controllerUserGI;
+    private $controllerUserGIBatiment;
 
     public function __construct(){
         $this->controllerBase = new ControllerBase();
@@ -56,6 +58,7 @@ class Router
         $this->controllerAdminGITechnologie = new ControllerAdminGITechnologie();
         $this->controllerAdminGIGalaxie =  new ControllerAdminGIGalaxie();
         $this->controllerUserGI = new ControllerUserGalaxyInfinity();
+        $this->controllerUserGIBatiment = new ControllerUserGIBatiment();
 
     }
 
@@ -361,7 +364,9 @@ class Router
                         case 'affichePreRequisUser':
                             $this->controllerUserGI->affichePreRequisUser($_GET['page']);
                             break;
-                            
+                        case 'afficheBatimentUser':
+                            $this->controllerUserGIBatiment->afficheBatimentUser();
+                            break;    
                         default:
                         $this->controllerUser->afficheConnexion();
                             break;

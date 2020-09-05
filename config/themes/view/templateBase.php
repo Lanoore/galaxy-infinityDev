@@ -13,7 +13,13 @@
     <nav>
        <ul>
             <li><a href="index.php?galaxyInfinity=affichePreRequisUser&page=batiment">Pré-Requis</a></li>
-
+            <li><a href="">Galaxie</a></li>
+            <br>
+            <li><a href="index.php?galaxyInfinity=afficheBatimentUser">Batiment</a></li>
+            <li><a href="">Technologie</a></li>
+            <li><a href="">Craft</a></li>
+            
+            <br>
             <li><a href="index.php?forum=afficheCategories">Forum</a></li>
             <li><a href="index.php?chat=afficheChat">Chat</a></li>
             <li><a href="index.php?user=afficheUser">Profil</a></li>
