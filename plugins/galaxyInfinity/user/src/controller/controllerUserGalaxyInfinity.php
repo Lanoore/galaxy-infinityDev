@@ -72,6 +72,17 @@ class ControllerUserGalaxyInfinity{
         }
     }
 
+    public function gestionUserConnectionGI(){
+        if(isset($_SESSION['pseudo'])){
+            $this->managerUserGI->idUser = $_SESSION['idUser'];
+
+            $infoUserPlanete = $this->managerUserGI->getPlaneteUser();
+            $_SESSION['idPlaneteActif'] = $infoUserPlanete['id'];
+            
+        }
+    }
+
+    
     public function affichePreRequisUser($page){
         if(isset($_SESSION['pseudo'])){
         

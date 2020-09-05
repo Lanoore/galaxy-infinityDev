@@ -102,12 +102,14 @@ class ControllerUser
             $this->managerUser->getUser();
 
             if(password_verify($password,$this->managerUser->password)){
-                $this->managerUser->updateUserConnection(); //ATTENTION si vous faites des actions sur un temps de connexion faites attention a les placer avant cette fonction qui réinitialise la dernière connection
+                
                 $_SESSION['idUser'] = $this->managerUser->idUser;
                 $_SESSION['pseudo'] = $this->managerUser->pseudo;
                 $_SESSION['email'] = $this->managerUser->email;
                 $_SESSION['lastConnexion'] = $this->managerUser->lastConnexion;
                 $_SESSION['dateInscription'] = $this->managerUser->dateInscription;
+                $this->controllerUserGI->gestionUserConnectionGI();
+                $this->managerUser->updateUserConnection(); //ATTENTION si vous faites des actions sur un temps de connexion faites attention a les placer avant cette fonction qui réinitialise la dernière connection
                 header('Location:index.php?forum=afficheCategories'); //Changer si vous voulez modifier votre page de direction une fois la connexion effectuer
                 
                 
@@ -135,9 +137,6 @@ class ControllerUser
         /**
          * Permet d'afficher les informations sur l'utilisateur connecter
          */
-
-        /*$this->managerUser->pseudo = $_SESSION['pseudo'];
-        $this->managerUser->getUser();*/
         if(isset($_SESSION['idUser'])){
             $userInfo = '../plugins/user/src/view/userInfoView.php';
             $userInfo = $this->controllerBase->tamponView($userInfo);
