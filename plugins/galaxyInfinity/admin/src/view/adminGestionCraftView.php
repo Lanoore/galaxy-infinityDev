@@ -6,7 +6,7 @@
 
     <div class="createCraft">
             <h4>Création Craft Base</h4>
-            <form action="index.php?galaxyInfinity=createCraftBase" method="post">
+            <form action="index.php?galaxyInfinity=createCraftBase" method="post" enctype="multipart/form-data">
                 <div>
                     <label for = "nomCraft"> Nom du craft</label><br/>
                     <input type="text" id="nomCraft" name="nomCraft"> 
@@ -22,6 +22,10 @@
                 <div>
                 <label for="tempsCraft">Temps du craft</label>
                     <input type="number" id='tempsCraft' name='tempsCraft'>
+                </div>
+                <div>
+                    <label for="image">Image du craft</label>
+                    <input type="file" name ="image">
                 </div>
                 <div>
                     <input type="submit">
@@ -317,6 +321,7 @@
                     <th>Description du craft</th>
                     <th>Tier du craft</th>
                     <th>Temps du craft</th>
+                    <th>Image craft</th>
                     <th>Action ?</th>
                 </tr>
             </thead>
@@ -329,6 +334,7 @@
                             <td><?=$craft['description']?></td>
                             <td><?=$craft['tier']?></td>
                             <td><?=$craft['temps_base']?></td>
+                            <td><?=$craft['image']?></td>
                             <td><form action="index.php?galaxyInfinity=supprCraftBase&idCraft=<?=$craft['id']?>" method="post"><input type="submit" name="Supprimer" value="Supprimer"></form></td>
                         </tr>
                      <?php   

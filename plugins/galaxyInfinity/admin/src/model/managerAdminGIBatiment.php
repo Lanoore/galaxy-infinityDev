@@ -32,15 +32,15 @@ class ManagerAdminGIBatiment extends ManagerBDD
     public function verifBatExist(){
     
     $sql = 'SELECT id FROM batiment WHERE id = ?';
-    $result = $this->createQuery($sql,[$this->idBatiment]);
+    $result = $this->createQuery($sql,[$this->idBat]);
     return $result->rowCount();
     
     }
 
     public function insertBatBase(){
     
-    $sql ='INSERT INTO batiment(nom,description,tier) VALUES(?,?,?)';
-    return $this->createQuery($sql,[$this->nomBat,$this->descrBat,$this->tierBat]);
+    $sql ='INSERT INTO batiment(nom,description,tier,image) VALUES(?,?,?,?)';
+    return $this->createQuery($sql,[$this->nomBat,$this->descrBat,$this->tierBat, $this->imageBat]);
 
     }
 
@@ -55,7 +55,7 @@ class ManagerAdminGIBatiment extends ManagerBDD
     public function supprBatBase(){
 
         $sql='DELETE FROM batiment WHERE id = ?';
-        return $this->createQuery($sql,[$this->idBatiment]);
+        return $this->createQuery($sql,[$this->idBat]);
 
         
     }

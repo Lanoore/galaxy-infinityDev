@@ -7,7 +7,7 @@
     <div class="createTechno">
         <div>
             <h4>Création Technologie Base</h4>
-            <form action="index.php?galaxyInfinity=createTechnologieBase" method="post">
+            <form action="index.php?galaxyInfinity=createTechnologieBase" method="post" enctype="multipart/form-data">
                 <div>
                     <label for = "nom"> Nom Technologie</label><br/>
                     <input type="text" id="nom" name="nom"> 
@@ -19,6 +19,10 @@
                 <div>
                     <label for="tier">Tier de la technologie</label><br/>
                     <input type="number" id="tier" name="tier" min="1" max="10" >
+                </div>
+                <div>
+                    <label for="image">Image du batiment</label>
+                    <input type="file" name ="image">
                 </div>
                 <div>
                     <input type="submit">
@@ -408,6 +412,7 @@
                         <th>Nom de la technologie</th>
                         <th>Description Technologie</th>
                         <th>Tier Tehnologie</th>
+                        <th>Image Technologie</th>
                         <th>Action ?</th>
                     </tr>
                 </thead>
@@ -419,6 +424,7 @@
                                 <td><?=$technoBase['nom']?></td>
                                 <td><?=$technoBase['description']?></td>
                                 <td><?=$technoBase['tier']?></td>
+                                <td><?=$technoBase['image']?></td>
                                 <td><form action="index.php?galaxyInfinity=supprTechnologieBase&idTechnologie=<?=$technoBase['id']?>" method="post"><input type="submit" name="Supprimer" value="Supprimer"></form></td>
                             </tr>
                         <?php   

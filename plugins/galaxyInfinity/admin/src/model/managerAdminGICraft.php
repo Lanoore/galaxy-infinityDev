@@ -38,8 +38,8 @@ class ManagerAdminGICraft extends ManagerBDD
     
        public function insertCraftBase(){
            
-           $sql ='INSERT INTO craft(nom,description,tier,temps_base) VALUES(?,?,?,?)';
-           return $this->createQuery($sql,[$this->nomCraft,$this->descrCraft,$this->tierCraft,$this->tempsCraft]);
+           $sql ='INSERT INTO craft(nom,description,tier,temps_base,image) VALUES(?,?,?,?,?)';
+           return $this->createQuery($sql,[$this->nomCraft,$this->descrCraft,$this->tierCraft,$this->tempsCraft,$this->imageCraft]);
            
        }
     

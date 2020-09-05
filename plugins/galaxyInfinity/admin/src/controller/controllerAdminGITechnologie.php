@@ -52,7 +52,7 @@ class ControllerAdminGITechnologie
 
         }
         else{
-            throw new Exception('Varibale de session inconnue');
+            echo('erreur');
         }
     }
     
@@ -66,15 +66,28 @@ class ControllerAdminGITechnologie
                         $this->managerAdminGITechnologie->nomTechno= htmlentities($_POST['nom']);
                         $this->managerAdminGITechnologie->descrTechno = htmlentities($_POST['descr']);
                         $this->managerAdminGITechnologie->tierTechno = $_POST['tier'];
-                        $this->managerAdminGITechnologie->verifTechnologieExist();
-                        if($this->managerAdminGITechnologie->technoExist == 0){
-                            $insertTechno =$this->managerAdminGITechnologie->insertTechnologieBase();
-                            if($insertTechno == true){
-                                header('Location:index.php?galaxyInfinity=afficheAdminGestionTechnologie');
-                            }
-                            else{
-                                echo('injection echoué');
-                            }
+                        $verifExist = $this->managerAdminGITechnologie->verifTechnologieExist();
+                        if($verifExist == 0){
+                            if(isset($_FILES['image']) AND $_FILES['image']['error'] == 0){
+                                if($_FILES['image']['size']<= 1000000){
+                                    $infosfichier = pathinfo($_FILES['image']['name']);
+                                    $extension_upload = $infosfichier['extension'];
+                                    $extensions_autorisees = array('jpg', 'jpeg', 'gif', 'png');
+                                    if (in_array($extension_upload, $extensions_autorisees))
+                                    {
+                                        $this->managerAdminGITechnologie->imageTechno = $_POST['nom'].'.'.$infosfichier['extension'];
+                                        $insertTechno =$this->managerAdminGITechnologie->insertTechnologieBase();
+                                        if($insertTechno == true){
+                                            $nomFichier = $_POST['nom'].'.'.$infosfichier['extension'];
+                                            move_uploaded_file($_FILES['image']['tmp_name'], '../plugins/galaxyInfinity/admin/public/img/technologie/' . basename($nomFichier));
+                                            header('Location:index.php?galaxyInfinity=afficheAdminGestionTechnologie');
+                                        }
+                                        else{
+                                            echo('injection echoué');
+                                            }
+                                    }
+                                }
+                            }         
                         }
                         else{
                            echo'Une technologie existe deja sous ce nom';

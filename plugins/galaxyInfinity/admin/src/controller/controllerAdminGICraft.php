@@ -53,7 +53,7 @@ class ControllerAdminGICraft{
 
         }
         else{
-            throw new Exception('Varibale de session inconnue');
+            echo('erreur');
         }
     }
 
@@ -68,13 +68,24 @@ class ControllerAdminGICraft{
             $this->managerAdminGICraft->verifCraftExist();
 
             if($this->managerAdminGICraft->craftExist == 0){
-                $insertCraft = $this->managerAdminGICraft->insertCraftBase();
-                if($insertCraft){
-                    header('Location:index.php?galaxyInfinity=afficheAdminGestionCraft');
-                }
-                
+                if(isset($_FILES['image']) AND $_FILES['image']['error'] == 0){
+                    if($_FILES['image']['size']<= 1000000){
+                        $infosfichier = pathinfo($_FILES['image']['name']);
+                        $extension_upload = $infosfichier['extension'];
+                        $extensions_autorisees = array('jpg', 'jpeg', 'gif', 'png');
+                        if (in_array($extension_upload, $extensions_autorisees))
+                        {
+                            $this->managerAdminGICraft->imageCraft = $_POST['nomCraft'].'.'.$infosfichier['extension'];
+                            $insertCraft = $this->managerAdminGICraft->insertCraftBase();
+                            if($insertCraft){
+                                $nomFichier = $_POST['nomCraft'].'.'.$infosfichier['extension'];
+                                move_uploaded_file($_FILES['image']['tmp_name'], '../plugins/galaxyInfinity/admin/public/img/craft/' . basename($nomFichier));
+                                header('Location:index.php?galaxyInfinity=afficheAdminGestionCraft');
+                            }
+                        }
+                    }
+                 }
             }
-
         }
     }
 

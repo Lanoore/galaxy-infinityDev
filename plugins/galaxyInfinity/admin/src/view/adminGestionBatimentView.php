@@ -7,7 +7,7 @@
     <div class="createBat">
         <div>
             <h4>Création Batiment Base</h4>
-            <form action="index.php?galaxyInfinity=createBatBase" method="post">
+            <form action="index.php?galaxyInfinity=createBatBase" method="post" enctype="multipart/form-data">
                 <div>
                     <label for = "nom"> Nom Batiment</label><br/>
                     <input type="text" id="nom" name="nom"> 
@@ -19,6 +19,10 @@
                 <div>
                     <label for="tier">Tier du batiment</label><br/>
                     <input type="number" id="tier" name="tier" min="1" max="10" >
+                </div>
+                <div>
+                    <label for="image">Image du batiment</label>
+                    <input type="file" name ="image">
                 </div>
                 <div>
                     <input type="submit">
@@ -468,6 +472,7 @@
                         <th>Nom batiment</th>
                         <th>Description batiment</th>
                         <th>Tier batiment</th>
+                        <th>Image Batiment</th>
                         <th>Action ?</th>
                     </tr>
                 </thead>
@@ -479,6 +484,7 @@
                                 <td><?=$batBase['nom']?></td>
                                 <td><?=$batBase['description']?></td>
                                 <td><?=$batBase['tier']?></td>
+                                <td><?=$batBase['image']?></td>
                                 <td><form action="index.php?galaxyInfinity=supprBatimentBase&idBatiment=<?=$batBase['id']?>" method="post"><input type="submit" name="Supprimer" value="Supprimer"></form></td>
                             </tr>
                         <?php   

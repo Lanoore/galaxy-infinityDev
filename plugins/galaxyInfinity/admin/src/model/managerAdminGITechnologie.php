@@ -39,8 +39,8 @@ class ManagerAdminGITechnologie extends ManagerBDD
 
     public function insertTechnologieBase(){
     
-    $sql ='INSERT INTO technologie(nom,description,tier) VALUES(?,?,?)';
-    return $this->createQuery($sql,[$this->nomTechno,$this->descrTechno,$this->tierTechno]);
+    $sql ='INSERT INTO technologie(nom,description,tier,image) VALUES(?,?,?,?)';
+    return $this->createQuery($sql,[$this->nomTechno,$this->descrTechno,$this->tierTechno,$this->imageTechno]);
     
     }
 
