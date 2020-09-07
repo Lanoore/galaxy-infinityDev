@@ -1,0 +1,11 @@
+
+.mainDiv{
+    display: flex;
+    flex-direction: column;
+}
+
+.navTier ul{
+    display: flex;
+    justify-content: space-around;
+}
+

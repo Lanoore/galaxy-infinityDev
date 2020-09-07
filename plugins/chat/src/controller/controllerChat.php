@@ -31,7 +31,8 @@ class ControllerChat{
         $chat = '../plugins/chat/src/view/afficheChat.php';
         $chat = $this->controllerBase->tamponView($chat, $messagesChat);
 
-        $this->controllerBase->afficheView([$chat]);
+        
+        $this->controllerBase->afficheView([$chat],'afficheChat');
         }
     }
 

@@ -112,6 +112,7 @@ class ControllerAdminGIBatiment
                 if(isset($_POST['Supprimer'])){
 
                     $this->managerAdminGIBatiment->supprBatBase();
+
                     header("Location:index.php?galaxyInfinity=afficheAdminGestionBatiment");
                 }
                 else{
