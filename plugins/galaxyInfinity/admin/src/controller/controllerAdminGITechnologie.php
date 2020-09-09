@@ -48,7 +48,7 @@ class ControllerAdminGITechnologie
 
             $adminGI = '../plugins/galaxyInfinity/admin/src/view/adminGestionTechnologieView.php';
             $adminGI = $this->controllerBase->tamponView($adminGI, ['adminTechnologiePR'=>$adminTechnologiePR,'adminBatBase'=>$adminBatBase,'niveaux'=>$niveaux, 'crafts' => $crafts, 'items' => $items,'adminTechnologieBase' => $adminTechnologieBase,'adminTechnologieNiveau' =>$adminTechnologieNiveau, 'adminTechnologieTempsNiveau' => $adminTechnologieTempsNiveau]);
-            $this->controllerBase->afficheView([$adminGI]);
+            $this->controllerBase->afficheView([$adminGI],'adminGestionTechnologie');
 
         }
         else{

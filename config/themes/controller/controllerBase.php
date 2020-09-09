@@ -29,7 +29,6 @@ class ControllerBase
     public function afficheView($views = null, $css= null){
         include('../config/themes/public/css/tableFichierCss.php');
 
-        //$css = array_search($css,$tableCss);
 
         $css = $tableCss[$css];
 

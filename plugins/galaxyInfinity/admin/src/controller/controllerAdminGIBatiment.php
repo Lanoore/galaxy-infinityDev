@@ -48,7 +48,7 @@ class ControllerAdminGIBatiment
 
             $adminGI = '../plugins/galaxyInfinity/admin/src/view/adminGestionBatimentView.php';
             $adminGI = $this->controllerBase->tamponView($adminGI, ['adminBatStartPlanete' =>$adminBatStartPlanete, 'adminBatPR'=>$adminBatPR,'technologies' => $technologies,'niveaux'=>$niveaux, 'crafts' => $crafts, 'items' => $items,'adminBatBase' => $adminBatBase,'adminBatNiveau' =>$adminBatNiveau, 'adminBatTempsNiveau' => $adminBatTempsNiveau]);
-            $this->controllerBase->afficheView([$adminGI]);
+            $this->controllerBase->afficheView([$adminGI],'adminGestionBatiment');
 
         }
         else{

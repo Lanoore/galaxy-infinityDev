@@ -29,7 +29,7 @@ class ControllerAdminGIGalaxie
 
             $adminGI = '../plugins/galaxyInfinity/admin/src/view/adminGestionGalaxieView.php';
             $adminGI = $this->controllerBase->tamponView($adminGI, ['planetes' =>$planetes]);
-            $this->controllerBase->afficheView([$adminGI]);
+            $this->controllerBase->afficheView([$adminGI],'adminGestionGalaxie');
 
         }
     }

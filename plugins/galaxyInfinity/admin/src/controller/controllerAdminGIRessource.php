@@ -35,7 +35,7 @@ class ControllerAdminGIRessource
 
             $adminGI = '../plugins/galaxyInfinity/admin/src/view/adminGestionRessourceView.php';
             $adminGI = $this->controllerBase->tamponView($adminGI,['prodRessources'=>$prodRessources,'adminBatBase'=>$adminBatBase,'niveaux'=>$niveaux,'ressources' => $ressources]);
-            $this->controllerBase->afficheView([$adminGI]);
+            $this->controllerBase->afficheView([$adminGI],'adminGestionRessource');
         }
     }
 

@@ -9,9 +9,6 @@ $tableCss =
 
     'adminGeneral' => ['../plugins/admin/public/css/adminGeneral.css','index.css'],
 
-
-
-
     'changePassword' => ['../plugins/admin/public/css/changePassword.css'],
     'connexionAdminView' => ['../plugins/admin/public/css/connexionAdminView.css'],
 
@@ -43,11 +40,12 @@ $tableCss =
     'adminGestionItems' => ['../plugins/galaxyInfinity/admin/public/css/adminGestionItems.css'],
     'adminGestionRessource' => ['../plugins/galaxyInfinity/admin/public/css/adminGestionRessource.css'],
     'adminGestionGalaxie' => ['../plugins/galaxyInfinity/admin/public/css/adminGestionGalaxie.css'],
-    'adminGestionGalaxie' => ['../plugins/galaxyInfinity/admin/public/css/adminGestionGalaxie.css'],
+    'adminGestionGeneralGI' => ['../plugins/galaxyInfinity/admin/public/css/adminGestionGeneralGI.css'],
     //Css user GalaxyInfinity
 
 
     'userGestionBatiment' => ['../plugins/galaxyInfinity/user/public/css/userGestionBatiment.css'],
+    'preRequisGI' => ['../plugins/galaxyInfinity/user/public/css/preRequisGI.css'],
 ];
 
 

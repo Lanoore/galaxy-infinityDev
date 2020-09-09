@@ -56,7 +56,7 @@ class ControllerForum{
 
             $topicForum = '../plugins/forum/src/view/user/topicView.php';
             $topicForum = $this->controllerBase->tamponView($topicForum, ['topic' => $topic, 'commentaires' => $commentaires,'pagination' =>$pagination]);
-            $this->controllerBase->afficheView([$topicForum]);
+            $this->controllerBase->afficheView([$topicForum],'topicView');
         }
     }
 
@@ -75,7 +75,7 @@ class ControllerForum{
             
             $forumCategories = '../plugins/forum/src/view/user/categoriesView.php';
             $forumCategories = $this->controllerBase->tamponView($forumCategories, ['categories' => $categories, 'lastTopics' => $lastTopics]);
-            $this->controllerBase->afficheView([$forumCategories]);
+            $this->controllerBase->afficheView([$forumCategories],'categoriesView');
         }
 
     }
@@ -120,7 +120,7 @@ class ControllerForum{
             
             $forumCategorie = '../plugins/forum/src/view/user/categorieView.php';
             $forumCategorie = $this->controllerBase->tamponView($forumCategorie, ['topics' =>$topics, 'lastCommentaires' =>$lastCommentaires, 'categorie' =>$categorie, 'pagination' =>$pagination]);
-            $this->controllerBase->afficheView([$forumCategorie]);
+            $this->controllerBase->afficheView([$forumCategorie],'categorieView');
         }
     }
 
@@ -130,7 +130,7 @@ class ControllerForum{
 
             $createTopic = '../plugins/forum/src/view/user/createTopicView.php';
             $createTopic = $this->controllerBase->tamponView($createTopic,['idCategorie' => $idCategorie]);
-            $this->controllerBase->afficheView([$createTopic]);
+            $this->controllerBase->afficheView([$createTopic],'createTopicView');
         }
     }
 
@@ -188,7 +188,7 @@ class ControllerForum{
             if($topic['auteur'] = $_SESSION['pseudo']){
                 $modifTopic = '../plugins/forum/src/view/user/modifTopicView.php';
                 $modifTopic = $this->controllerBase->tamponView($modifTopic,['topic' => $topic]);
-                $this->controllerBase->afficheView([$modifTopic]);
+                $this->controllerBase->afficheView([$modifTopic],'modifTopicView');
             }
             else{
                 header('Location:index.php?forum=afficheTopic&idTopic='.$topic['id'].'&page=1');

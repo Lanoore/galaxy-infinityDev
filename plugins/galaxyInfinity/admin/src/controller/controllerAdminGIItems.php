@@ -24,7 +24,7 @@ class ControllerAdminGIItems
 
             $adminGI = '../plugins/galaxyInfinity/admin/src/view/adminGestionItemsView.php';
             $adminGI = $this->controllerBase->tamponView($adminGI, ['items' =>$items]);
-            $this->controllerBase->afficheView([$adminGI]);
+            $this->controllerBase->afficheView([$adminGI],'adminGestionItems');
         }
     }
 

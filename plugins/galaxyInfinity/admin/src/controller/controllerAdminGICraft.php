@@ -49,7 +49,7 @@ class ControllerAdminGICraft{
 
             $adminGI = '../plugins/galaxyInfinity/admin/src/view/adminGestionCraftView.php';
             $adminGI = $this->controllerBase->tamponView($adminGI, ['craftsPR'=>$craftsPR,'technologies'=>$technologies,'adminBatBase'=>$adminBatBase,'niveaux'=>$niveaux,'craftCrafts' =>$craftCrafts,'ressources' =>$ressources,'crafts' => $crafts]);
-            $this->controllerBase->afficheView([$adminGI]);
+            $this->controllerBase->afficheView([$adminGI],'adminGestionCraft');
 
         }
         else{

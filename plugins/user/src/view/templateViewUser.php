@@ -6,7 +6,7 @@
 
         <meta name="viewport" content="width=device-width, user-scalable=no">
 
-        <?php if(isset($css)){echo $css;}?> <!--Pensez a ajoutez une boucle pour chaque entré de chaque view pour le css-->
+        <?php if(!empty($css)){foreach($css as $css){?><link rel="stylesheet" href="<?=$css?>"> <?php }} ?> 
     </head>
     <body>
         <div>

@@ -113,7 +113,7 @@ class ControllerForumAdmin{
             
             $gestionForum = '../plugins/forum/src/view/admin/forumAdminGestionView.php';
             $gestionForum = $this->controllerBase->tamponView($gestionForum, ['categories'=>$categories, 'topics'=>$topics , 'commentaires'=>$commentaires]);
-            $this->controllerBase->afficheView([$gestionForum]);
+            $this->controllerBase->afficheView([$gestionForum],'forumAdminGestionView');
         }
         else{
             echo 'Veuillez vous connectez en admin';

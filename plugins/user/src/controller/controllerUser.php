@@ -37,7 +37,7 @@ class ControllerUser
         */
         $connexion = '../plugins/user/src/view/connexionView.php';
         $connexion = $this->controllerBase->tamponView($connexion);
-        $this->templateViewUser([$connexion]);
+        $this->templateViewUser([$connexion],'connexionView');
     }
 
     public function afficheInscription(){
@@ -46,7 +46,7 @@ class ControllerUser
         */
         $inscription = '../plugins/user/src/view/inscriptionView.php';
         $inscription = $this->controllerBase->tamponView($inscription);
-        $this->templateViewUser([$inscription]);
+        $this->templateViewUser([$inscription],'inscriptionView');
     }
 
     public function createUser(){
@@ -89,9 +89,7 @@ class ControllerUser
         }
     }
 
-    public function gestionUser(){
-        
-    }
+
 
     public function connectUser(){
         /**
@@ -144,7 +142,7 @@ class ControllerUser
         if(isset($_SESSION['idUser'])){
             $userInfo = '../plugins/user/src/view/userInfoView.php';
             $userInfo = $this->controllerBase->tamponView($userInfo);
-            $this->controllerBase->afficheView([$userInfo]);
+            $this->controllerBase->afficheView([$userInfo],'userInfoView');
         }
         else{
             echo('erreur');
@@ -154,7 +152,12 @@ class ControllerUser
 
 
 
-    public function templateViewUser($views = null){
+    public function templateViewUser($views = null, $css = null){
+        include('../config/themes/public/css/tableFichierCss.php');
+
+        
+        $css = $tableCss[$css];
+
         require '../plugins/user/src/view/templateViewUser.php';
     }   
     

@@ -26,7 +26,7 @@ class ControllerAdmin{
     public function afficheConnexionAdmin(){
         $connexionAdmin = '../plugins/admin/src/view/connexionAdminView.php';
         $connexionAdmin = $this->controllerBase->tamponView($connexionAdmin);
-        $this->controllerBase->afficheView([$connexionAdmin]);
+        $this->controllerBase->afficheView([$connexionAdmin],'connexionAdminView');
     }
 
     public function connectAdmin(){
@@ -48,7 +48,7 @@ class ControllerAdmin{
     public function afficheGeneralAdmin(){
         $adminGeneralView = '../plugins/admin/src/view/adminGeneralView.php';
         $adminGeneralView = $this->controllerBase->tamponView($adminGeneralView);
-        $this->controllerBase->afficheView([$adminGeneralView]);
+        $this->controllerBase->afficheView([$adminGeneralView],'adminGeneral');
     }
 
     public function disconnectAdmin(){
@@ -65,7 +65,7 @@ class ControllerAdmin{
         if(isset($_SESSION['identifiantAdmin'])){
             $adminChangePassword = '../plugins/admin/src/view/changePasswordView.php';
             $adminChangePassword = $this->controllerBase->tamponView($adminChangePassword);
-            $this->controllerBase->afficheView([$adminChangePassword]);
+            $this->controllerBase->afficheView([$adminChangePassword],'changePassword');
         }
         
     }
