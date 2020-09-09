@@ -27,6 +27,7 @@ class ManagerAdminGITechnologie extends ManagerBDD
        $this->nomTechno = $result['nom'];
        $this->descrTechno = $result['description'];
        $this->tierTechno = $result['tier'];
+       $this->imageTechno = $result['image'];
    }
 
     public function verifTechnologieExist(){

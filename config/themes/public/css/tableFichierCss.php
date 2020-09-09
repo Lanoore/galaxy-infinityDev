@@ -5,7 +5,13 @@
 $tableCss = 
 [   
     //Css plugin admin
-    'adminGeneral' => ['../plugins/admin/public/css/adminGeneral.css'],
+
+
+    'adminGeneral' => ['../plugins/admin/public/css/adminGeneral.css','index.css'],
+
+
+
+
     'changePassword' => ['../plugins/admin/public/css/changePassword.css'],
     'connexionAdminView' => ['../plugins/admin/public/css/connexionAdminView.css'],
 
@@ -15,7 +21,9 @@ $tableCss =
     'userInfoView' => ['../plugins/admin/public/css/userInfoView.css'],
 
     //Css plugin chat
-     '../plugins/chat/public/css/afficheChat.css' => 'afficheChat',
+
+
+     'afficheChat' => ['../plugins/chat/public/css/afficheChat.css'],
 
     //Css plugin forum
     //Css admin Forum
@@ -38,5 +46,15 @@ $tableCss =
     'adminGestionGalaxie' => ['../plugins/galaxyInfinity/admin/public/css/adminGestionGalaxie.css'],
     //Css user GalaxyInfinity
 
-    '../plugins/galaxyInfinity/user/public/css/userGestionBatiment.css' => 'userGestionBatiment',
+
+    'userGestionBatiment' => ['../plugins/galaxyInfinity/user/public/css/userGestionBatiment.css'],
 ];
+
+
+
+
+
+
+
+
+

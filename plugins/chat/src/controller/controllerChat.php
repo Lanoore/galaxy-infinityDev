@@ -26,13 +26,25 @@ class ControllerChat{
     public function afficheChat(){
         if($_SESSION['idUser']){
 
-        $messagesChat = $this->managerChat->getChat();
+                $messagesChat = $this->managerChat->getChat();
         
-        $chat = '../plugins/chat/src/view/afficheChat.php';
-        $chat = $this->controllerBase->tamponView($chat, $messagesChat);
+                $chat = '../plugins/chat/src/view/afficheChat.php';
+                $chat = $this->controllerBase->tamponView($chat, $messagesChat);
+        
+                
+                $this->controllerBase->afficheView([$chat],'afficheChat');
+        }
+    }
 
-        
-        $this->controllerBase->afficheView([$chat],'afficheChat');
+    public function getChatJs(){
+        if($_SESSION['idUser']){
+
+           $chatSQL = $this->managerChat->getChatJs();
+
+            foreach($chatSQL as $chatSQL){
+                $chat [] = ['id' => $chatSQL['id'],'pseudo' => $chatSQL['pseudo'],'message' => $chatSQL['message'],'dateMessage' => $chatSQL['dateMessage']];
+            }
+            echo json_encode($chat);
         }
     }
 

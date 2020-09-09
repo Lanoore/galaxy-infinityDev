@@ -107,13 +107,19 @@ class ControllerAdminGIBatiment
     public function supprBatBase($idBatiment){
         if(isset($_SESSION['identifiantAdmin'])){
             $this->managerAdminGIBatiment->idBat = $idBatiment;
+
+            $this->managerAdminGIBatiment->getBatBaseById();
+
             $batimentExist = $this->managerAdminGIBatiment->verifBatExist();
             if($batimentExist == 1){
                 if(isset($_POST['Supprimer'])){
 
-                    $this->managerAdminGIBatiment->supprBatBase();
-
-                    header("Location:index.php?galaxyInfinity=afficheAdminGestionBatiment");
+                    $confirmSuppr = $this->managerAdminGIBatiment->supprBatBase();
+                    if($confirmSuppr){
+                        unlink('../plugins/galaxyInfinity/admin/public/img/batiment/'. $this->managerAdminGIBatiment->imageBat);
+                        header("Location:index.php?galaxyInfinity=afficheAdminGestionBatiment");
+                    }
+                    
                 }
                 else{
                     echo 'erreur';

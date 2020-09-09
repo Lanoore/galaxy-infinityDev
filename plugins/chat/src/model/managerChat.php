@@ -8,12 +8,18 @@ class ManagerChat extends ManagerBDD
 {
 
     public function getChat(){
-        $sql = 'SELECT chat.id , user.pseudo, chat.message, chat.dateMessage FROM chat INNER JOIN user ON chat.idUser = user.id ORDER BY dateMessage ASC LIMIT 20';
+        $sql = 'SELECT chat.id , user.pseudo, chat.message, chat.dateMessage FROM chat INNER JOIN user ON chat.idUser = user.id ORDER BY dateMessage DESC LIMIT 20';
         $result = $this->createQuery($sql);
         $data = $result->fetchAll(); 
 
         return $data;
 
+    }
+
+    public function getChatJs(){
+        $sql = 'SELECT chat.id , user.pseudo, chat.message, chat.dateMessage FROM chat INNER JOIN user ON chat.idUser = user.id ORDER BY dateMessage DESC LIMIT 20';
+        $result = $this->createQuery($sql);
+        return $result->fetchAll();
     }
 
     public function addMessage(){

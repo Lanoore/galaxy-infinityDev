@@ -14,17 +14,25 @@ class ControllerUserGIBatiment{
     private $controllerBase;
 
     public function __construct(){
+
         $this->managerUserGIBatiment = new ManagerUserGIBatiment();
 
         $this->controllerBase = new ControllerBase();
     }
 
 
-    public function afficheBatimentUser(){
+    public function afficheBatimentUser($tier){
         if(isset($_SESSION['pseudo'])){
+
+            $this->managerUserGIBatiment->idPlanete = $_SESSION['idPlaneteActif'];
+            $this->managerUserGIBatiment->tier = $tier;
+            $batPlanete = $this->managerUserGIBatiment->getBatPlanete();
+
+
             $userBatiment = '../plugins/galaxyInfinity/user/src/view/userGestionBatimentView.php';
-            $userBatiment = $this->controllerBase->tamponView($userBatiment);
-            $this->controllerBase->afficheView([$userBatiment]);
+            $userBatiment = $this->controllerBase->tamponView($userBatiment,['batPlanete'=>$batPlanete]);
+
+            $this->controllerBase->afficheView([$userBatiment],'userGestionBatiment');
         }
     }
 

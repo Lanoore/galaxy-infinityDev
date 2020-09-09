@@ -104,12 +104,18 @@ class ControllerAdminGITechnologie
     public function supprTechnologieBase($idTechnologie){
         if(isset($_SESSION['identifiantAdmin'])){
             $this->managerAdminGITechnologie->idTechno = $idTechnologie;
+            $this->managerAdminGITechnologie->getTechnologieBaseById();
+
             $technoExist = $this->managerAdminGITechnologie->verifTechnologieExist();
-            if($technoExist){
+            if($technoExist == 1){
                 if(isset($_POST['Supprimer'])){
 
-                    $this->managerAdminGITechnologie->supprTechnologieBase();
-                    header("Location:index.php?galaxyInfinity=afficheAdminGestionTechnologie");
+                    $confirmSuppr = $this->managerAdminGITechnologie->supprTechnologieBase();
+                    if($confirmSuppr){
+                        unlink('../plugins/galaxyInfinity/admin/public/img/technologie/'. $this->managerAdminGITechnologie->imageCraft);
+                        header("Location:index.php?galaxyInfinity=afficheAdminGestionTechnologie");
+                    }
+                    
                 }
                 else{
                     echo 'erreur';

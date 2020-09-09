@@ -25,6 +25,7 @@ class ManagerAdminGICraft extends ManagerBDD
         $this->descrCraft = $result['description'];
         $this->tierCraft = $result['tier'];
         $this->tempsBase = $result['temps_base'];
+        $this->imageCraft = $result['image'];
     }
     
        public function verifCraftExist(){

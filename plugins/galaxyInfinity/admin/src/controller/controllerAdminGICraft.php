@@ -92,11 +92,17 @@ class ControllerAdminGICraft{
     public function supprCraftBase($idCraft){
         if(isset($_SESSION['identifiantAdmin'])){
             $this->managerAdminGICraft->idCraft = $idCraft;
-            $supprCraft=$this->managerAdminGICraft->supprCraftBase();
-            if($supprCraft){
-                header('Location:index?galaxyInfinity=afficheAdminGestionCraft');
+
+            $craftExist = $this->managerAdminGICraft->getCraftBaseById();
+            if($craftExist == 1){
+                if(isset($_POST['Supprimer'])){
+                    $supprCraft=$this->managerAdminGICraft->supprCraftBase();
+                    if($supprCraft){
+                        unlink('../plugins/galaxyInfinity/admin/public/img/craft/'. $this->managerAdminGICraft->imageCraft);
+                        header('Location:index?galaxyInfinity=afficheAdminGestionCraft');
+                    }
+                }
             }
-            
         }
     }
 

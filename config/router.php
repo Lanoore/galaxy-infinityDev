@@ -120,6 +120,9 @@ class Router
                     case 'afficheChat':
                         $this->controllerChat->afficheChat();
                         break;
+                    case 'getChatJs':
+                        $this->controllerChat->getChatJs(); 
+                        break;
                     case 'addMessage':
                         $this->controllerChat->addMessage();
                         break;
@@ -365,7 +368,7 @@ class Router
                             $this->controllerUserGI->affichePreRequisUser($_GET['page']);
                             break;
                         case 'afficheBatimentUser':
-                            $this->controllerUserGIBatiment->afficheBatimentUser();
+                            $this->controllerUserGIBatiment->afficheBatimentUser($_GET['tier']);
                             break;    
                         default:
                         $this->controllerUser->afficheConnexion();

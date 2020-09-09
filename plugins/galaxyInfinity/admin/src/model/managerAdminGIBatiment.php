@@ -27,6 +27,7 @@ class ManagerAdminGIBatiment extends ManagerBDD
        $this->nomBat = $result['nom'];
        $this->descrBat = $result['description'];
        $this->tierBat = $result['tier'];
+       $this->imageBat = $result['image'];
        
    }
 

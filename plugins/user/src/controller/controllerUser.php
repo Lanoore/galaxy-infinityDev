@@ -89,6 +89,10 @@ class ControllerUser
         }
     }
 
+    public function gestionUser(){
+        
+    }
+
     public function connectUser(){
         /**
          * Permet de connecter l'utilisateur
