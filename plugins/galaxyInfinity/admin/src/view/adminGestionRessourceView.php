@@ -2,6 +2,7 @@
 
 <div>
 <p><a href="index.php?galaxyInfinity=afficheAdminGalaxyInfinityGestion">Revenir à l'administration</a></p>
+    <div class="createRessource">
         <div>
             <h4>Création Ressource Base</h4>
             <form action="index.php?galaxyInfinity=createRessourceBase" method="post">
@@ -60,6 +61,8 @@
                 </div>
             </form>
         </div>
+    </div>
+    <div class='modifRessource'>
         <div>
             <h4>Modif Ressource Base</h4>
             <form action="index.php?galaxyInfinity=modifRessourceBase" method="post">
@@ -129,7 +132,8 @@
                 </div>
             </form>
         </div>
-
+    </div>
+    <div>
         <div>
             <table class="dataTable">
                 <thead>
@@ -184,7 +188,7 @@
                 </tbody>
             </table>
         </div>
-
+    </div>
 </div>
 
 

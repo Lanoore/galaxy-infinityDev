@@ -21,7 +21,7 @@
                     <input type="number" id="tier" name="tier" min="1" max="10" >
                 </div>
                 <div>
-                    <label for="image">Image du batiment</label>
+                    <label for="image">Image du batiment</label><br/>
                     <input type="file" name ="image">
                 </div>
                 <div>

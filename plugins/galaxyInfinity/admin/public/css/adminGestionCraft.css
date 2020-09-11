@@ -1,0 +1,13 @@
+.divPlugins{
+    margin-right: 0%;
+}
+
+.createCraft{
+    display: flex;
+    justify-content: space-around;
+}
+
+.modifCraft{
+    display: flex;
+    justify-content: space-around;
+}

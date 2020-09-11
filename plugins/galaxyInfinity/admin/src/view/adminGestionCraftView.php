@@ -5,6 +5,7 @@
     <p><a href="index.php?galaxyInfinity=afficheAdminGalaxyInfinityGestion">Revenir à l'administration</a></p>
 
     <div class="createCraft">
+        <div>
             <h4>Création Craft Base</h4>
             <form action="index.php?galaxyInfinity=createCraftBase" method="post" enctype="multipart/form-data">
                 <div>
@@ -36,7 +37,7 @@
         <h4>Création Craft Craft</h4>
         <form action="index.php?galaxyInfinity=createCraftCraft" method='post'>
             <div>
-                <label for="idCraft">Nom du craft</label>
+                <label for="idCraft">Nom du craft</label><br/>
                 <select name="idCraft" id="idCraft">
                 <option value="null"></option>
                 <?php
@@ -47,7 +48,7 @@
                 </select>
             </div>
             <div>
-                <label for="idRessource">Nom ressource</label>
+                <label for="idRessource">Nom ressource</label><br/>
                 <select name="idRessource" id="idRessource">
                 <option value="null"></option>
                 <?php
@@ -58,11 +59,11 @@
                 </select>
             </div>
             <div>
-                <label for="nombreRessource">Nombre ressource</label>
+                <label for="nombreRessource">Nombre ressource</label><br/>
                 <input type="number" id='nombreRessource' name='nombreRessource'>
             </div>
             <div>
-                <label for="craftTravail">Nom du craft de travail</label>
+                <label for="craftTravail">Nom du craft de travail</label><br/>
                 <select name="craftTravail" id="craftTravail">
                 <option value="null"></option>
                 <?php
@@ -73,7 +74,7 @@
                 </select>
             </div>
             <div>
-                <label for="nombreCraftTravail">Nombre Craft Travail</label>
+                <label for="nombreCraftTravail">Nombre Craft Travail</label><br/>
                 <input type="number"  id='nombreCraftTravail' name='nombreCraftTravail'>
             </div>
             <div>
@@ -143,175 +144,178 @@
                         <input type="submit">
                     </div>
                 </form>
+            </div>
         </div>
-    <div>
-        <h4>Modification Craft</h4>
-        <form action="index.php?galaxyInfinity=modifCraftBase" method='POST'>
+        <div class="modifCraft">
             <div>
-                <label for="idCraft">Nom du craft a modifié</label>
-                <select name="idCraft" id="idCraft">
+            <h4>Modification Craft</h4>
+            <form action="index.php?galaxyInfinity=modifCraftBase" method='POST'>
+                <div>
+                    <label for="idCraft">Nom du craft a modifié</label><br/>
+                    <select name="idCraft" id="idCraft">
+                        <?php
+                            foreach($crafts as $craft){?>
+                                <option value="<?=$craft['id']?>"><?=$craft['nom']?></option>
+                            <?php }
+                        ?>
+                    </select>
+                </div>
+                <div>
+                    <label for="nomCraft">Nouveau nom du craft</label><br/>
+                    <input type="text" id="nomCraft" name="nomCraft">
+                </div>
+                <div>
+                    <label for="descr">Nouvelle description</label><br/>
+                    <input type="text" id="descr" name="descr">
+                </div>
+                <div>
+                    <label for="tier">Tier du craft</label><br/>
+                    <input type="number" id="tier" name="tier" min="1" max="10">
+                </div>
+                <div>
+                    <label for="tempsCraft">Temps du craft</label>
+                    <input type="number" id='tempsCraft' name='tempsCraft'>
+                </div>
+                <div>
+                    <input type="submit">
+                </div>
+            </form>
+        </div>
+        <div>
+            <h4>Modification Craft Craft</h4>
+            <form action="index.php?galaxyInfinity=modifCraftCraft" method='post'>
+                <div>
+                    <label for="idLigne">Id de la ligne cible</label><br/>
+                    <select name="idLigne" id="idLigne">
+                    <option value="null"></option>
+                    <?php
+                        foreach($craftCrafts as $craft){?>
+                            <option value="<?=$craft['id']?>"><?=$craft['id']?></option>
+                    <?php }
+                    ?>
+                    </select>
+                </div>
+                <div>
+                    <label for="idCraft">Nom du craft</label><br/>
+                    <select name="idCraft" id="idCraft">
+                    <option value="null"></option>
                     <?php
                         foreach($crafts as $craft){?>
                             <option value="<?=$craft['id']?>"><?=$craft['nom']?></option>
-                        <?php }
+                    <?php }
                     ?>
-                </select>
-            </div>
-            <div>
-                <label for="nomCraft">Nouveau nom du craft</label>
-                <input type="text" id="nomCraft" name="nomCraft">
-            </div>
-            <div>
-                <label for="descr">Nouvelle description</label><br/>
-                <input type="text" id="descr" name="descr">
-            </div>
-            <div>
-                <label for="tier">Tier du craft</label><br/>
-                <input type="number" id="tier" name="tier" min="1" max="10">
-            </div>
-            <div>
-                <label for="tempsCraft">Temps du craft</label>
-                <input type="number" id='tempsCraft' name='tempsCraft'>
-            </div>
-            <div>
-                <input type="submit">
-            </div>
-        </form>
-    </div>
-    <div>
-        <h4>Modification Craft Craft</h4>
-        <form action="index.php?galaxyInfinity=modifCraftCraft" method='post'>
-            <div>
-                <label for="idLigne">Id de la ligne cible</label>
-                <select name="idLigne" id="idLigne">
-                <option value="null"></option>
-                <?php
-                    foreach($craftCrafts as $craft){?>
-                        <option value="<?=$craft['id']?>"><?=$craft['id']?></option>
-                <?php }
-                ?>
-                </select>
-            </div>
-            <div>
-                <label for="idCraft">Nom du craft</label>
-                <select name="idCraft" id="idCraft">
-                <option value="null"></option>
-                <?php
-                    foreach($crafts as $craft){?>
-                        <option value="<?=$craft['id']?>"><?=$craft['nom']?></option>
-                <?php }
-                ?>
-                </select>
-            </div>
-            <div>
-                <label for="idRessource">Nom ressource</label>
-                <select name="idRessource" id="idRessource">
-                <option value="null"></option>
-                <?php
-                    foreach($ressources as $ressource){?>
-                        <option value="<?=$ressource['id']?>"><?=$ressource['nom']?></option>
-                <?php }
-                ?>
-                </select>
-            </div>
-            <div>
-                <label for="nombreRessource">Nombre ressource</label>
-                <input type="number" id='nombreRessource' name='nombreRessource'>
-            </div>
-            <div>
-                <label for="craftTravail">Nom du craft de travail</label>
-                <select name="craftTravail" id="craftTravail">
-                <option value="null"></option>
-                <?php
-                    foreach($crafts as $craft){?>
-                        <option value="<?=$craft['id']?>"><?=$craft['nom']?></option>
-                <?php }
-                ?>
-                </select>
-            </div>
-            <div>
-                <label for="nombreCraftTravail">Nombre Craft Travail</label>
-                <input type="number"  id='nombreCraftTravail' name='nombreCraftTravail'>
-            </div>
-            <div>
-                <input type="submit">
-            </div>
-        </form>
-    </div>
-    <div>
-            <h4>Modification Pré requis Craft</h4>
-                <form action="index.php?galaxyInfinity=modifCraftPR" method="post">
-                    <div>
-                        <label for="idLigne">Id de la ligne cible</label>
-                        <select name="idLigne" id="idLigne">
+                    </select>
+                </div>
+                <div>
+                    <label for="idRessource">Nom ressource</label><br/>
+                    <select name="idRessource" id="idRessource">
+                    <option value="null"></option>
+                    <?php
+                        foreach($ressources as $ressource){?>
+                            <option value="<?=$ressource['id']?>"><?=$ressource['nom']?></option>
+                    <?php }
+                    ?>
+                    </select>
+                </div>
+                <div>
+                    <label for="nombreRessource">Nombre ressource</label><br/>
+                    <input type="number" id='nombreRessource' name='nombreRessource'>
+                </div>
+                <div>
+                    <label for="craftTravail">Nom du craft de travail</label><br/>
+                    <select name="craftTravail" id="craftTravail">
+                    <option value="null"></option>
+                    <?php
+                        foreach($crafts as $craft){?>
+                            <option value="<?=$craft['id']?>"><?=$craft['nom']?></option>
+                    <?php }
+                    ?>
+                    </select>
+                </div>
+                <div>
+                    <label for="nombreCraftTravail">Nombre Craft Travail</label><br/>
+                    <input type="number"  id='nombreCraftTravail' name='nombreCraftTravail'>
+                </div>
+                <div>
+                    <input type="submit">
+                </div>
+            </form>
+        </div>
+        <div>
+                <h4>Modification Pré requis Craft</h4>
+                    <form action="index.php?galaxyInfinity=modifCraftPR" method="post">
+                        <div>
+                            <label for="idLigne">Id de la ligne cible</label><br/>
+                            <select name="idLigne" id="idLigne">
+                                <option value=""></option>
+                                <?php
+                                    foreach($craftsPR as $craftPR){?>
+                                        <option value="<?=$craftPR['id']?>"><?=$craftPR['id']?></option>
+                                    <?php }
+                                ?>
+                            </select>
+                        </div> 
+                        <div>
+                            <label for = "idCraft"> Nom Craft</label><br/>
+                            <select name="idCraft" id="idCraft">
+                            <option value=""></option>
+                                <?php
+                                    foreach($crafts as $craft){?>
+                                        <option value="<?=$craft['id']?>"><?=$craft['nom']?></option>
+                                <?php }
+                                ?>
+                            </select>
+                        </div>
+                        <div>
+                            <label for = "idBatPR"> Nom Batiment Pré requis</label><br/>
+                            <select name="idBatPR" id="idBatPR">
+                            <option value=""></option>
+                                <?php
+                                    foreach($adminBatBase as $batBase){?>
+                                        <option value="<?=$batBase['id']?>"><?=$batBase['nom']?></option>
+                                <?php }
+                                ?>
+                            </select>
+                        </div>
+                        <div>
+                            <label for="niveauBatPR">Niveau Batiment Pré requis</label><br/>
+                            <select name="niveauBatPR" id="niveauBatPR">
                             <option value=""></option>
                             <?php
-                                foreach($craftsPR as $craftPR){?>
-                                    <option value="<?=$craftPR['id']?>"><?=$craftPR['id']?></option>
+                                foreach($niveaux as $niveau){?>
+                                    <option value="<?=$niveau['id']?>"><?=$niveau['niveau']?></option>
+                            <?php }
+                            ?>
+                        </select>
+                        </div>
+                        <div>
+                            <label for = "idTechnoPR"> Nom Technologie Pré Requis</label><br/>
+                            <select name="idTechnoPR" id="idTechnoPR">
+                            <option value=""></option>
+                                <?php
+                                    foreach($technologies as $techno){?>
+                                        <option value="<?=$techno['id']?>"><?=$techno['nom']?></option>
                                 <?php }
-                            ?>
-                        </select>
-                    </div> 
-                    <div>
-                        <label for = "idCraft"> Nom Craft</label><br/>
-                        <select name="idCraft" id="idCraft">
-                        <option value=""></option>
+                                ?>
+                            </select>
+                        </div>
+                        <div>
+                            <label for="niveauTechnoPR">Niveau Technologie Pré requis</label><br/>
+                            <select name="niveauTechnoPR" id="niveauTechnoPR">
+                            <option value=""></option>
                             <?php
-                                foreach($crafts as $craft){?>
-                                    <option value="<?=$craft['id']?>"><?=$craft['nom']?></option>
-                               <?php }
+                                foreach($niveaux as $niveau){?>
+                                    <option value="<?=$niveau['id']?>"><?=$niveau['niveau']?></option>
+                            <?php }
                             ?>
                         </select>
-                    </div>
-                    <div>
-                        <label for = "idBatPR"> Nom Batiment Pré requis</label><br/>
-                        <select name="idBatPR" id="idBatPR">
-                        <option value=""></option>
-                            <?php
-                                foreach($adminBatBase as $batBase){?>
-                                    <option value="<?=$batBase['id']?>"><?=$batBase['nom']?></option>
-                               <?php }
-                            ?>
-                        </select>
-                    </div>
-                    <div>
-                        <label for="niveauBatPR">Niveau Batiment Pré requis</label><br/>
-                        <select name="niveauBatPR" id="niveauBatPR">
-                        <option value=""></option>
-                        <?php
-                            foreach($niveaux as $niveau){?>
-                                <option value="<?=$niveau['id']?>"><?=$niveau['niveau']?></option>
-                           <?php }
-                        ?>
-                    </select>
-                    </div>
-                    <div>
-                        <label for = "idTechnoPR"> Nom Technologie Pré Requis</label><br/>
-                        <select name="idTechnoPR" id="idTechnoPR">
-                        <option value=""></option>
-                            <?php
-                                foreach($technologies as $techno){?>
-                                    <option value="<?=$techno['id']?>"><?=$techno['nom']?></option>
-                               <?php }
-                            ?>
-                        </select>
-                    </div>
-                    <div>
-                        <label for="niveauTechnoPR">Niveau Technologie Pré requis</label><br/>
-                        <select name="niveauTechnoPR" id="niveauTechnoPR">
-                        <option value=""></option>
-                        <?php
-                            foreach($niveaux as $niveau){?>
-                                <option value="<?=$niveau['id']?>"><?=$niveau['niveau']?></option>
-                           <?php }
-                        ?>
-                    </select>
-                    </div>
-                    <div>
-                        <input type="submit">
-                    </div>
-                </form>
-        </div>
+                        </div>
+                        <div>
+                            <input type="submit">
+                        </div>
+                    </form>
+            </div>
+         </div> 
     <div>
         <table class="dataTable">
             <thead>
@@ -373,8 +377,6 @@
                 ?>
             </tbody>
         </table>
-    </div>
-    <div>
             <table class="dataTable">
                 <thead>
                     <tr>
@@ -404,7 +406,7 @@
                 </tbody>
             </table>
         </div>
-</div>
+
 
 
 
