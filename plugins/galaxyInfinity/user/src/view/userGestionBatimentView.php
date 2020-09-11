@@ -13,13 +13,26 @@
     <div class='divBat'>
         <?php
 
-        foreach($batPlanete as $batPlanete){ ?>
-            <div>
-                <h4><?=$batPlanete['nom']?></h4>
-                <img src="../plugins/galaxyInfinity/admin/public/img/batiment/<?=$batPlanete['image']?>">
-                
-            </div>
-      <?php } ?>
+            foreach($batiment as $bat){?>
+                <div class='divBatX'>
+                    <div class='divBatXInfo'>
+                        <p><?=$bat['nomBat']?></p>
+                        <p><?=$bat['niveauBatPlanete']?></p>
+                    </div>
+                    
+                    <img src="../plugins/galaxyInfinity/admin/public/img/batiment/<?=$bat['imageBat']?>" alt=""  width="94%">
+                    <?php
+                        if($bat['prValide'] == true){?>
+                            <p style='color: blue'><a href="#">Construire</a></p>    
+                       <?php }
+                        else{?>
+                            <p style='color: red'>Construire</p>
+                       <?php }
+                    ?>
+                </div>
+           <?php }
+
+        ?>
     
     </div>
 </div>
