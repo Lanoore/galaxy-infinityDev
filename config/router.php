@@ -20,6 +20,7 @@ use App\plugins\galaxyInfinity\admin\src\controller\controllerAdminGITechnologie
 use App\plugins\galaxyInfinity\admin\src\controller\controllerAdminGIGalaxie;
 use App\plugins\galaxyInfinity\user\src\controller\controllerUserGalaxyInfinity;
 use App\plugins\galaxyInfinity\user\src\controller\controllerUserGIBatiment;
+use App\plugins\galaxyInfinity\user\src\controller\ControllerUserGITechnologie;
 
 
 
@@ -42,6 +43,7 @@ class Router
     private $controllerAdminGIGalaxie;
     private $controllerUserGI;
     private $controllerUserGIBatiment;
+    private $controllerUserGITechnologie;
 
     public function __construct(){
         $this->controllerBase = new ControllerBase();
@@ -59,6 +61,7 @@ class Router
         $this->controllerAdminGIGalaxie =  new ControllerAdminGIGalaxie();
         $this->controllerUserGI = new ControllerUserGalaxyInfinity();
         $this->controllerUserGIBatiment = new ControllerUserGIBatiment();
+        $this->controllerUserGITechnologie = new ControllerUserGITechnologie();
 
     }
 
@@ -367,8 +370,17 @@ class Router
                         case 'affichePreRequisUser':
                             $this->controllerUserGI->affichePreRequisUser($_GET['page']);
                             break;
+                        //Partie Batiment    
                         case 'afficheBatimentUser':
                             $this->controllerUserGIBatiment->afficheBatimentUser($_GET['tier']);
+                            break;
+                        //Partie Technologie
+                        case 'afficheTechnologieUser':
+                            $this->controllerUserGITechnologie->afficheTechnologieUser($_GET['tier']);
+                            break;
+                        //Partie Craft
+                        case 'afficheCraftUser':
+                            $this->controllerUserGICraft->afficheCraftUser($_GET['tier']);
                             break;    
                         default:
                         $this->controllerUser->afficheConnexion();

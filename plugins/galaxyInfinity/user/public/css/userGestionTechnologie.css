@@ -1,0 +1,32 @@
+
+.mainDiv{
+    display: flex;
+    flex-direction: column;
+}
+
+.navTier ul{
+    display: flex;
+    justify-content: space-around;
+}
+
+
+.divTechno{
+    display: flex;
+    justify-content: space-around;
+}
+
+.divTechnoX{
+    width: 15%;
+    background-color: green;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+
+.divTechnoXInfo{
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+
+}

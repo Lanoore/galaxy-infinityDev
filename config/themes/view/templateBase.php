@@ -16,7 +16,7 @@
             <li><a href="">Galaxie</a></li>
             <br>
             <li><a href="index.php?galaxyInfinity=afficheBatimentUser&tier=1">Batiment</a></li>
-            <li><a href="">Technologie</a></li>
+            <li><a href="index.php?galaxyInfinity=afficheTechnologieUser&tier=1">Technologie</a></li>
             <li><a href="">Craft</a></li>
             
             <br>
