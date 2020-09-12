@@ -1,0 +1,41 @@
+
+.mainDiv{
+    display: flex;
+    flex-direction: column;
+}
+
+.navTier ul{
+    display: flex;
+    justify-content: space-around;
+}
+
+.divCraft{
+    margin-left: 25%;
+    margin-right: 22%;
+}
+.divCraftX{
+    width: 100%;
+    background-color: green;
+    height: 2em;
+    display: flex;
+    margin-bottom: 1%;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.divCraftX img{
+    height: 100%;
+}
+
+.divCraftXInfo{
+    display: flex;
+    align-items: center;
+    height: 100%;
+}
+
+.divCraftXCraft{
+    display: flex;
+    width: 30%;
+    justify-content: space-between;
+    align-items: center;
+}

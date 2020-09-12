@@ -21,6 +21,7 @@ use App\plugins\galaxyInfinity\admin\src\controller\controllerAdminGIGalaxie;
 use App\plugins\galaxyInfinity\user\src\controller\controllerUserGalaxyInfinity;
 use App\plugins\galaxyInfinity\user\src\controller\controllerUserGIBatiment;
 use App\plugins\galaxyInfinity\user\src\controller\ControllerUserGITechnologie;
+use App\plugins\galaxyInfinity\user\src\controller\ControllerUserGICraft;
 
 
 
@@ -44,6 +45,7 @@ class Router
     private $controllerUserGI;
     private $controllerUserGIBatiment;
     private $controllerUserGITechnologie;
+    private $controllerUserGICraft;
 
     public function __construct(){
         $this->controllerBase = new ControllerBase();
@@ -62,6 +64,7 @@ class Router
         $this->controllerUserGI = new ControllerUserGalaxyInfinity();
         $this->controllerUserGIBatiment = new ControllerUserGIBatiment();
         $this->controllerUserGITechnologie = new ControllerUserGITechnologie();
+        $this->controllerUserGICraft = new ControllerUserGICraft();
 
     }
 
