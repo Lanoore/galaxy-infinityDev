@@ -22,7 +22,7 @@
                     
                     <img src="../plugins/galaxyInfinity/admin/public/img/batiment/<?=$bat['imageBat']?>" alt=""  width="94%">
                     <?php
-                        if($bat['prValide'] == true){?>
+                        if($bat['prValide'] == true && $bat['craftValide'] == true){?>
                             <p style='color: blue'><a href="#">Construire</a></p>    
                        <?php }
                         else{?>

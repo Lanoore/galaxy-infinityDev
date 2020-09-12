@@ -10,7 +10,7 @@ class ManagerUserGIBatiment extends ManagerBDD
 
     public function getBatBase(){
         $sql = 'SELECT * FROM batiment LEFT JOIN batiment_planete ON batiment.id = batiment_planete.batiment_id 
-                                       LEFT JOIN batiment_niveau ON batiment_planete.niveau = batiment_niveau.niveau_id
+                                       /*LEFT JOIN batiment_niveau ON batiment_planete.niveau = batiment_niveau.niveau_id*/
                 WHERE planete_id =? AND tier = ? ORDER BY batiment.id';
         $result = $this->createQuery($sql,[$this->idPlanete,$this->tier]);
         return $result->fetchAll();

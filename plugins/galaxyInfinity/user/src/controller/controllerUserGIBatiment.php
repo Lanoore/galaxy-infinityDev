@@ -35,7 +35,7 @@ class ControllerUserGIBatiment{
                 $countPr = 0;
                 $countCraft = 0;
                 $this->managerUserGIBatiment->idBat = $batBase['id'];
-                $this->managerUserGIBatiment->idNiveau = $batBase['niveau'];
+                $this->managerUserGIBatiment->idNiveau = $batBase['niveau'] + 1;
                 $batPR = $this->managerUserGIBatiment->getPrBatX();
                 $batCraft = $this->managerUserGIBatiment->getCraftBatX();
 
@@ -59,23 +59,22 @@ class ControllerUserGIBatiment{
                     if(!empty($batCraft['craft_id'])){
                         $this->managerUserGIBatiment->idCraft = $batCraft['craft_id'];
                         $craftPlanete = $this->managerUserGIBatiment->getCraftPlaneteX();
-                        if($batPR['nombre_craft'] > $craftPlanete['nombre_craft']){
+                        if($batCraft['nombre_craft'] > $craftPlanete['nombre_craft']){
                             $countCraft++;
                         }
                     }
                     if(!empty($batCraft['items_id'])){
                         $this->managerUserGIBatiment->idItems = $batCraft['items_id'];
                         $itemsPlanete = $this->managerUserGIBatiment->getItemsPlaneteX();
-                        if($batPR['nombre_items'] > $itemsPlanete['nombre_items']){
+                        if($batCraft['nombre_items'] > $itemsPlanete['nombre_items']){
                             $countCraft++;
                         }
                     }
                 }
                 if($countPr == 0){$prValide = true;}else{$prValide = false;}
                 if($countCraft == 0){$craftValide = true;}else{$craftValide = false;}
-                $batiment[] = ['idBat' => $batBase['id'], 'nomBat' => $batBase['nom'], 'descrBat' => $batBase['description'], 'tierBat' => $batBase['tier'],'imageBat' =>$batBase['image'], 'prValide' => $prValide, 'craftValide'=>$craftValide, 'niveauBatPlanete' => $batBase['niveau'], 'tempsConstruction' => $batBase['temps_construction']];
+                $batiment[] = ['idBat' => $batBase['id'], 'nomBat' => $batBase['nom'], 'descrBat' => $batBase['description'], 'tierBat' => $batBase['tier'],'imageBat' =>$batBase['image'], 'prValide' => $prValide, 'craftValide'=>$craftValide, 'niveauBatPlanete' => $batBase['niveau']];
             }
-
 
             
 
