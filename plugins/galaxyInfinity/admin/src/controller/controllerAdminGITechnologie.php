@@ -60,7 +60,7 @@ class ControllerAdminGITechnologie
     public function createTechnologieBase(){
         if(isset($_SESSION['identifiantAdmin'])){
             if(!empty($_POST['nom']) && !empty($_POST['descr']) && !empty($_POST['tier'])){
-                if(!preg_match("#[<>1-9]#", $_POST['nom']) && !preg_match("#[<>1-9]#",$_POST['descr'])){
+                if(!preg_match("#[<>1-9]#", $_POST['nom']) && !preg_match("#[<>]#",$_POST['descr'])){
                     if($_POST['tier'] >= 1 && $_POST['tier']<=10){
                         
                         $this->managerAdminGITechnologie->nomTechno= htmlentities($_POST['nom']);
@@ -320,17 +320,17 @@ class ControllerAdminGITechnologie
                 $this->managerAdminGITechnologie->idTechnoPR = null;
                 $this->managerAdminGITechnologie->niveauTechnoPR = null;
             }
-
-            $verifExist = $this->managerAdminGITechnologie->verifTechnologiePRExist();
             
-            if($verifExist == 0){
-                
+            //$verifExist = $this->managerAdminGITechnologie->verifTechnologiePRExist();
+            
+            //if($verifExist == 0){
+
                 $confirmAdd = $this->managerAdminGITechnologie->createTechnologiePR();
                 
                 if($confirmAdd){
                     header('Location:index.php?galaxyInfinity=afficheAdminGestionTechnologie');
                 }
-            }
+           // }
 
         }
     }

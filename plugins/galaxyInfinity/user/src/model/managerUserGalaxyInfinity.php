@@ -49,6 +49,12 @@ class ManagerUserGalaxyInfinity extends ManagerBDD
         return $result->fetchAll();
     }
 
+    public function getRessourceBaseUser(){
+        $sql = 'SELECT * FROM ressource';
+        $result = $this->createQuery($sql);
+        return $result->fetchAll();
+    }
+
     public function getBatStartPlaneteUser(){
         $sql = 'SELECT * FROM bat_start_planete';
         $result = $this->createQuery($sql);
@@ -78,11 +84,20 @@ class ManagerUserGalaxyInfinity extends ManagerBDD
         return $result;
     }
 
+    public function setRessourceBaseUser(){
+        $sql = 'INSERT INTO ressource_planete(ressource_id,planete_id,nombre_ressource) VALUES (?,?,0)';
+        $result = $this->createQuery($sql,[$this->idRessource,$this->idPlanete]);
+        return $result;
+
+    }
+
     public function setBatStartPlaneteUser(){
         $sql = 'UPDATE batiment_planete SET niveau = ? WHERE planete_id = ? AND batiment_id = ?';
         $result = $this->createQuery($sql,[$this->niveau,$this->idPlanete,$this->idBat]);
         return $result;
     }
+
+    
 
     public function getPlaneteUser(){
         $sql = 'SELECT * FROM planete WHERE user_id = ?';

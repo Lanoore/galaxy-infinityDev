@@ -235,17 +235,17 @@ class ControllerAdminGICraft{
                 $this->managerAdminGICraft->idTechnoPR = null;
                 $this->managerAdminGICraft->niveauTechnoPR = null;
             }
-            echo('test');
-            $verifExist = $this->managerAdminGICraft->verifCraftPRExist();
+
+           // $verifExist = $this->managerAdminGICraft->verifCraftPRExist();
                 
-            if($verifExist == 0){
+            //if($verifExist == 0){
                 
                 $confirmAdd = $this->managerAdminGICraft->createCraftPR();
                 
                 if($confirmAdd){
                     header('Location:index.php?galaxyInfinity=afficheAdminGestionCraft');
                 }
-            }
+            //}
 
         }
     }

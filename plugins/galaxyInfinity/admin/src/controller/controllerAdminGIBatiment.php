@@ -58,9 +58,10 @@ class ControllerAdminGIBatiment
     
     
     public function createBatBase(){
+        
         if(isset($_SESSION['identifiantAdmin'])){
             if(!empty($_POST['nom']) && !empty($_POST['descr']) && !empty($_POST['tier'])){
-                if(!preg_match("#[<>1-9]#", $_POST['nom']) && !preg_match("#[<>1-9]#",$_POST['descr'])){
+                if(!preg_match("#[<>1-9]#", $_POST['nom']) && !preg_match("#[<>]#",$_POST['descr'])){
                     if($_POST['tier'] >= 1 && $_POST['tier']<=10){
                         
                         $this->managerAdminGIBatiment->nomBat= htmlentities($_POST['nom']);
@@ -68,6 +69,7 @@ class ControllerAdminGIBatiment
                         $this->managerAdminGIBatiment->tierBat = $_POST['tier'];
                         
                         $verifExist = $this->managerAdminGIBatiment->verifBatExist();
+                        
                         if($verifExist == 0){   
                                 if(isset($_FILES['image']) AND $_FILES['image']['error'] == 0){
                                     if($_FILES['image']['size']<= 1000000){
@@ -326,16 +328,16 @@ class ControllerAdminGIBatiment
                 $this->managerAdminGIBatiment->niveauTechnoPR = null;
             }
 
-            $verifExist = $this->managerAdminGIBatiment->verifBatPRExist();
+            //$verifExist = $this->managerAdminGIBatiment->verifBatPRExist();
 
-            if($verifExist == 0){
+            //if($verifExist == 0){
                 
                 $confirmAdd = $this->managerAdminGIBatiment->createBatPR();
                 
                 if($confirmAdd){
                     header('Location:index.php?galaxyInfinity=afficheAdminGestionBatiment');
                 }
-            }
+            //}
 
         }
     }
