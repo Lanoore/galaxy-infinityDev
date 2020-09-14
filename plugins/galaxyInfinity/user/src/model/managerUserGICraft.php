@@ -7,6 +7,12 @@ use App\config\ManagerBDD;
 class ManagerUserGICraft extends ManagerBDD
 {
 
+    public function getCraft(){
+        $sql = 'SELECT * FROM craft WHERE id = ?';
+        $result = $this->createQuery($sql,[$this->idCraft]);
+        return $result->fetch();
+    }
+
 
     public function getCraftBase(){
         $sql = 'SELECT * FROM craft LEFT JOIN craft_planete ON craft.id = craft_planete.craft_id 
@@ -56,6 +62,35 @@ class ManagerUserGICraft extends ManagerBDD
         $sql = 'SELECT * FROM ressource_planete WHERE planete_id = ? AND ressource_id = ?';
         $result = $this->createQuery($sql,[$this->idPlanete,$this->idRessource]);
         return $result->fetch();
+    }
+
+
+    public function verifCraftExist(){
+        $sql = 'SELECT * FROM craft WHERE id = ?';
+        $result = $this->createQuery($sql,[$this->idCraft]);
+        return $result->rowCount();
+    }
+
+    public function verifCraftEnCours(){
+        $sql ='SELECT * FROM construction_craft_planete WHERE planete_id = ?';
+        $result = $this->createQuery($sql,[$this->idPlanete]);
+        return $result->rowCount();
+    }
+
+    public function addConstructionCraft(){
+        $sql = 'INSERT INTO construction_craft_planete(planete_id,craft_id,fin_craft_actuel,nombre_craft_total) VALUES(?,?,?,?)';
+        return $result = $this->createQuery($sql,[$this->idPlanete,$this->idCraft,$this->finCraftActuel,$this->nombreCraft]);
+    }
+
+
+    public function updateCraftXPlaneteX(){
+        $sql = 'UPDATE craft_planete SET nombre_craft = ? WHERE planete_id = ? AND craft_id = ?';
+        return $result = $this->createQuery($sql,[$this->nbCraftFinal,$this->idPlanete,$this->idCraft]);
+    }
+
+    public function updateRessourceXPlaneteX(){
+        $sql = 'UPDATE ressource_planete SET nombre_ressource = ? WHERE planete_id = ? AND ressource_id = ?';
+        return $result = $this->createQuery($sql,[$this->nbRessourceFinal,$this->idPlanete,$this->idRessource]);
     }
 
 }

@@ -23,11 +23,11 @@
                     
                     <div class='divCraftXCraft'>
                         <p><?=$craft['nombreCraft']?></p>
-                        <?php if($craft['prValide'] == true && $craft['craftValide'] == true){?>
-                            <form action="#"><input type="number" min="1" max='100'><input type="submit"value="Craft"></form>
+                        <?php if($craft['verifPrCraft'] == 0 && $craft['verifCraftCraft'] == 0 && $craft['verifCraftEnCours'] == 0){?>
+                            <form action="index.php?galaxyInfinity=addConstructionCraft&idCraft=<?=$craft['idCraft']?>" method="post"><input type="number" min="1" max='100' name='nombreCraft'><input type="submit"value="Craft"></form>
                     <?php }
                         else{?>
-                            <p style='color: red'>Manque de ressource</p>
+                            <p style='color: red'>Craft Impossible</p>
                     <?php } ?>
                     </div>
                     

@@ -400,6 +400,9 @@ class Router
                         //Partie Craft
                         case 'afficheCraftUser':
                             $this->controllerUserGICraft->afficheCraftUser($_GET['tier']);
+                            break;
+                        case 'addConstructionCraft':
+                            $this->controllerUserGICraft->addConstructionCraft($_GET['idCraft']);
                             break;    
                         //Partie Galaxie
                         case 'afficheGalaxieUser':

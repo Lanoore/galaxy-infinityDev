@@ -32,7 +32,6 @@ class ControllerUserGIPlanete{
             $this->managerUserGIPlanete->getPlanete();
 
 
-            //Ajouter gestion prod
             $gestionProd = $this->gestionProdChangePage();
 
             //Ajouter gestion construction craft
@@ -59,9 +58,6 @@ class ControllerUserGIPlanete{
             $prodRessource = $this->managerUserGIPlanete->getProdRessource();
             $this->managerUserGIPlanete->idRessource = $prodRessource['ressource_id'];
             $ressourcePlanete = $this->managerUserGIPlanete->getRessourcePlanete();
-
-
-
 
             $this->managerUserGIPlanete->totalRessource = $ressourcePlanete['nombre_ressource'] + ($prodRessource['prod_ressource_niveau'] * (time() - $this->managerUserGIPlanete->lastActivite));
 
