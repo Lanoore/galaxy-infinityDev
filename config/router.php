@@ -22,6 +22,7 @@ use App\plugins\galaxyInfinity\user\src\controller\controllerUserGalaxyInfinity;
 use App\plugins\galaxyInfinity\user\src\controller\controllerUserGIBatiment;
 use App\plugins\galaxyInfinity\user\src\controller\ControllerUserGITechnologie;
 use App\plugins\galaxyInfinity\user\src\controller\ControllerUserGICraft;
+use App\plugins\galaxyInfinity\user\src\controller\ControllerUserGIGalaxie;
 
 
 
@@ -46,6 +47,7 @@ class Router
     private $controllerUserGIBatiment;
     private $controllerUserGITechnologie;
     private $controllerUserGICraft;
+    private $controllerUserGIGalaxie;
 
     public function __construct(){
         $this->controllerBase = new ControllerBase();
@@ -65,6 +67,7 @@ class Router
         $this->controllerUserGIBatiment = new ControllerUserGIBatiment();
         $this->controllerUserGITechnologie = new ControllerUserGITechnologie();
         $this->controllerUserGICraft = new ControllerUserGICraft();
+        $this->controllerUserGIGalaxie = new ControllerUserGIGalaxie();
 
     }
 
@@ -384,6 +387,10 @@ class Router
                         //Partie Craft
                         case 'afficheCraftUser':
                             $this->controllerUserGICraft->afficheCraftUser($_GET['tier']);
+                            break;    
+                        //Partie Galaxie
+                        case 'afficheGalaxieUser':
+                            $this->controllerUserGIGalaxie->afficheGalaxieUser($_GET['systeme']);
                             break;    
                         default:
                         $this->controllerUser->afficheConnexion();

@@ -47,6 +47,7 @@ $tableCss =
     'userGestionBatiment' => ['../plugins/galaxyInfinity/user/public/css/userGestionBatiment.css'],
     'userGestionTechnologie' =>['../plugins/galaxyInfinity/user/public/css/userGestionTechnologie.css'],
     'userGestionCraft' =>['../plugins/galaxyInfinity/user/public/css/userGestionCraft.css'],
+    'userGestionGalaxie' =>['../plugins/galaxyInfinity/user/public/css/userGestionGalaxie.css'],
     'preRequisGI' => ['../plugins/galaxyInfinity/user/public/css/preRequisGI.css'],
 ];
 

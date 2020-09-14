@@ -1,0 +1,21 @@
+
+
+.divPlanetes:nth-child(even){
+    background-color: grey;
+}
+.divPlanetes:nth-child(odd){
+    background-color: lightgray;
+}
+
+
+.divPlaneteX{
+    display: flex;
+    justify-content: space-around;
+}
+
+
+.deplacementSysteme{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}

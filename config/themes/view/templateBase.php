@@ -13,7 +13,7 @@
     <nav>
        <ul>
             <li><a href="index.php?galaxyInfinity=affichePreRequisUser&page=batiment">Pré-Requis</a></li>
-            <li><a href="">Galaxie</a></li>
+            <li><a href="index.php?galaxyInfinity=afficheGalaxieUser&systeme=1">Galaxie</a></li>
             <br>
             <li><a href="index.php?galaxyInfinity=afficheBatimentUser&tier=1">Batiment</a></li>
             <li><a href="index.php?galaxyInfinity=afficheTechnologieUser&tier=1">Technologie</a></li>
