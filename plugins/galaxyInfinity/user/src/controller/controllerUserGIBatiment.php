@@ -18,6 +18,8 @@ class ControllerUserGIBatiment{
         $this->managerUserGIBatiment = new ManagerUserGIBatiment();
 
         $this->controllerBase = new ControllerBase();
+
+
     }
 
 

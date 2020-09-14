@@ -29,12 +29,13 @@ class ControllerAdminGIRessource
 
             $ressources = $this->managerAdminGIRessource->getRessources();
             $prodRessources = $this->managerAdminGIRessource->getProdRessources();
+            $liaisonRessourceBat = $this->managerAdminGIRessource->getLiaisonRessourceBat();
 
             $adminBatBase = $this->managerAdminGIBatiment->getBatBaseAdmin();
             $niveaux = $this->managerAdminGalaxyInfinity->getNiveaux();
 
             $adminGI = '../plugins/galaxyInfinity/admin/src/view/adminGestionRessourceView.php';
-            $adminGI = $this->controllerBase->tamponView($adminGI,['prodRessources'=>$prodRessources,'adminBatBase'=>$adminBatBase,'niveaux'=>$niveaux,'ressources' => $ressources]);
+            $adminGI = $this->controllerBase->tamponView($adminGI,['liaisonRessourceBat'=>$liaisonRessourceBat,'prodRessources'=>$prodRessources,'adminBatBase'=>$adminBatBase,'niveaux'=>$niveaux,'ressources' => $ressources]);
             $this->controllerBase->afficheView([$adminGI],'adminGestionRessource');
         }
     }
@@ -142,6 +143,58 @@ class ControllerAdminGIRessource
             }
         
         }   
+    }
+
+
+    public function createLiaisonRessourceBat(){
+        if(isset($_SESSION['identifiantAdmin'])){
+            $this->managerAdminGIRessource->idRessource = htmlentities($_POST['idRessource']);
+            $this->managerAdminGIRessource->idBat = htmlentities($_POST['idBat']);
+
+            $verifExist = $this->managerAdminGIRessource->verifLiaisonRessourceBatExist();
+
+            if($verifExist == 0){
+                $confirmAdd = $this->managerAdminGIRessource->createLiaisonRessourceBat();
+                if($confirmAdd){
+                    header('Location:index.php?galaxyInfinity=afficheAdminGestionRessource');
+                }
+            }
+        }
+    }
+
+    public function supprLiaisonRessourceBat($idRessource,$idBatiment){
+        if(isset($_SESSION['identifiantAdmin'])){
+            $this->managerAdminGIRessource->idRessource = $idRessource;
+            $this->managerAdminGIRessource->idBat = $idBatiment;
+
+            $verifExist = $this->managerAdminGIRessource->verifLiaisonRessourceBatExist();
+            
+            if($verifExist == 1){
+                
+                $confirmSuppr = $this->managerAdminGIRessource->supprLiaisonRessourceBat();
+                echo('test');
+                if($confirmSuppr){
+                    header('Location:index.php?galaxyInfinity=afficheAdminGestionRessource');
+                }
+            }
+        }
+    }
+
+    public function modifLiaisonRessourceBat(){
+        if(isset($_SESSION['identifiantAdmin'])){
+            $this->managerAdminGIRessource->idRessource = htmlentities($_POST['idRessource']);
+            $this->managerAdminGIRessource->idBat = htmlentities($_POST['idBat']);
+
+            $verifExist = $this->managerAdminGIRessource->verifLiaisonRessourceBatExist();
+
+            if($verifExist == 1){
+                $confirmAdd = $this->managerAdminGIRessource->modifLiaisonRessourceBat();
+                if($confirmAdd){
+                    header('Location:index.php?galaxyInfinity=afficheAdminGestionRessource');
+                }
+            }
+        
+        }
     }
 
 }

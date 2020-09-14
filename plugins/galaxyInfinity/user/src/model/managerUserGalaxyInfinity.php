@@ -126,4 +126,10 @@ class ManagerUserGalaxyInfinity extends ManagerBDD
         return $result->fetchAll();
     }
 
+    
+    public function changeLastActivitePlanete(){
+       // $sql = 'UPDATE'
+    }
+
+
 }

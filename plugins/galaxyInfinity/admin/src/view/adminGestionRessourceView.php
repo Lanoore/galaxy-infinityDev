@@ -23,7 +23,7 @@
             <h4>Création Production Ressource batiment</h4>
             <form action="index.php?galaxyInfinity=createProdRessourceBat" method='post'>
                 <div>
-                    <label for="idBat">Nom batiment</label>
+                    <label for="idBat">Nom batiment</label></br>
                     <select name="idBat" id="idBat">
                     <option value=""></option>
                       <?php  foreach($adminBatBase as $batBase){?>
@@ -33,7 +33,7 @@
                     </select>
                 </div>
                 <div>
-                    <label for="idNiveau">Niveau</label>
+                    <label for="idNiveau">Niveau</label></br>
                     <select name="idNiveau" id="idNiveau">
                         <option value=""></option>
                         <?php foreach ($niveaux as $niveau) {?>
@@ -42,7 +42,7 @@
                     </select>
                 </div>
                 <div>
-                    <label for="idRessource">Nom ressource</label>
+                    <label for="idRessource">Nom ressource</label></br>
                     <select name="idRessource" id="idRessource">
                     <option value=""></option>
                     <?php
@@ -53,8 +53,37 @@
                 </select>
                 </div>
                 <div>
-                    <label for="prodBatNiveau">Production ressource par niveau</label>
+                    <label for="prodBatNiveau">Production ressource par niveau</label></br>
                     <input type="number" name='prodBatNiveau' id='prodBatNiveau'>
+                </div>
+                <div>
+                    <input type="submit">
+                </div>
+            </form>
+        </div>
+        <div>
+            <h4>Création Ressource Liaison batiment</h4>
+            <form action="index.php?galaxyInfinity=createLiaisonRessourceBat" method="post">
+                <div>
+                <label for="idRessource">Nom de la ressource</label></br>
+                <select name="idRessource" id="idRessource">
+                    <option value=""></option>
+                    <?php
+                        foreach($ressources as $ressource){?>
+                            <option value="<?=$ressource['id']?>"><?=$ressource['nom']?></option>
+                        <?php }
+                    ?>
+                </select>
+                </div>
+                <div>
+                    <label for="idBat">Nom batiment</label></br>
+                    <select name="idBat" id="idBat">
+                    <option value=""></option>
+                      <?php  foreach($adminBatBase as $batBase){?>
+                            <option value="<?=$batBase['id']?>"><?=$batBase['nom']?></option>
+                      <?php }
+                      ?>
+                    </select>
                 </div>
                 <div>
                     <input type="submit">
@@ -67,7 +96,7 @@
             <h4>Modif Ressource Base</h4>
             <form action="index.php?galaxyInfinity=modifRessourceBase" method="post">
             <div>
-                <label for="idRessource">Nom de la ressource a modifié</label>
+                <label for="idRessource">Nom de la ressource a modifié</label></br>
                 <select name="idRessource" id="idRessource">
                     <option value=""></option>
                     <?php
@@ -94,7 +123,7 @@
             <h4>Modification Production Ressource batiment</h4>
             <form action="index.php?galaxyInfinity=modifProdRessourceBat" method='post'>
                 <div>
-                    <label for="idBat">Nom batiment</label>
+                    <label for="idBat">Nom batiment</label></br>
                     <select name="idBat" id="idBat">
                     <option value=""></option>
                       <?php  foreach($adminBatBase as $batBase){?>
@@ -104,7 +133,7 @@
                     </select>
                 </div>
                 <div>
-                    <label for="idNiveau">Niveau</label>
+                    <label for="idNiveau">Niveau</label></br>
                     <select name="idNiveau" id="idNiveau">
                         <option value=""></option>
                         <?php foreach ($niveaux as $niveau) {?>
@@ -113,7 +142,7 @@
                     </select>
                 </div>
                 <div>
-                    <label for="idRessource">Nom ressource</label>
+                    <label for="idRessource">Nom ressource</label></br>
                     <select name="idRessource" id="idRessource">
                     <option value=""></option>
                     <?php
@@ -124,8 +153,37 @@
                 </select>
                 </div>
                 <div>
-                    <label for="prodBatNiveau">Production ressource par niveau</label>
+                    <label for="prodBatNiveau">Production ressource par niveau</label></br>
                     <input type="number" name='prodBatNiveau' id='prodBatNiveau'>
+                </div>
+                <div>
+                    <input type="submit">
+                </div>
+            </form>
+        </div>
+        <div>
+            <h4>Modification Ressource Liaison batiment</h4>
+            <form action="index.php?galaxyInfinity=modifLiaisonRessourceBat" method="post">
+                <div>
+                <label for="idRessource">Nom de la ressource</label></br>
+                <select name="idRessource" id="idRessource">
+                    <option value=""></option>
+                    <?php
+                        foreach($ressources as $ressource){?>
+                            <option value="<?=$ressource['id']?>"><?=$ressource['nom']?></option>
+                        <?php }
+                    ?>
+                </select>
+                </div>
+                <div>
+                    <label for="idBat">Nom batiment</label></br>
+                    <select name="idBat" id="idBat">
+                    <option value=""></option>
+                      <?php  foreach($adminBatBase as $batBase){?>
+                            <option value="<?=$batBase['id']?>"><?=$batBase['nom']?></option>
+                      <?php }
+                      ?>
+                    </select>
                 </div>
                 <div>
                     <input type="submit">
@@ -180,6 +238,31 @@
                                 <td><?=$prodRessource['ressource_id']?></td>
                                 <td><?=$prodRessource['prod_ressource_niveau']?></td>
                                 <td><form action="index.php?galaxyInfinity=supprProdRessourceBat&idRessource=<?=$prodRessource['ressource_id']?>&idNiveau=<?=$prodRessource['niveau_id']?>&idBatiment=<?=$prodRessource['batiment_id']?>" method="post"><input type="submit" name="Supprimer" value="Supprimer"></form></td>
+                            </tr>
+                        <?php   
+                        }
+
+                    ?>
+                </tbody>
+            </table>
+        </div>
+        <div>
+            <table class="dataTable">
+                <thead>
+                    <tr>
+                        <th>Id de la ressource</th>
+                        <th>Id du batiment</th>
+                        <th>Action ?</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php
+                        foreach ($liaisonRessourceBat as $liaisonRessourceBat) {?>
+                            <tr>
+                                <td><?=$liaisonRessourceBat['ressource_id']?></td>
+                                <td><?=$liaisonRessourceBat['batiment_id']?></td>
+
+                                <td><form action="index.php?galaxyInfinity=supprLiaisonRessourceBat&idRessource=<?=$liaisonRessourceBat['ressource_id']?>&idBatiment=<?=$liaisonRessourceBat['batiment_id']?>" method="post"><input type="submit" name="Supprimer" value="Supprimer"></form></td>
                             </tr>
                         <?php   
                         }

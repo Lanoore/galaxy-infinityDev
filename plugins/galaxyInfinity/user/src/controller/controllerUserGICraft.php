@@ -18,6 +18,8 @@ class ControllerUserGICraft{
         $this->managerUserGICraft = new ManagerUserGICraft();
 
         $this->controllerBase = new ControllerBase();
+
+
     }
 
 

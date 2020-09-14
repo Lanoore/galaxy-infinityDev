@@ -23,6 +23,8 @@ use App\plugins\galaxyInfinity\user\src\controller\controllerUserGIBatiment;
 use App\plugins\galaxyInfinity\user\src\controller\ControllerUserGITechnologie;
 use App\plugins\galaxyInfinity\user\src\controller\ControllerUserGICraft;
 use App\plugins\galaxyInfinity\user\src\controller\ControllerUserGIGalaxie;
+use App\plugins\galaxyInfinity\user\src\controller\ControllerUserGIPlanete;
+
 
 
 
@@ -48,6 +50,7 @@ class Router
     private $controllerUserGITechnologie;
     private $controllerUserGICraft;
     private $controllerUserGIGalaxie;
+    private $controllerUserGIPlanete;
 
     public function __construct(){
         $this->controllerBase = new ControllerBase();
@@ -68,6 +71,7 @@ class Router
         $this->controllerUserGITechnologie = new ControllerUserGITechnologie();
         $this->controllerUserGICraft = new ControllerUserGICraft();
         $this->controllerUserGIGalaxie = new ControllerUserGIGalaxie();
+        $this->controllerUserGIPlanete = new ControllerUserGIPlanete();
 
     }
 
@@ -225,6 +229,15 @@ class Router
                             break;
                         case 'modifProdRessourceBat':
                             $this->controllerAdminGIRessource->modifProdRessourceBat();
+                            break;
+                        case 'createLiaisonRessourceBat':
+                            $this->controllerAdminGIRessource->createLiaisonRessourceBat();
+                            break;
+                        case 'supprLiaisonRessourceBat':
+                            $this->controllerAdminGIRessource->supprLiaisonRessourceBat($_GET['idRessource'],$_GET['idBatiment']);
+                            break;
+                        case 'modifLiaisonRessourceBat':
+                            $this->controllerAdminGIRessource->modifLiaisonRessourceBat();
                             break;
                         //Partie batiment    
                         case 'afficheAdminGestionBatiment':

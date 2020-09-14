@@ -14,9 +14,11 @@ class ControllerUserGalaxyInfinity{
     private $controllerBase;
 
     public function __construct(){
+
         $this->managerUserGI = new ManagerUserGalaxyInfinity();
 
         $this->controllerBase = new ControllerBase();
+        
     }
     
     /**
@@ -109,6 +111,7 @@ class ControllerUserGalaxyInfinity{
             $this->controllerBase->afficheView([$preRequis],'preRequisGI');
         }
     }
-    
+
+
 
 }

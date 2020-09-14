@@ -77,4 +77,32 @@ class ManagerAdminGIRessource extends ManagerBDD
         
     }
     
+
+    public function getLiaisonRessourceBat(){
+        $sql = 'SELECT * FROM batiment_prod_ressource';
+        $result = $this->createQuery($sql);
+        return $result->fetchAll();
+    }
+
+    public function verifLiaisonRessourceBatExist(){
+        $sql = 'SELECT * FROM batiment_prod_ressource WHERE ressource_id = ?';
+        $result = $this->createQuery($sql,[$this->idRessource]);
+        return $result->rowCount();
+    }
+
+    public function createLiaisonRessourceBat(){
+        $sql = 'INSERT INTO batiment_prod_ressource(ressource_id,batiment_id) VALUES(?,?)';
+        return $result = $this->createQuery($sql,[$this->idRessource,$this->idBat]);  
+    }
+
+    public function supprLiaisonRessourceBat(){
+        $sql = 'DELETE FROM batiment_prod_ressource WHERE batiment_id = ? AND ressource_id = ?';
+        return $result = $this->createQuery($sql,[$this->idBat,$this->idRessource]);  
+    }
+
+    public function modifLiaisonRessourceBat(){
+        $sql = 'UPDATE batiment_prod_ressource SET batiment_id = ? WHERE ressource_id = ?';
+        return $result = $this->createQuery($sql,[$this->idBat,$this->idRessource]);  
+    }
+
 }

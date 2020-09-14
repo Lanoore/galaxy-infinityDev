@@ -18,6 +18,7 @@ class ControllerUserGIGalaxie{
         $this->managerUserGIGalaxie = new ManagerUserGIGalaxie();
 
         $this->controllerBase = new ControllerBase();
+        
     }
 
     public function afficheGalaxieUser(int $systeme){

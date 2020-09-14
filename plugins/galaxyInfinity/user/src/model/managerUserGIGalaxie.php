@@ -20,4 +20,11 @@ class ManagerUserGIGalaxie extends ManagerBDD
         $result = $this->createQuery($sql,[$this->idSysteme]);
         return $result->rowCount();
     }
+
+
+    public function changeLastActivitePlanete(){
+        $sql = 'UPDATE planete SET last_activite = ? WHERE id = ?';
+        return $result = $this->createQuery($sql,[$this->lastActivite, $this->idPlanete]);
+        
+    }
 }
