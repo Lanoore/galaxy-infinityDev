@@ -86,12 +86,12 @@ class ControllerUserGICraft{
                 $verifCraftCraft = $this->verifCraftCraft($craftCraft, $_POST['nombreCraft']);
                 $verifCraftEnCours = $this->managerUserGICraft->verifCraftEnCours();
                 if($verifCraftCraft == 0 && $verifPrCraft == 0 && $verifCraftEnCours == 0){
-                    var_dump($craftCraft);
+
                     foreach($craftCraft as $craftCraft){
                         if(!empty($craftCraft['craft_id_travail'])){
                             $this->managerUserGICraft->idCraft = $craftCraft['craft_id_travail'];
                             $craftPlanete = $this->managerUserGICraft->getCraftPlaneteX();
-                            $this->managerUserGICraft->nbCraftFinal = $craftPlanete['nombre_craft_travail'] - ($craftPlanete['nombre_craft'] * $_POST['nombreCraft']); 
+                            $this->managerUserGICraft->nbCraftFinal = $craftPlanete['nombre_craft_travail'] - ($craftCraft['nombre_craft'] * $_POST['nombreCraft']); 
                             $this->managerUserGICraft->updateCraftXPlaneteX();
                         }
                         if(!empty($craftCraft['ressource_id'])){

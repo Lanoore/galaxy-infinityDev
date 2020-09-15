@@ -22,8 +22,8 @@
                     
                     <img src="../plugins/galaxyInfinity/admin/public/img/batiment/<?=$bat['imageBat']?>" alt=""  width="94%">
                     <?php
-                        if($bat['prValide'] == true && $bat['craftValide'] == true){?>
-                            <p style='color: blue'><a href="#">Construire</a></p>    
+                        if($bat['prValide'] == 0 && $bat['craftValide'] == 0 && $bat['verifBatEnCours'] == 0){?>
+                            <p style='color: blue'><a href="index.php?galaxyInfinity=addConstructionBat&idBat=<?=$bat['idBat']?>" method='post'>Construire</a></p>    
                        <?php }
                         else{?>
                             <p style='color: red'>Construire</p>

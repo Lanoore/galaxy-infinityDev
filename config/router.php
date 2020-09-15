@@ -393,6 +393,9 @@ class Router
                         case 'afficheBatimentUser':
                             $this->controllerUserGIBatiment->afficheBatimentUser($_GET['tier']);
                             break;
+                        case 'addConstructionBat':
+                            $this->controllerUserGIBatiment->addConstructionBat($_GET['idBat']);
+                            break;
                         //Partie Technologie
                         case 'afficheTechnologieUser':
                             $this->controllerUserGITechnologie->afficheTechnologieUser($_GET['tier']);
