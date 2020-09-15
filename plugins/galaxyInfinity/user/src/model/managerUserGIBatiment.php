@@ -102,4 +102,13 @@ class ManagerUserGIBatiment extends ManagerBDD
         $sql ='INSERT INTO construction_batiment_planete(planete_id,batiment_id,fin_batiment_actuel,niveau_batiment_construction)VALUES(?,?,?,?)';
         return $result = $this->createQuery($sql,[$this->idPlanete,$this->idBat,$this->finConstruActuel,$this->idNiveau]);
     }
+
+
+    public function getConstruBatEnCours(){
+        $sql ='SELECT * FROM construction_batiment_planete
+                LEFT JOIN batiment ON construction_batiment_planete.batiment_id = batiment.id
+            WHERE planete_id = ?';
+            $result = $this->createQuery($sql,[$this->idPlanete]);
+            return $result->fetch();        
+    }
 }

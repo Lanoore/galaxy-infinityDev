@@ -73,4 +73,37 @@ class ManagerUserGIPlanete extends ManagerBDD
         $sql = 'DELETE FROM construction_craft_planete WHERE planete_id = ?';
         return $result = $this->createQuery($sql,[$this->idPlanete]);
     }
+
+    public function getConstruBatEnCours(){
+        $sql = 'SELECT * FROM construction_batiment_planete WHERE planete_id = ?';
+        $result = $this->createQuery($sql,[$this->idPlanete]);
+        return $result->fetch();
+    }
+
+    public function modifNiveauBatPlanete(){
+        $sql ='UPDATE batiment_planete SET niveau = ? WHERE planete_id = ? AND batiment_id = ?';
+        return $result = $this->createQuery($sql,[$this->niveauBatFinal,$this->idPlanete,$this->idBat]);    
+    }
+
+    public function supprLigneBatEnCoursPlanete(){
+        $sql ='DELETE FROM construction_batiment_planete WHERE planete_id = ?';
+        return $result = $this->createQuery($sql,[$this->idPlanete]);
+    }
+
+    public function getConstruTechnoEnCours(){
+        $sql = 'SELECT * FROM construction_technologie_planete WHERE planete_id = ?';
+        $result = $this->createQuery($sql,[$this->idPlanete]);
+        return $result->fetch();
+    }
+
+    public function modifNiveauTechnoPlanete(){
+        $sql ='UPDATE technologie_planete SET niveau = ? WHERE planete_id = ? AND technologie_id = ?';
+        return $result = $this->createQuery($sql,[$this->niveauBatFinal,$this->idPlanete,$this->idTechno]);    
+    }
+
+    public function supprLigneTechnoEnCoursPlanete(){
+        $sql ='DELETE FROM construction_technologie_planete WHERE planete_id = ?';
+        return $result = $this->createQuery($sql,[$this->idPlanete]);
+    }
+
 }

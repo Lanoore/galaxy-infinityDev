@@ -30,3 +30,8 @@
     justify-content: space-around;
 
 }
+
+.tempsRestantBat{
+    display: flex;
+    justify-content: center;
+}

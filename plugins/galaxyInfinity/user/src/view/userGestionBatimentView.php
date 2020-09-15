@@ -1,7 +1,16 @@
 
 
 
-<div class='mainDiv'>
+<div class='mainDiv' id='mainDiv'>
+    <?php if($tempsRestantBat['nomBat'] != null){?>
+        <div class='tempsRestantBat' id='tempsRestantBat'>
+        <p><?=$tempsRestantBat['nomBat']?>:</p>
+        <p><?=$tempsRestantBat['tempsDecompte']?>(<?=$tempsRestantBat['niveauBat']?>)</p>
+
+    </div>
+    <?php }?>
+
+
     <nav class='navTier'>
         <ul>
             <li><a href="index.php?galaxyInfinity=afficheBatimentUser&tier=1">Tier 1</a></li>
@@ -36,3 +45,9 @@
     
     </div>
 </div>
+
+
+
+
+<script type='text/javascript' src='../plugins/galaxyInfinity/user/public/js/jsBatiment/gestionBat.js'></script>
+<script type='text/javascript' src='../plugins/galaxyInfinity/user/public/js/jsBatiment/mainBat.js'></script>

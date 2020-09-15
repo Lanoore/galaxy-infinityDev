@@ -36,9 +36,9 @@ class ControllerUserGIPlanete{
             
             $gestionConstructionCraft = $this->gestionConstruCraftChangePage();
 
+            $gestionConstructionBat = $this->gestionConstruBatChangePage();
 
-            //Ajouter gestion construction batiment
-            //Ajouter gestion construction technologie
+            $gestionConstructionTechno = $this->gestionConstruTechnoChangePage();
 
             $this->managerUserGIPlanete->lastActivite = time();
 
@@ -81,8 +81,30 @@ class ControllerUserGIPlanete{
             $this->managerUserGIPlanete->idCraft = $construCraftEnCours['craft_id'];
             $getNbCraftActuel = $this->managerUserGIPlanete->getNbCraftActuel();
             $this->managerUserGIPlanete->nombreCraftTotal = $getNbCraftActuel['nombre_craft'] + $construCraftEnCours['nombre_craft_total'];
-            $confirmAdd = $this->managerUserGIPlanete->addNombreCraftInPlanete();
-            $confrimSuppr = $this->managerUserGIPlanete->supprLigneCraftEnCoursPlanete();
+            $this->managerUserGIPlanete->addNombreCraftInPlanete();
+            $this->managerUserGIPlanete->supprLigneCraftEnCoursPlanete();
+        }
+    }
+
+    public function gestionConstruBatChangePage(){
+        $construcBatEnCours = $this->managerUserGIPlanete->getConstruBatEnCours();
+
+        if(time() >= $construcBatEnCours['fin_batiment_actuel']){
+            $this->managerUserGIPlanete->idBat = $construcBatEnCours['batiment_id'];
+            $this->managerUserGIPlanete->niveauBatFinal = $construcBatEnCours['niveau_batiment_construction'];
+            $this->managerUserGIPlanete->modifNiveauBatPlanete();
+            $this->managerUserGIPlanete->supprLigneBatEnCoursPlanete();
+        }
+    }
+
+    public function gestionConstruTechnoChangePage(){
+        $construTechnoEnCours = $this->managerUserGIPlanete->getConstruTechnoEnCours();
+
+        if(time() >= $construTechnoEnCours['fin_technologie_actuel']){
+            $this->managerUserGIPlanete->idTechno = $construTechnoEnCours['technologie_id'];
+            $this->managerUserGIPlanete->niveauTechnoFinal = $construTechnoEnCours['niveau_technologie_construction'];
+            $this->managerUserGIPlanete->modifNiveauTechnoPlanete();
+            $this->managerUserGIPlanete->supprLigneTechnoEnCoursPlanete();
         }
     }
 
