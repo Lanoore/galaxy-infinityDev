@@ -1,7 +1,16 @@
 
 
 
-<div class='mainDiv'>
+<div class='mainDiv' id='mainDiv'>
+
+    <?php if($tempsRestantTechno['nomTechno'] != null){?>
+        <div class='tempsRestantTechno' id='tempsRestantTechno'>
+        <p><?=$tempsRestantTechno['nomTechno']?>:</p>
+        <p><?=$tempsRestantTechno['tempsDecompte']?>(<?=$tempsRestantTechno['niveauTechno']?>)</p>
+
+    </div>
+    <?php }?>
+
     <nav class='navTier'>
         <ul>
             <li><a href="index.php?galaxyInfinity=afficheTechnologieUser&tier=1">Tier 1</a></li>
@@ -22,8 +31,8 @@
                     
                     <img src="../plugins/galaxyInfinity/admin/public/img/technologie/<?=$techno['imageTechno']?>" alt=""  width="94%">
                     <?php
-                        if($techno['prValide'] == true && $techno['craftValide'] == true){?>
-                            <p style='color: blue'><a href="#">Construire</a></p>    
+                        if($techno['prValide'] == 0 && $techno['craftValide'] == 0 && $techno['verifTechnoEnCours'] == 0){?>
+                            <p style='color: blue'><a href="index.php?galaxyInfinity=addConstructionTechno&idTechno=<?=$techno['idTechno']?>" method='post'>Construire</a></p>    
                        <?php }
                         else{?>
                             <p style='color: red'>Construire</p>
@@ -36,3 +45,9 @@
     
     </div>
 </div>
+
+
+
+
+<script type='text/javascript' src='../plugins/galaxyInfinity/user/public/js/jsTechnologie/gestionTechno.js'></script>
+<script type='text/javascript' src='../plugins/galaxyInfinity/user/public/js/jsTechnologie/mainTechno.js'></script>

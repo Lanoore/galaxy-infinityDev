@@ -403,6 +403,12 @@ class Router
                         case 'afficheTechnologieUser':
                             $this->controllerUserGITechnologie->afficheTechnologieUser($_GET['tier']);
                             break;
+                        case 'getConstruTechnoJs':
+                            $this->controllerUserGITechnologie->getConstruTechnoJs();
+                            break;
+                        case 'addConstructionTechno':
+                            $this->controllerUserGITechnologie->addConstructionTechno($_GET['idTechno']);
+                            break;
                         //Partie Craft
                         case 'afficheCraftUser':
                             $this->controllerUserGICraft->afficheCraftUser($_GET['tier']);

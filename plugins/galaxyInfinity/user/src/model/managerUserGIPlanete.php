@@ -98,7 +98,7 @@ class ManagerUserGIPlanete extends ManagerBDD
 
     public function modifNiveauTechnoPlanete(){
         $sql ='UPDATE technologie_planete SET niveau = ? WHERE planete_id = ? AND technologie_id = ?';
-        return $result = $this->createQuery($sql,[$this->niveauBatFinal,$this->idPlanete,$this->idTechno]);    
+        return $result = $this->createQuery($sql,[$this->niveauTechnoFinal,$this->idPlanete,$this->idTechno]);    
     }
 
     public function supprLigneTechnoEnCoursPlanete(){

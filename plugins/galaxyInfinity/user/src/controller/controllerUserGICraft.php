@@ -64,7 +64,7 @@ class ControllerUserGICraft{
             $this->managerUserGICraft->idPlanete = $_SESSION['idPlaneteActif'];
             $getCraftEnCours = $this->managerUserGICraft->getConstruCraftEnCours();
 
-            $craftEnCours [] = ['idCraft' => $getCraftEnCours['craft_id'],'nomCraft' => $getCraftEnCours['nom'], 'nombreCraft' => $getCraftEnCours['nombre_craft_total'],'finCraftActuel' => $getCraftEnCours['fin_craft_actuel']];
+            $craftEnCours [] = ['idCraft' => $getCraftEnCours['craft_id'],'nomCraft' => html_entity_decode($getCraftEnCours['nom']), 'nombreCraft' => $getCraftEnCours['nombre_craft_total'],'finCraftActuel' => $getCraftEnCours['fin_craft_actuel']];
 
             echo json_encode($craftEnCours);
         }

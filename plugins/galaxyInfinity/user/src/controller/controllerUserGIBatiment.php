@@ -63,7 +63,7 @@ class ControllerUserGIBatiment{
             $this->managerUserGIBatiment->idPlanete = $_SESSION['idPlaneteActif'];
             $getBatEnCours = $this->managerUserGIBatiment->getConstruBatEnCours();
 
-            $construEnCours [] = ['idBat' => $getBatEnCours['batiment_id'], 'nomBat' =>$getBatEnCours['nom'], 'niveauBat' => $getBatEnCours['niveau_batiment_construction'], 'finBatActuel' => $getBatEnCours['fin_batiment_actuel']];
+            $construEnCours [] = ['idBat' => $getBatEnCours['batiment_id'], 'nomBat' =>html_entity_decode($getBatEnCours['nom']), 'niveauBat' => $getBatEnCours['niveau_batiment_construction'], 'finBatActuel' => $getBatEnCours['fin_batiment_actuel']];
             
             echo json_encode($construEnCours);
         }

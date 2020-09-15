@@ -7,6 +7,15 @@ use App\config\ManagerBDD;
 class ManagerUserGITechnologie extends ManagerBDD
 {
 
+    public function getTechno(){
+        $sql = 'SELECT * FROM technologie
+                LEFT JOIN technologie_planete ON technologie.id = technologie_planete.technologie_id
+
+         WHERE technologie_id = ? AND planete_id = ?';
+        $result = $this->createQuery($sql,[$this->idTechno, $this->idPlanete]);
+        return $result->fetch();
+    }
+
     public function getTechnoBase(){
         $sql = 'SELECT * FROM technologie LEFT JOIN technologie_planete ON technologie.id = technologie_planete.technologie_id 
                                        /*LEFT JOIN technologie_niveau ON technologie_planete.niveau = technologie_niveau.niveau_id*/
@@ -58,8 +67,46 @@ class ManagerUserGITechnologie extends ManagerBDD
         return $result->fetch();
     }
 
+    public function verifTechnoEnCours(){
+        $sql ='SELECT * FROM construction_technologie_planete WHERE planete_id = ?';
+        $result = $this->createQuery($sql,[$this->idPlanete]);
+        return $result->rowCount();
+    }
 
+    public function verifTechnoExist(){
+        $sql ='SELECT * FROM  technologie WHERE id=?';
+        $result =$this->createQuery($sql,[$this->idTechno]);
+        return $result->rowCount();
+    }
 
+    public function updateCraftXPlaneteX(){
+        $sql = 'UPDATE craft_planete SET nombre_craft = ? WHERE planete_id = ? AND craft_id = ?';
+        return $result = $this->createQuery($sql,[$this->nbCraftFinal,$this->idPlanete,$this->idCraft]);
+    }
+
+    public function updateItemsXPlaneteX(){
+        $sql = 'UPDATE items_planete SET nombre_items = ? WHERE planete_id = ? AND items_id = ?';
+        return $result = $this->createQuery($sql,[$this->nbItemsFinal, $this->idPlanete,$this->idItems]);
+    }
+
+    public function getTempsConstruTechno(){
+        $sql = 'SELECT * FROM technologie_niveau WHERE technologie_id = ? AND niveau_id = ?';
+        $result = $this->createQuery($sql ,[$this->idTechno, $this->idNiveau]);
+        return $result->fetch();
+    }
+
+    public function addConstructionTechno(){
+        $sql ='INSERT INTO construction_technologie_planete(planete_id,technologie_id,fin_technologie_actuel,niveau_technologie_construction)VALUES(?,?,?,?)';
+        return $result = $this->createQuery($sql,[$this->idPlanete,$this->idTechno,$this->finConstruActuel,$this->idNiveau]);
+    }
+
+    public function getConstruTechnoEnCours(){
+        $sql ='SELECT * FROM construction_technologie_planete
+                LEFT JOIN technologie ON construction_technologie_planete.technologie_id = technologie.id
+            WHERE planete_id = ?';
+            $result = $this->createQuery($sql,[$this->idPlanete]);
+            return $result->fetch();        
+    }
 
 
 }
