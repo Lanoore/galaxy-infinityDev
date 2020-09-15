@@ -93,4 +93,12 @@ class ManagerUserGICraft extends ManagerBDD
         return $result = $this->createQuery($sql,[$this->nbRessourceFinal,$this->idPlanete,$this->idRessource]);
     }
 
+    public function getConstruCraftEnCours(){
+        $sql ='SELECT * FROM construction_craft_planete
+                LEFT JOIN craft ON construction_craft_planete.craft_id = craft.id
+        WHERE planete_id = ?';
+        $result = $this->createQuery($sql,[$this->idPlanete]);
+        return $result->fetch();
+    }
+
 }

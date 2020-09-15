@@ -33,9 +33,10 @@ class ControllerUserGIPlanete{
 
 
             $gestionProd = $this->gestionProdChangePage();
-
-            //Ajouter gestion construction craft
+            
             $gestionConstructionCraft = $this->gestionConstruCraftChangePage();
+
+
             //Ajouter gestion construction batiment
             //Ajouter gestion construction technologie
 

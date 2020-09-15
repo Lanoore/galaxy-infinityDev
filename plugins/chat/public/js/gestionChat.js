@@ -1,7 +1,7 @@
 class chat{
 
     constructor(){
-        this.afficheChat()
+        this.afficheChat();
     }
 
 

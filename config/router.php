@@ -401,6 +401,9 @@ class Router
                         case 'afficheCraftUser':
                             $this->controllerUserGICraft->afficheCraftUser($_GET['tier']);
                             break;
+                        case 'getConstruCraftJs':
+                            $this->controllerUserGICraft->getConstruCraftJs();
+                            break;
                         case 'addConstructionCraft':
                             $this->controllerUserGICraft->addConstructionCraft($_GET['idCraft']);
                             break;    

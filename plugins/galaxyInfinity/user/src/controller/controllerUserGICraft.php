@@ -31,8 +31,12 @@ class ControllerUserGICraft{
 
             $craftBase = $this->managerUserGICraft->getCraftBase();
 
-            $craftBaseCraft = $this->managerUserGICraft->getCraftBaseCraft();
-            
+            $getCraftEnCours = $this->managerUserGICraft->getConstruCraftEnCours();
+
+            $tempsDecompte = $this->decompteTemps($getCraftEnCours['fin_craft_actuel']);
+
+            $tempsRestantCraft = ['nomCraft' =>$getCraftEnCours['nom'], 'nombreCraft' =>$getCraftEnCours['nombre_craft_total'], 'tempsDecompte' => $tempsDecompte];
+
             foreach ($craftBase as $craftBase) {
                 $countPr = 0;
                 $countCraft = 0;
@@ -48,12 +52,24 @@ class ControllerUserGICraft{
             }
 
             $userCraft = '../plugins/galaxyInfinity/user/src/view/userGestionCraftView.php';
-            $userCraft = $this->controllerBase->tamponView($userCraft,['craft' => $craft, 'craftBaseCraft' => $craftBaseCraft]);
+            $userCraft = $this->controllerBase->tamponView($userCraft,['craft' => $craft, 'tempsRestantCraft' => $tempsRestantCraft]);
 
             $this->controllerBase->afficheView([$userCraft],'userGestionCraft');
         }
     }
     
+    public function getConstruCraftJs(){
+        if(isset($_SESSION['pseudo'])){
+
+            $this->managerUserGICraft->idPlanete = $_SESSION['idPlaneteActif'];
+            $getCraftEnCours = $this->managerUserGICraft->getConstruCraftEnCours();
+
+            $craftEnCours [] = ['idCraft' => $getCraftEnCours['craft_id'],'nomCraft' => $getCraftEnCours['nom'], 'nombreCraft' => $getCraftEnCours['nombre_craft_total'],'finCraftActuel' => $getCraftEnCours['fin_craft_actuel']];
+
+            echo json_encode($craftEnCours);
+        }
+    }
+
 
     public function addConstructionCraft($idCraft){
         
@@ -143,4 +159,32 @@ class ControllerUserGICraft{
         }
         return $countCraft;
     }
+
+
+
+    function decompteTemps($seconde){
+
+        $seconde = $seconde - time(); 
+
+        if($seconde < 3600){ 
+          $heures = 0; 
+          
+          if($seconde < 60){$minutes = 0;} 
+          else{$minutes = round($seconde / 60);} 
+          
+          $secondes = floor($seconde % 60); 
+          } 
+          else{ 
+          $heures = round($seconde / 3600); 
+          $secondes = round($seconde % 3600); 
+          $minutes = floor($secondes / 60); 
+          } 
+          
+          $secondes2 = round($secondes % 60); 
+         
+          $TimeFinal = "$heures h $minutes min $secondes2 s"; 
+
+          return $TimeFinal; 
+       }
+
 }

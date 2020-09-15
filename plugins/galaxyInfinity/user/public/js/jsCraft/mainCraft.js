@@ -1,0 +1,1 @@
+const gestionCraft = new craft;

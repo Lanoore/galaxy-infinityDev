@@ -1,7 +1,16 @@
 
 
 
-<div class='mainDiv'>
+<div class='mainDiv' id='mainDiv'>
+    <?php if($tempsRestantCraft['nomCraft'] != null){?>
+        <div class='tempsRestantCraft' id='tempsRestantCraft'>
+        <p><?=$tempsRestantCraft['nomCraft']?>:</p>
+        <p><?=$tempsRestantCraft['tempsDecompte']?>(<?=$tempsRestantCraft['nombreCraft']?>)</p>
+
+    </div>
+    <?php }?>
+    
+
     <nav class='navTier'>
         <ul>
             <li><a href="index.php?galaxyInfinity=afficheCraftUser&tier=1">Tier 1</a></li>
@@ -40,3 +49,8 @@
     
     </div>
 </div>
+
+
+
+<script type='text/javascript' src='../plugins/galaxyInfinity/user/public/js/jsCraft/gestionCraft.js'></script>
+<script type='text/javascript' src='../plugins/galaxyInfinity/user/public/js/jsCraft/mainCraft.js'></script>
