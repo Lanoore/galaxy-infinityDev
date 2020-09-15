@@ -52,7 +52,25 @@ class ManagerUserGIPlanete extends ManagerBDD
         
     }
 
+    public function getConstruCraftEnCours(){
+        $sql = 'SELECT * FROM construction_craft_planete WHERE planete_id = ?';
+        $result = $this->createQuery($sql,[$this->idPlanete]);
+        return $result->fetch();
+    }
 
+    public function addNombreCraftInPlanete(){
+        $sql = 'UPDATE craft_planete SET nombre_craft = ? WHERE planete_id = ? AND craft_id = ?';
+        return $result =$this->createQuery($sql,[$this->nombreCraftTotal,$this->idPlanete, $this->idCraft]);
+    }
     
-    
+    public function getNbCraftActuel(){
+        $sql = 'SELECT * FROM craft_planete WHERE planete_id = ? AND craft_id = ?';
+        $result =$this->createQuery($sql,[$this->idPlanete, $this->idCraft]);
+        return $result->fetch();
+    }
+
+    public function supprLigneCraftEnCoursPlanete(){
+        $sql = 'DELETE FROM construction_craft_planete WHERE planete_id = ?';
+        return $result = $this->createQuery($sql,[$this->idPlanete]);
+    }
 }

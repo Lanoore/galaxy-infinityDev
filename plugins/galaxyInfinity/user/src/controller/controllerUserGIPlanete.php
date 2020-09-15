@@ -35,6 +35,7 @@ class ControllerUserGIPlanete{
             $gestionProd = $this->gestionProdChangePage();
 
             //Ajouter gestion construction craft
+            $gestionConstructionCraft = $this->gestionConstruCraftChangePage();
             //Ajouter gestion construction batiment
             //Ajouter gestion construction technologie
 
@@ -69,10 +70,19 @@ class ControllerUserGIPlanete{
 
             $this->managerUserGIPlanete->changeNombreRessource();
         }
+    }
 
-        
 
+    public function gestionConstruCraftChangePage(){
+        $construCraftEnCours = $this->managerUserGIPlanete->getConstruCraftEnCours();
         
+        if(time() >= $construCraftEnCours['fin_craft_actuel']){
+            $this->managerUserGIPlanete->idCraft = $construCraftEnCours['craft_id'];
+            $getNbCraftActuel = $this->managerUserGIPlanete->getNbCraftActuel();
+            $this->managerUserGIPlanete->nombreCraftTotal = $getNbCraftActuel['nombre_craft'] + $construCraftEnCours['nombre_craft_total'];
+            $confirmAdd = $this->managerUserGIPlanete->addNombreCraftInPlanete();
+            $confrimSuppr = $this->managerUserGIPlanete->supprLigneCraftEnCoursPlanete();
+        }
     }
 
 }
