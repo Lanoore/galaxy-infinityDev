@@ -6,7 +6,7 @@
     <?php if($tempsRestantTechno['nomTechno'] != null){?>
         <div class='tempsRestantTechno' id='tempsRestantTechno'>
         <p><?=$tempsRestantTechno['nomTechno']?>:</p>
-        <p><?=$tempsRestantTechno['tempsDecompte']?>(<?=$tempsRestantTechno['niveauTechno']?>)</p>
+        <p id='tempsRestantTechnoEnCours'><?=$tempsRestantTechno['tempsDecompte']?>(<?=$tempsRestantTechno['niveauTechno']?>)</p>
 
     </div>
     <?php }?>

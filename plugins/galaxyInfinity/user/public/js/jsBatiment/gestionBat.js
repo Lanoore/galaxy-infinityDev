@@ -41,27 +41,10 @@ class bat{
         if (this.tempsRestant > 0) {
             var textDecompte = this.decompte(this.tempsRestant);
             this.tempsRestant = this.tempsRestant - 1;
-            var divBat = document.getElementById('mainDiv');
 
-
-
-            var div = document.createElement('div');
-            div.id = 'tempsRestantBat';
-            div.className ='tempsRestantBat';
-            var pNomBat = document.createElement('p');
-            var pTempsRestant = document.createElement('p');
-            pNomBat = this.nomBat + ':';
             pTempsRestant = textDecompte + '('+ this.niveauBat +')';
-            if(document.getElementById('tempsRestantBat')){
-                divBat.removeChild(document.getElementById('tempsRestantBat'));
-            }
-            div.prepend(pNomBat);    
-            div.append(pTempsRestant);
-            divBat.prepend(div);
+            var pTempsRestant = document.getElementById('tempsRestantBatEnCours').innerHTML = pTempsRestant;
 
-
-
-            
             this.timeId = setTimeout(this.decompteConstru.bind(this),1000);
         }	
         else{

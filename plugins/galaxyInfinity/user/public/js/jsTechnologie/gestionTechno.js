@@ -43,27 +43,10 @@ class techno{
         if (this.tempsRestant > 0) {
             var textDecompte = this.decompte(this.tempsRestant);
             this.tempsRestant = this.tempsRestant - 1;
-            var divTechno = document.getElementById('mainDiv');
+            var pTempsRestant = textDecompte + '('+ this.niveauTechno +')';
+            pTempsRestant = document.getElementById('tempsRestantTechnoEnCours').innerHTML = pTempsRestant;
 
 
-
-            var div = document.createElement('div');
-            div.id = 'tempsRestantTechno';
-            div.className ='tempsRestantTechno';
-            var pNomTechno = document.createElement('p');
-            var pTempsRestant = document.createElement('p');
-            pNomTechno = this.nomTechno + ':';
-            pTempsRestant = textDecompte + '('+ this.niveauTechno +')';
-            if(document.getElementById('tempsRestantTechno')){
-                divTechno.removeChild(document.getElementById('tempsRestantTechno'));
-            }
-            div.prepend(pNomTechno);    
-            div.append(pTempsRestant);
-            divTechno.prepend(div);
-
-
-
-            
             this.timeId = setTimeout(this.decompteConstru.bind(this),1000);
         }	
         else{
@@ -84,17 +67,17 @@ class techno{
 	        seconde -= minute*60;
 
 	        if (heure > 0) {
-	            var textDecompte = heure+' h ';
+	            var textDecompte = heure+'h';
 	        }else{
 	            textDecompte = '';
 	        }
 	        if (minute > 0) {
-	            textDecompte += minute+' m ';        
+	            textDecompte += minute+'m';        
 	        }else{
 	            textDecompte += '';
 	        }
 
-	        textDecompte += seconde+' s ';
+	        textDecompte += seconde+'s';
 	    }
 	    return textDecompte;
 	}

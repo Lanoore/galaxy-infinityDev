@@ -41,27 +41,8 @@ class craft{
         if (this.tempsRestant > 0) {
             var textDecompte = this.decompte(this.tempsRestant);
             this.tempsRestant = this.tempsRestant - 1;
-            var divCraft = document.getElementById('mainDiv');
-
-
-
-            var div = document.createElement('div');
-            div.id = 'tempsRestantCraft';
-            div.className ='tempsRestantCraft';
-            var pNomCraft = document.createElement('p');
-            var pTempsRestant = document.createElement('p');
-            pNomCraft = this.nomCraft + ':';
             pTempsRestant = textDecompte + '('+ this.nombreCraft +')';
-            if(document.getElementById('tempsRestantCraft')){
-                divCraft.removeChild(document.getElementById('tempsRestantCraft'));
-            }
-            div.prepend(pNomCraft);    
-            div.append(pTempsRestant);
-            divCraft.prepend(div);
-
-
-
-            
+            var pTempsRestant = document.getElementById('tempsRestantCraftEnCours').innerHTML = pTempsRestant;
             this.timeId = setTimeout(this.decompteConstru.bind(this),1000);
         }	
         else{
@@ -92,7 +73,7 @@ class craft{
 	            textDecompte += '';
 	        }
 
-	        textDecompte += seconde+' s ';
+	        textDecompte += seconde+'s';
 	    }
 	    return textDecompte;
 	}

@@ -175,8 +175,17 @@ class ControllerUserGITechnologie{
           } 
           
           $secondes2 = round($secondes % 60); 
-         
-          $TimeFinal = "$heures h $minutes min $secondes2 s"; 
+        
+          $TimeFinal = '';
+          if($heures){
+              $TimeFinal .= $heures.'h';
+          }
+          if($minutes){
+              $TimeFinal .= $minutes.'m';
+          }
+          if($secondes2){
+            $TimeFinal .= $secondes2.'s';
+          }
 
           return $TimeFinal; 
        }

@@ -5,7 +5,7 @@
     <?php if($tempsRestantCraft['nomCraft'] != null){?>
         <div class='tempsRestantCraft' id='tempsRestantCraft'>
         <p><?=$tempsRestantCraft['nomCraft']?>:</p>
-        <p><?=$tempsRestantCraft['tempsDecompte']?>(<?=$tempsRestantCraft['nombreCraft']?>)</p>
+        <p id='tempsRestantCraftEnCours'><?=$tempsRestantCraft['tempsDecompte']?>(<?=$tempsRestantCraft['nombreCraft']?>)</p>
 
     </div>
     <?php }?>

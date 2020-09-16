@@ -30,3 +30,9 @@
     justify-content: space-around;
 
 }
+
+
+.tempsRestantTechno{
+    display: flex;
+    justify-content: center;
+}
