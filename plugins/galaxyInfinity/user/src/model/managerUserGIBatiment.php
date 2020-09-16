@@ -32,9 +32,14 @@ class ManagerUserGIBatiment extends ManagerBDD
     }
 
     public function getCraftBatX(){
-        $sql = 'SELECT * FROM batiment_craft WHERE batiment_id = ? AND niveau_id = ?';
+        $sql = 'SELECT * FROM batiment_craft 
+                LEFT JOIN craft ON batiment_craft.craft_id = craft.id
+                LEFT JOIN items ON batiment_craft.items_id = items.id
+
+        WHERE batiment_id = ? AND niveau_id = ?';
         $result = $this->createQuery($sql,[$this->idBat, $this->idNiveau]);
         return $result->fetchAll();
+        
     }
 
     public function getPrBatX(){
@@ -110,5 +115,11 @@ class ManagerUserGIBatiment extends ManagerBDD
             WHERE planete_id = ?';
             $result = $this->createQuery($sql,[$this->idPlanete]);
             return $result->fetch();        
+    }
+
+    public function getTempsConstruBatX(){
+        $sql ='SELECT * FROM batiment_niveau WHERE batiment_id = ? AND niveau_id = ?';
+        $result = $this->createQuery($sql,[$this->idBat, $this->idNiveau]);
+        return $result->fetch();
     }
 }

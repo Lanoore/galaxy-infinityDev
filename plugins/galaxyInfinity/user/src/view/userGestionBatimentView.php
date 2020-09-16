@@ -29,7 +29,7 @@
                         <p><?=$bat['niveauBatPlanete']?></p>
                     </div>
                     
-                    <img src="../plugins/galaxyInfinity/admin/public/img/batiment/<?=$bat['imageBat']?>" alt=""  width="94%">
+                    <img class='imgBatX' src="../plugins/galaxyInfinity/admin/public/img/batiment/<?=$bat['imageBat']?>" alt=""  width="94%">
                     <?php
                         if($bat['prValide'] == 0 && $bat['craftValide'] == 0 && $bat['verifBatEnCours'] == 0){?>
                             <p style='color: blue'><a href="index.php?galaxyInfinity=addConstructionBat&idBat=<?=$bat['idBat']?>" method='post'>Construire</a></p>    
@@ -38,7 +38,22 @@
                             <p style='color: red'>Construire</p>
                        <?php }
                     ?>
+                    <div class='divBatDescrX' id='divBatDescrX'>
+                        <p>Description: <?=$bat['descrBat']?></p>
+                        <p>Temps construction : <?=$bat['tempsConstru']?></p>
+                        <div>
+                            <?php foreach($bat['batCraft'] as $batCraft){
+                                if($batCraft['craft_id'] != null){?>
+                                    <p><?=$batCraft[8]?> : <?=$batCraft['nombre_craft']?></p>
+                               <?php }
+                               if($batCraft['items_id'] != null){?>
+                                <p><?=$batCraft[14]?> : <?=$batCraft['nombre_items']?></p>
+                           <?php }
+                            }?>
+                        </div>
+                    </div>
                 </div>
+                
            <?php }
 
         ?>

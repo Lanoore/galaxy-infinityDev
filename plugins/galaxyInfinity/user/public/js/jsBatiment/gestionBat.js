@@ -3,6 +3,7 @@ class bat{
     constructor(){
 
         this.afficheBatEnCours();
+        this.descrBatVisible();
         
         this.timeId;
     }
@@ -78,6 +79,32 @@ class bat{
 	        textDecompte += seconde+' s ';
 	    }
 	    return textDecompte;
-	}
+    }
+    
+    descrBatVisible(){
+       
+        var imgBatX = document.getElementsByClassName('imgBatX');
+
+        for(var i =0;i < imgBatX.length;i++){
+            imgBatX[i].addEventListener('mouseover',function(){
+                var divDescrX =this.parentNode.lastElementChild;
+                divDescrX.style.display = 'block';
+            });
+            imgBatX[i].addEventListener('mouseout', function(){
+                var divDescrX =this.parentNode.lastElementChild;
+                divDescrX.style.display = 'none'; 
+            });
+            imgBatX[i].addEventListener('mousemove',function(event){
+                var divDescrX =this.parentNode.lastElementChild;
+
+                divDescrX.style.top = event.clientY+1+'px';
+                divDescrX.style.left = event.clientX+1+'px';
+
+            });
+        }
+
+
+    }
+
 
 }

@@ -35,3 +35,13 @@
     display: flex;
     justify-content: center;
 }
+
+
+.divBatDescrX{
+    display: none;
+    position: absolute;
+
+    background-color: red;
+    width: 22%;
+}
+

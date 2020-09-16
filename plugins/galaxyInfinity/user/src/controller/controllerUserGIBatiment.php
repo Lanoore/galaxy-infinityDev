@@ -32,7 +32,7 @@ class ControllerUserGIBatiment{
 
             $getBatEnCours = $this->managerUserGIBatiment->getConstruBatEnCours();
 
-            $tempsDecompte = $this->decompteTemps($getBatEnCours['fin_batiment_actuel']);
+            $tempsDecompte = $this->conversionSeconde($getBatEnCours['fin_batiment_actuel'] -time());
             $tempsRestantBat = ['nomBat' =>$getBatEnCours['nom'], 'niveauBat' =>$getBatEnCours['niveau_batiment_construction'], 'tempsDecompte' => $tempsDecompte];
 
             foreach ($batBase as $batBase) {
@@ -46,7 +46,10 @@ class ControllerUserGIBatiment{
                 $verifPrBat = $this->verifPrBat($batPR);
                 $verifCraftBat = $this->verifCraftBat($batCraft);
                 $verifBatEnCours = $this->managerUserGIBatiment->verifBatEnCours();
-                $batiment[] = ['verifBatEnCours'=>$verifBatEnCours,'idBat' => $batBase['id'], 'nomBat' => $batBase['nom'], 'descrBat' => $batBase['description'], 'tierBat' => $batBase['tier'],'imageBat' =>$batBase['image'], 'prValide' => $verifPrBat, 'craftValide'=>$verifCraftBat, 'niveauBatPlanete' => $batBase['niveau']];
+
+                $tempsConstru = $this->managerUserGIBatiment->getTempsConstruBatX();
+                $tempsConstru = $this->conversionSeconde($tempsConstru['temps_construction']);
+                $batiment[] = ['tempsConstru' =>$tempsConstru,'batCraft'=>$batCraft,'verifBatEnCours'=>$verifBatEnCours,'idBat' => $batBase['id'], 'nomBat' => $batBase['nom'], 'descrBat' => $batBase['description'], 'tierBat' => $batBase['tier'],'imageBat' =>$batBase['image'], 'prValide' => $verifPrBat, 'craftValide'=>$verifCraftBat, 'niveauBatPlanete' => $batBase['niveau']];
             }
 
             $userBatiment = '../plugins/galaxyInfinity/user/src/view/userGestionBatimentView.php';
@@ -159,9 +162,9 @@ class ControllerUserGIBatiment{
 
 
 
-    function decompteTemps($seconde){
+    function conversionSeconde($seconde){
 
-        $seconde = $seconde - time(); 
+
 
         if($seconde < 3600){ 
           $heures = 0; 
