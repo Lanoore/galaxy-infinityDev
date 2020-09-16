@@ -28,7 +28,6 @@ class ControllerUserGIBatiment{
 
             $this->managerUserGIBatiment->idPlanete = $_SESSION['idPlaneteActif'];
             $this->managerUserGIBatiment->tier = $tier;
-
             $batBase = $this->managerUserGIBatiment->getBatBase();
 
             $getBatEnCours = $this->managerUserGIBatiment->getConstruBatEnCours();

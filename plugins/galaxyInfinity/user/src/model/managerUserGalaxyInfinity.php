@@ -22,8 +22,8 @@ class ManagerUserGalaxyInfinity extends ManagerBDD
     }
 
     public function attributPlaneteUser(){
-        $sql = 'UPDATE planete SET situation = 1, user_id = ? WHERE id = ?';
-        $result = $this->createQuery($sql,[$this->idUser, $this->idPlanete]);
+        $sql = 'UPDATE planete SET situation = 1, user_id = ? , last_activite = ? WHERE id = ?';
+        $result = $this->createQuery($sql,[$this->idUser, $this->lastActivite,$this->idPlanete]);
         return $result;
     }
 

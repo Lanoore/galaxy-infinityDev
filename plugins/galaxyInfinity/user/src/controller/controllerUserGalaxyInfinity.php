@@ -35,6 +35,7 @@ class ControllerUserGalaxyInfinity{
         $planetes = $this->managerUserGI->getPlanetesDispo();
         $nPlanete = array_rand($planetes,1);
         $this->managerUserGI->idPlanete = $planetes[$nPlanete]['id'];
+        $this->managerUserGI->lastActivite = time();
 
         $confirmAdd = $this->managerUserGI->attributPlaneteUser();
         if($confirmAdd){

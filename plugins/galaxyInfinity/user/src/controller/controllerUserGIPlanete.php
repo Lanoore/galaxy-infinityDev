@@ -63,12 +63,6 @@ class ControllerUserGIPlanete{
 
             $this->managerUserGIPlanete->totalRessource = $ressourcePlanete['nombre_ressource'] + ($prodRessource['prod_ressource_niveau'] * (time() - $this->managerUserGIPlanete->lastActivite));
 
-            //$differenceTemps = time() - $this->managerUserGIPlanete->lastActivite;
-
-            //$prodTempsEcoule =  $prodRessource['prod_ressource_niveau'] * $differenceTemps;            
-
-            //$this->managerUserGIPlanete->totalRessource = $ressourcePlanete['nombre_ressource'] + $prodTempsEcoule;
-
             $this->managerUserGIPlanete->changeNombreRessource();
         }
     }
