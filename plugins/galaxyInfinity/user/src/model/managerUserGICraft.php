@@ -28,7 +28,10 @@ class ManagerUserGICraft extends ManagerBDD
     }
 
     public function getCraftCraftX(){
-        $sql = 'SELECT * FROM craft_craft WHERE craft_id = ?';
+        $sql = 'SELECT * FROM craft_craft 
+                LEFT JOIN craft ON craft_craft.craft_id_travail = craft.id
+                LEFT JOIN ressource ON craft_craft.ressource_id = ressource.id
+        WHERE craft_id = ?';
         $result = $this->createQuery($sql,[$this->idCraft]);
         return $result->fetchAll();
     }

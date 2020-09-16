@@ -29,15 +29,15 @@ class ControllerUserGIHome{
             $this->managerUserGIHome->idPlanete = $_SESSION['idPlaneteActif'];
 
             $construCraftEnCours = $this->managerUserGIHome->getConstruCraftEnCours();
-            $tempsDecompteCraft = $this->decompteTemps($construCraftEnCours['fin_craft_actuel']);
+            $tempsDecompteCraft = $this->conversionSeconde($construCraftEnCours['fin_craft_actuel']-time());
             $tempsRestantCraft = ['nomCraft' =>$construCraftEnCours['nom'], 'nombreCraft' =>$construCraftEnCours['nombre_craft_total'], 'tempsDecompteCraft' => $tempsDecompteCraft];
             
             $construBatEnCours = $this->managerUserGIHome->getConstruBatEnCours();
-            $tempsDecompteBat = $this->decompteTemps($construBatEnCours['fin_batiment_actuel']);
+            $tempsDecompteBat = $this->conversionSeconde($construBatEnCours['fin_batiment_actuel']-time());
             $tempsRestantBat = ['nomBat' =>$construBatEnCours['nom'], 'niveauBat' =>$construBatEnCours['niveau_batiment_construction'], 'tempsDecompteBat' => $tempsDecompteBat];
 
             $construTechnoEnCours = $this->managerUserGIHome->getConstruTechnoEnCours();
-            $tempsDecompteTechno = $this->decompteTemps($construTechnoEnCours['fin_technologie_actuel']);
+            $tempsDecompteTechno = $this->conversionSeconde($construTechnoEnCours['fin_technologie_actuel']-time());
             $tempsRestantTechno = ['nomTechno' =>$construTechnoEnCours['nom'], 'niveauTechno' =>$construTechnoEnCours['niveau_technologie_construction'], 'tempsDecompteTechno' => $tempsDecompteTechno];
 
             //get Ressource
@@ -56,9 +56,9 @@ class ControllerUserGIHome{
 
 
 
-    function decompteTemps($seconde){
+    function conversionSeconde($seconde){
 
-        $seconde = $seconde - time(); 
+
 
         if($seconde < 3600){ 
           $heures = 0; 

@@ -36,3 +36,14 @@
     display: flex;
     justify-content: center;
 }
+
+
+
+.divTechnoDescrX{
+    display: none;
+    position: absolute;
+
+    background-color: red;
+    width: 22%;
+}
+

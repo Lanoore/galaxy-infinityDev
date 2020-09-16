@@ -14,8 +14,6 @@
     <nav class='navTier'>
         <ul>
             <li><a href="index.php?galaxyInfinity=afficheTechnologieUser&tier=1">Tier 1</a></li>
-            <li><a href="index.php?galaxyInfinity=afficheTechnologieUser&tier=2">Tier 2</a></li>
-
         </ul>
     </nav>
 
@@ -29,7 +27,7 @@
                         <p><?=$techno['niveauTechnoPlanete']?></p>
                     </div>
                     
-                    <img src="../plugins/galaxyInfinity/admin/public/img/technologie/<?=$techno['imageTechno']?>" alt=""  width="94%">
+                    <img class='imgTechnoX' src="../plugins/galaxyInfinity/admin/public/img/technologie/<?=$techno['imageTechno']?>" alt=""  width="94%">
                     <?php
                         if($techno['prValide'] == 0 && $techno['craftValide'] == 0 && $techno['verifTechnoEnCours'] == 0){?>
                             <p style='color: blue'><a href="index.php?galaxyInfinity=addConstructionTechno&idTechno=<?=$techno['idTechno']?>" method='post'>Construire</a></p>    
@@ -38,6 +36,20 @@
                             <p style='color: red'>Construire</p>
                        <?php }
                     ?>
+                    <div class='divTechnoDescrX' id='divTechnoDescrX'>
+                        <p>Description: <?=$techno['descrTechno']?></p>
+                        <p>Temps construction : <?=$techno['tempsConstru']?></p>
+                        <div>
+                            <?php foreach($techno['technoCraft'] as $technoCraft){
+                                if($technoCraft['craft_id'] != null){?>
+                                    <p><?=$technoCraft[8]?> : <?=$technoCraft['nombre_craft']?></p>
+                               <?php }
+                               if($technoCraft['items_id'] != null){?>
+                                <p><?=$technoCraft[14]?> : <?=$technoCraft['nombre_items']?></p>
+                           <?php }
+                            }?>
+                        </div>
+                    </div>
                 </div>
            <?php }
 

@@ -45,3 +45,12 @@
     display: flex;
     justify-content: center;
 }
+
+
+.divCraftDescrX{
+    display: none;
+    position: absolute;
+
+    background-color: red;
+    width: 22%;
+}

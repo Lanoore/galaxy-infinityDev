@@ -3,6 +3,7 @@ class techno{
     constructor(){
 
         this.afficheTechnoEnCours();
+        this.descrTechnoVisible();
         
         this.timeId;
     }
@@ -81,5 +82,30 @@ class techno{
 	    }
 	    return textDecompte;
 	}
+
+
+    descrTechnoVisible(){
+       
+        var imgTechnoX = document.getElementsByClassName('imgTechnoX');
+
+        for(var i =0;i < imgTechnoX.length;i++){
+            imgTechnoX[i].addEventListener('mouseover',function(){
+                var divDescrX =this.parentNode.lastElementChild;
+                divDescrX.style.display = 'block';
+            });
+            imgTechnoX[i].addEventListener('mouseout', function(){
+                var divDescrX =this.parentNode.lastElementChild;
+                divDescrX.style.display = 'none'; 
+            });
+            imgTechnoX[i].addEventListener('mousemove',function(event){
+                var divDescrX =this.parentNode.lastElementChild;
+
+                divDescrX.style.top = event.clientY+1+'px';
+                divDescrX.style.left = event.clientX+1+'px';
+
+            });
+        }
+    }
+
 
 }

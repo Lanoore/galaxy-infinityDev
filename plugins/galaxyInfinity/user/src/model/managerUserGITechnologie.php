@@ -31,7 +31,10 @@ class ManagerUserGITechnologie extends ManagerBDD
     }
 
     public function getCraftTechnoX(){
-        $sql = 'SELECT * FROM technologie_craft WHERE technologie_id = ? AND niveau_id = ?';
+        $sql = 'SELECT * FROM technologie_craft 
+                LEFT JOIN craft ON technologie_craft.craft_id = craft.id
+                LEFT JOIN items ON technologie_craft.items_id = items.id
+        WHERE technologie_id = ? AND niveau_id = ?';
         $result = $this->createQuery($sql,[$this->idTechno, $this->idNiveau]);
         return $result->fetchAll();
     }
@@ -108,5 +111,10 @@ class ManagerUserGITechnologie extends ManagerBDD
             return $result->fetch();        
     }
 
+    public function getTempsConstruTechnoX(){
+        $sql ='SELECT * FROM technologie_niveau WHERE technologie_id = ? AND niveau_id = ?';
+        $result = $this->createQuery($sql,[$this->idTechno, $this->idNiveau]);
+        return $result->fetch();
+    }
 
 }

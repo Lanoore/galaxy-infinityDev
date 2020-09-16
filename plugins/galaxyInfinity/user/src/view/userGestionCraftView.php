@@ -23,10 +23,10 @@
         <?php
 
             foreach($craft as $craft){?>
-
+            
                 <div class='divCraftX'>
                     <div class="divCraftXInfo">
-                        <img src="../plugins/galaxyInfinity/admin/public/img/craft/<?=$craft['imageCraft']?>" alt="">
+                        <img class='imgCraftX' src="../plugins/galaxyInfinity/admin/public/img/craft/<?=$craft['imageCraft']?>" alt="">
                         <p><?=$craft['nomCraft']?></p>
                     </div>
                     
@@ -39,7 +39,20 @@
                             <p style='color: red'>Craft Impossible</p>
                     <?php } ?>
                     </div>
-                    
+                    <div class='divCraftDescrX' id='divCraftDescrX'>
+                        <p>Description: <?=$craft['descrCraft']?></p>
+                        <p>Temps construction : <?=$craft['tempsConstru']?></p>
+                        <div>
+                            <?php foreach($craft['craftCraft'] as $craftCraft){
+                                if($craftCraft['craft_id_travail'] != null){?>
+                                    <p><?=$craftCraft[7]?> : <?=$craftCraft['nombre_craft_travail']?></p>
+                               <?php }
+                               if($craftCraft['ressource_id'] != null){?>
+                                <p><?=$craftCraft[13]?> : <?=$craftCraft['nombre_ressource']?></p>
+                           <?php }
+                            }?>
+                        </div>
+                    </div>
                     
                 </div>
                 

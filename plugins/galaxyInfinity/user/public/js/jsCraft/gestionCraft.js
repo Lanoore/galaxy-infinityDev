@@ -3,6 +3,7 @@ class craft{
     constructor(){
 
         this.afficheCraftEnCours();
+        this.descrCraftVisible();
         
         this.timeId;
     }
@@ -76,6 +77,31 @@ class craft{
 	        textDecompte += seconde+'s';
 	    }
 	    return textDecompte;
-	}
+    }
+    
+
+    descrCraftVisible(){
+       
+        var imgCraftX = document.getElementsByClassName('imgCraftX');
+
+        for(var i =0;i < imgCraftX.length;i++){
+            imgCraftX[i].addEventListener('mouseover',function(){
+                var divDescrX =this.parentNode.parentNode.lastElementChild;
+                divDescrX.style.display = 'block';
+            });
+            imgCraftX[i].addEventListener('mouseout', function(){
+                var divDescrX =this.parentNode.parentNode.lastElementChild;
+                divDescrX.style.display = 'none'; 
+            });
+            imgCraftX[i].addEventListener('mousemove',function(event){
+                var divDescrX =this.parentNode.parentNode.lastElementChild;
+
+                divDescrX.style.top = event.clientY+1+'px';
+                divDescrX.style.left = event.clientX+1+'px';
+
+            });
+        }
+    }
+
 
 }

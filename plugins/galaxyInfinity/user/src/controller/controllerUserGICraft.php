@@ -33,7 +33,7 @@ class ControllerUserGICraft{
 
             $getCraftEnCours = $this->managerUserGICraft->getConstruCraftEnCours();
 
-            $tempsDecompte = $this->decompteTemps($getCraftEnCours['fin_craft_actuel']);
+            $tempsDecompte = $this->conversionSeconde($getCraftEnCours['fin_craft_actuel']-time());
 
             $tempsRestantCraft = ['nomCraft' =>$getCraftEnCours['nom'], 'nombreCraft' =>$getCraftEnCours['nombre_craft_total'], 'tempsDecompte' => $tempsDecompte];
 
@@ -48,7 +48,10 @@ class ControllerUserGICraft{
                 $verifPrCraft = $this->verifPrCraft($craftPR);
                 $verifCraftCraft = $this->verifCraftCraft($craftCraft);
                 $verifCraftEnCours = $this->managerUserGICraft->verifCraftEnCours();
-                $craft[] = ['verifCraftEnCours'=>$verifCraftEnCours,'idCraft' => $craftBase['id'], 'nomCraft' => $craftBase['nom'], 'descrCraft' => $craftBase['description'], 'tierCraft' => $craftBase['tier'],'imageCraft' =>$craftBase['image'], 'verifPrCraft' => $verifPrCraft, 'verifCraftCraft'=>$verifCraftCraft,'nombreCraft' =>$nombreCraftPlanete['nombre_craft']];
+
+
+                $tempsConstru = $this->conversionSeconde($craftBase['temps_base']);
+                $craft[] = ['craftCraft'=>$craftCraft,'verifCraftEnCours'=>$verifCraftEnCours,'idCraft' => $craftBase['id'], 'nomCraft' => $craftBase['nom'],'tempsConstru'=>$tempsConstru, 'descrCraft' => $craftBase['description'], 'tierCraft' => $craftBase['tier'],'imageCraft' =>$craftBase['image'], 'verifPrCraft' => $verifPrCraft, 'verifCraftCraft'=>$verifCraftCraft,'nombreCraft' =>$nombreCraftPlanete['nombre_craft']];
             }
 
             $userCraft = '../plugins/galaxyInfinity/user/src/view/userGestionCraftView.php';
@@ -162,9 +165,8 @@ class ControllerUserGICraft{
 
 
 
-    function decompteTemps($seconde){
+    function conversionSeconde($seconde){
 
-        $seconde = $seconde - time(); 
 
         if($seconde < 3600){ 
           $heures = 0; 

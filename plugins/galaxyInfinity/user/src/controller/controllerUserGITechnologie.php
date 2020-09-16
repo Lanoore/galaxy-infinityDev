@@ -30,7 +30,7 @@ class ControllerUserGITechnologie{
 
             $getTechnoEnCours = $this->managerUserGITechnologie->getConstruTechnoEnCours();
 
-            $tempsDecompte = $this->decompteTemps($getTechnoEnCours['fin_technologie_actuel']);
+            $tempsDecompte = $this->conversionSeconde($getTechnoEnCours['fin_technologie_actuel'] -time());
             $tempsRestantTechno = ['nomTechno' =>$getTechnoEnCours['nom'], 'niveauTechno' =>$getTechnoEnCours['niveau_technologie_construction'], 'tempsDecompte' => $tempsDecompte];
             
             foreach ($technoBase as $technoBase) {
@@ -46,8 +46,9 @@ class ControllerUserGITechnologie{
                 $verifCraftTechno = $this->verifCraftTechno($technoCraft);
                 $verifTechnoEnCours = $this->managerUserGITechnologie->verifTechnoEncours();
                 
-                
-                $technologie[] = ['verifTechnoEnCours'=>$verifTechnoEnCours,'idTechno' => $technoBase['id'], 'nomTechno' => $technoBase['nom'], 'descrTechno' => $technoBase['description'], 'tierTechno' => $technoBase['tier'],'imageTechno' =>$technoBase['image'], 'prValide' => $verifPrTechno, 'craftValide'=>$verifCraftTechno, 'niveauTechnoPlanete' => $technoBase['niveau']];
+                $tempsConstru = $this->managerUserGITechnologie->getTempsConstruTechnoX();
+                $tempsConstru = $this->conversionSeconde($tempsConstru['temps_construction']);
+                $technologie[] = ['technoCraft'=>$technoCraft,'tempsConstru'=>$tempsConstru,'verifTechnoEnCours'=>$verifTechnoEnCours,'idTechno' => $technoBase['id'], 'nomTechno' => $technoBase['nom'], 'descrTechno' => $technoBase['description'], 'tierTechno' => $technoBase['tier'],'imageTechno' =>$technoBase['image'], 'prValide' => $verifPrTechno, 'craftValide'=>$verifCraftTechno, 'niveauTechnoPlanete' => $technoBase['niveau']];
 
             }
 
@@ -156,9 +157,9 @@ class ControllerUserGITechnologie{
         return $countCraft;
     }
 
-    function decompteTemps($seconde){
+    function conversionSeconde($seconde){
 
-        $seconde = $seconde - time(); 
+
 
         if($seconde < 3600){ 
           $heures = 0; 
