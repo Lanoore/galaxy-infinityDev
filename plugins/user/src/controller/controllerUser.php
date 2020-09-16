@@ -112,7 +112,7 @@ class ControllerUser
                 $_SESSION['dateInscription'] = $this->managerUser->dateInscription;
                 $this->controllerUserGI->gestionUserConnectionGI();
                 $this->managerUser->updateUserConnection(); //ATTENTION si vous faites des actions sur un temps de connexion faites attention a les placer avant cette fonction qui réinitialise la dernière connection
-                header('Location:index.php?forum=afficheCategories'); //Changer si vous voulez modifier votre page de direction une fois la connexion effectuer
+                header('Location:index.php?galaxyInfinity=afficheHomeUser'); //Changer si vous voulez modifier votre page de direction une fois la connexion effectuer
                 
                 
             }

@@ -1,1 +1,1 @@
-const gestionCraft = new bat;
+const gestionBat = new bat;

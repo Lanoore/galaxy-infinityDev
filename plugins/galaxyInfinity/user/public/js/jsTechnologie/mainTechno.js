@@ -1,1 +1,1 @@
-const gestionCraft = new techno;
+const gestionTechno = new techno;

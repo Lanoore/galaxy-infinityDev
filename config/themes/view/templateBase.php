@@ -12,6 +12,7 @@
     <body>
     <nav>
        <ul>
+           <li><a href="index.php?galaxyInfinity=afficheHomeUser">Général</a></li>
             <li><a href="index.php?galaxyInfinity=affichePreRequisUser&page=batiment">Pré-Requis</a></li>
             <li><a href="index.php?galaxyInfinity=afficheGalaxieUser&systeme=1">Galaxie</a></li>
             <br>

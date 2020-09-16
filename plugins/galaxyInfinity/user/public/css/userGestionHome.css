@@ -1,0 +1,9 @@
+.afficheAllConstruEnCours{
+    display: flex;
+    justify-content: space-around;
+}
+
+
+.afficheXEnCours{
+    display: flex;
+}

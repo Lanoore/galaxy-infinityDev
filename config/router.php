@@ -24,6 +24,7 @@ use App\plugins\galaxyInfinity\user\src\controller\ControllerUserGITechnologie;
 use App\plugins\galaxyInfinity\user\src\controller\ControllerUserGICraft;
 use App\plugins\galaxyInfinity\user\src\controller\ControllerUserGIGalaxie;
 use App\plugins\galaxyInfinity\user\src\controller\ControllerUserGIPlanete;
+use App\plugins\galaxyInfinity\user\src\controller\ControllerUserGIHome;
 
 
 
@@ -51,6 +52,7 @@ class Router
     private $controllerUserGICraft;
     private $controllerUserGIGalaxie;
     private $controllerUserGIPlanete;
+    private $controllerUserGIHome;
 
     public function __construct(){
         $this->controllerBase = new ControllerBase();
@@ -72,6 +74,7 @@ class Router
         $this->controllerUserGICraft = new ControllerUserGICraft();
         $this->controllerUserGIGalaxie = new ControllerUserGIGalaxie();
         $this->controllerUserGIPlanete = new ControllerUserGIPlanete();
+        $this->controllerUserGIHome = new ControllerUserGIHome();
 
     }
 
@@ -388,6 +391,10 @@ class Router
                     //Gestion partie user
                         case 'affichePreRequisUser':
                             $this->controllerUserGI->affichePreRequisUser($_GET['page']);
+                            break;
+                        //Partie Home    
+                        case 'afficheHomeUser':
+                            $this->controllerUserGIHome->afficheHomeUser();
                             break;
                         //Partie Batiment    
                         case 'afficheBatimentUser':

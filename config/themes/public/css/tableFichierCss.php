@@ -49,6 +49,7 @@ $tableCss =
     'userGestionCraft' =>['../plugins/galaxyInfinity/user/public/css/userGestionCraft.css'],
     'userGestionGalaxie' =>['../plugins/galaxyInfinity/user/public/css/userGestionGalaxie.css'],
     'preRequisGI' => ['../plugins/galaxyInfinity/user/public/css/preRequisGI.css'],
+    'userGestionHome' => ['../plugins/galaxyInfinity/user/public/css/userGestionHome.css'],
 ];
 
 
