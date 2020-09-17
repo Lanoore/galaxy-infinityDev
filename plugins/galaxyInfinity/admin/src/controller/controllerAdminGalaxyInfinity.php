@@ -19,7 +19,14 @@ class ControllerAdminGalaxyInfinity
             $this->controllerBase = new ControllerBase();
     }
 
-
+    
+    /**
+     * afficheAdminGestionGI
+     *
+     *  Affiche la page principale d'administration de Galaxy Infinity
+     * 
+     * @return void
+     */
     public function afficheAdminGestionGI(){
         if(isset($_SESSION['identifiantAdmin'])){
             $adminGI = '../plugins/galaxyInfinity/admin/src/view/adminGeneralGIView.php';
@@ -30,7 +37,14 @@ class ControllerAdminGalaxyInfinity
     
 
 
-
+    
+    /**
+     * adminAjoutNiveau
+     *
+     *  Ajoute un niveau général au jeu en bdd
+     * 
+     * @return void
+     */
     public function adminAjoutNiveau(){
         $this->managerAdminGI->getDernierNiveau();
         $this->managerAdminGI->niveau = $this->managerAdminGI->niveau +1;

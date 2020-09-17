@@ -23,7 +23,14 @@ class ControllerUserGIPlanete{
         $this->gestionPlaneteChangePage();
         
     }
-
+    
+    /**
+     * gestionPlaneteChangePage
+     *
+     * Gère les différentes fonctions au changement de page
+     * 
+     * @return void
+     */
     public function gestionPlaneteChangePage(){
         if(isset($_SESSION['idUser']) && isset($_SESSION['idPlaneteActif'])){
 
@@ -47,7 +54,14 @@ class ControllerUserGIPlanete{
 
         }
     }
-
+    
+    /**
+     * gestionProdChangePage
+     *
+     * Gére la mise à jour des ressources au chargement de la page
+     * 
+     * @return void
+     */
     public function gestionProdChangePage(){
         
 
@@ -67,7 +81,14 @@ class ControllerUserGIPlanete{
         }
     }
 
-
+    
+    /**
+     * gestionConstruCraftChangePage
+     * 
+     * Gére la mise à jour du temps de construction des crafts en cours
+     *
+     * @return void
+     */
     public function gestionConstruCraftChangePage(){
         $construCraftEnCours = $this->managerUserGIPlanete->getConstruCraftEnCours();
         
@@ -79,7 +100,14 @@ class ControllerUserGIPlanete{
             $this->managerUserGIPlanete->supprLigneCraftEnCoursPlanete();
         }
     }
-
+    
+    /**
+     * gestionConstruBatChangePage
+     *
+     * Gére la mise à jour du temps de construction des batiments en cours
+     * 
+     * @return void
+     */
     public function gestionConstruBatChangePage(){
         $construcBatEnCours = $this->managerUserGIPlanete->getConstruBatEnCours();
 
@@ -90,7 +118,14 @@ class ControllerUserGIPlanete{
             $this->managerUserGIPlanete->supprLigneBatEnCoursPlanete();
         }
     }
-
+    
+    /**
+     * gestionConstruTechnoChangePage
+     *
+     * Gére la mise à jour du temps de construction des technologie en cours
+     * 
+     * @return void
+     */
     public function gestionConstruTechnoChangePage(){
         $construTechnoEnCours = $this->managerUserGIPlanete->getConstruTechnoEnCours();
 

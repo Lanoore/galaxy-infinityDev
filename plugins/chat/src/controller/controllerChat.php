@@ -22,9 +22,16 @@ class ControllerChat{
 
         $this->controllerBase = new ControllerBase();
     }
-
+    
+    /**
+     * afficheChat
+     *  
+     * Permet d'afficher le chat général
+     * 
+     * @return void
+     */
     public function afficheChat(){
-        if($_SESSION['idUser']){
+        if(isset($_SESSION['idUser'])){
 
                 $messagesChat = $this->managerChat->getChat();
         
@@ -35,21 +42,35 @@ class ControllerChat{
                 $this->controllerBase->afficheView([$chat],'afficheChat');
         }
     }
-
+    
+    /**
+     * getChatJs
+     *
+     *  Récupère le chat et le transforme en fichier json pour l'utiliser dans le javascript et modifier le chat en continu
+     * 
+     * @return void
+     */
     public function getChatJs(){
-        if($_SESSION['idUser']){
+        if(isset($_SESSION['idUser'])){
 
-           $chatSQL = $this->managerChat->getChatJs();
+            $messagesChat = $this->managerChat->getChat();
 
-            foreach($chatSQL as $chatSQL){
-                $chat [] = ['id' => $chatSQL['id'],'pseudo' => $chatSQL['pseudo'],'message' => $chatSQL['message'],'dateMessage' => $chatSQL['dateMessage']];
+            foreach($messagesChat as $message){
+                $chat [] = ['id' => $message['id'],'pseudo' => $message['pseudo'],'message' => $message['message'],'dateMessage' => $message['dateMessage']];
             }
             echo json_encode($chat);
         }
     }
-
+    
+    /**
+     * addMessage
+     *
+     *  Permet d'ajouter un message dans la bdd du chat
+     * 
+     * @return void
+     */
     public function addMessage(){
-        if($_SESSION['idUser']){
+        if(isset($_SESSION['idUser'])){
             if(!empty($_POST['message'])){
                 $this->managerChat->idUser = $_SESSION['idUser'];
                 $this->managerChat->message = $_POST['message'];

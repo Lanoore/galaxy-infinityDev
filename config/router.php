@@ -434,7 +434,7 @@ class Router
                             $this->controllerUserGIGalaxie->afficheGalaxieUser($_GET['systeme']);
                             break;    
                         default:
-                        $this->controllerUser->afficheConnexion();
+                        $this->controllerUser->afficheConnexion();//Changer si vous voulez modifier l'action par défaut
                             break;
                     }
                 }

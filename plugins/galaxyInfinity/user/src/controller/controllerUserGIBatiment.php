@@ -22,7 +22,15 @@ class ControllerUserGIBatiment{
 
     }
 
-
+    
+    /**
+     * afficheBatimentUser
+     *
+     * Affiche la liste des batiments par rapport au tier selectionner
+     * 
+     * @param  int $tier
+     * @return void
+     */
     public function afficheBatimentUser($tier){
         if(isset($_SESSION['pseudo'])){
 
@@ -47,7 +55,7 @@ class ControllerUserGIBatiment{
                 $verifCraftBat = $this->verifCraftBat($batCraft);
                 $verifBatEnCours = $this->managerUserGIBatiment->verifBatEnCours();
 
-                $tempsConstru = $this->managerUserGIBatiment->getTempsConstruBatX();
+                $tempsConstru = $this->managerUserGIBatiment->getTempsConstruBat();
                 $tempsConstru = $this->conversionSeconde($tempsConstru['temps_construction']);
                 $batiment[] = ['tempsConstru' =>$tempsConstru,'batCraft'=>$batCraft,'verifBatEnCours'=>$verifBatEnCours,'idBat' => $batBase['id'], 'nomBat' => $batBase['nom'], 'descrBat' => $batBase['description'], 'tierBat' => $batBase['tier'],'imageBat' =>$batBase['image'], 'prValide' => $verifPrBat, 'craftValide'=>$verifCraftBat, 'niveauBatPlanete' => $batBase['niveau']];
             }
@@ -59,7 +67,14 @@ class ControllerUserGIBatiment{
         }
     }
 
-
+    
+    /**
+     * getConstruBatJs
+     * 
+     * Récupère et envoie la constru du batiment en cours pour le js
+     *
+     * @return void
+     */
     public function getConstruBatJs(){
         if(isset($_SESSION['pseudo'])){
             $this->managerUserGIBatiment->idPlanete = $_SESSION['idPlaneteActif'];
@@ -71,7 +86,15 @@ class ControllerUserGIBatiment{
         }
     }
 
-
+    
+    /**
+     * addConstructionBat
+     *
+     * Ajoute un batiment sur la chaine de construction
+     * 
+     * @param  int $idBat
+     * @return void
+     */
     public function addConstructionBat($idBat){
         if(isset($_SESSION['pseudo'])){
             $this->managerUserGIBatiment->idPlanete = $_SESSION['idPlaneteActif'];
@@ -116,7 +139,15 @@ class ControllerUserGIBatiment{
     }
 
 
-
+    
+    /**
+     * verifPrBat
+     *
+     * Vérifie les pré-requis du batiment
+     * 
+     * @param  array $batPr
+     * @return void
+     */
     public function verifPrBat($batPr){
         $countPr = 0;
         foreach ($batPr as $batPr) {
@@ -138,7 +169,15 @@ class ControllerUserGIBatiment{
         return $countPr;
     }
 
-
+    
+    /**
+     * verifCraftBat
+     *
+     * Vérifie les craft du batiment
+     * 
+     * @param  array $batCraft
+     * @return void
+     */
     public function verifCraftBat($batCraft){
         $countCraft = 0;
         foreach ($batCraft as $batCraft) {
@@ -161,7 +200,15 @@ class ControllerUserGIBatiment{
     }
 
 
-
+    
+    /**
+     * conversionSeconde
+     *
+     * Converti les secondes envoyer en minute heure seconde
+     * 
+     * @param  int $seconde
+     * @return void
+     */
     function conversionSeconde($seconde){
 
 

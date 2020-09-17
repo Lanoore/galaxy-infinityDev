@@ -22,7 +22,16 @@ class ControllerForum{
 
         $this->controllerBase = new ControllerBase();
     }
-
+    
+    /**
+     * afficheTopic
+     *
+     *  Permet d'afficher un topic précis avec son id
+     * 
+     * @param  int $idTopic
+     * @param  int $page
+     * @return void
+     */
     public function afficheTopic($idTopic,$page){
         if(isset($_SESSION['idUser'])){
             $this->managerForum->idTopic = $idTopic;
@@ -61,7 +70,14 @@ class ControllerForum{
     }
 
 
-
+    
+    /**
+     * afficheCategories
+     *  
+     *  Permet d'afficher les différentes catégories
+     * 
+     * @return void
+     */
     public function afficheCategories(){
         if(isset($_SESSION['idUser'])){
             $categories = $this->managerForum->getCategories();
@@ -79,7 +95,16 @@ class ControllerForum{
         }
 
     }
-
+    
+    /**
+     * afficheCategorie
+     *
+     *  Permet d'afficher une catégorie précise grâce a son id
+     * 
+     * @param  int $idCategorie
+     * @param  int $page
+     * @return void
+     */
     public function afficheCategorie($idCategorie,$page){
         if(isset($_SESSION['idUser'])){
             $this->managerForum->idCategorie = $idCategorie;
@@ -123,21 +148,35 @@ class ControllerForum{
             $this->controllerBase->afficheView([$forumCategorie],'categorieView');
         }
     }
-
+    
+    /**
+     * afficheCreateTopic
+     *
+     *  Permet d'afficher la création d'un topic
+     * 
+     * @param  int $idCategorie
+     * @return void
+     */
     public function afficheCreateTopic($idCategorie){
         if(isset($_SESSION['idUser'])){
-            
-
             $createTopic = '../plugins/forum/src/view/user/createTopicView.php';
             $createTopic = $this->controllerBase->tamponView($createTopic,['idCategorie' => $idCategorie]);
             $this->controllerBase->afficheView([$createTopic],'createTopicView');
         }
     }
-
+    
+    /**
+     * createTopic
+     *
+     *  Permet d'ajouter le topic créer dans la catégorie assigner
+     * 
+     * @param  int $idCategorie
+     * @return void
+     */
     public function createTopic($idCategorie){
         if(isset($_SESSION['idUser'])){
             if(!empty($_POST['nomTopic'])&& !empty($_POST['messageTopic'])){
-                if(!preg_match("#[<>1-9]#", $_POST['nomTopic'])){
+                if(!preg_match("#[<>1-9]#", $_POST['nomTopic'])&& !preg_match("#[<>1-9]#", $_POST['messageTopic'])){
 
                     $this->managerForum->idCategorie = $idCategorie;
                     $categorieExist = $this->managerForum->categorieExist();
@@ -163,24 +202,47 @@ class ControllerForum{
             }
         }
     }
-
+    
+    /**
+     * createCommentaire
+     *
+     *  Permet d'ajouter un commentaire à son topic 
+     * 
+     * @param  int $idTopic
+     * @return void
+     */
     public function createCommentaire($idTopic){
         if(isset($_SESSION['idUser'])){
-            if(!empty($_POST['commentaire'])){
-                $this->managerForum->auteurCommentaire = $_SESSION['pseudo'];
-                $this->managerForum->messageCommentaire =htmlspecialchars($_POST['commentaire']);
+            if(!empty($_POST['commentaire']) && !preg_match("#[<>]#", $_POST['commentaire'])){
                 $this->managerForum->idTopic = $idTopic;
-                $addCommentaire = $this->managerForum->addCommentaire();
-    
-                
-                if($addCommentaire){
-                    header('Location:index.php?forum=afficheTopic&idTopic='.$idTopic.'&page=1');
+                $verifExist = $this->managerForum->topicExist();
+                if($verifExist){
+                    $this->managerForum->auteurCommentaire = $_SESSION['pseudo'];
+                    $this->managerForum->messageCommentaire =htmlspecialchars($_POST['commentaire']);
+                    
+                    $addCommentaire = $this->managerForum->addCommentaire();
+                    
+                    if($addCommentaire){
+                        header('Location:index.php?forum=afficheTopic&idTopic='.$idTopic.'&page=1');
+                    }
                 }
+                
+            }
+            else{
+                header('Location:index.php?forum=afficheTopic&idTopic='.$idTopic.'&page=1');
             }
             
         }
     }
-
+    
+    /**
+     * afficheModifTopic
+     *
+     *  Permet d'afficher la modification de topic
+     * 
+     * @param  int $idTopic
+     * @return void
+     */
     public function afficheModifTopic($idTopic){
         if(isset($_SESSION['idUser'])){
             $this->managerForum->idTopic = $idTopic;
@@ -195,16 +257,31 @@ class ControllerForum{
             }
         }
     }
-
+    
+    /**
+     * modifTopic
+     *
+     *  Permet de modifier un topic
+     * 
+     * @param  int $idTopic
+     * @return void
+     */
     public function modifTopic($idTopic){
         if(isset($_SESSION['idUser'])){
-            $this->managerForum->idTopic = $idTopic;
-            $this->managerForum->nomTopic = $_POST['nomTopic'];
-            $this->managerForum->messageTopic = $_POST['messageTopic'];
-
-            $modifTopic = $this->managerForum->modifTopic();
-
-            if($modifTopic){
+            if(!empty($_POST['nomTopic'])&& !empty($_POST['messageTopic'])){
+                if(!preg_match("#[<>1-9]#", $_POST['nomTopic'])&& !preg_match("#[<>1-9]#", $_POST['messageTopic'])){
+                    $this->managerForum->idTopic = $idTopic;
+                    $this->managerForum->nomTopic = $_POST['nomTopic'];
+                    $this->managerForum->messageTopic = $_POST['messageTopic'];
+        
+                    $modifTopic = $this->managerForum->modifTopic();
+        
+                    if($modifTopic){
+                        header('Location:index.php?forum=afficheTopic&idTopic='.$idTopic.'&page=1');
+                    }
+                }
+            }
+            else{
                 header('Location:index.php?forum=afficheTopic&idTopic='.$idTopic.'&page=1');
             }
 

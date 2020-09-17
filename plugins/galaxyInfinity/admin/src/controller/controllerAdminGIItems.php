@@ -17,7 +17,15 @@ class ControllerAdminGIItems
 
         $this->controllerBase = new ControllerBase;
     }
-
+    
+    /**
+     * adminGestionItems
+     * 
+     * Affiche la gestion des items coté admin
+     * 
+     *
+     * @return void
+     */
     public function adminGestionItems(){
         if(isset($_SESSION['identifiantAdmin'])){
             $items = $this->managerAdminGIitems->getItems();
@@ -27,7 +35,14 @@ class ControllerAdminGIItems
             $this->controllerBase->afficheView([$adminGI],'adminGestionItems');
         }
     }
-
+    
+    /**
+     * createItemBase
+     *
+     * Créer l'item de base avec son nom
+     * 
+     * @return void
+     */
     public function createItemBase(){
         if(isset($_SESSION['identifiantAdmin'])){
             $this->managerAdminGIitems->nomItems = htmlentities($_POST['nomItems']);
@@ -41,7 +56,15 @@ class ControllerAdminGIItems
             }
         }
     }
-
+    
+    /**
+     * supprItemBase
+     *
+     * Supprime l'item sélectionner
+     * 
+     * @param  int $idItem
+     * @return void
+     */
     public function supprItemBase($idItem){
         if(isset($_SESSION['identifiantAdmin'])){
             $this->managerAdminGIitems->idItem = $idItem;
@@ -51,7 +74,14 @@ class ControllerAdminGIItems
             }
         }
     }
-
+    
+    /**
+     * modifItemBase
+     *
+     * Modifie l'item sélectionner
+     * 
+     * @return void
+     */
     public function modifItemBase(){
         if(isset($_SESSION['identifiantAdmin'])){
             $this->managerAdminGIitems->idItem = $_POST['idItem'];

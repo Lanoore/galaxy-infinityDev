@@ -23,7 +23,14 @@ class ControllerAdminGIRessource
 
         $this->controllerBase = new ControllerBase();
     }
-
+    
+    /**
+     * adminGestionRessource
+     *
+     * Affiche la gestion des ressources coté admin
+     * 
+     * @return void
+     */
     public function adminGestionRessource(){
         if(isset($_SESSION['identifiantAdmin'])){
 
@@ -39,7 +46,14 @@ class ControllerAdminGIRessource
             $this->controllerBase->afficheView([$adminGI],'adminGestionRessource');
         }
     }
-
+    
+    /**
+     * createRessourceBase
+     *
+     * Créer la ressource de base avec son nom et sa description
+     * 
+     * @return void
+     */
     public function createRessourceBase(){
         if(isset($_SESSION['identifiantAdmin'])){
             
@@ -56,7 +70,15 @@ class ControllerAdminGIRessource
             }
         }
     }
-
+    
+    /**
+     * supprRessourceBase
+     *  
+     *  Supprime la ressource sélectionner 
+     * 
+     * @param  int $idRessource
+     * @return void
+     */
     public function supprRessourceBase($idRessource){
         if(isset($_SESSION['identifiantAdmin'])){
             $this->managerAdminGIRessource->idRessource = $idRessource;
@@ -70,7 +92,14 @@ class ControllerAdminGIRessource
             }
         }
     }
-
+    
+    /**
+     * modifRessourceBase
+     *
+     * Modifie la ressource sélectionner
+     * 
+     * @return void
+     */
     public function modifRessourceBase(){
         if(isset($_SESSION['identifiantAdmin'])){
             $this->managerAdminGIRessource->idRessource = htmlentities($_POST['idRessource']);
@@ -89,7 +118,14 @@ class ControllerAdminGIRessource
             
         }
     }
-
+    
+    /**
+     * createProdRessourceBat
+     *
+     * Créer la prod de la ressource par rapport au batiment et au niveau
+     * 
+     * @return void
+     */
     public function createProdRessourceBat(){
         if(isset($_SESSION['identifiantAdmin'])){
             $this->managerAdminGIRessource->idBat = htmlentities($_POST['idBat']);
@@ -107,7 +143,17 @@ class ControllerAdminGIRessource
 
         }
     }
-
+    
+    /**
+     * supprProdRessourceBat
+     *
+     * Supprime la prod de la ressource sélectionner
+     * 
+     * @param  int $idRessource
+     * @param  int $idNiveau
+     * @param  int $idBatiment
+     * @return void
+     */
     public function supprProdRessourceBat($idRessource,$idNiveau,$idBatiment){
         if(isset($_SESSION['identifiantAdmin'])){
             $this->managerAdminGIRessource->idRessource = $idRessource;
@@ -125,7 +171,14 @@ class ControllerAdminGIRessource
             }
         }
     }
-
+    
+    /**
+     * modifProdRessourceBat
+     *
+     * Modifie la prod de la ressource sélectionner
+     * 
+     * @return void
+     */
     public function modifProdRessourceBat(){
         if(isset($_SESSION['identifiantAdmin'])){
             $this->managerAdminGIRessource->idBat = htmlentities($_POST['idBat']);
@@ -145,7 +198,14 @@ class ControllerAdminGIRessource
         }   
     }
 
-
+    
+    /**
+     * createLiaisonRessourceBat
+     *
+     * Ajoute la liaison entre la ressource et le batiment
+     * 
+     * @return void
+     */
     public function createLiaisonRessourceBat(){
         if(isset($_SESSION['identifiantAdmin'])){
             $this->managerAdminGIRessource->idRessource = htmlentities($_POST['idRessource']);
@@ -161,7 +221,16 @@ class ControllerAdminGIRessource
             }
         }
     }
-
+    
+    /**
+     * supprLiaisonRessourceBat
+     *
+     * Supprime la liaison entre la ressource et le batiment
+     * 
+     * @param  int $idRessource
+     * @param  int $idBatiment
+     * @return void
+     */
     public function supprLiaisonRessourceBat($idRessource,$idBatiment){
         if(isset($_SESSION['identifiantAdmin'])){
             $this->managerAdminGIRessource->idRessource = $idRessource;
@@ -179,7 +248,14 @@ class ControllerAdminGIRessource
             }
         }
     }
-
+    
+    /**
+     * modifLiaisonRessourceBat
+     *
+     * Modifie la liaison entre la ressource et le batiment
+     * 
+     * @return void
+     */
     public function modifLiaisonRessourceBat(){
         if(isset($_SESSION['identifiantAdmin'])){
             $this->managerAdminGIRessource->idRessource = htmlentities($_POST['idRessource']);

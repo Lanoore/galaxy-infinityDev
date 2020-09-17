@@ -22,7 +22,14 @@ class ControllerUserGIHome{
 
     }
 
-
+    
+    /**
+     * afficheHomeUser
+     *
+     * Affiche la page général du jeu
+     * 
+     * @return void
+     */
     public function afficheHomeUser(){
         if(isset($_SESSION['pseudo'])){
 
@@ -43,12 +50,8 @@ class ControllerUserGIHome{
             
 
             $allRessources = $this->managerUserGIHome->getAllRessources();
-
-            //get les batiments
             $allBat = $this->managerUserGIHome->getAllBatPlaneteX();
-            //get les crafts
             $allCraft = $this->managerUserGIHome->getAllCraftPlaneteX();
-            //get les techno
             $allTechno = $this->managerUserGIHome->getAllTechnoPlaneteX();
 
 
@@ -59,7 +62,14 @@ class ControllerUserGIHome{
         }
     }
 
-
+    
+    /**
+     * allRessources
+     *
+     * Récupère les ressources pour le js
+     * 
+     * @return void
+     */
     public function allRessources(){
         if(isset($_SESSION['pseudo'])){
 
@@ -77,7 +87,15 @@ class ControllerUserGIHome{
     }
   
 
-
+    
+    /**
+     * conversionSeconde
+     *
+     * Converti les secondes en heure minute seconde
+     * 
+     * @param  int $seconde
+     * @return void
+     */
     public function conversionSeconde($seconde){
 
 

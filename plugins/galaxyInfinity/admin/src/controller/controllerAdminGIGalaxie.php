@@ -21,7 +21,14 @@ class ControllerAdminGIGalaxie
 
         $this->managerAdminGIGalaxie = new ManagerAdminGIGalaxie();
     }
-
+    
+    /**
+     * adminGestionGalaxie
+     *
+     * Affiche la gestion de la galaxie coté admin
+     * 
+     * @return void
+     */
     public function adminGestionGalaxie(){
         if(isset($_SESSION['identifiantAdmin'])){
 
@@ -33,7 +40,14 @@ class ControllerAdminGIGalaxie
 
         }
     }
-
+    
+    /**
+     * createSystemePlanete
+     *
+     * Créer le nombre de systeme avec le nombre de planete demander
+     * 
+     * @return void
+     */
     public function createSystemePlanete(){
         if(isset($_SESSION['identifiantAdmin'])){
             if($_POST['nombreSysteme'] >= 1 AND $_POST['nombrePlanete'] >= 1){
@@ -59,7 +73,15 @@ class ControllerAdminGIGalaxie
             }
         }
     }
-
+    
+    /**
+     * supprPlanete
+     * 
+     * Supprime la planete sélectionner
+     *
+     * @param  int $idPlanete
+     * @return void
+     */
     public function supprPlanete($idPlanete){
         if(isset($_SESSION['identifiantAdmin'])){
             $this->managerAdminGIGalaxie->idPlanete = $idPlanete;
@@ -74,7 +96,14 @@ class ControllerAdminGIGalaxie
         }
     }
     
-
+    
+    /**
+     * modifSituationPlanete
+     *
+     * Modifie la situation de la planete
+     * 
+     * @return void
+     */
     public function modifSituationPlanete(){
         if(isset($_SESSION['identifiantAdmin'])){
             $this->managerAdminGIGalaxie->idPlanete = $_POST['idPlanete'];

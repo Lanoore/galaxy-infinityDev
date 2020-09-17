@@ -31,7 +31,14 @@ class ControllerAdminGITechnologie
 
         $this->controllerBase = new ControllerBase();
     }
-
+    
+    /**
+     * adminGestionTechnologie
+     *
+     * Affiche la gestion des technologies coté admin
+     * 
+     * @return void
+     */
     public function adminGestionTechnologie(){
         if(isset($_SESSION['identifiantAdmin'])){
             
@@ -56,7 +63,15 @@ class ControllerAdminGITechnologie
         }
     }
     
-    
+        
+    /**
+     * createTechnologieBase
+     *
+     * 
+     * Créer la technologie de base avec son nom,description,tier et l'image
+     * 
+     * @return void
+     */
     public function createTechnologieBase(){
         if(isset($_SESSION['identifiantAdmin'])){
             if(!empty($_POST['nom']) && !empty($_POST['descr']) && !empty($_POST['tier'])){
@@ -100,7 +115,15 @@ class ControllerAdminGITechnologie
             }
         }
     }
-    
+        
+    /**
+     * supprTechnologieBase
+     *
+     * Supprime la technologie de base sélectionner
+     * 
+     * @param  int $idTechnologie
+     * @return void
+     */
     public function supprTechnologieBase($idTechnologie){
         if(isset($_SESSION['identifiantAdmin'])){
             $this->managerAdminGITechnologie->idTechno = $idTechnologie;
@@ -123,7 +146,14 @@ class ControllerAdminGITechnologie
             }
             
         }
-    }   
+    }       
+    /**
+     * modifTechnologieBase
+     *
+     *  Modifie la technologie sélectionner
+     *  
+     * @return void
+     */
     public function modifTechnologieBase(){
             if(isset($_SESSION['identifiantAdmin'])){
                 
@@ -141,7 +171,14 @@ class ControllerAdminGITechnologie
                 }
             }
     }
-    
+        
+    /**
+     * createTechnologieCraftNiveau
+     *
+     *  Créer le craft pour la technologie par rapport a son niveau 
+     * 
+     * @return void
+     */
     public function createTechnologieCraftNiveau(){
         if(isset($_SESSION['identifiantAdmin'])){
             
@@ -178,7 +215,15 @@ class ControllerAdminGITechnologie
             }
         }
     }
-
+    
+    /**
+     * supprTechnologieCraftNiveau
+     *
+     * Supprime le craft de la technologie sélectionner
+     * 
+     * @param  int $idLigne
+     * @return void
+     */
     public function supprTechnologieCraftNiveau($idLigne){
         if(isset($_SESSION['identifiantAdmin'])){
             $this->managerAdminGITechnologie->idLigne = $idLigne;
@@ -199,7 +244,14 @@ class ControllerAdminGITechnologie
         }
     }
 
-
+    
+    /**
+     * modifTechnologieCraftNiveau
+     *
+     * Modifie le craft de la technologie sélectionner
+     * 
+     * @return void
+     */
     public function modifTechnologieCraftNiveau(){
         if(isset($_SESSION['identifiantAdmin'])){
 
@@ -238,7 +290,14 @@ class ControllerAdminGITechnologie
         }
     }
     
-
+    
+    /**
+     * createTechnologieTempsNiveau
+     *
+     * Créer le temps de construction pour la technologie par rapport a son niveau
+     * 
+     * @return void
+     */
     public function createTechnologieTempsNiveau(){
         if(isset($_SESSION['identifiantAdmin'])){
             
@@ -257,7 +316,16 @@ class ControllerAdminGITechnologie
             }
         }
     }
-
+    
+    /**
+     * supprTechnologieTempsNiveau
+     *
+     * Supprime le temps de construction pour la technologie par rapport a son niveau sélectionner
+     * 
+     * @param  int $idTechnologie
+     * @param  int $idNiveau
+     * @return void
+     */
     public function supprTechnologieTempsNiveau($idTechnologie,$idNiveau){
         if(isset($_SESSION['identifiantAdmin'])){
             $this->managerAdminGITechnologie->idTechno = $idTechnologie;
@@ -277,7 +345,14 @@ class ControllerAdminGITechnologie
             }
         }
     }
-
+    
+    /**
+     * modifTechnologieTempsNiveau
+     *
+     *  Modifie le temps de construction de la technologie para rapport a son niveau sélectionner
+     * 
+     * @return void
+     */
     public function modifTechnologieTempsNiveau(){
         
         if(isset($_SESSION['identifiantAdmin'])){
@@ -298,7 +373,14 @@ class ControllerAdminGITechnologie
 
 
 
-
+    
+    /**
+     * createTechnologiePR
+     *
+     * Créer le pré-requis de la technologie 
+     * 
+     * @return void
+     */
     public function createTechnologiePR(){
         if(isset($_SESSION['identifiantAdmin'])){
             $this->managerAdminGITechnologie->idTechno = htmlentities($_POST['idTechno']);
@@ -321,20 +403,25 @@ class ControllerAdminGITechnologie
                 $this->managerAdminGITechnologie->niveauTechnoPR = null;
             }
             
-            //$verifExist = $this->managerAdminGITechnologie->verifTechnologiePRExist();
-            
-            //if($verifExist == 0){
 
                 $confirmAdd = $this->managerAdminGITechnologie->createTechnologiePR();
                 
                 if($confirmAdd){
                     header('Location:index.php?galaxyInfinity=afficheAdminGestionTechnologie');
                 }
-           // }
+
 
         }
     }
-
+    
+    /**
+     * supprTechnologiePR
+     *
+     * Supprime le pré-requis de la technologie sélectionner
+     * 
+     * @param  int $idLigne
+     * @return void
+     */
     public function supprTechnologiePR($idLigne){
         if(isset($_SESSION['identifiantAdmin'])){
             $this->managerAdminGITechnologie->idLigne = $idLigne;
@@ -349,7 +436,14 @@ class ControllerAdminGITechnologie
             }
         }
     }
-
+    
+    /**
+     * modifTechnologiePR
+     * 
+     * Modifie le pré-requis de la technologie sélectionner
+     *
+     * @return void
+     */
     public function modifTechnologiePR(){
         if(isset($_SESSION['identifiantAdmin'])){
             $this->managerAdminGITechnologie->idLigne = htmlentities($_POST['idLigne']);

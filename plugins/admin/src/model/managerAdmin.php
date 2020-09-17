@@ -16,12 +16,16 @@ class ManagerAdmin extends ManagerBDD
             $this->identifiantAdmin = 'admin';
             $this->passwordAdmin = $password;
             $this->insertAdmin();
-
         }
-
-
     }
-
+    
+    /**
+     * getAdmin
+     *  
+     *  Récupère les informations de l'administrateur
+     * 
+     * @return bool
+     */
     public function getAdmin(){
         $sql = 'SELECT id, identifiant, password FROM admin WHERE identifiant = ?';
         $result = $this->createQuery($sql, [$this->identifiantAdmin]);
@@ -31,14 +35,28 @@ class ManagerAdmin extends ManagerBDD
         $this->passwordAdmin = $admin['password'];
         return $admin;
     }
-
+    
+    /**
+     * insertAdmin
+     *
+     *  Permet d'ajouter un admin par défaut si aucun existe
+     * 
+     * @return bool
+     */
     public function insertAdmin(){
         $sql = 'INSERT INTO admin(identifiant,password) VALUES(?,?)';
         $result = $this->createQuery($sql,[$this->identifiantAdmin,$this->passwordAdmin]);
         return $result;
     }
 
-
+    
+    /**
+     * changePassword
+     *  
+     *  Permet de changer le mot de passe de l'administrateur dans la bdd
+     * 
+     * @return bool
+     */
     public function changePassword(){
         $sql = 'UPDATE admin SET password = ? WHERE identifiant = ?';
         $result = $this->createQuery($sql,[$this->password_hache, $this->identifiantAdmin]);

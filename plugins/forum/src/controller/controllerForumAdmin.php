@@ -22,7 +22,14 @@ class ControllerForumAdmin{
 
         $this->controllerBase = new ControllerBase();
     }
-
+    
+    /**
+     * createCategorie
+     *
+     *  Crée une catégorie
+     * 
+     * @return void
+     */
     public function createCategorie(){
         if(isset($_SESSION['identifiantAdmin'])){
             $this->managerForumAdmin->nomCategorie = $_POST['nom'];
@@ -30,7 +37,15 @@ class ControllerForumAdmin{
             header('Location:index.php?forum=afficheAdminForumGestion');
         }
     }   
-
+    
+    /**
+     * supprCategorie
+     *
+     *  Supprime une catégorie
+     * 
+     * @param  int $idCategorie
+     * @return void
+     */
     public function supprCategorie($idCategorie){
         if(isset($_SESSION['identifiantAdmin'])){
             $this->managerForumAdmin->idCategorie = $idCategorie;
@@ -43,7 +58,14 @@ class ControllerForumAdmin{
             }
         }
     }
-
+    
+    /**
+     * modifCategorie
+     *
+     * Modifi une catégorie
+     * 
+     * @return void
+     */
     public function modifCategorie(){
         if(isset($_SESSION['identifiantAdmin'])){
             $this->managerForumAdmin->nomCategorie = $_POST['nomCategorie'];
@@ -56,7 +78,15 @@ class ControllerForumAdmin{
             }
         }
     }
-
+    
+    /**
+     * supprCommentaire
+     *
+     *  Supprime un commentaire
+     * 
+     * @param  int $idCommentaire
+     * @return void
+     */
     public function supprCommentaire($idCommentaire){
         if(isset($_SESSION['identifiantAdmin'])){
             $this->managerForumAdmin->idCommentaire = $idCommentaire;
@@ -69,7 +99,14 @@ class ControllerForumAdmin{
             }
         }
     }
-
+    
+    /**
+     * moveTopic
+     * 
+     * Déplace le topic vers la catégorie cible
+     *
+     * @return void
+     */
     public function moveTopic(){
         if(isset($_SESSION['identifiantAdmin'])){
             $this->managerForumAdmin->idTopic = $_POST['idTopic'];
@@ -82,7 +119,15 @@ class ControllerForumAdmin{
             }
         }
     }
-
+    
+    /**
+     * supprTopic
+     *
+     *  Supprime le topic
+     * 
+     * @param  int $idTopic
+     * @return void
+     */
     public function supprTopic($idTopic){
         if(isset($_SESSION['identifiantAdmin'])){
             $this->managerForumAdmin->idTopic = $idTopic;
@@ -95,7 +140,14 @@ class ControllerForumAdmin{
             }
         }
     }
-
+    
+    /**
+     * afficheAdminForumGestion
+     *
+     *  Affiche la page général d'administration du forum
+     * 
+     * @return void
+     */
     public function afficheAdminForumGestion(){
 
         if(isset($_SESSION['identifiantAdmin'])){

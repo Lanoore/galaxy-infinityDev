@@ -20,7 +20,15 @@ class ControllerUserGIGalaxie{
         $this->controllerBase = new ControllerBase();
         
     }
-
+    
+    /**
+     * afficheGalaxieUser
+     *
+     * Affiche la galaxie par rapport au systeme sélectionner
+     * 
+     * @param  int $systeme
+     * @return void
+     */
     public function afficheGalaxieUser(int $systeme){
         if(isset($_SESSION['idUser'])){
 

@@ -19,7 +19,15 @@ class ControllerUserGITechnologie{
 
         $this->controllerBase = new ControllerBase();
     }
-
+    
+    /**
+     * afficheTechnologieUser
+     *
+     * Affiche les technologies par rapport au tier sélectionner
+     * 
+     * @param  int $tier
+     * @return void
+     */
     public function afficheTechnologieUser($tier){
         if(isset($_SESSION['pseudo'])){
 
@@ -46,7 +54,7 @@ class ControllerUserGITechnologie{
                 $verifCraftTechno = $this->verifCraftTechno($technoCraft);
                 $verifTechnoEnCours = $this->managerUserGITechnologie->verifTechnoEncours();
                 
-                $tempsConstru = $this->managerUserGITechnologie->getTempsConstruTechnoX();
+                $tempsConstru = $this->managerUserGITechnologie->getTempsConstruTechno();
                 $tempsConstru = $this->conversionSeconde($tempsConstru['temps_construction']);
                 $technologie[] = ['technoCraft'=>$technoCraft,'tempsConstru'=>$tempsConstru,'verifTechnoEnCours'=>$verifTechnoEnCours,'idTechno' => $technoBase['id'], 'nomTechno' => $technoBase['nom'], 'descrTechno' => $technoBase['description'], 'tierTechno' => $technoBase['tier'],'imageTechno' =>$technoBase['image'], 'prValide' => $verifPrTechno, 'craftValide'=>$verifCraftTechno, 'niveauTechnoPlanete' => $technoBase['niveau']];
 
@@ -58,7 +66,14 @@ class ControllerUserGITechnologie{
             $this->controllerBase->afficheView([$userTechnologie],'userGestionTechnologie');
         }
     }
-    
+        
+    /**
+     * getConstruTechnoJs
+     *
+     * Récupère la technologie en cours de construction pour le js
+     * 
+     * @return void
+     */
     public function getConstruTechnoJs(){
         if(isset($_SESSION['pseudo'])){
             $this->managerUserGITechnologie->idPlanete = $_SESSION['idPlaneteActif'];
@@ -69,7 +84,15 @@ class ControllerUserGITechnologie{
             echo json_encode($construEnCours);
         }
     }
-
+    
+    /**
+     * addConstructionTechno
+     *
+     * Ajoute la technologie dans la chaine de construction
+     * 
+     * @param  int $idTechno
+     * @return void
+     */
     public function addConstructionTechno($idTechno){
         if(isset($_SESSION['pseudo'])){
             $this->managerUserGITechnologie->idPlanete = $_SESSION['idPlaneteActif'];
@@ -114,7 +137,15 @@ class ControllerUserGITechnologie{
     }
 
 
-
+    
+    /**
+     * verifPrTechno
+     * 
+     * Vérifie les pré-requis de la technologie
+     *
+     * @param  array $technoPR
+     * @return void
+     */
     public function verifPrTechno($technoPR){
         $countPr = 0;
         foreach ($technoPR as $technoPR) {
@@ -135,7 +166,15 @@ class ControllerUserGITechnologie{
         }
         return $countPr;
     }
-
+    
+    /**
+     * verifCraftTechno
+     *
+     * Vérifie les crafts pour la technologie
+     * 
+     * @param  array $technoCraft
+     * @return void
+     */
     public function verifCraftTechno($technoCraft){
         $countCraft = 0;
         foreach ($technoCraft as $technoCraft) {
@@ -156,7 +195,15 @@ class ControllerUserGITechnologie{
         }
         return $countCraft;
     }
-
+    
+    /**
+     * conversionSeconde
+     *
+     * Converti les seocndes en heures minutes et secondes
+     * 
+     * @param  int $seconde
+     * @return void
+     */
     function conversionSeconde($seconde){
 
 

@@ -30,7 +30,14 @@ class ControllerAdminGIBatiment
 
         $this->controllerBase = new ControllerBase();
     }
-
+    
+    /**
+     * adminGestionBat
+     *
+     *  Affiche la gestion des batiments coté administration
+     * 
+     * @return void
+     */
     public function adminGestionBat(){
         if(isset($_SESSION['identifiantAdmin'])){
 
@@ -56,7 +63,14 @@ class ControllerAdminGIBatiment
         }
     }
     
-    
+        
+    /**
+     * createBatBase
+     *
+     *  Créer le batiment de base avec nom,tier, description et image
+     * 
+     * @return void
+     */
     public function createBatBase(){
         
         if(isset($_SESSION['identifiantAdmin'])){
@@ -105,7 +119,15 @@ class ControllerAdminGIBatiment
             }
         }
     }
-    
+        
+    /**
+     * supprBatBase
+     * 
+     * Supprime le batiment de base
+     *
+     * @param  int $idBatiment
+     * @return void
+     */
     public function supprBatBase($idBatiment){
         if(isset($_SESSION['identifiantAdmin'])){
             $this->managerAdminGIBatiment->idBat = $idBatiment;
@@ -129,7 +151,14 @@ class ControllerAdminGIBatiment
             }
             
         }
-    }   
+    }       
+    /**
+     * modifBatBase
+     *
+     *  Modifie le batiment de base
+     * 
+     * @return void
+     */
     public function modifBatBase(){
             if(isset($_SESSION['identifiantAdmin'])){
                 $this->managerAdminGIBatiment->idBat = $_POST['idBat'];
@@ -146,7 +175,14 @@ class ControllerAdminGIBatiment
                 }
             }
     }
-    
+        
+    /**
+     * createBatCraftNiveau
+     * 
+     * Créer le craft pour le batiment selectionner avec le niveau, le craft et/ou l'items ainsi que le nombre associer
+     *
+     * @return void
+     */
     public function createBatCraftNiveau(){
         if(isset($_SESSION['identifiantAdmin'])){
             
@@ -187,6 +223,8 @@ class ControllerAdminGIBatiment
     /**
      * supprBatCraftNiveau
      *
+     *  Supprime le craft pour le batiment selectionner
+     * 
      * @param  int $idLigne 
      * @return void
      */
@@ -210,7 +248,14 @@ class ControllerAdminGIBatiment
         }
     }
 
-
+    
+    /**
+     * modifBatCraftNiveau
+     * 
+     *  Modifie le craft pour le batiment selectionner
+     *
+     * @return void
+     */
     public function modifBatCraftNiveau(){
         if(isset($_SESSION['identifiantAdmin'])){
 
@@ -249,7 +294,14 @@ class ControllerAdminGIBatiment
         }
     }
     
-
+    
+    /**
+     * createBatTempsNiveau
+     * 
+     * Créer le temps pour le batiment selectionner lier a son niveau
+     *
+     * @return void
+     */
     public function createBatTempsNiveau(){
         if(isset($_SESSION['identifiantAdmin'])){
             $this->managerAdminGIBatiment->idBat = htmlentities($_POST['idBat']);
@@ -267,7 +319,16 @@ class ControllerAdminGIBatiment
             }
         }
     }
-
+    
+    /**
+     * supprBatTempsNiveau
+     *
+     *  Supprime le temps pour le batiment selectionner lier a son niveau
+     * 
+     * @param  int $idBatiment
+     * @param  int $idNiveau
+     * @return void
+     */
     public function supprBatTempsNiveau($idBatiment,$idNiveau){
         if(isset($_SESSION['identifiantAdmin'])){
             $this->managerAdminGIBatiment->idBat = $idBatiment;
@@ -287,7 +348,14 @@ class ControllerAdminGIBatiment
             }
         }
     }
-
+    
+    /**
+     * modifBatTempsNiveau
+     *
+     *  Modifie le temps pour le batiment selectionner lier a son niveau
+     * 
+     * @return void
+     */
     public function modifBatTempsNiveau(){
         
         if(isset($_SESSION['identifiantAdmin'])){
@@ -305,7 +373,14 @@ class ControllerAdminGIBatiment
             }
         }
     }
-
+    
+    /**
+     * createBatPR
+     *
+     *  Créer le pré_requis pour le batiment selectionner avec le nom du batiment et/ou de la technologie ainsi que leurs niveaux associer
+     * 
+     * @return void
+     */
     public function createBatPR(){
         if(isset($_SESSION['identifiantAdmin'])){
             $this->managerAdminGIBatiment->idBat = htmlentities($_POST['idBat']);
@@ -328,20 +403,26 @@ class ControllerAdminGIBatiment
                 $this->managerAdminGIBatiment->niveauTechnoPR = null;
             }
 
-            //$verifExist = $this->managerAdminGIBatiment->verifBatPRExist();
 
-            //if($verifExist == 0){
                 
                 $confirmAdd = $this->managerAdminGIBatiment->createBatPR();
                 
                 if($confirmAdd){
                     header('Location:index.php?galaxyInfinity=afficheAdminGestionBatiment');
                 }
-            //}
+            
 
         }
     }
-
+    
+    /**
+     * supprBatPR
+     *
+     *  Supprime le prè-requis du batiment sélectionner
+     * 
+     * @param  int $idLigne
+     * @return void
+     */
     public function supprBatPR($idLigne){
         if(isset($_SESSION['identifiantAdmin'])){
             $this->managerAdminGIBatiment->idLigne = $idLigne;
@@ -357,7 +438,14 @@ class ControllerAdminGIBatiment
             }
         }
     }
-
+    
+    /**
+     * modifBatPR
+     *
+     *  Modifie le pré-requis du batiment sélectionner
+     * 
+     * @return void
+     */
     public function modifBatPR(){
         if(isset($_SESSION['identifiantAdmin'])){
             $this->managerAdminGIBatiment->idLigne = htmlentities($_POST['idLigne']);
@@ -392,7 +480,14 @@ class ControllerAdminGIBatiment
             }
         }
     }
-
+    
+    /**
+     * createBatStartPlanete
+     *
+     *  Ajoute le batiment dans la liste des batiments au start de la planete avec le niveau
+     * 
+     * @return void
+     */
     public function createBatStartPlanete(){
         if(isset($_SESSION['identifiantAdmin'])){
             $this->managerAdminGIBatiment->idBat = htmlentities($_POST['idBat']);
@@ -410,7 +505,15 @@ class ControllerAdminGIBatiment
         }
     }
 
-
+    
+    /**
+     * supprBatStartPlanete
+     *
+     * Supprime le batiment dans la liste des batiments au start de la planete
+     * 
+     * @param  int $idBatiment
+     * @return void
+     */
     public function supprBatStartPlanete($idBatiment){
         if(isset($_SESSION['identifiantAdmin'])){
             $this->managerAdminGIBatiment->idBat = $idBatiment;
@@ -425,7 +528,14 @@ class ControllerAdminGIBatiment
             }
         }
     }
-
+    
+    /**
+     * modifBatStartPlanete
+     * 
+     * Modifie le batiement dans la liste des batiments au start de la planete 
+     *
+     * @return void
+     */
     public function modifBatStartPlanete(){
         if(isset($_SESSION['identifiantAdmin'])){
             $this->managerAdminGIBatiment->idBat = htmlentities($_POST['idBat']);

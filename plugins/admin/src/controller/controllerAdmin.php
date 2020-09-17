@@ -22,13 +22,27 @@ class ControllerAdmin{
 
         $this->controllerBase = new ControllerBase();
     }
-
+    
+    /**
+     * afficheConnexionAdmin
+     * 
+     *  Affiche la page de connexion Administrateur
+     *
+     * @return void
+     */
     public function afficheConnexionAdmin(){
         $connexionAdmin = '../plugins/admin/src/view/connexionAdminView.php';
         $connexionAdmin = $this->controllerBase->tamponView($connexionAdmin);
         $this->controllerBase->afficheView([$connexionAdmin],'connexionAdminView');
     }
-
+    
+    /**
+     * connectAdmin
+     *
+     *  Permet de connecter l'administrateur
+     * 
+     * @return void
+     */
     public function connectAdmin(){
         if(!empty($_POST['identifiant']) && !empty($_POST['password'])){
             if(!preg_match("#[<>]#", $_POST['identifiant'])&& !preg_match("#[<>]#",$_POST['password'])){
@@ -44,23 +58,46 @@ class ControllerAdmin{
             }
         }
     }
-
+    
+    /**
+     * afficheGeneralAdmin
+     *
+     *  Permet d'afficher la page principale d'administration
+     * 
+     * @return void
+     */
     public function afficheGeneralAdmin(){
-        $adminGeneralView = '../plugins/admin/src/view/adminGeneralView.php';
-        $adminGeneralView = $this->controllerBase->tamponView($adminGeneralView);
-        $this->controllerBase->afficheView([$adminGeneralView],'adminGeneral');
+        if(isset($_SESSION['identifiantAdmin'])){
+            $adminGeneralView = '../plugins/admin/src/view/adminGeneralView.php';
+            $adminGeneralView = $this->controllerBase->tamponView($adminGeneralView);
+            $this->controllerBase->afficheView([$adminGeneralView],'adminGeneral');
+        }
+        
     }
-
+    
+    /**
+     * disconnectAdmin
+     *
+     * Permet de déconnecter l'admin !!!ATTENTION Vous déconnecte également si vous êtiez connecté en utilisateur!!! 
+     *
+     * 
+     * @return void
+     */
     public function disconnectAdmin(){
-        /**
-         * Permet de déconnecter l'admin !!!ATTENTION Vous déconnecte également si vous êtiez connecté en utilisateur!!! 
-         */
+        
 
         session_destroy();
 
         header('Location: index.php'); //Changer si vous voulez modifier votre page de direction une fois la deconnexion effectuer
     }
-
+    
+    /**
+     * afficheChangePassword
+     *
+     *  Permet d'afficher la page de changement de mot de passe de l'administrateur
+     * 
+     * @return void
+     */
     public function afficheChangePassword(){
         if(isset($_SESSION['identifiantAdmin'])){
             $adminChangePassword = '../plugins/admin/src/view/changePasswordView.php';
@@ -69,7 +106,14 @@ class ControllerAdmin{
         }
         
     }
-
+    
+    /**
+     * changePassword
+     *
+     *  Permet de changer le mot de passe d'administration
+     * 
+     * @return void
+     */
     public function changePassword(){
         if(isset($_SESSION['identifiantAdmin'])){
             if(!preg_match("#[<>]#", $_POST['ancienPassword'])&& !preg_match("#[<>]",$_POST['nouveauPassword'])&& !preg_match("#[<>]#", $_POST['nouveauPasswordVerif'])){

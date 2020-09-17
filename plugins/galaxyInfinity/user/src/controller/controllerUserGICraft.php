@@ -22,7 +22,15 @@ class ControllerUserGICraft{
 
     }
 
-
+    
+    /**
+     * afficheCraftUser
+     *
+     * Affiche les batiments par rapport tier sélectionner 
+     * 
+     * @param  int $tier
+     * @return void
+     */
     public function afficheCraftUser($tier){
         if(isset($_SESSION['pseudo'])){
 
@@ -46,7 +54,7 @@ class ControllerUserGICraft{
                 $nombreCraftPlanete = $this->managerUserGICraft->getCraftPlaneteX();
                 
                 $verifPrCraft = $this->verifPrCraft($craftPR);
-                $verifCraftCraft = $this->verifCraftCraft($craftCraft);
+                $verifCraftCraft = $this->verifCraftCraft($craftCraft, 1);
                 $verifCraftEnCours = $this->managerUserGICraft->verifCraftEnCours();
 
 
@@ -60,7 +68,14 @@ class ControllerUserGICraft{
             $this->controllerBase->afficheView([$userCraft],'userGestionCraft');
         }
     }
-    
+        
+    /**
+     * getConstruCraftJs
+     * 
+     * Récupère et envoie la constru du craft en cours pour le js
+     *
+     * @return void
+     */
     public function getConstruCraftJs(){
         if(isset($_SESSION['pseudo'])){
 
@@ -73,7 +88,15 @@ class ControllerUserGICraft{
         }
     }
 
-
+    
+    /**
+     * addConstructionCraft
+     *
+     * Ajoute le craft dans la chaine de construction
+     * 
+     * @param  int $idCraft
+     * @return void
+     */
     public function addConstructionCraft($idCraft){
         
         if(isset($_SESSION['pseudo'])){
@@ -120,7 +143,15 @@ class ControllerUserGICraft{
         }
     }
 
-
+    
+    /**
+     * verifPrCraft
+     *
+     * Vérifie les pré-requis du craft
+     * 
+     * @param  array $craftPR
+     * @return void
+     */
     public function verifPrCraft($craftPR){
         $countPr = 0;
         foreach ($craftPR as $craftPR) {
@@ -141,8 +172,17 @@ class ControllerUserGICraft{
         }
         return $countPr;
     }
-
-    public function verifCraftCraft($craftCraft, $nombre = 1){
+    
+    /**
+     * verifCraftCraft
+     *
+     * Vérifie si le craft est possible
+     * 
+     * @param  array $craftCraft
+     * @param  int $nombre
+     * @return void
+     */
+    public function verifCraftCraft($craftCraft, $nombre){
         $countCraft = 0;
         foreach ($craftCraft as $craftCraft) {
             if(!empty($craftCraft['craft_id_travail'])){
@@ -164,12 +204,20 @@ class ControllerUserGICraft{
     }
 
 
-
+    
+    /**
+     * conversionSeconde
+     *
+     * Converti les secondes en heure minute et seconde
+     * 
+     * @param  int $seconde
+     * @return void
+     */
     function conversionSeconde($seconde){
-
+        $heures = 0;
 
         if($seconde < 3600){ 
-          $heures = 0; 
+
           
           if($seconde < 60){$minutes = 0;} 
           else{$minutes = round($seconde / 60);} 

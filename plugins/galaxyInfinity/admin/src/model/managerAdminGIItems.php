@@ -11,7 +11,14 @@ class ManagerAdminGIItems extends ManagerBDD
         $this->nomCraft = null;
 
     }
-
+    
+    /**
+     * getItems
+     * 
+     * Récupère tout les items
+     *
+     * @return array
+     */
     public function getItems(){
 
         $sql = 'SELECT * FROM items ORDER BY id';
@@ -19,32 +26,67 @@ class ManagerAdminGIItems extends ManagerBDD
         return $result->fetchAll();
 
     }
-
+    
+    /**
+     * itemExist
+     * 
+     * Vérifie si l'item existe
+     *
+     * @return int
+     */
     public function itemExist(){
         $sql = 'SELECT * FROM items WHERE nom = ?';
         $result = $this->createQuery($sql,[$this->nomItems]);
         return $result->rowCount();
     }
-
+    
+    /**
+     * addItem
+     * 
+     * Ajoute l'item de base
+     *
+     * @return void
+     */
     public function addItem(){
         $sql = 'INSERT INTO items(nom) VALUES(?)';
         return $this->createQuery($sql,[$this->nomItems]);
         
     }
-
+    
+    /**
+     * supprItemBase
+     * 
+     * Supprime l'item de base
+     *
+     * @return void
+     */
     public function supprItemBase(){
         $sql = 'DELETE FROM items WHERE id = ?';
         return $this->createQuery($sql,[$this->idItem]);
         
     }
-
+    
+    /**
+     * getItemById
+     * 
+     * Récupère un item par rapport a son id
+     *
+     * @return void
+     */
     public function getItemById(){
         $sql = 'SELECT * FROM items WHERE id= ?';
         $result = $this->createQuery($sql,[$this->idItem]);
         
         $this->nomItem = $result['nom'];
     }
-
+    
+    /**
+     * modifItemBase
+     *
+     * Modifie l'item de base
+     * 
+     * @return void
+     */
     public function modifItemBase(){
         $sql = 'UPDATE items SET nom = ? WHERE id = ?';
         return $this->createQuery($sql,[$this->nomItem,$this->idItem]);

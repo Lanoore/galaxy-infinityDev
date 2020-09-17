@@ -82,7 +82,14 @@ class ControllerUserGalaxyInfinity{
             
         }
     }
-
+    
+    /**
+     * gestionUserConnectionGI
+     * 
+     * Récupère la planete de base a la connexion de l'utilisateur
+     *
+     * @return void
+     */
     public function gestionUserConnectionGI(){
         if(isset($_SESSION['pseudo'])){
             $this->managerUserGI->idUser = $_SESSION['idUser'];
@@ -93,7 +100,15 @@ class ControllerUserGalaxyInfinity{
         }
     }
 
-    
+        
+    /**
+     * affichePreRequisUser
+     *
+     * Affiche les pré-requis 
+     * 
+     * @param  int $page
+     * @return void
+     */
     public function affichePreRequisUser($page){
         if(isset($_SESSION['pseudo'])){
         

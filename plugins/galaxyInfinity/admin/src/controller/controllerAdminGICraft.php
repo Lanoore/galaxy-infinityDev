@@ -34,7 +34,14 @@ class ControllerAdminGICraft{
 
         $this->controllerBase = new ControllerBase();
     }
-
+    
+    /**
+     * adminGestionCraft
+     * 
+     * Affiche la gestion des crafts coté admin
+     *
+     * @return void
+     */
     public function adminGestionCraft(){
         if(isset($_SESSION['identifiantAdmin'])){
 
@@ -57,7 +64,14 @@ class ControllerAdminGICraft{
         }
     }
 
-
+    
+    /**
+     * createCraftBase
+     * 
+     * Créer le craft de base avec son nom,tier,description, temps de base et l'image
+     *
+     * @return void
+     */
     public function createCraftBase(){
         if(isset($_SESSION['identifiantAdmin'])){
             $this->managerAdminGICraft->nomCraft = htmlentities($_POST['nomCraft']);
@@ -88,7 +102,15 @@ class ControllerAdminGICraft{
             }
         }
     }
-
+    
+    /**
+     * supprCraftBase
+     * 
+     *  Supprime  le craft de base sélectionner
+     *
+     * @param  int $idCraft
+     * @return void
+     */
     public function supprCraftBase($idCraft){
         if(isset($_SESSION['identifiantAdmin'])){
             $this->managerAdminGICraft->idCraft = $idCraft;
@@ -105,7 +127,14 @@ class ControllerAdminGICraft{
             }
         }
     }
-
+    
+    /**
+     * modifCraftBase
+     *
+     *  Modifie le craft de base sélectionner
+     * 
+     * @return void
+     */
     public function modifCraftBase(){
         if(isset($_SESSION['identifiantAdmin'])){
             $this->managerAdminGICraft->idCraft = $_POST['idCraft'];
@@ -128,7 +157,14 @@ class ControllerAdminGICraft{
 
         }
     }
-
+    
+    /**
+     * createCraftCraft
+     *
+     *  Créer le craft pour le craft avec la ressource et/ou le craft requis ainsi que le nombre associer
+     * 
+     * @return void
+     */
     public function createCraftCraft(){
         if(isset($_SESSION['identifiantAdmin'])){
             $this->managerAdminGICraft->idCraft = htmlentities($_POST['idCraft']);
@@ -155,14 +191,21 @@ class ControllerAdminGICraft{
             if($verifExist == 0){
                 
                 $confirmAdd = $this->managerAdminGICraft->createCraftCraft();
-                echo('test');
                 if($confirmAdd){
                     header('Location:index.php?galaxyInfinity=afficheAdminGestionCraft');
                 }
             }
         }
     }
-
+    
+    /**
+     * supprCraftCraft
+     *
+     *  Supprime le craft du craft sélectionner
+     * 
+     * @param  int $idLigne
+     * @return void
+     */
     public function supprCraftCraft($idLigne){
         if(isset($_SESSION['identifiantAdmin'])){
             $this->managerAdminGICraft->idLigne = $idLigne;
@@ -176,7 +219,14 @@ class ControllerAdminGICraft{
             }
         }
     }
-
+    
+    /**
+     * modifCraftCraft
+     *
+     *  Modifie le craft du craft sélectionner
+     * 
+     * @return void
+     */
     public function modifCraftCraft(){
         
         if(isset($_SESSION['identifiantAdmin'])){
@@ -213,7 +263,14 @@ class ControllerAdminGICraft{
         }
     }
 
-
+    
+    /**
+     * createCraftPR
+     *
+     *  Créer le pré-requis du craft sélectionner avec le niveau du batiment et/ou de la technologie sélectionner
+     * 
+     * @return void
+     */
     public function createCraftPR(){
         if(isset($_SESSION['identifiantAdmin'])){
             $this->managerAdminGICraft->idCraft = htmlentities($_POST['idCraft']);
@@ -236,20 +293,25 @@ class ControllerAdminGICraft{
                 $this->managerAdminGICraft->niveauTechnoPR = null;
             }
 
-           // $verifExist = $this->managerAdminGICraft->verifCraftPRExist();
-                
-            //if($verifExist == 0){
                 
                 $confirmAdd = $this->managerAdminGICraft->createCraftPR();
                 
                 if($confirmAdd){
                     header('Location:index.php?galaxyInfinity=afficheAdminGestionCraft');
                 }
-            //}
+
 
         }
     }
-
+    
+    /**
+     * supprCraftPR
+     *
+     *  Supprime le pré-requis du craft sélectionner
+     * 
+     * @param  int $idLigne
+     * @return void
+     */
     public function supprCraftPR($idLigne){
         if(isset($_SESSION['identifiantAdmin'])){
             $this->managerAdminGICraft->idLigne = $idLigne;
@@ -264,7 +326,14 @@ class ControllerAdminGICraft{
             }
         }
     }
-
+    
+    /**
+     * modifCraftPR
+     *
+     *  Modifie le pré-requis du craft sélectionner
+     * 
+     * @return void
+     */
     public function modifCraftPR(){
         if(isset($_SESSION['identifiantAdmin'])){
             $this->managerAdminGICraft->idLigne = htmlentities($_POST['idLigne']);
