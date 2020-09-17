@@ -47,7 +47,10 @@ class ManagerAdminGIRessource extends ManagerBDD
      * @return array
      */
     public function getProdRessources(){
-        $sql = 'SELECT * FROM prod_ressources ORDER BY batiment_id ASC';
+        $sql = 'SELECT * FROM prod_ressources
+                LEFT JOIN batiment ON batiment.id = prod_ressources.batiment_id
+                LEFT JOIN ressource ON ressource.id = prod_ressources.ressource_id
+         ORDER BY batiment_id ASC';
         $result = $this->createQuery($sql);
         return $result->fetchAll();
     }
@@ -79,7 +82,9 @@ class ManagerAdminGIRessource extends ManagerBDD
     
 
     public function getLiaisonRessourceBat(){
-        $sql = 'SELECT * FROM batiment_prod_ressource';
+        $sql = 'SELECT * FROM batiment_prod_ressource
+                LEFT JOIN batiment ON batiment.id = batiment_prod_ressource.batiment_id
+                LEFT JOIN ressource ON ressource.id = batiment_prod_ressource.ressource_id';
         $result = $this->createQuery($sql);
         return $result->fetchAll();
     }

@@ -70,7 +70,11 @@ class ManagerAdminGITechnologie extends ManagerBDD
 
     public function getTechnologieNiveauAdmin(){
 
-        $sql = 'SELECT * FROM technologie_craft ORDER BY technologie_id DESC';
+        $sql = 'SELECT * FROM technologie_craft
+                LEFT JOIN technologie ON technologie.id = technologie_craft.technologie_id
+                LEFT JOIN craft ON craft.id = technologie_craft.craft_id
+                LEFT JOIN items ON items.id = technologie_craft.items_id
+         ORDER BY technologie_id DESC';
         $result = $this->createQuery($sql);
         return $result->fetchAll();
     }
@@ -108,7 +112,9 @@ class ManagerAdminGITechnologie extends ManagerBDD
     }
 
     public function getTechnologieTempsNiveauAdmin(){
-        $sql = 'SELECT * FROM technologie_niveau ORDER BY technologie_id ASC';
+        $sql = 'SELECT * FROM technologie_niveau
+                LEFT JOIN technologie ON technologie.id = technologie_niveau.technologie_id
+         ORDER BY technologie_id ASC';
         $result = $this->createQuery($sql);
         return $result->fetchAll();
     }
@@ -138,7 +144,11 @@ class ManagerAdminGITechnologie extends ManagerBDD
     }
 
     public function getTechnologiePRAdmin(){
-        $sql = 'SELECT * FROM pre_requis_technologie ORDER BY technologie_id ASC';
+        $sql = 'SELECT * FROM pre_requis_technologie
+                LEFT JOIN technologie as technologieId ON technologieId.id = pre_requis_technologie.technologie_id
+                LEFT JOIN batiment ON batiment.id = pre_requis_technologie.batiment_id_requis
+                LEFT JOIN technologie as technologiePR ON technologiePR.id = pre_requis_technologie.technologie_id_requis
+         ORDER BY technologie_id ASC';
         $result = $this->createQuery($sql);
         return $result->fetchAll();
     }

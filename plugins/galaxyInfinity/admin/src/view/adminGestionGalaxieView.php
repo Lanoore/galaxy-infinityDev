@@ -62,11 +62,11 @@
                 <?php
                     foreach ($planetes as $planete) {?>
                         <tr>
-                            <td><?=$planete['id']?></td>
+                            <td><?=$planete[0]?></td>
                             <td><?=$planete['systeme']?></td>
                             <td><?=$planete['position']?></td>
                             <td><?=$planete['situation']?></td>
-                            <td><?=$planete['user_id']?></td>
+                            <td><?=$planete['pseudo']?></td>
                             <td><form action="index.php?galaxyInfinity=supprPlanete&idPlanete=<?=$planete['id']?>" method="post"><input type="submit" name="Supprimer" value="Supprimer"></form></td>
                         </tr>
                      <?php   

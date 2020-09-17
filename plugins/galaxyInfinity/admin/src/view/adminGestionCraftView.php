@@ -21,11 +21,11 @@
                     <input type="number" id="tier" name="tier" min="1" max="10">
                 </div>
                 <div>
-                <label for="tempsCraft">Temps du craft</label>
+                <label for="tempsCraft">Temps du craft</label><br/>
                     <input type="number" id='tempsCraft' name='tempsCraft'>
                 </div>
                 <div>
-                    <label for="image">Image du craft</label>
+                    <label for="image">Image du craft</label><br/>
                     <input type="file" name ="image">
                 </div>
                 <div>
@@ -173,7 +173,7 @@
                     <input type="number" id="tier" name="tier" min="1" max="10">
                 </div>
                 <div>
-                    <label for="tempsCraft">Temps du craft</label>
+                    <label for="tempsCraft">Temps du craft</label><br/>
                     <input type="number" id='tempsCraft' name='tempsCraft'>
                 </div>
                 <div>
@@ -318,6 +318,7 @@
          </div> 
     <div>
         <table class="dataTable">
+        <h4>Craft de base</h4>
             <thead>
                 <tr>
                     <th>Id du craft</th>
@@ -347,14 +348,15 @@
                 ?>
             </tbody>
         </table>
+        
         <table class="dataTable">
             <thead>
                 <tr>
                     <th>Id de la ligne</th>
-                    <th>Id du craft</th>
-                    <th>Id ressource</th>
+                    <th>Nom du craft</th>
+                    <th>Nom ressource</th>
                     <th>Nombre Ressource</th>
-                    <th>Id Craft Travail</th>
+                    <th>Nom Craft Travail</th>
                     <th>Nombre craft travail</th>
                     <th>Action ?</th>
                 </tr>
@@ -363,11 +365,11 @@
                 <?php
                     foreach ($craftCrafts as $craftCraft) {?>
                         <tr>
-                            <td><?=$craftCraft['id']?></td>
-                            <td><?=$craftCraft['craft_id']?></td>
-                            <td><?=$craftCraft['ressource_id']?></td>
+                            <td><?=$craftCraft[0]?></td>
+                            <td><?=$craftCraft[7]?></td>
+                            <td><?=$craftCraft[19]?></td>
                             <td><?=$craftCraft['nombre_ressource']?></td>
-                            <td><?=$craftCraft['craft_id_travail']?></td>
+                            <td><?=$craftCraft[13]?></td>
                             <td><?=$craftCraft['nombre_craft_travail']?></td>
                             <td><form action="index.php?galaxyInfinity=supprCraftCraft&idLigne=<?=$craftCraft['id']?>" method="post"><input type="submit" name="Supprimer" value="Supprimer"></form></td>
                         </tr>
@@ -378,13 +380,14 @@
             </tbody>
         </table>
             <table class="dataTable">
+            <h4>Craft pré-requis</h4>
                 <thead>
                     <tr>
                         <th>Id de la ligne</th>
-                        <th>Id Craft</th>
-                        <th>Id Batiment PR</th>
+                        <th>Nom Craft</th>
+                        <th>Nom Batiment PR</th>
                         <th>Niveau Batiment PR</th>
-                        <th>Id Technologie PR</th>
+                        <th>Nom Technologie PR</th>
                         <th>Niveau Technologie PR</th>
                         <th>Action ?</th>
                     </tr>
@@ -393,11 +396,11 @@
                     <?php
                     foreach($craftsPR as $craftPR){?>
                         <tr>
-                            <td><?=$craftPR['id']?></td>
-                            <td><?=$craftPR['craft_id']?></td>
-                            <td><?=$craftPR['batiment_id_requis']?></td>
+                            <td><?=$craftPR[0]?></td>
+                            <td><?=$craftPR[7]?></td>
+                            <td><?=$craftPR[13]?></td>
                             <td><?=$craftPR['niveau_id_batiment']?></td>
-                            <td><?=$craftPR['technologie_id_requis']?></td>
+                            <td><?=$craftPR[18]?></td>
                             <td><?=$craftPR['niveau_id_technologie']?></td>
                             <td><form action="index.php?galaxyInfinity=supprCraftPR&idLigne=<?=$craftPR['id']?>" method='post'><input type="submit" name="Supprimer" value="Supprimer"></form></td>
                         </tr>

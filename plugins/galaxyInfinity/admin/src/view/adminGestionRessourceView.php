@@ -222,9 +222,9 @@
             <table class="dataTable">
                 <thead>
                     <tr>
-                        <th>Id du batiment</th>
+                        <th>Nom du batiment</th>
                         <th>Id niveau</th>
-                        <th>Id ressource</th>
+                        <th>Nom ressource</th>
                         <th>Prod Ressource par niveau</th>
                         <th>Action ?</th>
                     </tr>
@@ -233,9 +233,9 @@
                     <?php
                         foreach ($prodRessources as $prodRessource) {?>
                             <tr>
-                                <td><?=$prodRessource['batiment_id']?></td>
+                                <td><?=$prodRessource[5]?></td>
                                 <td><?=$prodRessource['niveau_id']?></td>
-                                <td><?=$prodRessource['ressource_id']?></td>
+                                <td><?=$prodRessource[10]?></td>
                                 <td><?=$prodRessource['prod_ressource_niveau']?></td>
                                 <td><form action="index.php?galaxyInfinity=supprProdRessourceBat&idRessource=<?=$prodRessource['ressource_id']?>&idNiveau=<?=$prodRessource['niveau_id']?>&idBatiment=<?=$prodRessource['batiment_id']?>" method="post"><input type="submit" name="Supprimer" value="Supprimer"></form></td>
                             </tr>
@@ -250,8 +250,8 @@
             <table class="dataTable">
                 <thead>
                     <tr>
-                        <th>Id de la ressource</th>
-                        <th>Id du batiment</th>
+                        <th>Nom de la ressource</th>
+                        <th>Nom du batiment</th>
                         <th>Action ?</th>
                     </tr>
                 </thead>
@@ -259,8 +259,8 @@
                     <?php
                         foreach ($liaisonRessourceBat as $liaisonRessourceBat) {?>
                             <tr>
-                                <td><?=$liaisonRessourceBat['ressource_id']?></td>
-                                <td><?=$liaisonRessourceBat['batiment_id']?></td>
+                                <td><?=$liaisonRessourceBat[3]?></td>
+                                <td><?=$liaisonRessourceBat[8]?></td>
 
                                 <td><form action="index.php?galaxyInfinity=supprLiaisonRessourceBat&idRessource=<?=$liaisonRessourceBat['ressource_id']?>&idBatiment=<?=$liaisonRessourceBat['batiment_id']?>" method="post"><input type="submit" name="Supprimer" value="Supprimer"></form></td>
                             </tr>

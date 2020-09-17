@@ -68,7 +68,10 @@ class ManagerAdminGICraft extends ManagerBDD
         }
 
         public function getCraftCraftAdmin(){
-            $sql = 'SELECT * FROM craft_craft';
+            $sql = 'SELECT * FROM craft_craft
+                    LEFT JOIN craft as craftId ON craftId.id = craft_craft.craft_id
+                    LEFT JOIN craft as craftIdRequis ON craftIdRequis.id = craft_craft.craft_id_travail
+                    LEFT JOIN ressource ON ressource.id = craft_craft.ressource_id';
             $result = $this->createQuery($sql);
             return $result->fetchAll();
         }
@@ -105,7 +108,11 @@ class ManagerAdminGICraft extends ManagerBDD
 
 
         public function getCraftPRAdmin(){
-            $sql = 'SELECT * FROM pre_requis_craft ORDER BY craft_id ASC';
+            $sql = 'SELECT * FROM pre_requis_craft
+                    LEFT JOIN craft ON craft.id = pre_requis_craft.craft_id
+                    LEFT JOIN batiment ON batiment.id = pre_requis_craft.batiment_id_requis
+                    LEFT JOIN technologie ON technologie.id = pre_requis_craft.technologie_id_requis
+             ORDER BY craft_id ASC';
             $result = $this->createQuery($sql);
             return $result->fetchAll();
         }

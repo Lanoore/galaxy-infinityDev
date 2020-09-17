@@ -36,7 +36,7 @@ class ControllerAdminGIBatiment
 
             
             $adminBatBase = $this->managerAdminGIBatiment->getBatBaseAdmin();
-            $adminBatNiveau = $this->managerAdminGIBatiment->getBatNiveauAdmin(); 
+            $adminBatNiveau = $this->managerAdminGIBatiment->getBatNiveauAdmin();
             $adminBatTempsNiveau = $this->managerAdminGIBatiment->getBatTempsNiveauAdmin();
             $adminBatPR = $this->managerAdminGIBatiment->getBatPRAdmin();
             $adminBatStartPlanete = $this->managerAdminGIBatiment->getBatStartPlanete();

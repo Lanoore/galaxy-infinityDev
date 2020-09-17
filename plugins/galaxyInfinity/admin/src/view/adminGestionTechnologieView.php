@@ -406,6 +406,7 @@
     <div>
         <div>
             <table class="dataTable">
+            <h4>Technologie de base</h4>
                 <thead>
                     <tr>
                         <th>Id de la technologie</th>
@@ -436,14 +437,15 @@
         </div>
         <div>
             <table class="dataTable">
+            <h4>Technologie craft par niveau</h4>
                 <thead>
                     <tr>
                         <th>Id Ligne</th>
-                        <th>Technologie id</th>
+                        <th>Nom technologie</th>
                         <th>Niveau </th>
-                        <th>Craft id</th>
+                        <th>Nom craft</th>
                         <th>Nombre craft</th>
-                        <th>Items id</th>
+                        <th>Nom items</th>
                         <th>Nombre items</th>
                         <th>Action ?</th>
                     </tr>
@@ -452,12 +454,12 @@
                     <?php
                         foreach ($adminTechnologieNiveau as $technoNiveau) {?>
                             <tr>
-                                <td><?=$technoNiveau['id'];?></td>
-                                <td><?=$technoNiveau['technologie_id'];?></td>
+                                <td><?=$technoNiveau[0];?></td>
+                                <td><?=$technoNiveau[8];?></td>
                                 <td><?=$technoNiveau['niveau_id'];?></td>
-                                <td><?=$technoNiveau['craft_id'];?></td>
+                                <td><?=$technoNiveau[13];?></td>
                                 <td><?=$technoNiveau['nombre_craft'];?></td>
-                                <td><?=$technoNiveau['items_id'];?></td>
+                                <td><?=$technoNiveau[19];?></td>
                                 <td><?=$technoNiveau['nombre_items'];?></td>
                                 <td><form action="index.php?galaxyInfinity=supprTechnologieCraftNiveau&idLigne=<?=$technoNiveau['id']?>" method="post"><input type="submit" name="Supprimer" value="Supprimer"></form></td>
                             </tr>
@@ -471,9 +473,10 @@
 
         <div>
             <table class="dataTable">
+            <h4>Technologie temps construction par niveau</h4>
                 <thead>
                     <tr>
-                        <th>id Technologie</th>
+                        <th>Nom Technologie</th>
                         <th>Niveau Technologie</th>
                         <th>Temps Construction</th>
                         <th>Action ?</th>
@@ -483,7 +486,7 @@
                     <?php
                     foreach($adminTechnologieTempsNiveau as $technoTemps){?>
                         <tr>
-                            <td><?=$technoTemps['technologie_id']?></td>
+                            <td><?=$technoTemps['nom']?></td>
                             <td><?=$technoTemps['niveau_id']?></td>
                             <td><?=$technoTemps['temps_construction']?></td>
                             <td><form action="index.php?galaxyInfinity=supprTechnologieTempsNiveau&idTechnologie=<?=$technoTemps['technologie_id']?>&idNiveau=<?=$technoTemps['niveau_id']?>" method='post'><input type="submit" name="Supprimer" value="Supprimer"></form></td>
@@ -495,13 +498,14 @@
         </div>
         <div>
             <table class='dataTable'>
+            <h4>Technologie pré-requis</h4>
                 <thead>
                     <tr>
                         <th>Id de la ligne</th>
-                        <th>Id Technologie</th>
-                        <th>Id Batiment PR</th>
+                        <th>Nom Technologie</th>
+                        <th>Nom Batiment PR</th>
                         <th>Niveau Batiment PR</th>
-                        <th>Id Technologie PR</th>
+                        <th>Nom Technologie PR</th>
                         <th>Niveau Technologie PR</th>
                         <th>Action ?</th>
                     </tr>
@@ -510,11 +514,11 @@
                     <?php
                     foreach($adminTechnologiePR as $technoPR){?>
                         <tr>
-                            <td><?=$technoPR['id']?></td>
-                            <td><?=$technoPR['technologie_id']?></td>
-                            <td><?=$technoPR['batiment_id_requis']?></td>
+                            <td><?=$technoPR[0]?></td>
+                            <td><?=$technoPR[7]?></td>
+                            <td><?=$technoPR[12]?></td>
                             <td><?=$technoPR['niveau_id_batiment']?></td>
-                            <td><?=$technoPR['technologie_id_requis']?></td>
+                            <td><?=$technoPR[17]?></td>
                             <td><?=$technoPR['niveau_id_technologie']?></td>
                             <td><form action="index.php?galaxyInfinity=supprTechnologiePR&idLigne=<?=$technoPR['id']?>" method='post'><input type="submit" name="Supprimer" value="Supprimer"></form></td>
                         </tr>

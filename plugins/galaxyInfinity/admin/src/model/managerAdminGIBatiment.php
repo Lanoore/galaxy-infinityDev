@@ -72,7 +72,11 @@ class ManagerAdminGIBatiment extends ManagerBDD
 
     public function getBatNiveauAdmin(){
 
-        $sql = 'SELECT * FROM batiment_craft ORDER BY batiment_id DESC';
+        $sql = 'SELECT * FROM batiment_craft
+                LEFT JOIN batiment ON batiment_craft.batiment_id = batiment.id
+                LEFT JOIN craft ON batiment_craft.craft_id = craft.id
+                LEFT JOIN items ON batiment_craft.items_id = items.id
+         ORDER BY batiment_id DESC';
         $result = $this->createQuery($sql);
         return $result->fetchAll();
     }
@@ -110,7 +114,9 @@ class ManagerAdminGIBatiment extends ManagerBDD
     }
 
     public function getBatTempsNiveauAdmin(){
-        $sql = 'SELECT * FROM batiment_niveau ORDER BY batiment_id ASC';
+        $sql = 'SELECT * FROM batiment_niveau
+                LEFT JOIN batiment ON batiment.id = batiment_niveau.batiment_id
+         ORDER BY batiment_id ASC';
         $result = $this->createQuery($sql);
         return $result->fetchAll();
     }
@@ -140,7 +146,11 @@ class ManagerAdminGIBatiment extends ManagerBDD
     }
 
     public function getBatPRAdmin(){
-        $sql = 'SELECT * FROM pre_requis_batiment ORDER BY batiment_id ASC';
+        $sql = 'SELECT * FROM pre_requis_batiment
+                LEFT JOIN batiment as batId ON batId.id = pre_requis_batiment.batiment_id
+                LEFT JOIN batiment as batIdRequis ON batIdRequis.id = pre_requis_batiment.batiment_id_requis
+                LEFT JOIN technologie ON technologie.id = pre_requis_batiment.technologie_id_requis
+         ORDER BY batiment_id ASC';
         $result = $this->createQuery($sql);
         return $result->fetchAll();
     }
@@ -181,7 +191,8 @@ class ManagerAdminGIBatiment extends ManagerBDD
     }
 
     public function getBatStartPlanete(){
-        $sql = 'SELECT * FROM bat_start_planete';
+        $sql = 'SELECT * FROM bat_start_planete
+                LEFT JOIN batiment ON batiment.id= bat_start_planete.batiment_id';
         $result = $this->createQuery($sql);
         return $result->fetchAll();
     }

@@ -9,9 +9,11 @@ class ManagerAdminGIGalaxie extends managerBdd
 {
     public function getPlanetes(){
 
-        // $sql = 'SELECT planete.id ,planete.systeme , planete.position , planete.situation , planete.user_id, user.pseudo pseudoJoueur FROM planete INNER JOIN user ON planete.user_id = user.id  ORDER BY systeme ASC';
+       
 
-        $sql = 'SELECT id ,systeme , position , situation , user_id FROM planete  ORDER BY systeme ASC';
+        $sql = 'SELECT * FROM planete
+                LEFT JOIN user ON user.id = planete.user_id
+          ORDER BY systeme ASC';
         $result = $this->createQuery($sql);
         return $result->fetchAll();
     }

@@ -224,7 +224,7 @@
             <h4>Modif Batiment Base</h4>
             <form action="index.php?galaxyInfinity=modifBatBase" method="post">
             <div>
-                <label for="idBat">Nom du batiment a modifié</label>
+                <label for="idBat">Nom du batiment a modifié</label><br/>
                 <select name="idBat" id="idBat">
                     <option value="null"></option>
                     <?php
@@ -255,7 +255,7 @@
             <h4>Modif Batiment Craft Niveau</h4>
             <form action="index.php?galaxyInfinity=modifBatCraftNiveau" method="post">
                 <div>
-                    <label for="idLigne">Id de la ligne cible</label>
+                    <label for="idLigne">Id de la ligne cible</label><br/>
                     <select name="idLigne" id="idLigne">
                         <option value="null"></option>
                         <?php
@@ -361,7 +361,7 @@
             <h4>Modification Pré requis batiment</h4>
                 <form action="index.php?galaxyInfinity=modifBatPR" method="post">
                     <div>
-                        <label for="idLigne">Id de la ligne cible</label>
+                        <label for="idLigne">Id de la ligne cible</label><br/>
                         <select name="idLigne" id="idLigne">
                             <option value=""></option>
                             <?php
@@ -466,6 +466,7 @@
     <div>
         <div>
             <table class="dataTable">
+            <h4>Batiment de base</h4>
                 <thead>
                     <tr>
                         <th>Id du batiment</th>
@@ -496,14 +497,15 @@
         </div>
         <div>
             <table class="dataTable">
+                <h4>Batiment craft par niveau</h4>
                 <thead>
                     <tr>
                         <th>Id Ligne</th>
-                        <th>Batiment id</th>
+                        <th>Nom batiment</th>
                         <th>Niveau </th>
-                        <th>Craft id</th>
+                        <th>Nom craft</th>
                         <th>Nombre craft</th>
-                        <th>Items id</th>
+                        <th>Nom items</th>
                         <th>Nombre items</th>
                         <th>Action ?</th>
                     </tr>
@@ -512,12 +514,12 @@
                     <?php
                         foreach ($adminBatNiveau as $batNiveau) {?>
                             <tr>
-                                <td><?=$batNiveau['id'];?></td>
-                                <td><?=$batNiveau['batiment_id'];?></td>
+                                <td><?=$batNiveau[0];?></td>
+                                <td><?=$batNiveau[8];?></td>
                                 <td><?=$batNiveau['niveau_id'];?></td>
-                                <td><?=$batNiveau['craft_id'];?></td>
+                                <td><?=$batNiveau[13];?></td>
                                 <td><?=$batNiveau['nombre_craft'];?></td>
-                                <td><?=$batNiveau['items_id'];?></td>
+                                <td><?=$batNiveau[19];?></td>
                                 <td><?=$batNiveau['nombre_items'];?></td>
                                 <td><form action="index.php?galaxyInfinity=supprBatCraftNiveau&idLigne=<?=$batNiveau['id']?>" method="post"><input type="submit" name="Supprimer" value="Supprimer"></form></td>
                             </tr>
@@ -531,9 +533,10 @@
 
         <div>
             <table class="dataTable">
+                <h4>Batiment temps construction par niveau</h4>
                 <thead>
                     <tr>
-                        <th>id Batiment</th>
+                        <th>Nom Batiment</th>
                         <th>Niveau Batiment</th>
                         <th>Temps Construction</th>
                         <th>Action ?</th>
@@ -543,7 +546,7 @@
                     <?php
                     foreach($adminBatTempsNiveau as $batTemps){?>
                         <tr>
-                            <td><?=$batTemps['batiment_id']?></td>
+                            <td><?=$batTemps['nom']?></td>
                             <td><?=$batTemps['niveau_id']?></td>
                             <td><?=$batTemps['temps_construction']?></td>
                             <td><form action="index.php?galaxyInfinity=supprBatTempsNiveau&idBatiment=<?=$batTemps['batiment_id']?>&idNiveau=<?=$batTemps['niveau_id']?>" method='post'><input type="submit" name="Supprimer" value="Supprimer"></form></td>
@@ -555,13 +558,14 @@
         </div>
         <div>
             <table class="dataTable">
+                <h4>Batiment pré_requis</h4>
                 <thead>
                     <tr>
                         <th>Id de la ligne</th>
-                        <th>Id Batiment</th>
-                        <th>Id Batiment PR</th>
+                        <th>Nom Batiment</th>
+                        <th>Nom Batiment PR</th>
                         <th>Niveau Batiment PR</th>
-                        <th>Id Technologie PR</th>
+                        <th>Nom Technologie PR</th>
                         <th>Niveau Technologie PR</th>
                         <th>Action ?</th>
                     </tr>
@@ -571,10 +575,10 @@
                     foreach($adminBatPR as $batPR){?>
                         <tr>
                             <td><?=$batPR['id']?></td>
-                            <td><?=$batPR['batiment_id']?></td>
-                            <td><?=$batPR['batiment_id_requis']?></td>
+                            <td><?=$batPR[7]?></td>
+                            <td><?=$batPR[12]?></td>
                             <td><?=$batPR['niveau_id_batiment']?></td>
-                            <td><?=$batPR['technologie_id_requis']?></td>
+                            <td><?=$batPR[17]?></td>
                             <td><?=$batPR['niveau_id_technologie']?></td>
                             <td><form action="index.php?galaxyInfinity=supprBatPR&idLigne=<?=$batPR['id']?>" method='post'><input type="submit" name="Supprimer" value="Supprimer"></form></td>
                         </tr>
@@ -585,9 +589,10 @@
         </div>
         <div>
             <table class="dataTable">
+            <h4>Batiment de base au start de la planete</h4>
                 <thead>
                     <tr>
-                        <th>Id Batiment</th>
+                        <th>Nom Batiment</th>
                         <th>Niveau</th>
                         <th>Action ?</th>
                     </tr>
@@ -596,7 +601,7 @@
                     <?php
                     foreach($adminBatStartPlanete as $batStartPlanete){?>
                         <tr>
-                            <td><?=$batStartPlanete['batiment_id']?></td>
+                            <td><?=$batStartPlanete['nom']?></td>
                             <td><?=$batStartPlanete['niveau_start_id']?></td>
                             <td><form action="index.php?galaxyInfinity=supprBatStartPlanete&idBatiment=<?=$batStartPlanete['batiment_id']?>" method='post'><input type="submit" name="Supprimer" value="Supprimer"></form></td>
                         </tr>
