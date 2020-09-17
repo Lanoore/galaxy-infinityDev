@@ -396,6 +396,9 @@ class Router
                         case 'afficheHomeUser':
                             $this->controllerUserGIHome->afficheHomeUser();
                             break;
+                        case 'getAllRessources':
+                            $this->controllerUserGIHome->allRessources();
+                            break;
                         //Partie Batiment    
                         case 'afficheBatimentUser':
                             $this->controllerUserGIBatiment->afficheBatimentUser($_GET['tier']);

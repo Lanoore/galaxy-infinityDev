@@ -7,3 +7,14 @@
 .afficheXEnCours{
     display: flex;
 }
+
+.afficheAll{
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.afficheAll div{
+    width: 50%;
+    text-align: center;
+}
