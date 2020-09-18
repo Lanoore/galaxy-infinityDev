@@ -60,6 +60,9 @@ class ControllerChat{
             }
             echo json_encode($chat);
         }
+        else{
+            header('Location:index.php');
+        }
     }
     
     /**
@@ -83,6 +86,9 @@ class ControllerChat{
                 header('Location:index.php?chat=afficheChat');
             }
             
+        }
+        else{
+            header('Location:index.php');
         }
     }
 }

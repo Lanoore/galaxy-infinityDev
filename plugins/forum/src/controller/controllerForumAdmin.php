@@ -36,6 +36,9 @@ class ControllerForumAdmin{
             $this->managerForumAdmin->createCategorie();
             header('Location:index.php?forum=afficheAdminForumGestion');
         }
+        else{
+            header('Location:index.php?admin=afficheConnexion');
+        }
     }   
     
     /**
@@ -57,6 +60,9 @@ class ControllerForumAdmin{
                 }
             }
         }
+        else{
+            header('Location:index.php?admin=afficheConnexion');
+        }
     }
     
     /**
@@ -76,6 +82,9 @@ class ControllerForumAdmin{
                 $this->managerForumAdmin->modifCategorie();
                 header('Location:index.php?forum=afficheAdminForumGestion');
             }
+        }
+        else{
+            header('Location:index.php?admin=afficheConnexion');
         }
     }
     
@@ -98,6 +107,9 @@ class ControllerForumAdmin{
                 }
             }
         }
+        else{
+            header('Location:index.php?admin=afficheConnexion');
+        }
     }
     
     /**
@@ -117,6 +129,9 @@ class ControllerForumAdmin{
                 $this->managerForumAdmin->moveTopic();
                 header('Location:index.php?forum=afficheAdminForumGestion');
             }
+        }
+        else{
+            header('Location:index.php?admin=afficheConnexion');
         }
     }
     
@@ -138,6 +153,9 @@ class ControllerForumAdmin{
                     header('Location:index.php?forum=afficheAdminForumGestion');
                 }
             }
+        }
+        else{
+            header('Location:index.php?admin=afficheConnexion');
         }
     }
     
@@ -168,7 +186,7 @@ class ControllerForumAdmin{
             $this->controllerBase->afficheView([$gestionForum],'forumAdminGestionView');
         }
         else{
-            echo 'Veuillez vous connectez en admin';
+            header('Location:index.php?admin=afficheConnexion');
         }
     }
 }    

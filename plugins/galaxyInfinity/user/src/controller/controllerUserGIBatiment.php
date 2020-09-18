@@ -65,6 +65,9 @@ class ControllerUserGIBatiment{
 
             $this->controllerBase->afficheView([$userBatiment],'userGestionBatiment');
         }
+        else{
+            header('Location:index.php?user=afficheConnexion');
+        }
     }
 
     
@@ -83,6 +86,9 @@ class ControllerUserGIBatiment{
             $construEnCours [] = ['idBat' => $getBatEnCours['batiment_id'], 'nomBat' =>html_entity_decode($getBatEnCours['nom']), 'niveauBat' => $getBatEnCours['niveau_batiment_construction'], 'finBatActuel' => $getBatEnCours['fin_batiment_actuel']];
             
             echo json_encode($construEnCours);
+        }
+        else{
+            header('Location:index.php?user=afficheConnexion');
         }
     }
 
@@ -127,6 +133,9 @@ class ControllerUserGIBatiment{
                     }
 
                 }
+                else{
+                    header('Location:index.php?galaxyInfinity=afficheBatimentUser&tier=1');
+                }
                 $tempsConstruBat = $this->managerUserGIBatiment->getTempsConstruBat();
                 $this->managerUserGIBatiment->finConstruActuel = time() + $tempsConstruBat['temps_construction'];
                 $confirmAdd = $this->managerUserGIBatiment->addConstructionBat();
@@ -134,7 +143,12 @@ class ControllerUserGIBatiment{
                 if($confirmAdd){
                     header('Location:index.php?galaxyInfinity=afficheBatimentUser&tier=1');
                 }
+            }else{
+                header('Location:index.php?galaxyInfinity=afficheBatimentUser&tier=1');
             }
+        }
+        else{
+            header('Location:index.php?user=afficheConnexion');
         }
     }
 

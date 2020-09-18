@@ -87,11 +87,11 @@ class ControllerUser
                         $this->controllerUserGI->createUserGI();
                         header('Location:index.php?user=afficheConnexion');
                     }
-                    else{
-                        echo('test');
-                    }
                 }
             }
+        }
+        else{
+            header('Location:index.php?user=afficheInscription');
         }
     }
 
@@ -128,8 +128,11 @@ class ControllerUser
                 
             }
             else{
-                echo('Le mot de passe est incorrect');
+                header('Location:index.php?user=afficheConnexion');
             }
+        }
+        else{
+            header('Location:index.php?user=afficheConnexion');
         }
     }
     
@@ -167,7 +170,7 @@ class ControllerUser
             $this->controllerBase->afficheView([$userInfo],'userInfoView');
         }
         else{
-            echo('erreur');
+            header('Location:index.php?user=afficheConnexion');
         }
         
     }

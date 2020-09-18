@@ -68,7 +68,7 @@ class ControllerUserGIHome{
      *
      * Récupère les ressources pour le js
      * 
-     * @return void
+     * @return array
      */
     public function allRessources(){
         if(isset($_SESSION['pseudo'])){
@@ -83,6 +83,9 @@ class ControllerUserGIHome{
         
         echo json_encode($ressources);
 
+        }
+        else{
+            header('Location:index.php?user=afficheConnexion');
         }
     }
   

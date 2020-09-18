@@ -58,9 +58,10 @@ class ControllerAdminGITechnologie
             $this->controllerBase->afficheView([$adminGI],'adminGestionTechnologie');
 
         }
+
         else{
-            echo('erreur');
-        }
+            header('Location:index.php?admin=afficheConnexion');
+        }  
     }
     
         
@@ -74,9 +75,7 @@ class ControllerAdminGITechnologie
      */
     public function createTechnologieBase(){
         if(isset($_SESSION['identifiantAdmin'])){
-            if(!empty($_POST['nom']) && !empty($_POST['descr']) && !empty($_POST['tier'])){
-                if(!preg_match("#[<>1-9]#", $_POST['nom']) && !preg_match("#[<>]#",$_POST['descr'])){
-                    if($_POST['tier'] >= 1 && $_POST['tier']<=10){
+            if(!empty($_POST['nom']) && !empty($_POST['descr']) && !empty($_POST['tier']) && !preg_match("#[<>1-9]#", $_POST['nom']) && !preg_match("#[<>]#",$_POST['descr']) && $_POST['tier'] >= 1 && $_POST['tier']<=1){
                         
                         $this->managerAdminGITechnologie->nomTechno= htmlentities($_POST['nom']);
                         $this->managerAdminGITechnologie->descrTechno = htmlentities($_POST['descr']);
@@ -97,23 +96,31 @@ class ControllerAdminGITechnologie
                                             move_uploaded_file($_FILES['image']['tmp_name'], '../plugins/galaxyInfinity/admin/public/img/technologie/' . basename($nomFichier));
                                             header('Location:index.php?galaxyInfinity=afficheAdminGestionTechnologie');
                                         }
-                                        else{
-                                            echo('injection echoué');
-                                            }
+                                    }
+                                    else{
+                                        header('Location:index.php?galaxyInfinity=afficheAdminGestionTechnologie');
                                     }
                                 }
+                                else{
+                                    header('Location:index.php?galaxyInfinity=afficheAdminGestionTechnologie');
+                                }
+                            }
+                            else{
+                                header('Location:index.php?galaxyInfinity=afficheAdminGestionTechnologie');
                             }         
                         }
                         else{
-                           echo'Une technologie existe deja sous ce nom';
+                            header('Location:index.php?galaxyInfinity=afficheAdminGestionTechnologie');
                         }
-                    }
-                }
+
             }
             else{
-                echo 'Erreur';
+                header('Location:index.php?galaxyInfinity=afficheAdminGestionTechnologie');
             }
         }
+        else{
+            header('Location:index.php?admin=afficheConnexion');
+        }  
     }
         
     /**
@@ -140,12 +147,15 @@ class ControllerAdminGITechnologie
                     }
                     
                 }
-                else{
-                    echo 'erreur';
-                }
+            }
+            else{
+                header("Location:index.php?galaxyInfinity=afficheAdminGestionTechnologie");  
             }
             
         }
+        else{
+            header('Location:index.php?admin=afficheConnexion');
+        }  
     }       
     /**
      * modifTechnologieBase
@@ -170,6 +180,9 @@ class ControllerAdminGITechnologie
                     header('Location:index.php?galaxyInfinity=afficheAdminGestionTechnologie');
                 }
             }
+        else{
+            header('Location:index.php?admin=afficheConnexion');
+        }  
     }
         
     /**
@@ -213,7 +226,14 @@ class ControllerAdminGITechnologie
                     header('Location:index.php?galaxyInfinity=afficheAdminGestionTechnologie');
                 }
             }
+            else{
+                header("Location:index.php?galaxyInfinity=afficheAdminGestionTechnologie");  
+            }
+            
         }
+        else{
+            header('Location:index.php?admin=afficheConnexion');
+        }  
     }
     
     /**
@@ -236,12 +256,16 @@ class ControllerAdminGITechnologie
                     $this->managerAdminGITechnologie->supprTechnologieCraftNiveau();
                     header("Location:index.php?galaxyInfinity=afficheAdminGestionTechnologie");
                 }
-                else{
-                    echo 'erreur';
-                }
+
+            }
+            else{
+                header("Location:index.php?galaxyInfinity=afficheAdminGestionTechnologie");  
             }
             
         }
+        else{
+            header('Location:index.php?admin=afficheConnexion');
+        }  
     }
 
     
@@ -286,8 +310,13 @@ class ControllerAdminGITechnologie
                     header('Location:index.php?galaxyInfinity=afficheAdminGestionTechnologie');
                 }
             }
-
+            else{
+                header("Location:index.php?galaxyInfinity=afficheAdminGestionTechnologie");  
+            }
         }
+        else{
+            header('Location:index.php?admin=afficheConnexion');
+        }  
     }
     
     
@@ -314,7 +343,14 @@ class ControllerAdminGITechnologie
                     header('Location:index.php?galaxyInfinity=afficheAdminGestionTechnologie');
                 }
             }
+            else{
+                header("Location:index.php?galaxyInfinity=afficheAdminGestionTechnologie");  
+            }
+            
         }
+        else{
+            header('Location:index.php?admin=afficheConnexion');
+        }  
     }
     
     /**
@@ -339,11 +375,15 @@ class ControllerAdminGITechnologie
                     $this->managerAdminGITechnologie->supprTechnologieTempsNiveau();
                     header("Location:index.php?galaxyInfinity=afficheAdminGestionTechnologie");
                 }
-                else{
-                    echo 'erreur';
-                }
             }
+            else{
+                header("Location:index.php?galaxyInfinity=afficheAdminGestionTechnologie");  
+            }
+            
         }
+        else{
+            header('Location:index.php?admin=afficheConnexion');
+        }  
     }
     
     /**
@@ -368,7 +408,14 @@ class ControllerAdminGITechnologie
                     header('Location:index.php?galaxyInfinity=afficheAdminGestionTechnologie');
                 }
             }
+            else{
+                header("Location:index.php?galaxyInfinity=afficheAdminGestionTechnologie");  
+            }
+            
         }
+        else{
+            header('Location:index.php?admin=afficheConnexion');
+        }  
     }
 
 
@@ -409,9 +456,11 @@ class ControllerAdminGITechnologie
                 if($confirmAdd){
                     header('Location:index.php?galaxyInfinity=afficheAdminGestionTechnologie');
                 }
-
-
-        }
+                
+            }
+            else{
+                header('Location:index.php?admin=afficheConnexion');
+            }  
     }
     
     /**
@@ -434,7 +483,15 @@ class ControllerAdminGITechnologie
                     header('Location:index.php?galaxyInfinity=afficheAdminGestionTechnologie');
                 }
             }
+            else{
+                header("Location:index.php?galaxyInfinity=afficheAdminGestionTechnologie");  
+            }
+            
         }
+        else{
+            header('Location:index.php?admin=afficheConnexion');
+        }  
+        
     }
     
     /**
@@ -476,7 +533,14 @@ class ControllerAdminGITechnologie
                     header('Location:index.php?galaxyInfinity=afficheAdminGestionTechnologie');
                 }
             }
+            else{
+                header("Location:index.php?galaxyInfinity=afficheAdminGestionTechnologie");  
+            }
+            
         }
+        else{
+            header('Location:index.php?admin=afficheConnexion');
+        }  
     }
 
 }

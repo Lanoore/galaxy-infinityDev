@@ -175,9 +175,7 @@ class ControllerForum{
      */
     public function createTopic($idCategorie){
         if(isset($_SESSION['idUser'])){
-            if(!empty($_POST['nomTopic'])&& !empty($_POST['messageTopic'])){
-                if(!preg_match("#[<>1-9]#", $_POST['nomTopic'])&& !preg_match("#[<>1-9]#", $_POST['messageTopic'])){
-
+            if(!empty($_POST['nomTopic'])&& !empty($_POST['messageTopic']) && !preg_match("#[<>]#", $_POST['nomTopic'])&& !preg_match("#[<>]#", $_POST['messageTopic'])){
                     $this->managerForum->idCategorie = $idCategorie;
                     $categorieExist = $this->managerForum->categorieExist();
                     if(empty($categorieExist)){
@@ -197,9 +195,11 @@ class ControllerForum{
                     }
                 }
                 else{
-                    echo('erreur');
-                }
+                    header('Location:index.php?forum=afficheCreateTopic');
             }
+        }
+        else{
+            header('Location:index.php');
         }
     }
     
@@ -233,6 +233,9 @@ class ControllerForum{
             }
             
         }
+        else{
+            header('Location:index.php');
+        }
     }
     
     /**
@@ -255,6 +258,9 @@ class ControllerForum{
             else{
                 header('Location:index.php?forum=afficheTopic&idTopic='.$topic['id'].'&page=1');
             }
+        }
+        else{
+            header('Location:index.php');
         }
     }
     
@@ -285,6 +291,9 @@ class ControllerForum{
                 header('Location:index.php?forum=afficheTopic&idTopic='.$idTopic.'&page=1');
             }
 
+        }
+        else{
+            header('Location:index.php');
         }
     }
 

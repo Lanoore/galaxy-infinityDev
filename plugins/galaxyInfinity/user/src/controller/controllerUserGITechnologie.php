@@ -65,6 +65,9 @@ class ControllerUserGITechnologie{
 
             $this->controllerBase->afficheView([$userTechnologie],'userGestionTechnologie');
         }
+        else{
+            header('Location:index.php?user=afficheConnexion');
+        }
     }
         
     /**
@@ -82,6 +85,9 @@ class ControllerUserGITechnologie{
             $construEnCours [] = ['idTechno' => $getTechnoEnCours['technologie_id'], 'nomTechno' =>html_entity_decode($getTechnoEnCours['nom']), 'niveauTechno' => $getTechnoEnCours['niveau_technologie_construction'], 'finTechnoActuel' => $getTechnoEnCours['fin_technologie_actuel']];
             
             echo json_encode($construEnCours);
+        }
+        else{
+            header('Location:index.php?user=afficheConnexion');
         }
     }
     
@@ -125,6 +131,9 @@ class ControllerUserGITechnologie{
                     }
 
                 }
+                else{
+                    header('Location:index.php?galaxyInfinity=afficheTechnologieUser&tier=1');
+                }
                 $tempsConstruTechno = $this->managerUserGITechnologie->getTempsConstruTechno();
                 $this->managerUserGITechnologie->finConstruActuel = time() + $tempsConstruTechno['temps_construction'];
                 $confirmAdd = $this->managerUserGITechnologie->addConstructionTechno();
@@ -132,7 +141,12 @@ class ControllerUserGITechnologie{
                 if($confirmAdd){
                     header('Location:index.php?galaxyInfinity=afficheTechnologieUser&tier=1');
                 }
+            }else{
+                header('Location:index.php?galaxyInfinity=afficheTechnologieUser&tier=1');
             }
+        }
+        else{
+            header('Location:index.php?user=afficheConnexion');
         }
     }
 

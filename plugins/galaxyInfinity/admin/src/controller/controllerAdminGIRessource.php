@@ -45,6 +45,9 @@ class ControllerAdminGIRessource
             $adminGI = $this->controllerBase->tamponView($adminGI,['liaisonRessourceBat'=>$liaisonRessourceBat,'prodRessources'=>$prodRessources,'adminBatBase'=>$adminBatBase,'niveaux'=>$niveaux,'ressources' => $ressources]);
             $this->controllerBase->afficheView([$adminGI],'adminGestionRessource');
         }
+        else{
+            header('Location:index.php?admin=afficheConnexion');
+        }
     }
     
     /**
@@ -68,6 +71,12 @@ class ControllerAdminGIRessource
                     header('Location:index.php?galaxyInfinity=afficheAdminGestionRessource');
                 }
             }
+            else{
+                header('Location:index.php?galaxyInfinity=afficheAdminGestionRessource');
+            }
+        }
+        else{
+            header('Location:index.php?admin=afficheConnexion');
         }
     }
     
@@ -90,6 +99,12 @@ class ControllerAdminGIRessource
                     header('Location:index.php?galaxyInfinity=afficheAdminGestionRessource');
                 }
             }
+            else{
+                header('Location:index.php?galaxyInfinity=afficheAdminGestionRessource');
+            }
+        }
+        else{
+            header('Location:index.php?admin=afficheConnexion');
         }
     }
     
@@ -115,7 +130,13 @@ class ControllerAdminGIRessource
                     header('Location:index.php?galaxyInfinity=afficheAdminGestionRessource');
                 }
             }
+            else{
+                header('Location:index.php?galaxyInfinity=afficheAdminGestionRessource');
+            }
             
+        }
+        else{
+            header('Location:index.php?admin=afficheConnexion');
         }
     }
     
@@ -140,7 +161,12 @@ class ControllerAdminGIRessource
                     header('Location:index.php?galaxyInfinity=afficheAdminGestionRessource');
                 }
             }
-
+            else{
+                header('Location:index.php?galaxyInfinity=afficheAdminGestionRessource'); 
+            }
+        }
+        else{
+            header('Location:index.php?admin=afficheConnexion');
         }
     }
     
@@ -169,6 +195,12 @@ class ControllerAdminGIRessource
                     header('Location:index.php?galaxyInfinity=afficheAdminGestionRessource');
                 }
             }
+            else{
+                header('Location:index.php?galaxyInfinity=afficheAdminGestionRessource');
+            }
+        }
+        else{
+            header('Location:index.php?admin=afficheConnexion');
         }
     }
     
@@ -194,7 +226,13 @@ class ControllerAdminGIRessource
                     header('Location:index.php?galaxyInfinity=afficheAdminGestionRessource');
                 }
             }
+            else{
+                header('Location:index.php?galaxyInfinity=afficheAdminGestionRessource'); 
+            }
         
+        }
+        else{
+            header('Location:index.php?admin=afficheConnexion');
         }   
     }
 
@@ -219,7 +257,14 @@ class ControllerAdminGIRessource
                     header('Location:index.php?galaxyInfinity=afficheAdminGestionRessource');
                 }
             }
+            else{
+                header('Location:index.php?galaxyInfinity=afficheAdminGestionRessource'); 
+            }
+        
         }
+        else{
+            header('Location:index.php?admin=afficheConnexion');
+        }  
     }
     
     /**
@@ -246,7 +291,14 @@ class ControllerAdminGIRessource
                     header('Location:index.php?galaxyInfinity=afficheAdminGestionRessource');
                 }
             }
+            else{
+                header('Location:index.php?galaxyInfinity=afficheAdminGestionRessource'); 
+            }
+        
         }
+        else{
+            header('Location:index.php?admin=afficheConnexion');
+        }  
     }
     
     /**
@@ -270,7 +322,14 @@ class ControllerAdminGIRessource
                 }
             }
         
+            else{
+                header('Location:index.php?galaxyInfinity=afficheAdminGestionRessource'); 
+            }
+        
         }
+        else{
+            header('Location:index.php?admin=afficheConnexion');
+        }  
     }
 
 }

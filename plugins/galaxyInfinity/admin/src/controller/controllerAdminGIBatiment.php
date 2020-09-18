@@ -40,7 +40,6 @@ class ControllerAdminGIBatiment
      */
     public function adminGestionBat(){
         if(isset($_SESSION['identifiantAdmin'])){
-
             
             $adminBatBase = $this->managerAdminGIBatiment->getBatBaseAdmin();
             $adminBatNiveau = $this->managerAdminGIBatiment->getBatNiveauAdmin();
@@ -59,7 +58,7 @@ class ControllerAdminGIBatiment
 
         }
         else{
-        
+            header('Location:index.php?admin=afficheConnexion');
         }
     }
     
@@ -74,9 +73,8 @@ class ControllerAdminGIBatiment
     public function createBatBase(){
         
         if(isset($_SESSION['identifiantAdmin'])){
-            if(!empty($_POST['nom']) && !empty($_POST['descr']) && !empty($_POST['tier'])){
-                if(!preg_match("#[<>1-9]#", $_POST['nom']) && !preg_match("#[<>]#",$_POST['descr'])){
-                    if($_POST['tier'] >= 1 && $_POST['tier']<=10){
+            if(!empty($_POST['nom']) && !empty($_POST['descr']) && !empty($_POST['tier']) && !preg_match("#[<>1-9]#", $_POST['nom']) && !preg_match("#[<>]#",$_POST['descr'])&& $_POST['tier'] >= 1 && $_POST['tier']<=1){
+
                         
                         $this->managerAdminGIBatiment->nomBat= htmlentities($_POST['nom']);
                         $this->managerAdminGIBatiment->descrBat = htmlentities($_POST['descr']);
@@ -90,8 +88,7 @@ class ControllerAdminGIBatiment
                                         $infosfichier = pathinfo($_FILES['image']['name']);
                                         $extension_upload = $infosfichier['extension'];
                                         $extensions_autorisees = array('jpg', 'jpeg', 'gif', 'png');
-                                        if (in_array($extension_upload, $extensions_autorisees))
-                                        {
+                                        if (in_array($extension_upload, $extensions_autorisees)){
                                             $this->managerAdminGIBatiment->imageBat = $_POST['nom'].'.'.$infosfichier['extension'];
                                             
                                             $insertBat =$this->managerAdminGIBatiment->insertBatBase();
@@ -105,18 +102,19 @@ class ControllerAdminGIBatiment
                                     }
                                 }
                             else{
-                                echo('injection echoué');
+                                header('Location:index.php?galaxyInfintiy=afficheAdminGestionBatiment');
                             }
                         }
                         else{
-                           echo'Un batiment existe deja sous ce nom';
+                            header('Location:index.php?galaxyInfintiy=afficheAdminGestionBatiment');
                         }
-                    }
-                }
             }
             else{
-                echo 'Erreur';
+                header('Location:index.php?galaxyInfintiy=afficheAdminGestionBatiment');
             }
+        }
+        else{
+            header('Location:index.php?admin=afficheConnexion');
         }
     }
         
@@ -145,11 +143,10 @@ class ControllerAdminGIBatiment
                     }
                     
                 }
-                else{
-                    echo 'erreur';
-                }
             }
-            
+        }
+        else{
+            header('Location:index.php?admin=afficheConnexion');
         }
     }       
     /**
@@ -173,6 +170,9 @@ class ControllerAdminGIBatiment
                 if($confirmModif){
                     header('Location:index.php?galaxyInfinity=afficheAdminGestionBatiment');
                 }
+            }
+            else{
+                header('Location:index.php?admin=afficheConnexion');
             }
     }
         
@@ -217,6 +217,12 @@ class ControllerAdminGIBatiment
                     header('Location:index.php?galaxyInfinity=afficheAdminGestionBatiment');
                 }
             }
+            else{
+                header('Location:index.php?galaxyInfinity=afficheAdminGestionBatiment');
+            }
+        }
+        else{
+            header('Location:index.php?admin=afficheConnexion');
         }
     }
     
@@ -240,11 +246,13 @@ class ControllerAdminGIBatiment
                     $this->managerAdminGIBatiment->supprBatCraftNiveau();
                     header("Location:index.php?galaxyInfinity=afficheAdminGestionBatiment");
                 }
-                else{
-                    echo 'erreur';
-                }
+            }else{
+                header("Location:index.php?galaxyInfinity=afficheAdminGestionBatiment");
             }
             
+        }
+        else{
+            header('Location:index.php?admin=afficheConnexion');
         }
     }
 
@@ -290,7 +298,13 @@ class ControllerAdminGIBatiment
                     header('Location:index.php?galaxyInfinity=afficheAdminGestionBatiment');
                 }
             }
+            else{
+                header('Location:index.php?galaxyInfinity=afficheAdminGestionBatiment');
+            }
 
+        }
+        else{
+            header('Location:index.php?admin=afficheConnexion');
         }
     }
     
@@ -310,13 +324,19 @@ class ControllerAdminGIBatiment
             
             $verifExist = $this->managerAdminGIBatiment->verifBatTempsNiveauExist();
             
-            if($verifExist === 0){
+            if($verifExist == 0){
                 
                 $confirmAdd = $this->managerAdminGIBatiment->createBatTempsNiveau();
                 if($confirmAdd){
                     header('Location:index.php?galaxyInfinity=afficheAdminGestionBatiment');
                 }
             }
+            else{
+                header('Location:index.php?galaxyInfinity=afficheAdminGestionBatiment');
+            }
+        }
+        else{
+            header('Location:index.php?admin=afficheConnexion');
         }
     }
     
@@ -342,10 +362,13 @@ class ControllerAdminGIBatiment
                     $this->managerAdminGIBatiment->supprBatTempsNiveau();
                     header("Location:index.php?galaxyInfinity=afficheAdminGestionBatiment");
                 }
-                else{
-                    echo 'erreur';
-                }
             }
+            else{
+                header("Location:index.php?galaxyInfinity=afficheAdminGestionBatiment");
+            }
+        }
+        else{
+            header('Location:index.php?admin=afficheConnexion');
         }
     }
     
@@ -371,6 +394,12 @@ class ControllerAdminGIBatiment
                     header('Location:index.php?galaxyInfinity=afficheAdminGestionBatiment');
                 }
             }
+            else{
+                header('Location:index.php?galaxyInfinity=afficheAdminGestionBatiment');
+            }
+        }
+        else{
+            header('Location:index.php?admin=afficheConnexion');
         }
     }
     
@@ -410,8 +439,9 @@ class ControllerAdminGIBatiment
                 if($confirmAdd){
                     header('Location:index.php?galaxyInfinity=afficheAdminGestionBatiment');
                 }
-            
-
+        }
+        else{
+            header('Location:index.php?admin=afficheConnexion');
         }
     }
     
@@ -436,6 +466,12 @@ class ControllerAdminGIBatiment
                     header('Location:index.php?galaxyInfinity=afficheAdminGestionBatiment');
                 }
             }
+            else{
+                header('Location:index.php?galaxyInfinity=afficheAdminGestionBatiment');
+            }
+        }
+        else{
+            header('Location:index.php?admin=afficheConnexion');
         }
     }
     
@@ -478,6 +514,12 @@ class ControllerAdminGIBatiment
                     header('Location:index.php?galaxyInfinity=afficheAdminGestionBatiment');
                 }
             }
+            else{
+                header('Location:index.php?galaxyInfinity=afficheAdminGestionBatiment');
+            }
+        }
+        else{
+            header('Location:index.php?admin=afficheConnexion');
         }
     }
     
@@ -502,6 +544,12 @@ class ControllerAdminGIBatiment
                     header('Location:index.php?galaxyInfinity=afficheAdminGestionBatiment');
                 }
             }
+            else{
+                header('Location:index.php?galaxyInfinity=afficheAdminGestionBatiment');
+            }
+        }
+        else{
+            header('Location:index.php?admin=afficheConnexion');
         }
     }
 
@@ -526,6 +574,12 @@ class ControllerAdminGIBatiment
                     header('Location:index.php?galaxyInfinity=afficheAdminGestionBatiment');
                 }
             }
+            else{
+                header('Location:index.php?galaxyInfinity=afficheAdminGestionBatiment');
+            }
+        }
+        else{
+            header('Location:index.php?admin=afficheConnexion');
         }
     }
     
@@ -551,6 +605,12 @@ class ControllerAdminGIBatiment
                     header('Location:index.php?galaxyInfinity=afficheAdminGestionBatiment');
                 }
             }
+            else{
+                header('Location:index.php?galaxyInfinity=afficheAdminGestionBatiment');
+            }
+        }
+        else{
+            header('Location:index.php?admin=afficheConnexion');
         }
     }
 

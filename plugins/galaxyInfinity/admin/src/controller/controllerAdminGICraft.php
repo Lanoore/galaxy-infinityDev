@@ -60,7 +60,7 @@ class ControllerAdminGICraft{
 
         }
         else{
-            echo('erreur');
+            header('Location:index.php?admin=afficheConnexion');
         }
     }
 
@@ -98,8 +98,20 @@ class ControllerAdminGICraft{
                             }
                         }
                     }
+                    else{
+                        header('Location:index.php?galaxyInfinity=afficheAdminGestionCraft');
+                    }
+                 }
+                 else{
+                    header('Location:index.php?galaxyInfinity=afficheAdminGestionCraft');
                  }
             }
+            else{
+                header('Location:index.php?galaxyInfinity=afficheAdminGestionCraft');
+            }
+        }
+        else{
+            header('Location:index.php?admin=afficheConnexion');
         }
     }
     
@@ -125,6 +137,12 @@ class ControllerAdminGICraft{
                     }
                 }
             }
+            else{
+                header('Location:index?galaxyInfinity=afficheAdminGestionCraft');
+            }
+        }
+        else{
+            header('Location:index.php?admin=afficheConnexion');
         }
     }
     
@@ -152,9 +170,11 @@ class ControllerAdminGICraft{
                 header('Location:index.php?galaxyInfinity=afficheAdminGestionCraft');
             }
             else{
-                
+                header('Location:index.php?galaxyInfinity=afficheAdminGestionCraft');
             }
-
+        }
+        else{
+            header('Location:index.php?admin=afficheConnexion');
         }
     }
     
@@ -195,6 +215,12 @@ class ControllerAdminGICraft{
                     header('Location:index.php?galaxyInfinity=afficheAdminGestionCraft');
                 }
             }
+            else{
+                header('Location:index.php?galaxyInfinity=afficheAdminGestionCraft');
+            }
+        }
+        else{
+            header('Location:index.php?admin=afficheConnexion');
         }
     }
     
@@ -217,6 +243,12 @@ class ControllerAdminGICraft{
                     header('Location:index.php?galaxyInfinity=afficheAdminGestionCraft');
                 }
             }
+            else{
+                header('Location:index.php?galaxyInfinity=afficheAdminGestionCraft');
+            }
+        }
+        else{
+            header('Location:index.php?admin=afficheConnexion');
         }
     }
     
@@ -260,6 +292,12 @@ class ControllerAdminGICraft{
                     header('Location:index.php?galaxyInfinity=afficheAdminGestionCraft');
                 }
             }
+            else{
+                header('Location:index.php?galaxyInfinity=afficheAdminGestionCraft');
+            }
+        }
+        else{
+            header('Location:index.php?admin=afficheConnexion');
         }
     }
 
@@ -299,8 +337,9 @@ class ControllerAdminGICraft{
                 if($confirmAdd){
                     header('Location:index.php?galaxyInfinity=afficheAdminGestionCraft');
                 }
-
-
+        }
+        else{
+            header('Location:index.php?admin=afficheConnexion');
         }
     }
     
@@ -324,6 +363,12 @@ class ControllerAdminGICraft{
                     header('Location:index.php?galaxyInfinity=afficheAdminGestionCraft');
                 }
             }
+            else{
+                header('Location:index.php?galaxyInfinity=afficheAdminGestionCraft');
+            }
+        }
+        else{
+            header('Location:index.php?admin=afficheConnexion');
         }
     }
     
@@ -366,6 +411,12 @@ class ControllerAdminGICraft{
                     header('Location:index.php?galaxyInfinity=afficheAdminGestionCraft');
                 }
             }
+            else{
+                header('Location:index.php?galaxyInfinity=afficheAdminGestionCraft');
+            }
+        }
+        else{
+            header('Location:index.php?admin=afficheConnexion');
         }
     }
 

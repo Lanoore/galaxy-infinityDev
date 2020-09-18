@@ -51,6 +51,9 @@ class ControllerUserGIGalaxie{
                 header('Location:index.php?galaxyInfinity=afficheGalaxieUser&systeme=1');
             }
         }
+        else{
+            header('Location:index.php?user=afficheConnexion');
+        }
     }
 
 }

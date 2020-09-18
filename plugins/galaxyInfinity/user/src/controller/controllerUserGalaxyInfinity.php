@@ -96,7 +96,9 @@ class ControllerUserGalaxyInfinity{
 
             $infoUserPlanete = $this->managerUserGI->getPlaneteUser();
             $_SESSION['idPlaneteActif'] = $infoUserPlanete['id'];
-            
+        }
+        else{
+            header('Location:index.php?user=afficheConnexion');
         }
     }
 
@@ -125,6 +127,9 @@ class ControllerUserGalaxyInfinity{
             $preRequis = '../plugins/galaxyInfinity/user/src/view/preRequisUserView.php';
             $preRequis = $this->controllerBase->tamponView($preRequis,['preRequisBaseX'=>$preRequisBaseX,'preRequisX'=> $preRequisX]);
             $this->controllerBase->afficheView([$preRequis],'preRequisGI');
+        }
+        else{
+            header('Location:index.php?user=afficheConnexion');
         }
     }
 

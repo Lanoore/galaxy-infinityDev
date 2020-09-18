@@ -33,6 +33,9 @@ class ControllerAdminGalaxyInfinity
             $adminGI = $this->controllerBase->tamponView($adminGI);
             $this->controllerBase->afficheView([$adminGI],'adminGestionGeneralGI');
         }
+        else{
+            header('Location:index.php?admin=afficheConnexion');
+        }
     }
     
 
@@ -46,13 +49,19 @@ class ControllerAdminGalaxyInfinity
      * @return void
      */
     public function adminAjoutNiveau(){
-        $this->managerAdminGI->getDernierNiveau();
-        $this->managerAdminGI->niveau = $this->managerAdminGI->niveau +1;
-
-        $addConfirm = $this->managerAdminGI->addNiveau();
-        if($addConfirm == true){
-            header('Location:index.php?galaxyInfinity=afficheAdminGalaxyInfinityGestion');
+        if(isset($_SESSION['identifiantAdmin'])){
+            $this->managerAdminGI->getDernierNiveau();
+            $this->managerAdminGI->niveau = $this->managerAdminGI->niveau +1;
+    
+            $addConfirm = $this->managerAdminGI->addNiveau();
+            if($addConfirm == true){
+                header('Location:index.php?galaxyInfinity=afficheAdminGalaxyInfinityGestion');
+            }
         }
+        else{
+            header('Location:index.php?admin=afficheConnexion');
+        }
+        
     }
 
 

@@ -39,6 +39,9 @@ class ControllerAdminGIGalaxie
             $this->controllerBase->afficheView([$adminGI],'adminGestionGalaxie');
 
         }
+        else{
+            header('Location:index.php?admin=afficheConnexion');
+        }
     }
     
     /**
@@ -71,6 +74,12 @@ class ControllerAdminGIGalaxie
                 }
                 header('Location:index.php?galaxyInfinity=afficheAdminGestionGalaxie');
             }
+            else{
+                header('Location:index.php?galaxyInfinity=afficheAdminGestionGalaxie');
+            }
+        }
+        else{
+            header('Location:index.php?admin=afficheConnexion');
         }
     }
     
@@ -93,6 +102,12 @@ class ControllerAdminGIGalaxie
                     header('Location:index.php?galaxyInfinity=afficheAdminGestionGalaxie');
                 }
             }
+            else{
+                header('Location:index.php?galaxyInfinity=afficheAdminGestionGalaxie');
+            }
+        }
+        else{
+            header('Location:index.php?admin=afficheConnexion');
         }
     }
     
@@ -116,6 +131,12 @@ class ControllerAdminGIGalaxie
                     header('Location:index.php?galaxyInfinity=afficheAdminGestionGalaxie');
                 }
             }
+            else{
+                header('Location:index.php?galaxyInfinity=afficheAdminGestionGalaxie'); 
+            }
+        }
+        else{
+            header('Location:index.php?admin=afficheConnexion');
         }
     }
 }

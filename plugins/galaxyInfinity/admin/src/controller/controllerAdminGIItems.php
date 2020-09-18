@@ -34,6 +34,9 @@ class ControllerAdminGIItems
             $adminGI = $this->controllerBase->tamponView($adminGI, ['items' =>$items]);
             $this->controllerBase->afficheView([$adminGI],'adminGestionItems');
         }
+        else{
+            header('Location:index.php?admin=afficheConnexion');
+        }
     }
     
     /**
@@ -54,6 +57,12 @@ class ControllerAdminGIItems
                     header('Location:index.php?galaxyInfinity=afficheAdminGestionItems');
                 }
             }
+            else{
+                header('Location:index.php?galaxyInfinity=afficheAdminGestionItems');
+            }
+        }
+        else{
+            header('Location:index.php?admin=afficheConnexion');
         }
     }
     
@@ -72,6 +81,9 @@ class ControllerAdminGIItems
             if($confirmSuppr){
                 header('Location:index.php?galaxyInfinity=afficheAdminGestionItems');
             }
+        }
+        else{
+            header('Location:index.php?admin=afficheConnexion');
         }
     }
     
@@ -94,6 +106,9 @@ class ControllerAdminGIItems
                 header('Location:index.php?galaxyInfinity=afficheAdminGestionItems');
             }
 
+        }
+        else{
+            header('Location:index.php?admin=afficheConnexion');
         }
     }
 }

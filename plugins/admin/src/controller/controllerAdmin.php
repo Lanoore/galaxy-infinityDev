@@ -44,8 +44,7 @@ class ControllerAdmin{
      * @return void
      */
     public function connectAdmin(){
-        if(!empty($_POST['identifiant']) && !empty($_POST['password'])){
-            if(!preg_match("#[<>]#", $_POST['identifiant'])&& !preg_match("#[<>]#",$_POST['password'])){
+        if(!empty($_POST['identifiant']) && !empty($_POST['password'])&& !preg_match("#[<>]#", $_POST['identifiant'])&& !preg_match("#[<>]#",$_POST['password'])){
                 $passwordCorrect = password_verify($_POST['password'], $this->managerAdmin->passwordAdmin);
                 if($passwordCorrect){
                     header('Location:index.php?admin=afficheGeneralAdmin');
@@ -53,9 +52,11 @@ class ControllerAdmin{
                     $_SESSION['idAdmin'] = $this->managerAdmin->idAdmin;
                 }
                 else{
-                    echo('erreur');
+                    header('Location:index.php?admin=afficheConnexion');
                 }
-            }
+        }
+        else{
+            header('Location:index.php?admin=afficheConnexion');
         }
     }
     
@@ -71,6 +72,9 @@ class ControllerAdmin{
             $adminGeneralView = '../plugins/admin/src/view/adminGeneralView.php';
             $adminGeneralView = $this->controllerBase->tamponView($adminGeneralView);
             $this->controllerBase->afficheView([$adminGeneralView],'adminGeneral');
+        }
+        else{
+            header('Location:index.php?admin=afficheConnexion');
         }
         
     }
@@ -104,6 +108,9 @@ class ControllerAdmin{
             $adminChangePassword = $this->controllerBase->tamponView($adminChangePassword);
             $this->controllerBase->afficheView([$adminChangePassword],'changePassword');
         }
+        else{
+            header('Location:index.php?admin=afficheConnexion');
+        }
         
     }
     
@@ -116,8 +123,8 @@ class ControllerAdmin{
      */
     public function changePassword(){
         if(isset($_SESSION['identifiantAdmin'])){
-            if(!preg_match("#[<>]#", $_POST['ancienPassword'])&& !preg_match("#[<>]",$_POST['nouveauPassword'])&& !preg_match("#[<>]#", $_POST['nouveauPasswordVerif'])){
-                if($_POST['nouveauPassword'] == $_POST['nouveauPasswordVerif']){
+            if(!preg_match("#[<>]#", $_POST['ancienPassword'])&& !preg_match("#[<>]",$_POST['nouveauPassword'])&& !preg_match("#[<>]#", $_POST['nouveauPasswordVerif']) && $_POST['nouveauPassword'] == $_POST['nouveauPasswordVerif']){
+
                     $this->managerAdmin->password_hache = password_hash($_POST['nouveauPassword'], PASSWORD_DEFAULT);
 
                     $passwordCorrect = password_verify($_POST['ancienPassword'], $this->managerAdmin->passwordAdmin);
@@ -128,8 +135,13 @@ class ControllerAdmin{
                             header('Location: index.php?admin=afficheGeneralAdmin');
                         }
                     }
-                }
             }
+            else{
+                header('Location:index.php?admin=afficheChangePassword');
+            }
+        }
+        else{
+            header('Location:index.php?admin=afficheConnexion');
         }
     }
 }
