@@ -53,9 +53,6 @@ class ControllerUserGIPlanete{
             $changeLastActivite = $this->managerUserGIPlanete->changeLastActivitePlanete();
 
         }
-        else{
-            header('Location:index.php?user=afficheConnexion');
-        }
     }
     
     /**
