@@ -1,6 +1,6 @@
 <div>
 
-    <nav>
+    <nav class='navPr'>
         <ul>
             <li><a href="index.php?galaxyInfinity=affichePreRequisUser&page=batiment">Batiment</a></li>
             <li><a href="index.php?galaxyInfinity=affichePreRequisUser&page=technologie">Technologie</a></li>
@@ -15,7 +15,7 @@
         
     
         foreach($preRequisBaseX as $pRBase){?>
-        <div>
+        <div class='divPrX'>
             <h4><?=$pRBase['nom']?></h4>
             <div>
                 <?php 

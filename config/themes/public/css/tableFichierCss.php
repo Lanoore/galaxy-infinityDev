@@ -13,7 +13,7 @@ $tableCss =
     'connexionAdminView' => ['../plugins/admin/public/css/connexionAdminView.css'],
 
     //Css plugin user
-    'connexionView' => ['../plugins/admin/public/css/connexionView.css'],
+    'connexionViewUser' => ['../plugins/user/public/css/connexionView.css'],
     'inscriptionView' => ['../plugins/admin/public/css/inscriptionView.css'],
     'userInfoView' => ['../plugins/admin/public/css/userInfoView.css'],
 

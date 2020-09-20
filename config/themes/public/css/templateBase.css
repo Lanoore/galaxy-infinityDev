@@ -1,5 +1,14 @@
-nav{
+body{
+    background-image: url('../../../../public/img/backgroundGeneral.jpg');
+}
+
+.navGeneral{
     float: left;
+    margin-top: 12%;
+    background-color: #cecece;
+    box-shadow: 1px 1px 50px #696969;
+    width: 8%;
+    border-radius: 0.3em;
 }
 ul{
     text-align: left;
@@ -12,6 +21,12 @@ a{
 
 .divPlugins{
 
-    margin-left: 10%;
-    margin-right: 10%;
+    box-shadow: 1px 1px 50px #696969;
+    width: 70%;
+    background-color: #cecece;
+    margin-left: 15%;
+    margin-right: 15%;
+    margin-top: 3%;
+    padding: 1%;
+    border-radius: 0.3em;
 }

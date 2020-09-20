@@ -1,9 +1,9 @@
 
 
-.divPlanetes:nth-child(even){
+.divPlaneteX:nth-child(even){
     background-color: grey;
 }
-.divPlanetes:nth-child(odd){
+.divPlaneteX:nth-child(odd){
     background-color: lightgray;
 }
 

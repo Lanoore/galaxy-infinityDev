@@ -60,6 +60,9 @@ class ControllerUserGIHome{
 
             $this->controllerBase->afficheView([$userHome],'userGestionHome');
         }
+        else{
+            header('Location:index.php?user=afficheConnexion');
+        }
     }
 
     

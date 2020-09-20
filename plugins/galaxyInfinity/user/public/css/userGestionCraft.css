@@ -9,13 +9,28 @@
     justify-content: space-around;
 }
 
+.navTier a{
+    display: block;
+    width: 6em;
+    line-height: 2em;
+    border-radius: 5px;
+    text-align: center;
+    text-decoration: none;
+    background-color: grey;
+    color: black;
+    transition: background-color 0.5s ease;
+}
+.navTier a:hover{
+    background-color: lightgray;
+}
+
 .divCraft{
     margin-left: 25%;
     margin-right: 22%;
 }
 .divCraftX{
     width: 100%;
-    background-color: green;
+    background:radial-gradient(white,grey);
     height: 2em;
     display: flex;
     margin-bottom: 1%;
@@ -35,7 +50,7 @@
 
 .divCraftXCraft{
     display: flex;
-    width: 30%;
+    width: 35%;
     justify-content: space-between;
     align-items: center;
 }

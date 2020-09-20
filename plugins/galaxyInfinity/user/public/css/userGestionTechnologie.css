@@ -8,20 +8,49 @@
     display: flex;
     justify-content: space-around;
 }
-
+.navTier a{
+    display: block;
+    width: 6em;
+    line-height: 2em;
+    border-radius: 5px;
+    text-align: center;
+    text-decoration: none;
+    background-color: grey;
+    color: black;
+    transition: background-color 0.5s ease;
+}
+.navTier a:hover{
+    background-color: lightgray;
+}
 
 .divTechno{
     display: flex;
     justify-content: space-around;
+    flex-wrap: wrap;
 }
 
 .divTechnoX{
     width: 15%;
-    background-color: green;
+    background: radial-gradient(white,grey);
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin: 3%;
+}
 
+.divTechnoX a{
+    display: block;
+    width: 6em;
+    line-height: 2em;
+    border-radius: 3px;
+    text-align: center;
+    text-decoration: none;
+    background-color: grey;
+    color: black;
+    transition: background-color 0.5s ease;
+}
+.divTechnoX a:hover{
+    background-color: lightgray;
 }
 
 .divTechnoXInfo{
@@ -42,8 +71,9 @@
 .divTechnoDescrX{
     display: none;
     position: absolute;
-
-    background-color: red;
     width: 22%;
+    background-color: gray;
+    box-shadow: 9px 4px 14px gray;
+    border: 1px solid lightgray;
 }
 

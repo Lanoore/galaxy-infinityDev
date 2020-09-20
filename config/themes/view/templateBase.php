@@ -10,7 +10,7 @@
        <?php if(!empty($css)){foreach($css as $css){?><link rel="stylesheet" href="<?=$css?>"> <?php }} ?> 
     </head>
     <body>
-    <nav>
+    <nav class="navGeneral">
        <ul>
            <li><a href="index.php?galaxyInfinity=afficheHomeUser">Général</a></li>
             <li><a href="index.php?galaxyInfinity=affichePreRequisUser&page=batiment">Pré-Requis</a></li>

@@ -5,11 +5,12 @@
         <meta charset="utf-8">
 
         <meta name="viewport" content="width=device-width, user-scalable=no">
+        <link rel="stylesheet" href="../config/themes/public/css/templateBase.css">
 
         <?php if(!empty($css)){foreach($css as $css){?><link rel="stylesheet" href="<?=$css?>"> <?php }} ?> 
     </head>
     <body>
-        <div>
+        <div class='divPlugins'>
             <?php
                 foreach ($views as $view) {
                     echo $view;

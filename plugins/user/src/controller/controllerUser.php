@@ -38,7 +38,7 @@ class ControllerUser
     public function afficheConnexion(){
         $connexion = '../plugins/user/src/view/connexionView.php';
         $connexion = $this->controllerBase->tamponView($connexion);
-        $this->templateViewUser([$connexion],'connexionView');
+        $this->templateViewUser([$connexion],'connexionViewUser');
     }
     
     /**
