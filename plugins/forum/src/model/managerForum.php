@@ -81,7 +81,7 @@ class ManagerForum extends ManagerBDD
      *
      *  Ajout le topic dans la bdd
      * 
-     * @return void
+     * @return bool
      */
     public function addTopic(){
 
@@ -96,7 +96,7 @@ class ManagerForum extends ManagerBDD
      *
      *  Ajoute le commentaire dans la bdd
      * 
-     * @return void
+     * @return bool
      */
     public function addCommentaire(){
         $sql ='INSERT INTO commentaires(auteur,message,dateCreation,dateModif,idTopic)VALUES(?,?,NOW(),NOW(),?)';
@@ -109,7 +109,7 @@ class ManagerForum extends ManagerBDD
      *
      *  Modifi le topic en bdd
      * 
-     * @return void
+     * @return bool
      */
     public function modifTopic(){
         $sql ='UPDATE topics SET nom = ?, message = ?,dateModif = NOW() WHERE id = ?';
@@ -122,7 +122,7 @@ class ManagerForum extends ManagerBDD
      *  
      * Modifi le commentaire en bdd
      * 
-     * @return void
+     * @return bool
      */
     public function modifCommentaire(){
         $sql ='UPDATE commentaires SET message = ?,dateModif = NOW() WHERE idTopic = ?';

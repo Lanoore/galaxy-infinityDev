@@ -136,11 +136,13 @@ class ControllerForum{
 
             $topics = $this->managerForum->getTopics();
             $categorie = $this->managerForum->getCategorie();
-
+            if(!empty($topics)){
             foreach($topics as $topic){
                 $lastCommentaire = $this->managerForum->getLastCommentaireTopic($topic['id']);
                 $lastCommentaires[$topic['id']] = $lastCommentaire;
 
+            }}else{
+                $lastCommentaires = null;
             }
             
             $forumCategorie = '../plugins/forum/src/view/user/categorieView.php';
@@ -175,8 +177,9 @@ class ControllerForum{
      */
     public function createTopic($idCategorie){
         if(isset($_SESSION['idUser'])){
-            if(!empty($_POST['nomTopic'])&& !empty($_POST['messageTopic']) && !preg_match("#[<>]#", $_POST['nomTopic'])&& !preg_match("#[<>]#", $_POST['messageTopic'])){
-                    $this->managerForum->idCategorie = $idCategorie;
+            
+            if(!empty($_POST['nomTopic'])&& !empty($_POST['messageTopic'])){
+                echo('test');        $this->managerForum->idCategorie = $idCategorie;
                     $categorieExist = $this->managerForum->categorieExist();
                     if(empty($categorieExist)){
                         header('Location:index.php?forum=afficheCategories');
@@ -184,13 +187,14 @@ class ControllerForum{
                     $this->managerForum->nomTopic = htmlspecialchars($_POST['nomTopic']);
                     $this->managerForum->auteurTopic = $_SESSION['pseudo'];
                     $this->managerForum->messageTopic = htmlspecialchars($_POST['messageTopic']);
-                   
+                    var_dump($this->managerForum->messageTopic);
+                    
                     $addTopic = $this->managerForum->addTopic();
+                    
         
                     $idTopic = $this->managerForum->getIdTopicByNom();
                     
                     if($addTopic){
-        
                         header('Location:index.php?forum=afficheTopic&idTopic='.$idTopic['id'].'&page=1');
                     }
                 }
