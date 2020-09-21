@@ -3,7 +3,7 @@
 <div class='mainDiv'>
     <div class='deplacementSysteme'>
         <p><a href="index.php?galaxyInfinity=afficheGalaxieUser&systeme=<?php if($_GET['systeme'] == 1){echo $_GET['systeme'];}else{echo($_GET['systeme'] - 1);}?>">Précédent</a></p>
-       <!-- <form action="" method="GET"><input type="number" name="systeme"><input type="submit"></form>-->
+       
         <p><a href="index.php?galaxyInfinity=afficheGalaxieUser&systeme=<?php if($_GET['systeme'] == 10){echo $_GET['systeme'];}else{echo($_GET['systeme'] + 1);}?>">Suivant</a></p>
     </div>
     <div class='divPlanetes'>
