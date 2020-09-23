@@ -33,3 +33,11 @@ a{
 .tDateCAuteur{
     text-align: left;
 }
+
+
+@media screen and (max-width: 480px) /* Version mobile*/
+{
+.topic{
+    width: 95%;
+}
+}

@@ -5,6 +5,8 @@
 }
 
 .navTier ul{
+    list-style: none;
+    padding: 0;
     display: flex;
     justify-content: space-around;
 }
@@ -76,6 +78,10 @@
     border: 1px solid lightgray;
 }
 
-
-
+@media screen and (max-width: 480px) /* Version mobile*/
+{
+    .divBatX{
+        width: 50%;
+    }
+}
 

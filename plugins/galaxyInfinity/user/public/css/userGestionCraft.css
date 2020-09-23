@@ -71,3 +71,21 @@
     border: 1px solid lightgray;
     width: 22%;
 }
+
+
+@media screen and (max-width: 480px) /* Version mobile*/
+{
+    .divCraft{
+        margin: 0;
+    }
+    .divCraftXInfo p{
+        padding-left: 10%;
+        width: 8em;
+    }
+    .divCraftXCraft{
+        width: 41%;
+    }
+    .divCraftXCraft form{
+        margin-right: 5%;
+    }
+}
