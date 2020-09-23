@@ -50,7 +50,7 @@
 
 .divCraftXCraft{
     display: flex;
-    width: 35%;
+    width: 41%;
     justify-content: space-between;
     align-items: center;
 }
@@ -72,20 +72,24 @@
     width: 22%;
 }
 
+.divCraftXInfo p{
+    padding-left: 10%;
+    width: 8em;
+}
+.divCraftXCraft form{
+    margin-right: 5%;
+}
+
 
 @media screen and (max-width: 480px) /* Version mobile*/
 {
     .divCraft{
         margin: 0;
     }
-    .divCraftXInfo p{
-        padding-left: 10%;
-        width: 8em;
-    }
+}
+
+@media screen and (max-width: 1024px){
     .divCraftXCraft{
-        width: 41%;
-    }
-    .divCraftXCraft form{
-        margin-right: 5%;
+        margin: 0;
     }
 }
