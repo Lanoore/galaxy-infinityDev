@@ -1,0 +1,36 @@
+
+
+.divPlaneteX:nth-child(even){
+    background-color: grey;
+}
+.divPlaneteX:nth-child(odd){
+    background-color: lightgray;
+}
+
+
+.divPlaneteX{
+    display: flex;
+    justify-content: space-around;
+}
+
+
+.deplacementSysteme{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.deplacementSysteme a{
+    display: block;
+    width: 6em;
+    line-height: 2em;
+    border-radius: 3px;
+    text-align: center;
+    text-decoration: none;
+    background-color: grey;
+    color: black;
+    transition: background-color 0.5s ease;
+}
+.deplacementSysteme a:hover{
+    background-color: lightgray;
+}

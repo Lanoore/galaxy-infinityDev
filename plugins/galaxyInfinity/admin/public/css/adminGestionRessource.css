@@ -1,0 +1,13 @@
+.divPlugins{
+    margin-right: 0%;
+}
+
+.createRessource{
+    display: flex;
+    justify-content: space-around;
+}
+
+.modifRessource{
+    display: flex;
+    justify-content: space-around;
+}

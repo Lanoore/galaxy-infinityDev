@@ -82,3 +82,23 @@ body{
 .divTopic div a:last-child{
     align-self: flex-end;
 }
+
+
+
+
+@media screen and (max-width: 480px) /* Version mobile*/
+{
+
+    .divTopic, .divCommentaireCreate, .divCommentaires{
+        width: 95% !important;
+    }
+}
+
+@media screen and (max-width: 1024px) /* Version mobile*/
+{
+
+    .divTopic, .divCommentaireCreate, .divCommentaires{
+        width: 95% !important;
+    }
+}
+

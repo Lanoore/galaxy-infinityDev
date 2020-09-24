@@ -1,0 +1,124 @@
+
+.mainDiv{
+    display: flex;
+    flex-direction: column;
+}
+
+.navTier ul{
+    display: flex;
+    justify-content: space-around;
+    list-style: none;
+    padding: 0;
+}
+
+.navTier a{
+    display: block;
+    width: 6em;
+    line-height: 2em;
+    border-radius: 5px;
+    text-align: center;
+    text-decoration: none;
+    background-color: grey;
+    color: black;
+    transition: background-color 0.5s ease;
+}
+.navTier a:hover{
+    background-color: lightgray;
+}
+
+.divCraft{
+    margin-left: 25%;
+    margin-right: 22%;
+}
+.divCraftX{
+    width: 100%;
+    background:radial-gradient(white,grey);
+    height: 2em;
+    display: flex;
+    margin-bottom: 1%;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.divCraftX img{
+    height: 100%;
+}
+
+.divCraftXInfo{
+    display: flex;
+    align-items: center;
+    height: 100%;
+}
+
+.divCraftXCraft{
+    display: flex;
+    width: 41%;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+.tempsRestantCraft{
+    display: flex;
+    justify-content: center;
+}
+
+
+.divCraftDescrX{
+    display: none;
+    position: absolute;
+
+    background-color: gray;
+    box-shadow: 9px 4px 14px gray;
+    border: 1px solid lightgray;
+    width: 22%;
+}
+
+.divCraftXInfo p{
+    padding-left: 10%;
+    width: 8em;
+}
+.divCraftXCraft form{
+    margin-right: 5%;
+}
+
+
+@media screen and (max-width: 480px) /* Version mobile*/
+{
+    .divCraft{
+        margin-right: 5%;
+        margin-left: 5%;
+    }
+    .divCraftXCraft{
+        width: 75%;
+    }
+
+    .divCraftXInfo{
+        height: 50%;
+    }
+    .imgCraftX{
+        height: 90%;
+    }
+    .divCraftX{
+        display: flex;
+        flex-direction: column;
+        height: 6em;
+    }
+
+    .divCraftDescrX{
+        width: 50%;
+    }
+
+}
+
+@media screen and (max-width: 1024px){
+    .divCraftXCraft{
+        margin: 0;
+    }
+
+    .divCraftXCraft p {
+        margin-right: 5%;
+    }
+
+
+}

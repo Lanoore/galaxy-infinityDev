@@ -39,3 +39,14 @@ form{
 .messageInput{
     width: 70%;
 }
+
+
+
+@media screen and (max-width: 480px) /* Version mobile*/
+{
+
+.dateMessage{
+    width: 100% !important;
+    line-height: 1em;
+}
+}

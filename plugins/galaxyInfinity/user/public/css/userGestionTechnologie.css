@@ -1,0 +1,96 @@
+
+.mainDiv{
+    display: flex;
+    flex-direction: column;
+}
+
+.navTier ul{
+    display: flex;
+    justify-content: space-around;
+    list-style: none;
+    padding: 0;
+}
+.navTier a{
+    display: block;
+    width: 6em;
+    line-height: 2em;
+    border-radius: 5px;
+    text-align: center;
+    text-decoration: none;
+    background-color: grey;
+    color: black;
+    transition: background-color 0.5s ease;
+}
+.navTier a:hover{
+    background-color: lightgray;
+}
+
+.divTechno{
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.divTechnoX{
+    width: 15%;
+    background: radial-gradient(white,grey);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 3%;
+}
+
+.divTechnoX a{
+    display: block;
+    width: 6em;
+    line-height: 2em;
+    border-radius: 3px;
+    text-align: center;
+    text-decoration: none;
+    background-color: grey;
+    color: black;
+    transition: background-color 0.5s ease;
+}
+.divTechnoX a:hover{
+    background-color: lightgray;
+}
+
+.divTechnoXInfo{
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+
+}
+
+
+.tempsRestantTechno{
+    display: flex;
+    justify-content: center;
+}
+
+
+
+.divTechnoDescrX{
+    display: none;
+    position: absolute;
+    width: 22%;
+    background-color: gray;
+    box-shadow: 9px 4px 14px gray;
+    border: 1px solid lightgray;
+}
+
+
+
+@media screen and (max-width: 1024px){
+    .divTechnoX{
+        width: 38%;
+    }
+}
+
+@media screen and (max-width: 480px) /* Version mobile*/
+{
+    .divTechnoX{
+        width: 50%;
+    }
+}
+

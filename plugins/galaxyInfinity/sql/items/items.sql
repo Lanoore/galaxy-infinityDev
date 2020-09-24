@@ -1,0 +1,5 @@
+CREATE TABLE IF NOT EXISTS `mybd`.`items` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `nom` VARCHAR(100) NULL,
+  PRIMARY KEY (`id`))
+ENGINE = InnoDB

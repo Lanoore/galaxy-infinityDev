@@ -171,9 +171,9 @@
 
 
 
-<script type=" text/javascript" src="https://code.jquery.com/jquery-3.5.0.min.js "></script>
+
 <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.js"></script>
-<script src="../plugins/forum/public/js/adminGestionForum.js"></script>
+<script src="../plugins/galaxyInfinity/admin/public/js/adminGestionGalaxyInfinity.js"></script>
 
 
 

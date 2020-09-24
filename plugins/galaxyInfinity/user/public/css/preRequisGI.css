@@ -1,0 +1,28 @@
+.navPr ul{
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    text-align: center;
+    list-style-type: none;
+    padding: 0;
+}
+
+.navPr a{
+    display: block;
+    width: 6em;
+    line-height: 2em;
+    border-radius: 5px;
+    text-align: center;
+    text-decoration: none;
+    background-color: grey;
+    color: black;
+    transition: background-color 0.5s ease;
+}
+.navPr a:hover{
+    background-color: lightgray;
+}
+
+.divPrX{
+ box-shadow: 0px 1px 3px grey;
+ text-align: center;
+}

@@ -22,15 +22,33 @@ class ControllerForumAdmin{
 
         $this->controllerBase = new ControllerBase();
     }
-
+    
+    /**
+     * createCategorie
+     *
+     *  Crée une catégorie
+     * 
+     * @return void
+     */
     public function createCategorie(){
         if(isset($_SESSION['identifiantAdmin'])){
             $this->managerForumAdmin->nomCategorie = $_POST['nom'];
             $this->managerForumAdmin->createCategorie();
             header('Location:index.php?forum=afficheAdminForumGestion');
         }
+        else{
+            header('Location:index.php?admin=afficheConnexion');
+        }
     }   
-
+    
+    /**
+     * supprCategorie
+     *
+     *  Supprime une catégorie
+     * 
+     * @param  int $idCategorie
+     * @return void
+     */
     public function supprCategorie($idCategorie){
         if(isset($_SESSION['identifiantAdmin'])){
             $this->managerForumAdmin->idCategorie = $idCategorie;
@@ -42,8 +60,18 @@ class ControllerForumAdmin{
                 }
             }
         }
+        else{
+            header('Location:index.php?admin=afficheConnexion');
+        }
     }
-
+    
+    /**
+     * modifCategorie
+     *
+     * Modifi une catégorie
+     * 
+     * @return void
+     */
     public function modifCategorie(){
         if(isset($_SESSION['identifiantAdmin'])){
             $this->managerForumAdmin->nomCategorie = $_POST['nomCategorie'];
@@ -55,8 +83,19 @@ class ControllerForumAdmin{
                 header('Location:index.php?forum=afficheAdminForumGestion');
             }
         }
+        else{
+            header('Location:index.php?admin=afficheConnexion');
+        }
     }
-
+    
+    /**
+     * supprCommentaire
+     *
+     *  Supprime un commentaire
+     * 
+     * @param  int $idCommentaire
+     * @return void
+     */
     public function supprCommentaire($idCommentaire){
         if(isset($_SESSION['identifiantAdmin'])){
             $this->managerForumAdmin->idCommentaire = $idCommentaire;
@@ -68,8 +107,18 @@ class ControllerForumAdmin{
                 }
             }
         }
+        else{
+            header('Location:index.php?admin=afficheConnexion');
+        }
     }
-
+    
+    /**
+     * moveTopic
+     * 
+     * Déplace le topic vers la catégorie cible
+     *
+     * @return void
+     */
     public function moveTopic(){
         if(isset($_SESSION['identifiantAdmin'])){
             $this->managerForumAdmin->idTopic = $_POST['idTopic'];
@@ -81,8 +130,19 @@ class ControllerForumAdmin{
                 header('Location:index.php?forum=afficheAdminForumGestion');
             }
         }
+        else{
+            header('Location:index.php?admin=afficheConnexion');
+        }
     }
-
+    
+    /**
+     * supprTopic
+     *
+     *  Supprime le topic
+     * 
+     * @param  int $idTopic
+     * @return void
+     */
     public function supprTopic($idTopic){
         if(isset($_SESSION['identifiantAdmin'])){
             $this->managerForumAdmin->idTopic = $idTopic;
@@ -94,8 +154,18 @@ class ControllerForumAdmin{
                 }
             }
         }
+        else{
+            header('Location:index.php?admin=afficheConnexion');
+        }
     }
-
+    
+    /**
+     * afficheAdminForumGestion
+     *
+     *  Affiche la page général d'administration du forum
+     * 
+     * @return void
+     */
     public function afficheAdminForumGestion(){
 
         if(isset($_SESSION['identifiantAdmin'])){
@@ -113,10 +183,10 @@ class ControllerForumAdmin{
             
             $gestionForum = '../plugins/forum/src/view/admin/forumAdminGestionView.php';
             $gestionForum = $this->controllerBase->tamponView($gestionForum, ['categories'=>$categories, 'topics'=>$topics , 'commentaires'=>$commentaires]);
-            $this->controllerBase->afficheView([$gestionForum]);
+            $this->controllerBase->afficheView([$gestionForum],'forumAdminGestionView');
         }
         else{
-            echo 'Veuillez vous connectez en admin';
+            header('Location:index.php?admin=afficheConnexion');
         }
     }
 }    

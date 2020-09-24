@@ -11,6 +11,21 @@ use App\plugins\admin\src\controller\ControllerAdmin;
 use App\plugins\chat\src\controller\ControllerChat;
 use App\plugins\forum\src\controller\ControllerForum;
 use App\plugins\forum\src\controller\ControllerForumAdmin;
+use App\plugins\galaxyInfinity\admin\src\controller\controllerAdminGalaxyInfinity;
+use App\plugins\galaxyInfinity\admin\src\controller\controllerAdminGIBatiment;
+use App\plugins\galaxyInfinity\admin\src\controller\controllerAdminGICraft;
+use App\plugins\galaxyInfinity\admin\src\controller\controllerAdminGIItems;
+use App\plugins\galaxyInfinity\admin\src\controller\controllerAdminGIRessource;
+use App\plugins\galaxyInfinity\admin\src\controller\controllerAdminGITechnologie;
+use App\plugins\galaxyInfinity\admin\src\controller\controllerAdminGIGalaxie;
+use App\plugins\galaxyInfinity\user\src\controller\controllerUserGalaxyInfinity;
+use App\plugins\galaxyInfinity\user\src\controller\controllerUserGIBatiment;
+use App\plugins\galaxyInfinity\user\src\controller\ControllerUserGITechnologie;
+use App\plugins\galaxyInfinity\user\src\controller\ControllerUserGICraft;
+use App\plugins\galaxyInfinity\user\src\controller\ControllerUserGIGalaxie;
+use App\plugins\galaxyInfinity\user\src\controller\ControllerUserGIPlanete;
+use App\plugins\galaxyInfinity\user\src\controller\ControllerUserGIHome;
+
 
 
 
@@ -24,7 +39,20 @@ class Router
     private $controllerChat;
     private $controllerForum;
     private $controllerForumAdmin;
-
+    private $controllerAdminGalaxyInfinity;
+    private $controllerAdminGIBatiment;
+    private $controllerAdminGICraft;
+    private $controllerAdminGIItems;
+    private $controllerAdminGIRessource;
+    private $controllerAdminGITechnologie;
+    private $controllerAdminGIGalaxie;
+    private $controllerUserGI;
+    private $controllerUserGIBatiment;
+    private $controllerUserGITechnologie;
+    private $controllerUserGICraft;
+    private $controllerUserGIGalaxie;
+    private $controllerUserGIPlanete;
+    private $controllerUserGIHome;
 
     public function __construct(){
         $this->controllerBase = new ControllerBase();
@@ -33,6 +61,20 @@ class Router
         $this->controllerChat = new ControllerChat();
         $this->controllerForum = new ControllerForum();
         $this->controllerForumAdmin = new ControllerForumAdmin();
+        $this->controllerAdminGalaxyInfinity = new ControllerAdminGalaxyInfinity();
+        $this->controllerAdminGIBatiment = new ControllerAdminGIBatiment();
+        $this->controllerAdminGICraft = new ControllerAdminGICraft();
+        $this->controllerAdminGIItems = new ControllerAdminGIItems();
+        $this->controllerAdminGIRessource = new ControllerAdminGIRessource();
+        $this->controllerAdminGITechnologie = new ControllerAdminGITechnologie();
+        $this->controllerAdminGIGalaxie =  new ControllerAdminGIGalaxie();
+        $this->controllerUserGI = new ControllerUserGalaxyInfinity();
+        $this->controllerUserGIBatiment = new ControllerUserGIBatiment();
+        $this->controllerUserGITechnologie = new ControllerUserGITechnologie();
+        $this->controllerUserGICraft = new ControllerUserGICraft();
+        $this->controllerUserGIGalaxie = new ControllerUserGIGalaxie();
+        $this->controllerUserGIPlanete = new ControllerUserGIPlanete();
+        $this->controllerUserGIHome = new ControllerUserGIHome();
 
     }
 
@@ -93,7 +135,9 @@ class Router
                 switch ($_GET['chat']) {
                     case 'afficheChat':
                         $this->controllerChat->afficheChat();
-                        
+                        break;
+                    case 'getChatJs':
+                        $this->controllerChat->getChatJs(); 
                         break;
                     case 'addMessage':
                         $this->controllerChat->addMessage();
@@ -157,12 +201,257 @@ class Router
                         break;
                 }
             }
+            elseif(isset($_GET['galaxyInfinity'])){
+                //Gestion partie admin
+
+                    switch ($_GET['galaxyInfinity']) {
+                        case 'afficheAdminGalaxyInfinityGestion':
+                                $this->controllerAdminGalaxyInfinity->afficheAdminGestionGI();
+                            break;
+                        case 'adminAjoutNiveau':
+                            $this->controllerAdminGalaxyInfinity->adminAjoutNiveau();
+                            break;
+                        //Partie Ressource
+                        case 'afficheAdminGestionRessource':
+                            $this->controllerAdminGIRessource->adminGestionRessource();
+                            break;
+                        case 'createRessourceBase':
+                            $this->controllerAdminGIRessource->createRessourceBase();
+                            break;    
+                        case 'supprRessourceBase':
+                            $this->controllerAdminGIRessource->supprRessourceBase($_GET['idRessource']);
+                            break;
+                        case 'modifRessourceBase':
+                            $this->controllerAdminGIRessource->modifRessourceBase();
+                            break;
+                        case 'createProdRessourceBat':
+                            $this->controllerAdminGIRessource->createProdRessourceBat();
+                            break;
+                        case 'supprProdRessourceBat':
+                            $this->controllerAdminGIRessource->supprProdRessourceBat($_GET['idRessource'], $_GET['idNiveau'], $_GET['idBatiment']);
+                            break;
+                        case 'modifProdRessourceBat':
+                            $this->controllerAdminGIRessource->modifProdRessourceBat();
+                            break;
+                        case 'createLiaisonRessourceBat':
+                            $this->controllerAdminGIRessource->createLiaisonRessourceBat();
+                            break;
+                        case 'supprLiaisonRessourceBat':
+                            $this->controllerAdminGIRessource->supprLiaisonRessourceBat($_GET['idRessource'],$_GET['idBatiment']);
+                            break;
+                        case 'modifLiaisonRessourceBat':
+                            $this->controllerAdminGIRessource->modifLiaisonRessourceBat();
+                            break;
+                        //Partie batiment    
+                        case 'afficheAdminGestionBatiment':
+                            $this->controllerAdminGIBatiment->adminGestionBat();
+                            break;
+                        case 'createBatBase':
+                            $this->controllerAdminGIBatiment->createBatBase();
+                            break;
+                        case 'supprBatimentBase':
+                            $this->controllerAdminGIBatiment->supprBatBase($_GET['idBatiment']);
+                            break;
+                        case 'modifBatBase':
+                            $this->controllerAdminGIBatiment->modifBatBase();
+                            break;
+                        case 'createBatCraftNiveau':
+                            $this->controllerAdminGIBatiment->createBatCraftNiveau();
+                            break;
+                        case 'supprBatCraftNiveau':
+                            $this->controllerAdminGIBatiment->supprBatCraftNiveau($_GET['idLigne']);
+                            break;
+                        case 'modifBatCraftNiveau':
+                            $this->controllerAdminGIBatiment->modifBatCraftNiveau();
+                            break;
+                        case 'createBatTempsNiveau':
+                            $this->controllerAdminGIBatiment->createBatTempsNiveau();
+                            break;
+                        case 'supprBatTempsNiveau':
+                            $this->controllerAdminGIBatiment->supprBatTempsNiveau($_GET['idBatiment'],$_GET['idNiveau']);
+                            break;
+                        case 'modifBatTempsNiveau':
+                            $this->controllerAdminGIBatiment->modifBatTempsNiveau();
+                            break;
+                        case 'createBatPR':
+                            $this->controllerAdminGIBatiment->createBatPR();
+                            break;
+                        case 'supprBatPR':
+                            $this->controllerAdminGIBatiment->supprBatPR($_GET['idLigne']);
+                            break;
+                        case 'modifBatPR':
+                            $this->controllerAdminGIBatiment->modifBatPR();
+                            break;
+                        case 'createBatStartPlanete':
+                            $this->controllerAdminGIBatiment->createBatStartPlanete();
+                            break;
+                        case 'supprBatStartPlanete':
+                            $this->controllerAdminGIBatiment->supprBatStartPlanete($_GET['idBatiment']);    
+                            break;
+                        case 'modifBatStartPlanete':
+                            $this->controllerAdminGIBatiment->modifBatStartPlanete();
+                            break;  
+                        //Partie Technologie    
+                        case 'afficheAdminGestionTechnologie':
+                            $this->controllerAdminGITechnologie->adminGestionTechnologie();
+                            break;
+                        case 'createTechnologieBase':
+                            $this->controllerAdminGITechnologie->createTechnologieBase();
+                            break;
+                        case 'supprTechnologieBase':
+                            $this->controllerAdminGITechnologie->supprTechnologieBase($_GET['idTechnologie']);
+                            break;
+                        case 'modifTechnologieBase':
+                            $this->controllerAdminGITechnologie->modifTechnologieBase();
+                            break;
+                        case 'createTechnologieCraftNiveau':
+                            $this->controllerAdminGITechnologie->createTechnologieCraftNiveau();
+                            break;
+                        case 'supprTechnologieCraftNiveau':
+                            $this->controllerAdminGITechnologie->supprTechnologieCraftNiveau($_GET['idLigne']);
+                            break;
+                        case 'modifTechnologieCraftNiveau':
+                            $this->controllerAdminGITechnologie->modifTechnologieCraftNiveau();
+                            break;
+                        case 'createTechnologieTempsNiveau':
+                            $this->controllerAdminGITechnologie->createTechnologieTempsNiveau();
+                            break;
+                        case 'supprTechnologieTempsNiveau':
+                            $this->controllerAdminGITechnologie->supprTechnologieTempsNiveau($_GET['idTechnologie'],$_GET['idNiveau']);
+                            break;
+                        case 'modifTechnologieTempsNiveau':
+                            $this->controllerAdminGITechnologie->modifTechnologieTempsNiveau();
+                            break;
+                        case 'createTechnologiePR':
+                            $this->controllerAdminGITechnologie->createTechnologiePR();
+                            break;
+                        case 'supprTechnologiePR':
+                            $this->controllerAdminGITechnologie->supprTechnologiePR($_GET['idLigne']);
+                            break;
+                        case 'modifTechnologiePR':
+                            $this->controllerAdminGITechnologie->modifTechnologiePR();
+                            break;
+                        // Partie Craft
+                        case 'afficheAdminGestionCraft':
+                            $this->controllerAdminGICraft->adminGestionCraft();
+                            break;
+                        case 'createCraftBase':
+                            $this->controllerAdminGICraft->createCraftBase();
+                            break;
+                        case 'supprCraftBase':
+                            $this->controllerAdminGICraft->supprCraftBase($_GET['idCraft']);
+                            break;
+                        case 'modifCraftBase':                  
+                            $this->controllerAdminGICraft->modifCraftBase();
+                            break;
+                        case 'createCraftCraft':
+                            $this->controllerAdminGICraft->createCraftCraft();
+                            break;
+                        case 'supprCraftCraft':
+                            $this->controllerAdminGICraft->supprCraftCraft($_GET['idLigne']);
+                            break;
+                        case 'modifCraftCraft':
+                            $this->controllerAdminGICraft->modifCraftCraft();
+                            break;
+                        case 'createCraftPR':
+                            $this->controllerAdminGICraft->createCraftPR();
+                            break;
+                        case 'supprCraftPR':
+                            $this->controllerAdminGICraft->supprCraftPR($_GET['idLigne']);
+                            break;
+                        case 'modifCraftPR':
+                            $this->controllerAdminGICraft->modifCraftPR();
+                            break;
+                        // Partie Items
+                        case 'afficheAdminGestionItems':
+                            $this->controllerAdminGIItems->adminGestionItems();
+                            break;
+                        case 'createItemBase':
+                            $this->controllerAdminGIItems->createItemBase();
+                            break;
+                        case 'supprItemBase':
+                            $this->controllerAdminGIItems->supprItemBase($_GET['idItem']);
+                            break;
+                        case 'modifItemBase':
+                            $this->controllerAdminGIItems->modifItemBase();
+                            break;
+                        //Partie Galaxie
+                        case 'afficheAdminGestionGalaxie':
+                            $this->controllerAdminGIGalaxie->adminGestionGalaxie();
+                            break;
+                        case 'createSystemePlanete':
+                            $this->controllerAdminGIGalaxie->createSystemePlanete();
+                            break;
+                        case 'supprPlanete':
+                            $this->controllerAdminGIGalaxie->supprPlanete($_GET['idPlanete']);
+                            break;
+                        case 'modifSituationPlanete':
+                            $this->controllerAdminGIGalaxie->modifSituationPlanete();
+                            break;
+                    //Gestion partie user
+                        case 'affichePreRequisUser':
+                            $this->controllerUserGI->affichePreRequisUser($_GET['page']);
+                            break;
+                        case 'afficheReglesUser':
+                            $this->controllerUserGI->afficheReglesUser();
+                            break;
+                        //Partie Home    
+                        case 'afficheHomeUser':
+                            $this->controllerUserGIHome->afficheHomeUser();
+                            break;
+                        case 'getAllRessources':
+                            $this->controllerUserGIHome->allRessources();
+                            break;
+                        //Partie Batiment    
+                        case 'afficheBatimentUser':
+                            $this->controllerUserGIBatiment->afficheBatimentUser($_GET['tier']);
+                            break;
+                        case 'getConstruBatJs':
+                            $this->controllerUserGIBatiment->getConstruBatJs();
+                            break;
+                        case 'addConstructionBat':
+                            $this->controllerUserGIBatiment->addConstructionBat($_GET['idBat']);
+                            break;
+                        //Partie Technologie
+                        case 'afficheTechnologieUser':
+                            $this->controllerUserGITechnologie->afficheTechnologieUser($_GET['tier']);
+                            break;
+                        case 'getConstruTechnoJs':
+                            $this->controllerUserGITechnologie->getConstruTechnoJs();
+                            break;
+                        case 'addConstructionTechno':
+                            $this->controllerUserGITechnologie->addConstructionTechno($_GET['idTechno']);
+                            break;
+                        //Partie Craft
+                        case 'afficheCraftUser':
+                            $this->controllerUserGICraft->afficheCraftUser($_GET['tier']);
+                            break;
+                        case 'getConstruCraftJs':
+                            $this->controllerUserGICraft->getConstruCraftJs();
+                            break;
+                        case 'addConstructionCraft':
+                            $this->controllerUserGICraft->addConstructionCraft($_GET['idCraft']);
+                            break;    
+                        //Partie Galaxie
+                        case 'afficheGalaxieUser':
+                            $this->controllerUserGIGalaxie->afficheGalaxieUser($_GET['systeme']);
+                            break;    
+                        default:
+                        $this->controllerUser->afficheConnexion();//Changer si vous voulez modifier l'action par défaut
+                            break;
+                    }
+                }
             else{
                 $this->controllerUser->afficheConnexion();
             }
         }
         catch(Exception $e){
-            
+            $css = 'erreurView';
+            $view = '../config/themes/view/erreurView.php';
+            $erreurMessage = $e->getMessage();
+            $erreur = $this->controllerBase->tamponView($view,['erreur' =>$erreurMessage]);
+            $this->controllerBase->afficheView([$erreur],$css);
+
         }
 
     }

@@ -5,14 +5,38 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, user-scalable=no">
         <link rel="stylesheet" href="../config/themes/public/css/templateBase.css">
-        <?php if(isset($css)){echo $css;}?> <!--Pensez a ajoutez une boucle pour chaque entré de chaque view pour le css-->
+        <script type=" text/javascript" src="https://code.jquery.com/jquery-3.5.1.min.js "></script>
+
+       <?php if(!empty($css)){foreach($css as $css){?><link rel="stylesheet" href="<?=$css?>"> <?php }} ?> 
     </head>
     <body>
-    <nav>
+    <nav class="navGeneral">
        <ul>
-            <li><a href="index.php?forum=afficheCategories">Forum</a></li>
-            <li><a href="index.php?chat=afficheChat">Chat</a></li>
-            <li><a href="index.php?user=afficheUser">Profil</a></li>
+            <li class='deroulant'><p>Général</p>
+                <ul class='sousListe'>
+                    <li><a href="index.php?galaxyInfinity=afficheHomeUser">Général</a></li>
+                    <li><a href="index.php?galaxyInfinity=affichePreRequisUser&page=batiment">Pré-Requis</a></li>
+                    <li><a href="index.php?galaxyInfinity=afficheGalaxieUser&systeme=1">Galaxie</a></li>
+                    <li><a href="index.php?galaxyInfinity=afficheReglesUser">Règles</a></li>
+                </ul>
+                
+            </li>
+
+            <li class='deroulant'><p>Planete</p>
+                <ul class='sousListe'>
+                    <li><a href="index.php?galaxyInfinity=afficheBatimentUser&tier=1">Batiment</a></li>
+                    <li><a href="index.php?galaxyInfinity=afficheTechnologieUser&tier=1">Technologie</a></li>
+                    <li><a href="index.php?galaxyInfinity=afficheCraftUser&tier=1">Craft</a></li>
+                </ul>
+            </li>
+
+            <li class='deroulant'><p>Social</p>
+                <ul class='sousListe'>
+                    <li><a href="index.php?forum=afficheCategories">Forum</a></li>
+                    <li><a href="index.php?chat=afficheChat">Chat</a></li>
+                    <li><a href="index.php?user=afficheUser">Profil</a></li>
+                </ul>
+            </li>
        </ul>  
     </nav>
 

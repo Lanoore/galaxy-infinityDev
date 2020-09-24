@@ -1,0 +1,1 @@
+const gestionBat = new bat;

@@ -1,0 +1,17 @@
+.divPlugins{
+    margin-right: 0%;
+}
+
+.createBat{
+    display: flex;
+    justify-content: space-around;
+}
+
+.modifBat{
+    display: flex;
+    justify-content: space-around;
+}
+
+h4{
+    text-align: center;
+}

@@ -7,6 +7,7 @@
         <div class='topics'>
         <?php
 
+    
         foreach($topics as $topic){?>
             <div class ='topic'>
                 <div class='tNomTAuteur'>
