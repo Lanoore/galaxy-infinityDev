@@ -4,6 +4,9 @@
 
 $tableCss = 
 [   
+    //Général
+    'erreurView' => ['../plugins/admin/public/css/erreurView.css'],
+
     //Css plugin admin
 
 

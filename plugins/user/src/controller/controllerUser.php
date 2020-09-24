@@ -11,6 +11,8 @@ use App\config\themes\controller\controllerBase;
 
 use App\plugins\galaxyInfinity\user\src\controller\controllerUserGalaxyInfinity;
 
+use Exception;
+
 class ControllerUser
 {
     /* Mettre ici les variables privates pour les manager */
@@ -170,7 +172,7 @@ class ControllerUser
             $this->controllerBase->afficheView([$userInfo],'userInfoView');
         }
         else{
-            header('Location:index.php?user=afficheConnexion');
+            throw new Exception("Vous devez être connecter pour accéder à cette page!");
         }
         
     }

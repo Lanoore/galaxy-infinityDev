@@ -90,7 +90,7 @@ body{
 {
 
     .divTopic, .divCommentaireCreate, .divCommentaires{
-        width: 95%;
+        width: 95% !important;
     }
 }
 
@@ -98,7 +98,7 @@ body{
 {
 
     .divTopic, .divCommentaireCreate, .divCommentaires{
-        width: 95%;
+        width: 95% !important;
     }
 }
 

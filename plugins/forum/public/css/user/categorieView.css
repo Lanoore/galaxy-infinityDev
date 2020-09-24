@@ -35,9 +35,20 @@ a{
 }
 
 
+@media screen and (max-width: 1024px){
+    .tDateCAuteur{
+        line-height: 0.8em;
+    }
+    .topic{
+        width: 90% !important;
+    } 
+    
+}
+
 @media screen and (max-width: 480px) /* Version mobile*/
 {
-.topic{
-    width: 95%;
-}
+    .topic{
+        
+        width: 95% !important;
+    }
 }

@@ -6,6 +6,7 @@ use App\plugins\galaxyInfinity\user\src\model\managerUserGICraft;
 
 use App\config\themes\controller\controllerBase;
 
+use Exception;
 
 class ControllerUserGICraft{
 
@@ -68,7 +69,7 @@ class ControllerUserGICraft{
             $this->controllerBase->afficheView([$userCraft],'userGestionCraft');
         }
         else{
-            header('Location:index.php?user=afficheConnexion');
+            throw new Exception("Vous devez être connecter pour accéder à cette page!");
         }
     }
         
@@ -90,7 +91,7 @@ class ControllerUserGICraft{
             echo json_encode($craftEnCours);
         }
         else{
-            header('Location:index.php?user=afficheConnexion');
+            throw new Exception("Vous devez être connecter pour accéder à cette page!");
         }
     }
 
@@ -153,7 +154,7 @@ class ControllerUserGICraft{
             }
         }
         else{
-            header('Location:index.php?user=afficheConnexion');
+            throw new Exception("Vous devez être connecter pour accéder à cette page!");
         }
     }
 

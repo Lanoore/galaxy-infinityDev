@@ -6,6 +6,7 @@ use App\plugins\galaxyInfinity\user\src\model\managerUserGITechnologie;
 
 use App\config\themes\controller\controllerBase;
 
+use Exception;
 
 class ControllerUserGITechnologie{
 
@@ -66,7 +67,7 @@ class ControllerUserGITechnologie{
             $this->controllerBase->afficheView([$userTechnologie],'userGestionTechnologie');
         }
         else{
-            header('Location:index.php?user=afficheConnexion');
+            throw new Exception("Vous devez être connecter pour accéder à cette page!");
         }
     }
         
@@ -87,7 +88,7 @@ class ControllerUserGITechnologie{
             echo json_encode($construEnCours);
         }
         else{
-            header('Location:index.php?user=afficheConnexion');
+            throw new Exception("Vous devez être connecter pour accéder à cette page!");
         }
     }
     
@@ -146,7 +147,7 @@ class ControllerUserGITechnologie{
             }
         }
         else{
-            header('Location:index.php?user=afficheConnexion');
+            throw new Exception("Vous devez être connecter pour accéder à cette page!");
         }
     }
 

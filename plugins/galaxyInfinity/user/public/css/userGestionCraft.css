@@ -86,12 +86,39 @@
 @media screen and (max-width: 480px) /* Version mobile*/
 {
     .divCraft{
-        margin: 0;
+        margin-right: 5%;
+        margin-left: 5%;
     }
+    .divCraftXCraft{
+        width: 75%;
+    }
+
+    .divCraftXInfo{
+        height: 50%;
+    }
+    .imgCraftX{
+        height: 90%;
+    }
+    .divCraftX{
+        display: flex;
+        flex-direction: column;
+        height: 6em;
+    }
+
+    .divCraftDescrX{
+        width: 50%;
+    }
+
 }
 
 @media screen and (max-width: 1024px){
     .divCraftXCraft{
         margin: 0;
     }
+
+    .divCraftXCraft p {
+        margin-right: 5%;
+    }
+
+
 }

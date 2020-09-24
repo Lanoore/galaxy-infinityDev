@@ -7,6 +7,7 @@ use App\plugins\chat\src\model\ManagerChat;
 
 /* Ajoutez ici tout les controller (dossier controller du plugin ou extérieur si nécessire) */
 use App\config\themes\controller\controllerBase;
+use Exception;
 
 class ControllerChat{
 
@@ -61,7 +62,7 @@ class ControllerChat{
             echo json_encode($chat);
         }
         else{
-            header('Location:index.php');
+            throw new Exception("Vous devez être connecter pour accéder à cette page!");
         }
     }
     
@@ -88,7 +89,7 @@ class ControllerChat{
             
         }
         else{
-            header('Location:index.php');
+            throw new Exception("Vous devez être connecter pour accéder à cette page!");
         }
     }
 }

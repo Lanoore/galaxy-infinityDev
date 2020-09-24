@@ -6,6 +6,7 @@ use App\plugins\galaxyInfinity\user\src\model\managerUserGIHome;
 
 use App\config\themes\controller\controllerBase;
 
+use Exception;
 
 class ControllerUserGIHome{
 
@@ -61,7 +62,7 @@ class ControllerUserGIHome{
             $this->controllerBase->afficheView([$userHome],'userGestionHome');
         }
         else{
-            header('Location:index.php?user=afficheConnexion');
+            throw new Exception("Vous devez être connecter pour accéder à cette page!");
         }
     }
 
@@ -88,7 +89,7 @@ class ControllerUserGIHome{
 
         }
         else{
-            header('Location:index.php?user=afficheConnexion');
+            throw new Exception("Vous devez être connecter pour accéder à cette page!");
         }
     }
   

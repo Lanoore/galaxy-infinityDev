@@ -9,6 +9,8 @@ use App\plugins\forum\src\model\ManagerForum;
 
 use App\config\themes\controller\controllerBase;
 
+use Exception;
+
 class ControllerForum{
     /* Mettre ici les variables privates pour les manager */
     private $managerForum;
@@ -203,7 +205,7 @@ class ControllerForum{
             }
         }
         else{
-            header('Location:index.php');
+            throw new Exception("Vous devez être connecter pour accéder à cette page!");
         }
     }
     
@@ -238,7 +240,7 @@ class ControllerForum{
             
         }
         else{
-            header('Location:index.php');
+            throw new Exception("Vous devez être connecter pour accéder à cette page!");
         }
     }
     
@@ -264,7 +266,7 @@ class ControllerForum{
             }
         }
         else{
-            header('Location:index.php');
+            throw new Exception("Vous devez être connecter pour accéder à cette page!");
         }
     }
     
@@ -297,7 +299,7 @@ class ControllerForum{
 
         }
         else{
-            header('Location:index.php');
+            throw new Exception("Vous devez être connecter pour accéder à cette page!");
         }
     }
 

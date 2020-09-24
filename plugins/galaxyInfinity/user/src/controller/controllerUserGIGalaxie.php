@@ -6,6 +6,7 @@ use App\plugins\galaxyInfinity\user\src\model\managerUserGIGalaxie;
 
 use App\config\themes\controller\controllerBase;
 
+use Exception;
 
 class ControllerUserGIGalaxie{
 
@@ -52,7 +53,7 @@ class ControllerUserGIGalaxie{
             }
         }
         else{
-            header('Location:index.php?user=afficheConnexion');
+            throw new Exception("Vous devez être connecter pour accéder à cette page!");
         }
     }
 

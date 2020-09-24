@@ -7,6 +7,8 @@ use App\plugins\galaxyInfinity\user\src\model\managerUserGIBatiment;
 use App\config\themes\controller\controllerBase;
 
 
+use Exception;
+
 class ControllerUserGIBatiment{
 
     private $managerUserGIBatiment;
@@ -66,7 +68,7 @@ class ControllerUserGIBatiment{
             $this->controllerBase->afficheView([$userBatiment],'userGestionBatiment');
         }
         else{
-            header('Location:index.php?user=afficheConnexion');
+            throw new Exception("Vous devez être connecter pour accéder à cette page!");
         }
     }
 
@@ -88,7 +90,7 @@ class ControllerUserGIBatiment{
             echo json_encode($construEnCours);
         }
         else{
-            header('Location:index.php?user=afficheConnexion');
+            throw new Exception("Vous devez être connecter pour accéder à cette page!");
         }
     }
 
@@ -148,7 +150,7 @@ class ControllerUserGIBatiment{
             }
         }
         else{
-            header('Location:index.php?user=afficheConnexion');
+            throw new Exception("Vous devez être connecter pour accéder à cette page!");
         }
     }
 

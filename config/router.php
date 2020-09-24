@@ -446,7 +446,12 @@ class Router
             }
         }
         catch(Exception $e){
-            
+            $css = 'erreurView';
+            $view = '../config/themes/view/erreurView.php';
+            $erreurMessage = $e->getMessage();
+            $erreur = $this->controllerBase->tamponView($view,['erreur' =>$erreurMessage]);
+            $this->controllerBase->afficheView([$erreur],$css);
+
         }
 
     }

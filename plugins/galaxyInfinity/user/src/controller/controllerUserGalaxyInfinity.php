@@ -6,6 +6,7 @@ use App\plugins\galaxyInfinity\user\src\model\managerUserGalaxyInfinity;
 
 use App\config\themes\controller\controllerBase;
 
+use Exception;
 
 class ControllerUserGalaxyInfinity{
 
@@ -98,7 +99,7 @@ class ControllerUserGalaxyInfinity{
             $_SESSION['idPlaneteActif'] = $infoUserPlanete['id'];
         }
         else{
-            header('Location:index.php?user=afficheConnexion');
+            throw new Exception("Vous devez être connecter pour accéder à cette page!");
         }
     }
 
@@ -129,7 +130,7 @@ class ControllerUserGalaxyInfinity{
             $this->controllerBase->afficheView([$preRequis],'preRequisGI');
         }
         else{
-            header('Location:index.php?user=afficheConnexion');
+            throw new Exception("Vous devez être connecter pour accéder à cette page!");
         }
     }
 
@@ -139,6 +140,10 @@ class ControllerUserGalaxyInfinity{
             $reglesView = '../plugins/galaxyInfinity/user/src/view/reglesGIView.php';
             $reglesView = $this->controllerBase->tamponView($reglesView);
             $this->controllerBase->afficheView([$reglesView],'reglesGI');
+        }
+        else{
+            throw new Exception("Vous devez être connecter pour accéder à cette page!");
+            
         }
     }
 

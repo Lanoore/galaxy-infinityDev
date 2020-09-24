@@ -6,6 +6,7 @@ use App\plugins\galaxyInfinity\user\src\model\managerUserGIPlanete;
 
 use App\config\themes\controller\controllerBase;
 
+use Exception;
 
 class ControllerUserGIPlanete{
 
