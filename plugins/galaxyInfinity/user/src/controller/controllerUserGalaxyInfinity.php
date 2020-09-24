@@ -133,6 +133,15 @@ class ControllerUserGalaxyInfinity{
         }
     }
 
+    public function afficheReglesUser(){
+        if(isset($_SESSION['pseudo'])){
+
+            $reglesView = '../plugins/galaxyInfinity/user/src/view/reglesGIView.php';
+            $reglesView = $this->controllerBase->tamponView($reglesView);
+            $this->controllerBase->afficheView([$reglesView],'reglesGI');
+        }
+    }
+
 
 
 }

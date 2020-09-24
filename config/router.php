@@ -392,6 +392,9 @@ class Router
                         case 'affichePreRequisUser':
                             $this->controllerUserGI->affichePreRequisUser($_GET['page']);
                             break;
+                        case 'afficheReglesUser':
+                            $this->controllerUserGI->afficheReglesUser();
+                            break;
                         //Partie Home    
                         case 'afficheHomeUser':
                             $this->controllerUserGIHome->afficheHomeUser();

@@ -43,7 +43,7 @@ $tableCss =
     'adminGestionGeneralGI' => ['../plugins/galaxyInfinity/admin/public/css/adminGestionGeneralGI.css'],
     //Css user GalaxyInfinity
 
-
+    'reglesGI' => ['../plugins/galaxyInfinity/user/public/css/reglesGI.css'],
     'userGestionBatiment' => ['../plugins/galaxyInfinity/user/public/css/userGestionBatiment.css'],
     'userGestionTechnologie' =>['../plugins/galaxyInfinity/user/public/css/userGestionTechnologie.css'],
     'userGestionCraft' =>['../plugins/galaxyInfinity/user/public/css/userGestionCraft.css'],

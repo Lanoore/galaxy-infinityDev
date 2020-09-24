@@ -29,8 +29,10 @@ class ControllerBase
     public function afficheView($views = null, $css= null){
         include('../config/themes/public/css/tableFichierCss.php');
 
-
-        $css = $tableCss[$css];
+        if($css != null){
+            $css = $tableCss[$css];
+        }
+        
 
         require '../config/themes/view/templateBase.php';
     }    
