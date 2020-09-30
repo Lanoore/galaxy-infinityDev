@@ -61,7 +61,7 @@ class ControllerUserGITechnologie{
 
             }
 
-            $userTechnologie = '../plugins/galaxyInfinity/user/src/view/userGestionTechnologieView.php';
+            $userTechnologie = 'plugins/galaxyInfinity/user/src/view/userGestionTechnologieView.php';
             $userTechnologie = $this->controllerBase->tamponView($userTechnologie,['technologie' => $technologie, 'tempsRestantTechno'=>$tempsRestantTechno]);
 
             $this->controllerBase->afficheView([$userTechnologie],'userGestionTechnologie');

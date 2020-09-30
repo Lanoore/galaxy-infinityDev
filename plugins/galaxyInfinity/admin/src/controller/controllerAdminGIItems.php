@@ -2,7 +2,7 @@
 
 namespace App\plugins\galaxyInfinity\admin\src\controller;
 
-use App\plugins\galaxyInfinity\admin\src\model\ManagerAdminGIItems;
+use App\plugins\galaxyInfinity\admin\src\model\managerAdminGIItems;
 
 use App\config\themes\controller\ControllerBase;
 
@@ -30,7 +30,7 @@ class ControllerAdminGIItems
         if(isset($_SESSION['identifiantAdmin'])){
             $items = $this->managerAdminGIitems->getItems();
 
-            $adminGI = '../plugins/galaxyInfinity/admin/src/view/adminGestionItemsView.php';
+            $adminGI = 'plugins/galaxyInfinity/admin/src/view/adminGestionItemsView.php';
             $adminGI = $this->controllerBase->tamponView($adminGI, ['items' =>$items]);
             $this->controllerBase->afficheView([$adminGI],'adminGestionItems');
         }

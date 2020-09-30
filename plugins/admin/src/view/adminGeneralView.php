@@ -1,4 +1,4 @@
-<link rel="stylesheet" href="../plugins/admin/public/css/adminGeneralCss.css">
+
 <div>
     <a href="index.php?admin=afficheChangePassword">Changer de mot de passe</a>
     <a href="index.php?admin=disconnectAdmin">Se déconnecter</a>

@@ -125,7 +125,7 @@ class ControllerUserGalaxyInfinity{
             $preRequisX = $this->managerUserGI->getPreRequisX();
             
 
-            $preRequis = '../plugins/galaxyInfinity/user/src/view/preRequisUserView.php';
+            $preRequis = 'plugins/galaxyInfinity/user/src/view/preRequisUserView.php';
             $preRequis = $this->controllerBase->tamponView($preRequis,['preRequisBaseX'=>$preRequisBaseX,'preRequisX'=> $preRequisX]);
             $this->controllerBase->afficheView([$preRequis],'preRequisGI');
         }
@@ -137,7 +137,7 @@ class ControllerUserGalaxyInfinity{
     public function afficheReglesUser(){
         if(isset($_SESSION['pseudo'])){
 
-            $reglesView = '../plugins/galaxyInfinity/user/src/view/reglesGIView.php';
+            $reglesView = 'plugins/galaxyInfinity/user/src/view/reglesGIView.php';
             $reglesView = $this->controllerBase->tamponView($reglesView);
             $this->controllerBase->afficheView([$reglesView],'reglesGI');
         }

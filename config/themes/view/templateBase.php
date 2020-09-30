@@ -4,7 +4,7 @@
         <title>Galaxy Infinity</title> <!--Remplir ici le titre de votre site-->
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, user-scalable=no">
-        <link rel="stylesheet" href="../config/themes/public/css/templateBase.css">
+        <link rel="stylesheet" href="config/themes/public/css/templateBase.css">
         <script type=" text/javascript" src="https://code.jquery.com/jquery-3.5.1.min.js "></script>
 
        <?php if(!empty($css)){foreach($css as $css){?><link rel="stylesheet" href="<?=$css?>"> <?php }} ?> 

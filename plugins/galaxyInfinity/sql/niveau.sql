@@ -1,5 +1,0 @@
-CREATE TABLE IF NOT EXISTS `mydb`.`niveau` (
-  `id` INT NOT NULL AUTO_INCREMENT,
-  `niveau` INT NULL,
-  PRIMARY KEY (`id`))
-ENGINE = InnoDB

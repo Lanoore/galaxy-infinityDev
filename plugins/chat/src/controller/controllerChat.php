@@ -3,7 +3,7 @@
 namespace App\plugins\chat\src\controller;
 
 /* Ajoutez ici tout les manager (dossier model du plugin) */
-use App\plugins\chat\src\model\ManagerChat;
+use App\plugins\chat\src\model\managerChat;
 
 /* Ajoutez ici tout les controller (dossier controller du plugin ou extérieur si nécessire) */
 use App\config\themes\controller\controllerBase;
@@ -36,7 +36,7 @@ class ControllerChat{
 
                 $messagesChat = $this->managerChat->getChat();
         
-                $chat = '../plugins/chat/src/view/afficheChat.php';
+                $chat = 'plugins/chat/src/view/afficheChat.php';
                 $chat = $this->controllerBase->tamponView($chat, $messagesChat);
         
                 

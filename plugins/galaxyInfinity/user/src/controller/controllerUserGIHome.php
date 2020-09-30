@@ -56,7 +56,7 @@ class ControllerUserGIHome{
             $allTechno = $this->managerUserGIHome->getAllTechnoPlaneteX();
 
 
-            $userHome = '../plugins/galaxyInfinity/user/src/view/userGestionHomeView.php';
+            $userHome = 'plugins/galaxyInfinity/user/src/view/userGestionHomeView.php';
             $userHome = $this->controllerBase->tamponView($userHome,['allTechno'=>$allTechno,'allCraft'=>$allCraft,'allBat'=>$allBat,'allRessources'=>$allRessources,'tempsRestantCraft'=>$tempsRestantCraft,'tempsRestantBat'=>$tempsRestantBat,'tempsRestantTechno'=>$tempsRestantTechno]);
 
             $this->controllerBase->afficheView([$userHome],'userGestionHome');

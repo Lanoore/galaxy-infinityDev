@@ -29,7 +29,7 @@ class ControllerAdminGalaxyInfinity
      */
     public function afficheAdminGestionGI(){
         if(isset($_SESSION['identifiantAdmin'])){
-            $adminGI = '../plugins/galaxyInfinity/admin/src/view/adminGeneralGIView.php';
+            $adminGI = 'plugins/galaxyInfinity/admin/src/view/adminGeneralGIView.php';
             $adminGI = $this->controllerBase->tamponView($adminGI);
             $this->controllerBase->afficheView([$adminGI],'adminGestionGeneralGI');
         }

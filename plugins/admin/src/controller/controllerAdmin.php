@@ -3,7 +3,7 @@
 namespace App\plugins\admin\src\controller;
 
 /* Ajoutez ici tout les manager (dossier model du plugin) */
-use App\plugins\admin\src\model\ManagerAdmin;
+use App\plugins\admin\src\model\managerAdmin;
 
 /* Ajoutez ici tout les controller (dossier controller du plugin ou extérieur si nécessire) */
 use App\config\themes\controller\controllerBase;
@@ -31,7 +31,7 @@ class ControllerAdmin{
      * @return void
      */
     public function afficheConnexionAdmin(){
-        $connexionAdmin = '../plugins/admin/src/view/connexionAdminView.php';
+        $connexionAdmin = 'plugins/admin/src/view/connexionAdminView.php';
         $connexionAdmin = $this->controllerBase->tamponView($connexionAdmin);
         $this->controllerBase->afficheView([$connexionAdmin],'connexionAdminView');
     }
@@ -69,7 +69,7 @@ class ControllerAdmin{
      */
     public function afficheGeneralAdmin(){
         if(isset($_SESSION['identifiantAdmin'])){
-            $adminGeneralView = '../plugins/admin/src/view/adminGeneralView.php';
+            $adminGeneralView = 'plugins/admin/src/view/adminGeneralView.php';
             $adminGeneralView = $this->controllerBase->tamponView($adminGeneralView);
             $this->controllerBase->afficheView([$adminGeneralView],'adminGeneral');
         }
@@ -104,7 +104,7 @@ class ControllerAdmin{
      */
     public function afficheChangePassword(){
         if(isset($_SESSION['identifiantAdmin'])){
-            $adminChangePassword = '../plugins/admin/src/view/changePasswordView.php';
+            $adminChangePassword = 'plugins/admin/src/view/changePasswordView.php';
             $adminChangePassword = $this->controllerBase->tamponView($adminChangePassword);
             $this->controllerBase->afficheView([$adminChangePassword],'changePassword');
         }

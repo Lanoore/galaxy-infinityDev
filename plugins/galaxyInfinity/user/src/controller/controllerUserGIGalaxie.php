@@ -43,7 +43,7 @@ class ControllerUserGIGalaxie{
 
                 $galaxie = $this->managerUserGIGalaxie->getSysteme();
 
-                $userGalaxie = '../plugins/galaxyInfinity/user/src/view/userGestionGalaxieView.php';
+                $userGalaxie = 'plugins/galaxyInfinity/user/src/view/userGestionGalaxieView.php';
                 $userGalaxie = $this->controllerBase->tamponView($userGalaxie, ['galaxie'=> $galaxie]);
         
                 $this->controllerBase->afficheView([$userGalaxie],'userGestionGalaxie');
