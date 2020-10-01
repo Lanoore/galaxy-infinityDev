@@ -6,7 +6,9 @@
     margin-bottom: 4%;
 }
 
-
+.afficheXEnCours{
+    display: flex;
+}
 
 
 .afficheAll{

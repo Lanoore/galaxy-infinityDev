@@ -83,8 +83,9 @@ class ControllerUser
                     $this->managerUser->email = $email;
                     $this->managerUser->password = $password;
                     $addUser = $this->managerUser->addUser();
-                    echo('test');
+                    
                     if($addUser == true){
+                        
                         //Ajouter ici les info de création du joueur sur GalaxyInfinity
                         $this->controllerUserGI->pseudo = $_POST['pseudo'];
                         $this->controllerUserGI->createUserGI();
