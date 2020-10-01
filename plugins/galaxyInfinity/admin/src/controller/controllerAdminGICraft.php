@@ -3,11 +3,11 @@
 namespace App\plugins\galaxyInfinity\admin\src\controller;
 
 /* Ajoutez ici tout les manager (dossier model du plugin) */
-use App\plugins\galaxyInfinity\admin\src\model\ManagerAdminGICraft;
-use App\plugins\galaxyInfinity\admin\src\model\ManagerAdminGIRessource;
-use App\plugins\galaxyInfinity\admin\src\model\ManagerAdminGIBatiment;
-use App\plugins\galaxyInfinity\admin\src\model\ManagerAdminGITechnologie;
-use App\plugins\galaxyInfinity\admin\src\model\ManagerAdminGalaxyInfinity;
+use App\plugins\galaxyInfinity\admin\src\model\managerAdminGICraft;
+use App\plugins\galaxyInfinity\admin\src\model\managerAdminGIRessource;
+use App\plugins\galaxyInfinity\admin\src\model\managerAdminGIBatiment;
+use App\plugins\galaxyInfinity\admin\src\model\managerAdminGITechnologie;
+use App\plugins\galaxyInfinity\admin\src\model\managerAdminGalaxyInfinity;
 
 /* Ajoutez ici tout les controller (dossier controller du plugin ou extérieur si nécessire) */
 
@@ -54,7 +54,7 @@ class ControllerAdminGICraft{
             $niveaux = $this->managerAdminGalaxyInfinity->getNiveaux();
             $adminBatBase = $this->managerAdminGIBatiment->getBatBaseAdmin();
 
-            $adminGI = '../plugins/galaxyInfinity/admin/src/view/adminGestionCraftView.php';
+            $adminGI = 'plugins/galaxyInfinity/admin/src/view/adminGestionCraftView.php';
             $adminGI = $this->controllerBase->tamponView($adminGI, ['craftsPR'=>$craftsPR,'technologies'=>$technologies,'adminBatBase'=>$adminBatBase,'niveaux'=>$niveaux,'craftCrafts' =>$craftCrafts,'ressources' =>$ressources,'crafts' => $crafts]);
             $this->controllerBase->afficheView([$adminGI],'adminGestionCraft');
 

@@ -3,7 +3,7 @@
 namespace App\plugins\user\src\controller;
 
 /* Ajoutez ici tout les manager (dossier model du plugin) */
-use App\plugins\user\src\model\ManagerUser;
+use App\plugins\user\src\model\managerUser;
 
 /* Ajoutez ici tout les controller (dossier controller du plugin ou extérieur si nécessire) */
 
@@ -38,7 +38,7 @@ class ControllerUser
      * @return void
      */
     public function afficheConnexion(){
-        $connexion = '../plugins/user/src/view/connexionView.php';
+        $connexion = 'plugins/user/src/view/connexionView.php';
         $connexion = $this->controllerBase->tamponView($connexion);
         $this->templateViewUser([$connexion],'connexionViewUser');
     }
@@ -52,7 +52,7 @@ class ControllerUser
      */
     public function afficheInscription(){
 
-        $inscription = '../plugins/user/src/view/inscriptionView.php';
+        $inscription = 'plugins/user/src/view/inscriptionView.php';
         $inscription = $this->controllerBase->tamponView($inscription);
         $this->templateViewUser([$inscription],'inscriptionView');
     }
@@ -76,14 +76,16 @@ class ControllerUser
                 $this->managerUser->pseudo = $_POST['pseudo'];
                 $this->managerUser->email = $_POST['email'];
                 $this->managerUser->verifUserExist($this->managerUser->pseudo,$this->managerUser->email);
+                
                 if($this->managerUser->existUser == 0){
                     $password = password_hash($password, PASSWORD_DEFAULT);
                     $this->managerUser->pseudo = $pseudo;
                     $this->managerUser->email = $email;
                     $this->managerUser->password = $password;
                     $addUser = $this->managerUser->addUser();
-
+                    
                     if($addUser == true){
+                        
                         //Ajouter ici les info de création du joueur sur GalaxyInfinity
                         $this->controllerUserGI->pseudo = $_POST['pseudo'];
                         $this->controllerUserGI->createUserGI();
@@ -167,7 +169,7 @@ class ControllerUser
     public function afficheUser(){
 
         if(isset($_SESSION['idUser'])){
-            $userInfo = '../plugins/user/src/view/userInfoView.php';
+            $userInfo = 'plugins/user/src/view/userInfoView.php';
             $userInfo = $this->controllerBase->tamponView($userInfo);
             $this->controllerBase->afficheView([$userInfo],'userInfoView');
         }
@@ -184,12 +186,12 @@ class ControllerUser
  * 
  */
     public function templateViewUser($views = null, $css = null){
-        include('../config/themes/public/css/tableFichierCss.php');
+        include('config/themes/public/css/tableFichierCss.php');
 
         
         $css = $tableCss[$css];
 
-        require '../plugins/user/src/view/templateViewUser.php';
+        require 'plugins/user/src/view/templateViewUser.php';
     }   
     
 }

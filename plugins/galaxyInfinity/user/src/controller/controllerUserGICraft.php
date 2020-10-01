@@ -63,7 +63,7 @@ class ControllerUserGICraft{
                 $craft[] = ['craftCraft'=>$craftCraft,'verifCraftEnCours'=>$verifCraftEnCours,'idCraft' => $craftBase['id'], 'nomCraft' => $craftBase['nom'],'tempsConstru'=>$tempsConstru, 'descrCraft' => $craftBase['description'], 'tierCraft' => $craftBase['tier'],'imageCraft' =>$craftBase['image'], 'verifPrCraft' => $verifPrCraft, 'verifCraftCraft'=>$verifCraftCraft,'nombreCraft' =>$nombreCraftPlanete['nombre_craft']];
             }
 
-            $userCraft = '../plugins/galaxyInfinity/user/src/view/userGestionCraftView.php';
+            $userCraft = 'plugins/galaxyInfinity/user/src/view/userGestionCraftView.php';
             $userCraft = $this->controllerBase->tamponView($userCraft,['craft' => $craft, 'tempsRestantCraft' => $tempsRestantCraft]);
 
             $this->controllerBase->afficheView([$userCraft],'userGestionCraft');

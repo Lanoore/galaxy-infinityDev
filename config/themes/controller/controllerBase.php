@@ -19,7 +19,7 @@ class ControllerBase
     }
 
     public function afficheAccueil(){
-        $accueil = '../config/themes/view/accueilView.php';
+        $accueil = 'config/themes/view/accueilView.php';
         $accueil = $this->tamponView($accueil);
         $this->afficheView([$accueil]);
 
@@ -27,14 +27,14 @@ class ControllerBase
 
     
     public function afficheView($views = null, $css= null){
-        include('../config/themes/public/css/tableFichierCss.php');
+        include('config/themes/public/css/tableFichierCss.php');
 
         if($css != null){
             $css = $tableCss[$css];
         }
         
 
-        require '../config/themes/view/templateBase.php';
+        require 'config/themes/view/templateBase.php';
     }    
 
 }

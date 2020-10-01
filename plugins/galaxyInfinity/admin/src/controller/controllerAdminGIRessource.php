@@ -2,7 +2,7 @@
 
 namespace App\plugins\galaxyInfinity\admin\src\controller;
 
-use App\plugins\galaxyInfinity\admin\src\model\ManagerAdminGalaxyInfinity;
+use App\plugins\galaxyInfinity\admin\src\model\managerAdminGalaxyInfinity;
 use App\plugins\galaxyInfinity\admin\src\model\managerAdminGIRessource;
 use App\plugins\galaxyInfinity\admin\src\model\managerAdminGIBatiment;
 
@@ -41,7 +41,7 @@ class ControllerAdminGIRessource
             $adminBatBase = $this->managerAdminGIBatiment->getBatBaseAdmin();
             $niveaux = $this->managerAdminGalaxyInfinity->getNiveaux();
 
-            $adminGI = '../plugins/galaxyInfinity/admin/src/view/adminGestionRessourceView.php';
+            $adminGI = 'plugins/galaxyInfinity/admin/src/view/adminGestionRessourceView.php';
             $adminGI = $this->controllerBase->tamponView($adminGI,['liaisonRessourceBat'=>$liaisonRessourceBat,'prodRessources'=>$prodRessources,'adminBatBase'=>$adminBatBase,'niveaux'=>$niveaux,'ressources' => $ressources]);
             $this->controllerBase->afficheView([$adminGI],'adminGestionRessource');
         }

@@ -3,14 +3,14 @@
 
 namespace App\config;
 
-use App\config\themes\controller\ControllerBase; //Ne surtout pas supprimer permet d'afficher l'accueil général
+use App\config\themes\controller\controllerBase; //Ne surtout pas supprimer permet d'afficher l'accueil général
 
 /*Ajoutez ici tout les controller de plugins */
-use App\plugins\user\src\controller\ControllerUser;
-use App\plugins\admin\src\controller\ControllerAdmin;
-use App\plugins\chat\src\controller\ControllerChat;
-use App\plugins\forum\src\controller\ControllerForum;
-use App\plugins\forum\src\controller\ControllerForumAdmin;
+use App\plugins\user\src\controller\controllerUser;
+use App\plugins\admin\src\controller\controllerAdmin;
+use App\plugins\chat\src\controller\controllerChat;
+use App\plugins\forum\src\controller\controllerForum;
+use App\plugins\forum\src\controller\controllerForumAdmin;
 use App\plugins\galaxyInfinity\admin\src\controller\controllerAdminGalaxyInfinity;
 use App\plugins\galaxyInfinity\admin\src\controller\controllerAdminGIBatiment;
 use App\plugins\galaxyInfinity\admin\src\controller\controllerAdminGICraft;
@@ -20,11 +20,11 @@ use App\plugins\galaxyInfinity\admin\src\controller\controllerAdminGITechnologie
 use App\plugins\galaxyInfinity\admin\src\controller\controllerAdminGIGalaxie;
 use App\plugins\galaxyInfinity\user\src\controller\controllerUserGalaxyInfinity;
 use App\plugins\galaxyInfinity\user\src\controller\controllerUserGIBatiment;
-use App\plugins\galaxyInfinity\user\src\controller\ControllerUserGITechnologie;
-use App\plugins\galaxyInfinity\user\src\controller\ControllerUserGICraft;
-use App\plugins\galaxyInfinity\user\src\controller\ControllerUserGIGalaxie;
-use App\plugins\galaxyInfinity\user\src\controller\ControllerUserGIPlanete;
-use App\plugins\galaxyInfinity\user\src\controller\ControllerUserGIHome;
+use App\plugins\galaxyInfinity\user\src\controller\controllerUserGITechnologie;
+use App\plugins\galaxyInfinity\user\src\controller\controllerUserGICraft;
+use App\plugins\galaxyInfinity\user\src\controller\controllerUserGIGalaxie;
+use App\plugins\galaxyInfinity\user\src\controller\controllerUserGIPlanete;
+use App\plugins\galaxyInfinity\user\src\controller\controllerUserGIHome;
 
 
 
@@ -56,8 +56,8 @@ class Router
 
     public function __construct(){
         $this->controllerBase = new ControllerBase();
-        $this->controllerUser = new controllerUser();
-        $this->controllerAdmin = new controllerAdmin();
+        $this->controllerUser = new ControllerUser();
+        $this->controllerAdmin = new ControllerAdmin();
         $this->controllerChat = new ControllerChat();
         $this->controllerForum = new ControllerForum();
         $this->controllerForumAdmin = new ControllerForumAdmin();
@@ -447,7 +447,7 @@ class Router
         }
         catch(Exception $e){
             $css = 'erreurView';
-            $view = '../config/themes/view/erreurView.php';
+            $view = 'config/themes/view/erreurView.php';
             $erreurMessage = $e->getMessage();
             $erreur = $this->controllerBase->tamponView($view,['erreur' =>$erreurMessage]);
             $this->controllerBase->afficheView([$erreur],$css);

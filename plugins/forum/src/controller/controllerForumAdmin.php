@@ -3,7 +3,7 @@
 namespace App\plugins\forum\src\controller;
 
 /* Ajoutez ici tout les manager (dossier model du plugin) */
-use App\plugins\forum\src\model\ManagerForumAdmin;
+use App\plugins\forum\src\model\managerForumAdmin;
 
 /* Ajoutez ici tout les controller (dossier controller du plugin ou extérieur si nécessire) */
 
@@ -181,7 +181,7 @@ class ControllerForumAdmin{
 
             
             
-            $gestionForum = '../plugins/forum/src/view/admin/forumAdminGestionView.php';
+            $gestionForum = 'plugins/forum/src/view/admin/forumAdminGestionView.php';
             $gestionForum = $this->controllerBase->tamponView($gestionForum, ['categories'=>$categories, 'topics'=>$topics , 'commentaires'=>$commentaires]);
             $this->controllerBase->afficheView([$gestionForum],'forumAdminGestionView');
         }

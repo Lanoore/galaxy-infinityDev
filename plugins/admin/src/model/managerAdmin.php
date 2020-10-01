@@ -2,9 +2,9 @@
 
 namespace App\plugins\admin\src\model;
 
-use App\config\ManagerBDD;
+use App\config\managerBDD;
 
-class ManagerAdmin extends ManagerBDD
+class ManagerAdmin extends managerBDD
 {
     public function __construct(){
 

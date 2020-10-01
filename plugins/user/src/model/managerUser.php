@@ -2,9 +2,9 @@
 
 namespace App\plugins\user\src\model;
 
-use App\config\ManagerBDD;
+use App\config\managerBDD;
 
-class ManagerUser extends ManagerBDD
+class ManagerUser extends managerBDD
 {
     
 

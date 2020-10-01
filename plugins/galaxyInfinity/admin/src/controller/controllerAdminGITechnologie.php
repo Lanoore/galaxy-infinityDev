@@ -2,11 +2,11 @@
 
 namespace App\plugins\galaxyInfinity\admin\src\controller;
 
-use App\plugins\galaxyInfinity\admin\src\model\ManagerAdminGalaxyInfinity;
-use App\plugins\galaxyInfinity\admin\src\model\ManagerAdminGITechnologie;
-use App\plugins\galaxyInfinity\admin\src\model\ManagerAdminGICraft;
-use App\plugins\galaxyInfinity\admin\src\model\ManagerAdminGIItems;
-use App\plugins\galaxyInfinity\admin\src\model\ManagerAdminGIBatiment;
+use App\plugins\galaxyInfinity\admin\src\model\managerAdminGalaxyInfinity;
+use App\plugins\galaxyInfinity\admin\src\model\managerAdminGITechnologie;
+use App\plugins\galaxyInfinity\admin\src\model\managerAdminGICraft;
+use App\plugins\galaxyInfinity\admin\src\model\managerAdminGIItems;
+use App\plugins\galaxyInfinity\admin\src\model\managerAdminGIBatiment;
 
 
 use App\config\themes\controller\controllerBase;
@@ -53,7 +53,7 @@ class ControllerAdminGITechnologie
             $items = $this->managerAdminGIItems->getItems();
             $adminBatBase = $this->managerAdminGIBatiment->getBatBaseAdmin();
 
-            $adminGI = '../plugins/galaxyInfinity/admin/src/view/adminGestionTechnologieView.php';
+            $adminGI = 'plugins/galaxyInfinity/admin/src/view/adminGestionTechnologieView.php';
             $adminGI = $this->controllerBase->tamponView($adminGI, ['adminTechnologiePR'=>$adminTechnologiePR,'adminBatBase'=>$adminBatBase,'niveaux'=>$niveaux, 'crafts' => $crafts, 'items' => $items,'adminTechnologieBase' => $adminTechnologieBase,'adminTechnologieNiveau' =>$adminTechnologieNiveau, 'adminTechnologieTempsNiveau' => $adminTechnologieTempsNiveau]);
             $this->controllerBase->afficheView([$adminGI],'adminGestionTechnologie');
 

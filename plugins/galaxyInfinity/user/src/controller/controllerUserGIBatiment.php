@@ -62,7 +62,7 @@ class ControllerUserGIBatiment{
                 $batiment[] = ['tempsConstru' =>$tempsConstru,'batCraft'=>$batCraft,'verifBatEnCours'=>$verifBatEnCours,'idBat' => $batBase['id'], 'nomBat' => $batBase['nom'], 'descrBat' => $batBase['description'], 'tierBat' => $batBase['tier'],'imageBat' =>$batBase['image'], 'prValide' => $verifPrBat, 'craftValide'=>$verifCraftBat, 'niveauBatPlanete' => $batBase['niveau']];
             }
 
-            $userBatiment = '../plugins/galaxyInfinity/user/src/view/userGestionBatimentView.php';
+            $userBatiment = 'plugins/galaxyInfinity/user/src/view/userGestionBatimentView.php';
             $userBatiment = $this->controllerBase->tamponView($userBatiment,['batiment' => $batiment, 'tempsRestantBat' => $tempsRestantBat]);
 
             $this->controllerBase->afficheView([$userBatiment],'userGestionBatiment');

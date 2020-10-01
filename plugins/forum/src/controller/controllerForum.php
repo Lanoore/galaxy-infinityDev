@@ -3,7 +3,7 @@
 namespace App\plugins\forum\src\controller;
 
 /* Ajoutez ici tout les manager (dossier model du plugin) */
-use App\plugins\forum\src\model\ManagerForum;
+use App\plugins\forum\src\model\managerForum;
 
 /* Ajoutez ici tout les controller (dossier controller du plugin ou extérieur si nécessire) */
 
@@ -65,7 +65,7 @@ class ControllerForum{
             $pagination['pageCourante'] = $pageCourante;
 
 
-            $topicForum = '../plugins/forum/src/view/user/topicView.php';
+            $topicForum = 'plugins/forum/src/view/user/topicView.php';
             $topicForum = $this->controllerBase->tamponView($topicForum, ['topic' => $topic, 'commentaires' => $commentaires,'pagination' =>$pagination]);
             $this->controllerBase->afficheView([$topicForum],'topicView');
         }
@@ -91,7 +91,7 @@ class ControllerForum{
 
             }
             
-            $forumCategories = '../plugins/forum/src/view/user/categoriesView.php';
+            $forumCategories = 'plugins/forum/src/view/user/categoriesView.php';
             $forumCategories = $this->controllerBase->tamponView($forumCategories, ['categories' => $categories, 'lastTopics' => $lastTopics]);
             $this->controllerBase->afficheView([$forumCategories],'categoriesView');
         }
@@ -147,7 +147,7 @@ class ControllerForum{
                 $lastCommentaires = null;
             }
             
-            $forumCategorie = '../plugins/forum/src/view/user/categorieView.php';
+            $forumCategorie = 'plugins/forum/src/view/user/categorieView.php';
             $forumCategorie = $this->controllerBase->tamponView($forumCategorie, ['topics' =>$topics, 'lastCommentaires' =>$lastCommentaires, 'categorie' =>$categorie, 'pagination' =>$pagination]);
             $this->controllerBase->afficheView([$forumCategorie],'categorieView');
         }
@@ -163,7 +163,7 @@ class ControllerForum{
      */
     public function afficheCreateTopic($idCategorie){
         if(isset($_SESSION['idUser'])){
-            $createTopic = '../plugins/forum/src/view/user/createTopicView.php';
+            $createTopic = 'plugins/forum/src/view/user/createTopicView.php';
             $createTopic = $this->controllerBase->tamponView($createTopic,['idCategorie' => $idCategorie]);
             $this->controllerBase->afficheView([$createTopic],'createTopicView');
         }
@@ -181,7 +181,7 @@ class ControllerForum{
         if(isset($_SESSION['idUser'])){
             
             if(!empty($_POST['nomTopic'])&& !empty($_POST['messageTopic'])){
-                echo('test');        $this->managerForum->idCategorie = $idCategorie;
+                    $this->managerForum->idCategorie = $idCategorie;
                     $categorieExist = $this->managerForum->categorieExist();
                     if(empty($categorieExist)){
                         header('Location:index.php?forum=afficheCategories');
@@ -189,7 +189,7 @@ class ControllerForum{
                     $this->managerForum->nomTopic = htmlspecialchars($_POST['nomTopic']);
                     $this->managerForum->auteurTopic = $_SESSION['pseudo'];
                     $this->managerForum->messageTopic = htmlspecialchars($_POST['messageTopic']);
-                    var_dump($this->managerForum->messageTopic);
+                    
                     
                     $addTopic = $this->managerForum->addTopic();
                     
@@ -257,7 +257,7 @@ class ControllerForum{
             $this->managerForum->idTopic = $idTopic;
             $topic = $this->managerForum->getTopic();
             if($topic['auteur'] = $_SESSION['pseudo']){
-                $modifTopic = '../plugins/forum/src/view/user/modifTopicView.php';
+                $modifTopic = 'plugins/forum/src/view/user/modifTopicView.php';
                 $modifTopic = $this->controllerBase->tamponView($modifTopic,['topic' => $topic]);
                 $this->controllerBase->afficheView([$modifTopic],'modifTopicView');
             }
