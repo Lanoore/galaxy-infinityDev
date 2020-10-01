@@ -181,7 +181,7 @@ class ControllerForum{
         if(isset($_SESSION['idUser'])){
             
             if(!empty($_POST['nomTopic'])&& !empty($_POST['messageTopic'])){
-                echo('test');        $this->managerForum->idCategorie = $idCategorie;
+                    $this->managerForum->idCategorie = $idCategorie;
                     $categorieExist = $this->managerForum->categorieExist();
                     if(empty($categorieExist)){
                         header('Location:index.php?forum=afficheCategories');
@@ -189,7 +189,7 @@ class ControllerForum{
                     $this->managerForum->nomTopic = htmlspecialchars($_POST['nomTopic']);
                     $this->managerForum->auteurTopic = $_SESSION['pseudo'];
                     $this->managerForum->messageTopic = htmlspecialchars($_POST['messageTopic']);
-                    var_dump($this->managerForum->messageTopic);
+                    
                     
                     $addTopic = $this->managerForum->addTopic();
                     
