@@ -12,6 +12,7 @@ class user{
             if(!regexCouriel.test(e.target.value)){
                 document.getElementById('verifEmailJs').textContent = 'Adresse invalide';
                 document.getElementById('verifEmailJs').style.color ='red';
+                document.getElementById('verifEmailJs').style.display ='block';
             }
         });
 
@@ -31,6 +32,7 @@ class user{
             var verifMdp = document.getElementById('verifPasswordJs');
             verifMdp.textContent ='Longeur : ' + longueurMdp;
             verifMdp.style.color = couleurMsg;
+            verifMdp.style.display = 'block';
         });
 
         var form = document.querySelector('form');
@@ -54,6 +56,7 @@ class user{
             if(count >=1){
                 document.getElementById('verifFormJs').textContent = 'Veuillez remplir tout les champs correctement';
                 document.getElementById('verifFormJs').style.color ='red';
+                document.getElementById('verifFormJs').style.display ='block';
                 e.preventDefault();
             }
             

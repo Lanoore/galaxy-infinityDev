@@ -19,3 +19,8 @@ form div {
 a{
     text-decoration: none;
 }
+
+form span, form div span{
+    text-align: center;
+    display: none;
+}

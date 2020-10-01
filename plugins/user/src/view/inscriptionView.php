@@ -12,13 +12,15 @@
         <div>
             <label for="email">Adresse Mail</label>
             <input type="email" id="email" name="email">
-            <span id='verifEmailJs'></span>
+            
         </div>
+        <span id='verifEmailJs'></span>
         <div>
             <label for="password">Mot de passe</label>
             <input type="password" id="password" name="password">
-            <span id='verifPasswordJs'></span>
+            
         </div>
+        <span id='verifPasswordJs'></span>
         <div>
             <label for="repeatPassword">Répétez le mot de passe</label>
             <input type="password" id="repeatPassword" name="repeatPassword">
