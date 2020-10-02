@@ -1,6 +1,5 @@
 
 
-<link rel="stylesheet" href="../plugins/forum/public/css/user/topicView.css" >
 
 <div class='topic'>
     <h3><?= $topic['nom']?></h3>

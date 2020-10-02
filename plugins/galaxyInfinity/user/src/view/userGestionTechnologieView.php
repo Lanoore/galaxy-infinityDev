@@ -27,7 +27,7 @@
                         <p><?=$techno['niveauTechnoPlanete']?></p>
                     </div>
                     
-                    <img class='imgTechnoX' src="../plugins/galaxyInfinity/admin/public/img/technologie/<?=$techno['imageTechno']?>" alt=""  width="94%">
+                    <img class='imgTechnoX' src="plugins/galaxyInfinity/admin/public/img/technologie/<?=$techno['imageTechno']?>" alt=""  width="94%">
                     <?php
                         if($techno['prValide'] == 0 && $techno['craftValide'] == 0 && $techno['verifTechnoEnCours'] == 0){?>
                             <p style='color: blue'><a href="index.php?galaxyInfinity=addConstructionTechno&idTechno=<?=$techno['idTechno']?>" method='post'>Construire</a></p>    
@@ -61,5 +61,5 @@
 
 
 
-<script type='text/javascript' src='../plugins/galaxyInfinity/user/public/js/jsTechnologie/gestionTechno.js'></script>
-<script type='text/javascript' src='../plugins/galaxyInfinity/user/public/js/jsTechnologie/mainTechno.js'></script>
+<script type='text/javascript' src='plugins/galaxyInfinity/user/public/js/jsTechnologie/gestionTechno.js'></script>
+<script type='text/javascript' src='plugins/galaxyInfinity/user/public/js/jsTechnologie/mainTechno.js'></script>

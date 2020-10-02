@@ -22,8 +22,8 @@
     ?>
 </div>
 
-<script type='text/javascript' src='../plugins/chat/public/js/gestionChat.js'></script>
-<script type='text/javascript' src='../plugins/chat/public/js/mainChat.js'></script>
+<script type='text/javascript' src='plugins/chat/public/js/gestionChat.js'></script>
+<script type='text/javascript' src='plugins/chat/public/js/mainChat.js'></script>
 
 
 

@@ -1,14 +1,13 @@
 
-<link rel="stylesheet" href="../plugins/forum/public/css/user/modifTopicView.css" type='text/css'> 
 
 <div>
     <form action='index.php?forum=modifTopic&idTopic=<?=$topic['id']?>' method='post'>
-        <div >
+        <div class="divNTopic">
             <?='<label for="nomTopic">Nom du topic</label><br/>
             <input type="text" name="nomTopic" value = "',htmlspecialchars($topic['nom'], ENT_QUOTES, 'UTF-8'),'"></input>'?>
         </div>
         
-        <div>
+        <div class="divCTopic">
             <label for="messageTopic">Contenu du topic</label>
             <textarea id='messageTopic' name ='messageTopic'><?=$topic['message']?></textarea>
         </div>   

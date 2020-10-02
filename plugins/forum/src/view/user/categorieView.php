@@ -1,5 +1,5 @@
 
-        <link href="../plugins/forum/public/css/user/categorieView.css" rel="stylesheet">
+
 <div>
 
     

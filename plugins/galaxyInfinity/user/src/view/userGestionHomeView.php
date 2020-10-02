@@ -61,8 +61,8 @@
 
 
 
-<script type='text/javascript' src='../plugins/galaxyInfinity/user/public/js/jsHome/gestionCraft.js'></script>
-<script type='text/javascript' src='../plugins/galaxyInfinity/user/public/js/jsHome/gestionBat.js'></script>
-<script type='text/javascript' src='../plugins/galaxyInfinity/user/public/js/jsHome/gestionRessources.js'></script>
-<script type='text/javascript' src='../plugins/galaxyInfinity/user/public/js/jsHome/gestionTechno.js'></script>
-<script type='text/javascript' src='../plugins/galaxyInfinity/user/public/js/jsHome/mainHome.js'></script>
+<script type='text/javascript' src='plugins/galaxyInfinity/user/public/js/jsHome/gestionCraft.js'></script>
+<script type='text/javascript' src='plugins/galaxyInfinity/user/public/js/jsHome/gestionBat.js'></script>
+<script type='text/javascript' src='plugins/galaxyInfinity/user/public/js/jsHome/gestionRessources.js'></script>
+<script type='text/javascript' src='plugins/galaxyInfinity/user/public/js/jsHome/gestionTechno.js'></script>
+<script type='text/javascript' src='plugins/galaxyInfinity/user/public/js/jsHome/mainHome.js'></script>

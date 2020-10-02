@@ -1,5 +1,5 @@
 
-<link rel="stylesheet" href="../plugins/forum/public/css/user/createTopicView.css" type='text/css'>
+
  
 <div>
     <form action="index.php?forum=createTopic&idCategorie=<?=$idCategorie?>" method="POST">

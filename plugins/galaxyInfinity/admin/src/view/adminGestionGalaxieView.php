@@ -54,7 +54,7 @@
                     <th>Numéro du systeme</th>
                     <th>Position dans le systeme</th>
                     <th>Situation de la planete</th>
-                    <th>Id du joueur ayant la planete</th>
+                    <th>Nom du joueur ayant la planete</th>
                     <th>Action ?</th>
                 </tr>
             </thead>
@@ -84,4 +84,4 @@
 
 
 <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.js"></script>
-<script src="../plugins/galaxyInfinity/admin/public/js/adminGestionGalaxyInfinity.js"></script>
+<script src="plugins/galaxyInfinity/admin/public/js/adminGestionGalaxyInfinity.js"></script>
