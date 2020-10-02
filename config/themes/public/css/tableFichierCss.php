@@ -5,20 +5,20 @@
 $tableCss = 
 [   
     //Général
-    'erreurView' => ['plugins/admin/public/css/erreurView.css'],
+    'erreurView' => ['config/themes/public/css/erreurView.css'],
 
     //Css plugin admin
 
 
-    'adminGeneral' => ['plugins/admin/public/css/adminGeneral.css','index.css'],
+    'adminGeneral' => ['plugins/admin/public/css/adminGeneral.css'],
 
     'changePassword' => ['plugins/admin/public/css/changePassword.css'],
-    'connexionAdminView' => ['plugins/admin/public/css/connexionAdminView.css'],
+    'connexionAdminView' => ['plugins/admin/public/css/connexionAdmin.css'],
 
     //Css plugin user
     'connexionViewUser' => ['plugins/user/public/css/connexionView.css'],
-    'inscriptionView' => ['plugins/admin/public/css/inscriptionView.css'],
-    'userInfoView' => ['plugins/admin/public/css/userInfoView.css'],
+    'inscriptionView' => ['plugins/user/public/css/inscriptionView.css'],
+    'userInfoView' => ['plugins/user/public/css/userInfoView.css'],
 
     //Css plugin chat
 
@@ -27,13 +27,13 @@ $tableCss =
 
     //Css plugin forum
     //Css admin Forum
-    'forumAdminGestionView' => ['plugins/admin/public/css/forumAdminGestionView.css'],
+    'forumAdminGestionView' => ['plugins/forum/public/css/admin/forumAdminGestionView.css'],
     //Css user Fourm
-    'categoriesView' => ['plugins/admin/public/css/categoriesView.css'],
-    'categorieView' => ['plugins/admin/public/css/categorieView.css'],
-    'createTopicView' => ['plugins/admin/public/css/createTopicView.css'],
-    'modifTopicView' => ['plugins/admin/public/css/modifTopicView.css'],
-    'topicView' => ['plugins/admin/public/css/topicView.css'],
+    'categoriesView' => ['plugins/forum/public/css/user/categoriesView.css'],
+    'categorieView' => ['plugins/forum/public/css/user/categorieView.css'],
+    'createTopicView' => ['plugins/forum/public/css/user/createTopicView.css'],
+    'modifTopicView' => ['plugins/forum/public/css/user/modifTopicView.css'],
+    'topicView' => ['plugins/forum/public/css/user/topicView.css'],
 
     //Css plugin Galaxy Infinity
     //Css admin GalaxyInfinity
@@ -43,7 +43,7 @@ $tableCss =
     'adminGestionItems' => ['plugins/galaxyInfinity/admin/public/css/adminGestionItems.css'],
     'adminGestionRessource' => ['plugins/galaxyInfinity/admin/public/css/adminGestionRessource.css'],
     'adminGestionGalaxie' => ['plugins/galaxyInfinity/admin/public/css/adminGestionGalaxie.css'],
-    'adminGestionGeneralGI' => ['../plugins/galaxyInfinity/admin/public/css/adminGestionGeneralGI.css'],
+    'adminGestionGeneralGI' => ['plugins/galaxyInfinity/admin/public/css/adminGestionGeneralGI.css'],
     //Css user GalaxyInfinity
 
     'reglesGI' => ['plugins/galaxyInfinity/user/public/css/reglesGI.css'],

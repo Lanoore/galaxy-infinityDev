@@ -1,0 +1,8 @@
+.divActionForum{
+    display: flex;
+    justify-content: space-between;
+}
+
+.tableForumAdmin{
+    text-align: center;
+}

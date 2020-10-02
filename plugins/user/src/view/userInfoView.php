@@ -12,5 +12,3 @@
 
 
 
-
-<link rel="stylesheet" href="../plugins/user/public/css/userInfoView.css">

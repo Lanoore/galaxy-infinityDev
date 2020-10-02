@@ -2,17 +2,9 @@ form{
     display: flex;
     flex-direction: column;
     align-items: center;
+    text-align: center;
 }
 
-form div{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.topicMessage{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 70%; 
+.divCTopic{
+    width: 90%;
 }

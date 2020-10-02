@@ -26,4 +26,3 @@
 </div>
 
 
-<link rel="stylesheet" href="../plugins/admin/public/css/changePasswordCss.css">

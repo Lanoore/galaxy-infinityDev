@@ -27,7 +27,7 @@
                         <p><?=$bat['niveauBatPlanete']?></p>
                     </div>
                     
-                    <img class='imgBatX' src="../plugins/galaxyInfinity/admin/public/img/batiment/<?=$bat['imageBat']?>" alt=""  width="94%">
+                    <img class='imgBatX' src="plugins/galaxyInfinity/admin/public/img/batiment/<?=$bat['imageBat']?>" alt=""  width="94%">
                     <?php
                         if($bat['prValide'] == 0 && $bat['craftValide'] == 0 && $bat['verifBatEnCours'] == 0){?>
                             <p style='color: blue'><a href="index.php?galaxyInfinity=addConstructionBat&idBat=<?=$bat['idBat']?>" method='post'>Construire</a></p>    
@@ -62,5 +62,5 @@
 
 
 
-<script type='text/javascript' src='../plugins/galaxyInfinity/user/public/js/jsBatiment/gestionBat.js'></script>
-<script type='text/javascript' src='../plugins/galaxyInfinity/user/public/js/jsBatiment/mainBat.js'></script>
+<script type='text/javascript' src='plugins/galaxyInfinity/user/public/js/jsBatiment/gestionBat.js'></script>
+<script type='text/javascript' src='plugins/galaxyInfinity/user/public/js/jsBatiment/mainBat.js'></script>

@@ -1,75 +1,77 @@
-<link rel="stylesheet" href="../plugins/forum/public/css/admin/forumAdminGestionView.css">
+
 
 <div>
-    <div>
-        <h4>Création catégorie</h4>
-        <form action="index.php?forum=createCategorie" method='POST'>
-            <div>
-                <label for="nom">Nom de la catégorie</label>
-                <input type="text" id="nom" name="nom">
-            </div>
-            <div>
-                <input type="submit">
-            </div>
-        </form>
+    <div class='divActionForum'>
+        <div>
+            <h4>Création catégorie</h4>
+            <form action="index.php?forum=createCategorie" method='POST'>
+                <div>
+                    <label for="nom">Nom de la catégorie</label>
+                    <input type="text" id="nom" name="nom">
+                </div>
+                <div>
+                    <input type="submit">
+                </div>
+            </form>
+        </div>
+
+
+        <div>
+            <h4>Modification catégorie</h4>
+            <form action="index.php?forum=modifCategorie" method='POST'>
+                <div>
+                    <label for="nomCategorie">Nouveau nom de la catégorie</label>
+                    <input type="text" id="nomCategorie" name="nomCategorie">
+                </div>
+
+                <div>
+                    <label for="idCategorie">Id de la catégorie</label>
+                    <select name="idCategorie" id="idCategorie">
+                        <?php
+                            foreach($categories as $categorie){?>
+                                <option value="<?=$categorie['id']?>"><?=$categorie['nom']?></option>
+                            <?php }
+                        ?>
+                    </select>
+                </div>
+                <div>
+                    <input type="submit">
+                </div>
+            </form>
+        </div>
+
+        <div>
+            <h4>Move Topic</h4>
+            <form action="index.php?forum=moveTopic" method='POST'>
+                <div>
+                    <label for="idTopic">Id du topic</label>
+
+                    <select name="idTopic" id="idTopic">
+                        <?php
+                            foreach($topics as $topic){?>
+                                <option value="<?=$topic['id']?>"><?=$topic['nom']?></option>
+                            <?php }
+                        ?>
+                    </select>
+                </div>
+                <div>
+                    <label for="idCategorie">Id de la catégorie cible</label>
+                    <select name="idCategorie" id="idCategorie">
+                        <?php
+                            foreach($categories as $categorie){?>
+                                <option value="<?=$categorie['id']?>"><?=$categorie['nom']?></option>
+                            <?php }
+                        ?>
+                    </select>
+                </div>
+                <div>
+                    <input type="submit">
+                </div>
+            </form>
+        </div>
     </div>
 
-
-    <div>
-        <h4>Modification catégorie</h4>
-        <form action="index.php?forum=modifCategorie" method='POST'>
-            <div>
-                <label for="nomCategorie">Nouveau nom de la catégorie</label>
-                <input type="text" id="nomCategorie" name="nomCategorie">
-            </div>
-
-            <div>
-                <label for="idCategorie">Id de la catégorie</label>
-                <select name="idCategorie" id="idCategorie">
-                    <?php
-                        foreach($categories as $categorie){?>
-                            <option value="<?=$categorie['id']?>"><?=$categorie['nom']?></option>
-                        <?php }
-                    ?>
-                </select>
-            </div>
-            <div>
-                <input type="submit">
-            </div>
-        </form>
-    </div>
-
-    <div>
-        <h4>Move Topic</h4>
-        <form action="index.php?forum=moveTopic" method='POST'>
-            <div>
-                <label for="idTopic">Id du topic</label>
-
-                <select name="idTopic" id="idTopic">
-                    <?php
-                        foreach($topics as $topic){?>
-                            <option value="<?=$topic['id']?>"><?=$topic['nom']?></option>
-                        <?php }
-                    ?>
-                </select>
-            </div>
-            <div>
-                <label for="idCategorie">Id de la catégorie cible</label>
-                <select name="idCategorie" id="idCategorie">
-                    <?php
-                        foreach($categories as $categorie){?>
-                            <option value="<?=$categorie['id']?>"><?=$categorie['nom']?></option>
-                        <?php }
-                    ?>
-                </select>
-            </div>
-            <div>
-                <input type="submit">
-            </div>
-        </form>
-    </div>
-
-    <div>
+    <div class="tableForumAdmin">
         <table id='table_1'>
             <thead>
                 <tr>
@@ -92,7 +94,7 @@
         </table>
     </div>
     <br><br><br>
-    <div>
+    <div class="tableForumAdmin">
         <table id='table_2'>
             <thead>
                 <tr>
@@ -128,7 +130,7 @@
         </table>
     </div>
     <br><br><br>
-    <div>
+    <div class="tableForumAdmin">
         <table id='table_3'>
             <thead>
                 <tr>
@@ -173,7 +175,7 @@
 
 
 <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.js"></script>
-<script src="../plugins/galaxyInfinity/admin/public/js/adminGestionGalaxyInfinity.js"></script>
+<script src="plugins/forum/public/js/adminGestionForum.js"></script>
 
 
 

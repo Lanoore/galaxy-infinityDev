@@ -26,7 +26,7 @@
             
                 <div class='divCraftX'>
                     <div class="divCraftXInfo">
-                        <img class='imgCraftX' src="../plugins/galaxyInfinity/admin/public/img/craft/<?=$craft['imageCraft']?>" alt="">
+                        <img class='imgCraftX' src="plugins/galaxyInfinity/admin/public/img/craft/<?=$craft['imageCraft']?>" alt="">
                         <p><?=$craft['nomCraft']?></p>
                     </div>
                     
@@ -65,5 +65,5 @@
 
 
 
-<script type='text/javascript' src='../plugins/galaxyInfinity/user/public/js/jsCraft/gestionCraft.js'></script>
-<script type='text/javascript' src='../plugins/galaxyInfinity/user/public/js/jsCraft/mainCraft.js'></script>
+<script type='text/javascript' src='plugins/galaxyInfinity/user/public/js/jsCraft/gestionCraft.js'></script>
+<script type='text/javascript' src='plugins/galaxyInfinity/user/public/js/jsCraft/mainCraft.js'></script>

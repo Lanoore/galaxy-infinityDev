@@ -1,6 +1,6 @@
 
 
-<link rel="stylesheet" href="../plugins/forum/public/css/user/categoriesView.css" type='text/css'>
+
 <div>
     <h2>Catégories</h2>
     <div class='categories'>  
