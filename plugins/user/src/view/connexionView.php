@@ -32,10 +32,10 @@
 
 
 <p>Qu'est ce que Galaxy Infinity?</br>C'est un jeu par navigateur de gestion de civilisations!
-</br>Améliorez vos planètes, recherchez des technologies, toruvez des artectafs vieux de milliers d'années, combattez vos ennemis ou faites alliance!
+</br>Améliorez vos planètes, recherchez des technologies, trouvez des artefacts vieux de milliers d'années, combattez vos ennemis ou faites alliance!
 </br></br>Dans ce jeu vous pourrez executer des missions scénariser qui évolue selon vos choix, vous pourrez également décider quel dirigeant vous êtes via des doctrines que vous obtiendrez au fil de votre aventure!
-</br>Bonne chance a vous!
-</br></br>Attention : Ce jeu est encore en beta certaines fonctionnalités ne sont pas encore disponible, vous pourriez rencontrer de nombreux bugs qui influenceront votre expérience de jeu!</p>
+</br>Bonne chance à vous!
+</br></br>Attention : Ce jeu est encore en beta certaines fonctionnalités ne sont pas encore disponible!</p>
 
 
 

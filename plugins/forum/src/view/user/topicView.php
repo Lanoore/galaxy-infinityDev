@@ -37,7 +37,7 @@
                     <p><?=$commentaire['auteur']?></p>
                     <div>
                         <p class='dateCommentaire'><?=$commentaire['dateCreation']?></p>
-                        <p><?=$commentaire['message']?></p>
+                        <p><?=html_entity_decode($commentaire['message'])?></p>
                     </div>
                 </div>
             <?php }
