@@ -4,6 +4,19 @@ body{
     flex-direction: column;
 }
 
+footer a{
+    vertical-align: middle;
+}
+
+footer{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    bottom: 0;
+    position: fixed;
+    background-color: white;
+}
+
 .navGeneral{
     width: 50%;
     margin: 0 auto;
