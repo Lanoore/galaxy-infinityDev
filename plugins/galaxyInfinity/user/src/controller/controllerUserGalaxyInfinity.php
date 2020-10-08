@@ -33,6 +33,11 @@ class ControllerUserGalaxyInfinity{
         $this->managerUserGI->pseudo = $this->pseudo;
         $this->managerUserGI->getUserByPseudo();
         
+        $planeteDispo = $this->managerUserGI->verifPlanetesDispo();
+        if($planeteDispo == 0){
+            $this->addPlanetes();
+        }
+
         $planetes = $this->managerUserGI->getPlanetesDispo();
         $nPlanete = array_rand($planetes,1);
         $this->managerUserGI->idPlanete = $planetes[$nPlanete]['id'];
@@ -147,6 +152,25 @@ class ControllerUserGalaxyInfinity{
         }
     }
 
+    public function addPlanetes(){
+                
+            $dernierSysteme = $this->managerUserGI->getLastSysteme();
+            $nombreSysteme = 5 + $dernierSysteme['systeme'];
+            $numeroSyteme = $dernierSysteme['systeme'] + 1;
+            
+            while($numeroSyteme <= $nombreSysteme){
+                $this->managerUserGI->numeroSysteme = $numeroSyteme;
+                
+                $numeroPlanete = 1;
+                while($numeroPlanete <= 10){
+                    $this->managerUserGI->numeroPlanete = $numeroPlanete;
+                    
+                    $this->managerUserGI->createSystemePlanete();
 
+                    $numeroPlanete++;
+                }
+                $numeroSyteme++;
+            }
+    }
 
 }

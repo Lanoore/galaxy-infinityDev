@@ -21,7 +21,39 @@ class ManagerUserGalaxyInfinity extends ManagerBDD
         $this->idUser = $result['id'];
        
     }
-    
+        
+    /**
+     * verifPlanetesDispo
+     *
+     *  Verifie si une planete est disponible
+     * 
+     * @return int
+     */
+    public function verifPlanetesDispo(){
+        $sql ='SELECT * FROM planete WHERE situation = 0';
+        $result = $this->createQuery($sql);
+        return $result->rowCount();
+    }
+
+    /**
+     * createSystemePlanete
+     * 
+     * Créer une planete
+     *
+     * @return bool
+     */
+    public function createSystemePlanete(){
+        $sql = 'INSERT INTO planete(systeme,position,situation)VALUES(?,?,0)';
+        return $this->createQuery($sql,[$this->numeroSysteme,$this->numeroPlanete]);
+        
+    }
+
+    public function getLastSysteme(){
+        $sql ='SELECT systeme FROM planete ORDER BY id DESC LIMIT 1';
+        $result = $this->createQuery($sql);
+        return $result->fetch();
+    }
+
     /**
      * getPlanetesDispo
      * 
