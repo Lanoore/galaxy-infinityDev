@@ -4,6 +4,7 @@
         <title>Galaxy Infinity</title> <!--Remplir ici le titre de votre site-->
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, user-scalable=no">
+        <link rel="icon" type="image/png" href="public/img/favicon.png"/>
         <link rel="stylesheet" href="config/themes/public/css/templateBase.css">
         <script type=" text/javascript" src="https://code.jquery.com/jquery-3.5.1.min.js "></script>
         <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet"> 	
@@ -36,6 +37,7 @@
                 <ul class='sousListe'>
                     <li><a href="index.php?forum=afficheCategories">Forum</a></li>
                     <li><a href="index.php?chat=afficheChat">Chat</a></li>
+                    <li><a href="index.php?galaxyInfinity=afficheGuilde">Guilde</a></li>
                     <li><a href="index.php?user=afficheUser">Profil</a></li>
                 </ul>
             </li>
