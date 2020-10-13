@@ -17,6 +17,7 @@ class ManagerUserGIGalaxie extends ManagerBDD
     public function getSysteme(){
         $sql = 'SELECT * FROM planete
                 LEFT JOIN user ON planete.user_id = user.id
+                LEFT JOIN guilde ON guilde.idGuilde = user.idGuilde
          WHERE systeme = ? ORDER BY position ASC';
         $result = $this->createQuery($sql,[$this->idSysteme]);
         return $result->fetchAll();

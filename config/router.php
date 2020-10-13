@@ -448,6 +448,9 @@ class Router
                             break;
                         case 'joinGuilde':
                             $this->controllerUserGIGuilde->joinGuilde($_GET['idGuilde']);
+                            break;
+                        case 'quitterGuilde':
+                            $this->controllerUserGIGuilde->quitterGuilde();
                             break;      
                         default:
                         $this->controllerUser->afficheConnexion();//Changer si vous voulez modifier l'action par défaut

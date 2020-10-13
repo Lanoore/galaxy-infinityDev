@@ -52,4 +52,21 @@ class ManagerUserGIGuilde extends ManagerBDD
         
     }
 
+    public function getAllMembreGuilde(){
+        $sql ='SELECT * FROM user WHERE idGuilde = ?';
+        $result = $this->createQuery($sql,[$this->idGuilde]);
+        return $result->fetchAll();
+    }
+
+    public function getGuilde(){
+        $sql = 'SELECT * FROM guilde WHERE idGuilde = ?';
+        $result = $this->createQuery($sql,[$this->idGuilde]);
+        return $result->fetch();
+    }
+
+    public function quitterGuilde(){
+        $sql = 'UPDATE user SET idGuilde = NULL WHERE id = ?';
+        return $result = $this->createQuery($sql, [$this->idUser]);
+    }
+
 }

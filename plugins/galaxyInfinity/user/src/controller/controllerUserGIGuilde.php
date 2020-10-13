@@ -31,9 +31,11 @@ class ControllerUserGIGuilde{
             $this->managerUserGIGuilde->idUser = $_SESSION['idUser'];
             $verifGuildeJoueur = $this->managerUserGIGuilde->verifJoueurInGuilde();
             $guilde = null;
+            $infoGuilde = null;
             if($verifGuildeJoueur['idGuilde'] != null){
-                
-
+                $this->managerUserGIGuilde->idGuilde = $_SESSION['idGuilde'];
+                $guilde = $this->managerUserGIGuilde->getAllMembreGuilde();
+                $infoGuilde = $this->managerUserGIGuilde->getGuilde();
                 
             }
             else{
@@ -41,7 +43,7 @@ class ControllerUserGIGuilde{
             }
 
             $userguilde = 'plugins/galaxyInfinity/user/src/view/userGestionGuildeView.php';
-            $userguilde = $this->controllerBase->tamponView($userguilde, ['guilde' => $guilde]);
+            $userguilde = $this->controllerBase->tamponView($userguilde, ['guilde' => $guilde, 'infoGuilde' => $infoGuilde]);
         
             $this->controllerBase->afficheView([$userguilde],'userGestionGuilde');
         }
@@ -76,6 +78,22 @@ class ControllerUserGIGuilde{
                 $this->managerUserGIGuilde->idUser = $_SESSION['idUser'];
                 $this->managerUserGIGuilde->joinGuilde();
                 $_SESSION['idGuilde']= $idGuilde;
+                header('Location:index.php?galaxyInfinity=afficheGuilde');
+            }
+        }
+    }
+
+    public function quitterGuilde(){
+        if(isset($_SESSION['idUser']) AND isset($_SESSION['idGuilde'])){
+            $this->managerUserGIGuilde->idGuilde = $_SESSION['idGuilde'];
+            $getGuilde = $this->managerUserGIGuilde->getGuilde();
+            if($getGuilde['idChefGuilde'] != $_SESSION['idGuilde']){
+                $this->managerUserGIGuilde->idUser = $_SESSION['idUser'];
+                $supprMembreGuilde = $this->managerUserGIGuilde->quitterGuilde();
+                unset($_SESSION['idGuilde']);
+                header('Location:index.php?galaxyInfinity=afficheGuilde');
+            }
+            else{
                 header('Location:index.php?galaxyInfinity=afficheGuilde');
             }
         }
