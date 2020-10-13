@@ -34,3 +34,7 @@
 .deplacementSysteme a:hover{
     background-color: lightgray;
 }
+
+.maindiv p{
+    text-align: center;
+}

@@ -6,7 +6,7 @@
     <p>Dernière connexion: <?= $_SESSION['lastConnexion']?></p>
     <p>Date d'inscription: <?= $_SESSION['dateInscription']?></p>
 
-    <p><a href="index.php?user=disconnectUser">Se déconecter</a></p>
+    <p><a href="index.php?user=disconnectUser">Se déconnecter</a></p>
 
 </div>
 

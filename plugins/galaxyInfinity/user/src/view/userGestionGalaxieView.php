@@ -1,6 +1,7 @@
 
 
 <div class='mainDiv'>
+    <p>Systeme actuel : <?=$_GET['systeme']?></p>
     <div class='deplacementSysteme'>
         <p><a href="index.php?galaxyInfinity=afficheGalaxieUser&systeme=<?php if($_GET['systeme'] == 1){echo $_GET['systeme'];}else{echo($_GET['systeme'] - 1);}?>">Précédent</a></p>
         <div><span>Selectionner un systeme :</span><form action="#" method="get"><input type="number" name="systeme"><input type="submit"></form></div>

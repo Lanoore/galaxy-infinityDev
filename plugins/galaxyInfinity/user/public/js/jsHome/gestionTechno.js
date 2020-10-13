@@ -67,17 +67,17 @@ class techno{
 	        seconde -= minute*60;
 
 	        if (heure > 0) {
-	            var textDecompte = heure+'h';
+	            var textDecompte = heure+'h ';
 	        }else{
 	            textDecompte = '';
 	        }
 	        if (minute > 0) {
-	            textDecompte += minute+'m';        
+	            textDecompte += minute+'m ';        
 	        }else{
 	            textDecompte += '';
 	        }
 
-	        textDecompte += seconde+'s';
+	        textDecompte += seconde+'s ';
 	    }
 	    return textDecompte;
 	}

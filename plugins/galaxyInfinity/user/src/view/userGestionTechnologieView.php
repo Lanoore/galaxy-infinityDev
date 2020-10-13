@@ -33,7 +33,7 @@
                             <p style='color: blue'><a href="index.php?galaxyInfinity=addConstructionTechno&idTechno=<?=$techno['idTechno']?>" method='post'>Construire</a></p>    
                        <?php }
                         else{?>
-                            <p style='color: red'>Construire</p>
+                            <p style='color: red'>Rechercher</p>
                        <?php }
                     ?>
                     <div class='divTechnoDescrX' id='divTechnoDescrX'>

@@ -67,31 +67,39 @@ class ControllerUser
     public function createUser(){
 
         if (!preg_match("#[<>1-9]#", $_POST['pseudo'])&& !preg_match("#[<>]#", $_POST['email'])&& !preg_match("#[<>]#", $_POST['password'])&& !preg_match("#[<>]#", $_POST['repeatPassword'])){
-            $pseudo = htmlspecialchars($_POST['pseudo']);
-            $email = htmlspecialchars($_POST['email']);
-            $password = htmlspecialchars($_POST['password']);
-            $repeatPassword= htmlspecialchars($_POST['repeatPassword']);
-            
-            if ($password === $repeatPassword) {
-                $this->managerUser->pseudo = $_POST['pseudo'];
-                $this->managerUser->email = $_POST['email'];
-                $this->managerUser->verifUserExist($this->managerUser->pseudo,$this->managerUser->email);
+            if(ctype_alnum($_POST['pseudo'])){
+                $pseudo = htmlspecialchars($_POST['pseudo']);
+                $email = htmlspecialchars($_POST['email']);
+                $password = htmlspecialchars($_POST['password']);
+                $repeatPassword= htmlspecialchars($_POST['repeatPassword']);
                 
-                if($this->managerUser->existUser == 0){
-                    $password = password_hash($password, PASSWORD_DEFAULT);
-                    $this->managerUser->pseudo = $pseudo;
-                    $this->managerUser->email = $email;
-                    $this->managerUser->password = $password;
-                    $addUser = $this->managerUser->addUser();
+                if ($password === $repeatPassword) {
+                    $this->managerUser->pseudo = $_POST['pseudo'];
+                    $this->managerUser->email = $_POST['email'];
+                    $this->managerUser->verifUserExist($this->managerUser->pseudo,$this->managerUser->email);
                     
-                    if($addUser == true){
+                    if($this->managerUser->existUser == 0){
+                        $password = password_hash($password, PASSWORD_DEFAULT);
+                        $this->managerUser->pseudo = $pseudo;
+                        $this->managerUser->email = $email;
+                        $this->managerUser->password = $password;
+                        $addUser = $this->managerUser->addUser();
                         
-                        //Ajouter ici les info de création du joueur sur GalaxyInfinity
-                        $this->controllerUserGI->pseudo = $_POST['pseudo'];
-                        $this->controllerUserGI->createUserGI();
-                        header('Location:index.php?user=afficheConnexion');
+                        if($addUser == true){
+                            
+                            //Ajouter ici les info de création du joueur sur GalaxyInfinity
+                            $this->controllerUserGI->pseudo = $_POST['pseudo'];
+                            $this->controllerUserGI->createUserGI();
+                            header('Location:index.php?user=afficheConnexion');
+                        }
                     }
                 }
+                else{
+                    throw new Exception("Les mots de passe sont différents!");
+                }
+            }
+            else{
+                header('Location:index.php?user=afficheInscription');
             }
         }
         else{
@@ -125,6 +133,7 @@ class ControllerUser
                 $_SESSION['email'] = $this->managerUser->email;
                 $_SESSION['lastConnexion'] = $this->managerUser->lastConnexion;
                 $_SESSION['dateInscription'] = $this->managerUser->dateInscription;
+                $_SESSION['idGuilde'] = $this->managerUser->idGuilde;
                 $this->controllerUserGI->gestionUserConnectionGI();
                 $this->managerUser->updateUserConnection(); //ATTENTION si vous faites des actions sur un temps de connexion faites attention a les placer avant cette fonction qui réinitialise la dernière connection
                 header('Location:index.php?galaxyInfinity=afficheHomeUser'); //Changer si vous voulez modifier votre page de direction une fois la connexion effectuer

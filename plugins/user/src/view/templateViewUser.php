@@ -5,6 +5,7 @@
         <meta charset="utf-8">
 
         <meta name="viewport" content="width=device-width, user-scalable=no">
+        <link rel="icon" type="image/png" href="public/img/favicon.png"/>
         <link rel="stylesheet" href="config/themes/public/css/templateBase.css">
         <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet"> 	
         <script src="https://kit.fontawesome.com/b8189872a7.js"></script>
