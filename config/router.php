@@ -25,6 +25,7 @@ use App\plugins\galaxyInfinity\user\src\controller\controllerUserGICraft;
 use App\plugins\galaxyInfinity\user\src\controller\controllerUserGIGalaxie;
 use App\plugins\galaxyInfinity\user\src\controller\controllerUserGIPlanete;
 use App\plugins\galaxyInfinity\user\src\controller\controllerUserGIHome;
+use App\plugins\galaxyInfinity\user\src\controller\controllerUserGIGuilde;
 
 
 
@@ -53,6 +54,7 @@ class Router
     private $controllerUserGIGalaxie;
     private $controllerUserGIPlanete;
     private $controllerUserGIHome;
+    private $controllerUserGIGuilde;
 
     public function __construct(){
         $this->controllerBase = new ControllerBase();
@@ -75,6 +77,7 @@ class Router
         $this->controllerUserGIGalaxie = new ControllerUserGIGalaxie();
         $this->controllerUserGIPlanete = new ControllerUserGIPlanete();
         $this->controllerUserGIHome = new ControllerUserGIHome();
+        $this->controllerUserGIGuilde = new ControllerUserGIGuilde();
 
     }
 
@@ -435,7 +438,20 @@ class Router
                         //Partie Galaxie
                         case 'afficheGalaxieUser':
                             $this->controllerUserGIGalaxie->afficheGalaxieUser($_GET['systeme']);
-                            break;    
+                            break;
+                        //Partie Guilde
+                        case 'afficheGuilde':
+                            $this->controllerUserGIGuilde->afficheGuilde();
+                            break;  
+                        case 'createNewGuilde':
+                            $this->controllerUserGIGuilde->createNewGuilde();
+                            break;
+                        case 'joinGuilde':
+                            $this->controllerUserGIGuilde->joinGuilde($_GET['idGuilde']);
+                            break;
+                        case 'quitterGuilde':
+                            $this->controllerUserGIGuilde->quitterGuilde();
+                            break;      
                         default:
                         $this->controllerUser->afficheConnexion();//Changer si vous voulez modifier l'action par défaut
                             break;

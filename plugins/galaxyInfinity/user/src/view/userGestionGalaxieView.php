@@ -13,6 +13,8 @@
 
                 <div class='divPlaneteX'>
                     <?php if(empty($planete['user_id'])){?> <p>Planete Libre</p> <?php }else{?> <p>Pseudo: <?= ucwords($planete['pseudo'])?></p> <?php }?>
+                    <?php if(!empty($planete['user_id']) && empty($planete['nomGuilde'])){?><p>Sans guilde</p><?php }elseif(!empty($planete['user_id']) && !empty($planete['nomGuilde'])){?><p>Guilde: <?=$planete['nomGuilde']?></p><?php }?>
+                    
                     <p>Position: <?=$planete['position']?></p>
 
                      

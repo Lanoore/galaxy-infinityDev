@@ -10,7 +10,7 @@
 
 .divPlaneteX{
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
 }
 
 
@@ -35,6 +35,6 @@
     background-color: lightgray;
 }
 
-.maindiv p{
+.mainDiv p{
     text-align: center;
 }
