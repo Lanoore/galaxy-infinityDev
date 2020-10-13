@@ -35,7 +35,9 @@
                 <?php
                 if($infoGuilde['idChefGuilde'] != $_SESSION['idUser']){?>
                     <p><a href="index.php?galaxyInfinity=quitterGuilde">Quitter la guilde</a></p>
-               <?php }?>
+               <?php }elseif($infoGuilde['idChefGuilde'] == $_SESSION['idUser']){?>
+                    <p><a href="index.php?galaxyInfinity=dissoudreGuilde">Dissoudre la guilde</a></p>
+                  <?php }?>
             </div>
             
 
@@ -44,8 +46,9 @@
 
                 foreach($guilde as $guilde){?>
                     <span class='infoMembre'>
-                        <p>Pseudo: <?=$guilde['pseudo']?></p>
+                        <p>Pseudo: <?=ucwords($guilde['pseudo'])?></p>
                         <p>Dernière connexion: <?=$guilde['lastConnexion']?></p>
+                        <?php if($_SESSION['idUser'] == $infoGuilde['idChefGuilde'] AND $infoGuilde['idChefGuilde'] != $guilde['id']){?><p><a href="index.php?galaxyInfinity=supprMembreGuilde&idMembre=<?=$guilde['id']?>">Renvoyer ce membre</a></p><?php }?>
                     </span>
                 <?php }
                 ?>

@@ -21,6 +21,15 @@ class ControllerUserGIGuilde{
 
         $this->controllerBase = new ControllerBase();
 
+        if(isset($_SESSION['idGuilde'])){
+            //verifier si la guilde existe encore si n existe plus supprimer la session idguilde
+            $this->managerUserGIGuilde->idGuilde = $_SESSION['idGuilde'];
+            $verifExist = $this->managerUserGIGuilde->verifGuildeExist();
+            if($verifExist == 0){
+                unset($_SESSION['idGuilde']);
+            }
+        }
+
 
     }
 
@@ -94,6 +103,39 @@ class ControllerUserGIGuilde{
                 header('Location:index.php?galaxyInfinity=afficheGuilde');
             }
             else{
+                header('Location:index.php?galaxyInfinity=afficheGuilde');
+            }
+        }
+    }
+
+    public function dissoudreGuilde(){
+        if(isset($_SESSION['idUser']) AND isset($_SESSION['idGuilde'])){
+            $this->managerUserGIGuilde->idGuilde = $_SESSION['idGuilde'];
+            $getGuilde = $this->managerUserGIGuilde->getGuilde();
+            if($getGuilde['idChefGuilde'] == $_SESSION['idUser']){
+                $membres = $this->managerUserGIGuilde->getAllMembreGuilde();
+                foreach($membres as $membres){
+                    $this->managerUserGIGuilde->idUser = $membres['id'];
+                    $this->managerUserGIGuilde->supprMembreGuilde();
+                    $this->managerUserGIGuilde->supprGuilde();
+                    unset($_SESSION['idGuilde']);
+                    header('Location:index.php?galaxyInfinity=afficheGuilde');
+                }
+            }else{
+                header('Location:index.php?galaxyInfinity=afficheGuilde');
+            }
+        }
+    }
+
+    public function supprMembreGuilde($idMembre){
+        if(isset($_SESSION['idUser']) AND isset($_SESSION['idGuilde'])){
+            $this->managerUserGIGuilde->idGuilde = $_SESSION['idGuilde'];
+            $getGuilde = $this->managerUserGIGuilde->getGuilde();
+
+            if($getGuilde['idChefGuilde'] == $_SESSION['idUser']){
+                echo('test');
+                $this->managerUserGIGuilde->idUser = $idMembre;
+                $this->managerUserGIGuilde->supprMembreGuilde();
                 header('Location:index.php?galaxyInfinity=afficheGuilde');
             }
         }

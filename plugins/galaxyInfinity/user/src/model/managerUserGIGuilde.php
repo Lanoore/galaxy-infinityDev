@@ -69,4 +69,14 @@ class ManagerUserGIGuilde extends ManagerBDD
         return $result = $this->createQuery($sql, [$this->idUser]);
     }
 
+    public function supprMembreGuilde(){
+        $sql ='UPDATE user SET idGuilde = NULL WHERE id = ?';
+        return $result =$this->createQuery($sql,[$this->idUser]);
+    }
+
+    public function supprGuilde(){
+        $sql = 'DELETE FROM guilde WHERE idGuilde = ?';
+        return $this->createQuery($sql,[$this->idGuilde]);
+    }
+
 }
