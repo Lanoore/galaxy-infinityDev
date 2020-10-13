@@ -111,6 +111,19 @@
 
 }
 
+@media screen and(max-width: 1330px){
+    .divCraft{
+        margin: 0;
+    }
+    
+}
+
+@media screend and(max-width:730px){
+    .divCraftXCraft{
+        width: 50%;
+    }
+}
+
 @media screen and (max-width: 1024px){
     .divCraftXCraft{
         margin: 0;

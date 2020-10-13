@@ -18,7 +18,7 @@ class ManagerUser extends managerBDD
      */
     public function getUser(){
 
-        $sql = 'SELECT id, pseudo, email, password, lastConnexion, dateInscription FROM user WHERE pseudo = ?';
+        $sql = 'SELECT * FROM user WHERE pseudo = ?';
         $result =  $this->createQuery($sql, [$this->pseudo]);
         $user = $result->fetch();
         $result->closeCursor();
@@ -28,6 +28,7 @@ class ManagerUser extends managerBDD
         $this->password = $user['password'];
         $this->lastConnexion = $user['lastConnexion'];
         $this->dateInscription = $user['dateInscription'];
+        $this->idGuilde = $user['idGuilde'];
     }
     
     /**

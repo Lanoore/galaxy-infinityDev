@@ -59,7 +59,7 @@ class ControllerAdminGIGalaxie
                 $nombreSysteme = $_POST['nombreSysteme'] + $dernierSysteme['systeme'];
                 $numeroSyteme = $dernierSysteme['systeme'] + 1;
                 
-                while($numeroSyteme <= $_POST['nombreSysteme']){
+                while($numeroSyteme <= $nombreSysteme){
                     $this->managerAdminGIGalaxie->numeroSysteme = $numeroSyteme;
                     
                     $numeroPlanete = 1;

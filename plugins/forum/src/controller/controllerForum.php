@@ -219,7 +219,7 @@ class ControllerForum{
      */
     public function createCommentaire($idTopic){
         if(isset($_SESSION['idUser'])){
-            if(!empty($_POST['commentaire']) && !preg_match("#[<>]#", $_POST['commentaire'])){
+            if(!empty($_POST['commentaire']) && !preg_match("#[]#", $_POST['commentaire'])){
                 $this->managerForum->idTopic = $idTopic;
                 $verifExist = $this->managerForum->topicExist();
                 if($verifExist){

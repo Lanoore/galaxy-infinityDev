@@ -241,13 +241,13 @@ class ControllerUserGITechnologie{
         
           $TimeFinal = '';
           if($heures){
-              $TimeFinal .= $heures.'h';
+              $TimeFinal .= $heures.'h ';
           }
           if($minutes){
-              $TimeFinal .= $minutes.'m';
+              $TimeFinal .= $minutes.'m ';
           }
           if($secondes2){
-            $TimeFinal .= $secondes2.'s';
+            $TimeFinal .= $secondes2.'s ';
           }
 
           return $TimeFinal; 

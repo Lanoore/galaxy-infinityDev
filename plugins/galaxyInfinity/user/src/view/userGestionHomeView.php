@@ -7,7 +7,7 @@
                     <p><?=$tempsRestantCraft['nomCraft']?>:</p>
                     <p id='tempsRestantCraftEnCours'><?=$tempsRestantCraft['tempsDecompteCraft']?>(<?=$tempsRestantCraft['nombreCraft']?>)</p>
                 <?php }else{?>
-                    <p>Aucune construction en cours</p>
+                    <p>Aucune production en cours</p>
                 <?php }?>
             
         </div>
@@ -25,7 +25,7 @@
                     <p><?=$tempsRestantTechno['nomTechno']?>:</p>
                     <p id='tempsRestantTechnoEnCours'><?=$tempsRestantTechno['tempsDecompteTechno']?>(<?=$tempsRestantTechno['niveauTechno']?>)</p>
                 <?php }else{?>
-                    <p>Aucune construction en cours</p>
+                    <p>Aucune recherche en cours en cours</p>
                 <?php }?>
         </div>
     </div>
