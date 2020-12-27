@@ -2,7 +2,7 @@
 
 
 <div class='mainDiv' id='mainDiv'>
-    <?php if($tempsRestantBat['nomBat'] != null){?>
+    <?php if($tempsRestantBat != null){?>
         <div class='tempsRestantBat' id='tempsRestantBat'>
         <p><?=$tempsRestantBat['nomBat']?>:</p>
         <p id='tempsRestantBatEnCours'><?=$tempsRestantBat['tempsDecompte']?>(<?=$tempsRestantBat['niveauBat']?>)</p>

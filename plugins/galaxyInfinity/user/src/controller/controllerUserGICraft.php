@@ -41,10 +41,14 @@ class ControllerUserGICraft{
             $craftBase = $this->managerUserGICraft->getCraftBase();
 
             $getCraftEnCours = $this->managerUserGICraft->getConstruCraftEnCours();
-
-            $tempsDecompte = $this->conversionSeconde($getCraftEnCours['fin_craft_actuel']-time());
-
-            $tempsRestantCraft = ['nomCraft' =>$getCraftEnCours['nom'], 'nombreCraft' =>$getCraftEnCours['nombre_craft_total'], 'tempsDecompte' => $tempsDecompte];
+            if(!empty($getCraftEnCours)){
+                $tempsDecompte = $this->conversionSeconde($getCraftEnCours['fin_craft_actuel']-time());
+                $tempsRestantCraft = ['nomCraft' =>$getCraftEnCours['nom'], 'nombreCraft' =>$getCraftEnCours['nombre_craft_total'], 'tempsDecompte' => $tempsDecompte];
+            }
+            else{
+                $tempsRestantCraft = null;
+            }
+            
 
             foreach ($craftBase as $craftBase) {
                 $countPr = 0;

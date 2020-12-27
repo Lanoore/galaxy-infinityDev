@@ -77,7 +77,7 @@ class ControllerChat{
         if(isset($_SESSION['idUser'])){
             if(!empty($_POST['message'])){
                 $this->managerChat->idUser = $_SESSION['idUser'];
-                $this->managerChat->message = $_POST['message'];
+                $this->managerChat->message = htmlspecialchars($_POST['message']);
                 $addMessage = $this->managerChat->addMessage();
                 if($addMessage == true){
                     header('Location:index.php?chat=afficheChat');

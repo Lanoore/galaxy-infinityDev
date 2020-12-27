@@ -133,7 +133,7 @@ class ControllerUserGIGuilde{
             $getGuilde = $this->managerUserGIGuilde->getGuilde();
 
             if($getGuilde['idChefGuilde'] == $_SESSION['idUser']){
-                echo('test');
+                
                 $this->managerUserGIGuilde->idUser = $idMembre;
                 $this->managerUserGIGuilde->supprMembreGuilde();
                 header('Location:index.php?galaxyInfinity=afficheGuilde');

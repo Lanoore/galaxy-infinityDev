@@ -2,7 +2,7 @@
 
 
 <div class='mainDiv' id='mainDiv'>
-    <?php if($tempsRestantCraft['nomCraft'] != null){?>
+    <?php if($tempsRestantCraft != null){?>
         <div class='tempsRestantCraft' id='tempsRestantCraft'>
         <p><?=$tempsRestantCraft['nomCraft']?>:</p>
         <p id='tempsRestantCraftEnCours'><?=$tempsRestantCraft['tempsDecompte']?>(<?=$tempsRestantCraft['nombreCraft']?>)</p>

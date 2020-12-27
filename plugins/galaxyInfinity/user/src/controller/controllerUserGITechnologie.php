@@ -38,9 +38,14 @@ class ControllerUserGITechnologie{
             $technoBase = $this->managerUserGITechnologie->getTechnoBase();
 
             $getTechnoEnCours = $this->managerUserGITechnologie->getConstruTechnoEnCours();
-
-            $tempsDecompte = $this->conversionSeconde($getTechnoEnCours['fin_technologie_actuel'] -time());
-            $tempsRestantTechno = ['nomTechno' =>$getTechnoEnCours['nom'], 'niveauTechno' =>$getTechnoEnCours['niveau_technologie_construction'], 'tempsDecompte' => $tempsDecompte];
+            if(!empty($getTechnoEnCours)){
+                $tempsDecompte = $this->conversionSeconde($getTechnoEnCours['fin_technologie_actuel'] -time());
+                $tempsRestantTechno = ['nomTechno' =>$getTechnoEnCours['nom'], 'niveauTechno' =>$getTechnoEnCours['niveau_technologie_construction'], 'tempsDecompte' => $tempsDecompte];
+            }
+            else{
+                $tempsRestantTechno = null;
+            }
+            
             
             foreach ($technoBase as $technoBase) {
                 $countPr = 0;

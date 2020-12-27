@@ -41,9 +41,14 @@ class ControllerUserGIBatiment{
             $batBase = $this->managerUserGIBatiment->getBatBase();
 
             $getBatEnCours = $this->managerUserGIBatiment->getConstruBatEnCours();
-
-            $tempsDecompte = $this->conversionSeconde($getBatEnCours['fin_batiment_actuel'] -time());
-            $tempsRestantBat = ['nomBat' =>$getBatEnCours['nom'], 'niveauBat' =>$getBatEnCours['niveau_batiment_construction'], 'tempsDecompte' => $tempsDecompte];
+            if(!empty($getBatEnCours)){
+                $tempsDecompte = $this->conversionSeconde($getBatEnCours['fin_batiment_actuel'] -time());
+                $tempsRestantBat = ['nomBat' =>$getBatEnCours['nom'], 'niveauBat' =>$getBatEnCours['niveau_batiment_construction'], 'tempsDecompte' => $tempsDecompte];
+            }
+            else{
+                $tempsRestantBat = null;
+            }
+            
 
             foreach ($batBase as $batBase) {
 

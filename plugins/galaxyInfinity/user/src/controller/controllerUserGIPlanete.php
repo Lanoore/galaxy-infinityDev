@@ -92,14 +92,17 @@ class ControllerUserGIPlanete{
      */
     public function gestionConstruCraftChangePage(){
         $construCraftEnCours = $this->managerUserGIPlanete->getConstruCraftEnCours();
-        
-        if(time() >= $construCraftEnCours['fin_craft_actuel']){
-            $this->managerUserGIPlanete->idCraft = $construCraftEnCours['craft_id'];
-            $getNbCraftActuel = $this->managerUserGIPlanete->getNbCraftActuel();
-            $this->managerUserGIPlanete->nombreCraftTotal = $getNbCraftActuel['nombre_craft'] + $construCraftEnCours['nombre_craft_total'];
-            $this->managerUserGIPlanete->addNombreCraftInPlanete();
-            $this->managerUserGIPlanete->supprLigneCraftEnCoursPlanete();
+
+        if(!empty($construCraftEnCours)){
+            if(time() >= $construCraftEnCours['fin_craft_actuel']){
+                $this->managerUserGIPlanete->idCraft = $construCraftEnCours['craft_id'];
+                $getNbCraftActuel = $this->managerUserGIPlanete->getNbCraftActuel();
+                $this->managerUserGIPlanete->nombreCraftTotal = $getNbCraftActuel['nombre_craft'] + $construCraftEnCours['nombre_craft_total'];
+                $this->managerUserGIPlanete->addNombreCraftInPlanete();
+                $this->managerUserGIPlanete->supprLigneCraftEnCoursPlanete();
+            }
         }
+        
     }
     
     /**
@@ -111,13 +114,15 @@ class ControllerUserGIPlanete{
      */
     public function gestionConstruBatChangePage(){
         $construcBatEnCours = $this->managerUserGIPlanete->getConstruBatEnCours();
-
-        if(time() >= $construcBatEnCours['fin_batiment_actuel']){
-            $this->managerUserGIPlanete->idBat = $construcBatEnCours['batiment_id'];
-            $this->managerUserGIPlanete->niveauBatFinal = $construcBatEnCours['niveau_batiment_construction'];
-            $this->managerUserGIPlanete->modifNiveauBatPlanete();
-            $this->managerUserGIPlanete->supprLigneBatEnCoursPlanete();
+        if(!empty($construcBatEnCours)){
+            if(time() >= $construcBatEnCours['fin_batiment_actuel']){
+                $this->managerUserGIPlanete->idBat = $construcBatEnCours['batiment_id'];
+                $this->managerUserGIPlanete->niveauBatFinal = $construcBatEnCours['niveau_batiment_construction'];
+                $this->managerUserGIPlanete->modifNiveauBatPlanete();
+                $this->managerUserGIPlanete->supprLigneBatEnCoursPlanete();
+            }
         }
+        
     }
     
     /**
@@ -129,12 +134,13 @@ class ControllerUserGIPlanete{
      */
     public function gestionConstruTechnoChangePage(){
         $construTechnoEnCours = $this->managerUserGIPlanete->getConstruTechnoEnCours();
-
-        if(time() >= $construTechnoEnCours['fin_technologie_actuel']){
-            $this->managerUserGIPlanete->idTechno = $construTechnoEnCours['technologie_id'];
-            $this->managerUserGIPlanete->niveauTechnoFinal = $construTechnoEnCours['niveau_technologie_construction'];
-            $this->managerUserGIPlanete->modifNiveauTechnoPlanete();
-            $this->managerUserGIPlanete->supprLigneTechnoEnCoursPlanete();
+        if(!empty($construTechnoEnCours)){
+            if(time() >= $construTechnoEnCours['fin_technologie_actuel']){
+                $this->managerUserGIPlanete->idTechno = $construTechnoEnCours['technologie_id'];
+                $this->managerUserGIPlanete->niveauTechnoFinal = $construTechnoEnCours['niveau_technologie_construction'];
+                $this->managerUserGIPlanete->modifNiveauTechnoPlanete();
+                $this->managerUserGIPlanete->supprLigneTechnoEnCoursPlanete();
+            }
         }
     }
 

@@ -15,8 +15,14 @@
                     <p><?=$topic['auteur']?></p>
                 </div>
                 <div class='tDateCAuteur'>
-                    <p>Dernier message:<?=$lastCommentaires[$topic['id']]['dateCreation']?></p>
-                    <p>Auteur: <?=$lastCommentaires[$topic['id']]['auteur']?></p>
+                <?php if($lastCommentaires[$topic['id']] != null){?>
+                        <p>Dernier message:<?=$lastCommentaires[$topic['id']]['dateCreation']?></p>
+                        <p>Auteur: <?=$lastCommentaires[$topic['id']]['auteur']?></p>
+                       <?php }
+                       else{?>
+                        <p>Aucun message</p>
+                     <?php  } ?>
+                    
                 </div>
             </div>
         <?php }

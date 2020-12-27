@@ -16,7 +16,7 @@
                     <p><?=$message['pseudo']?></p>
                     <p class='dateMessage'><?=$message['dateMessage']?></p>
                 </div>
-                <p><?=$message['message']?></p>
+                <p><?=$message['message'] ?></p>
             </div>
        <?php }
     ?>

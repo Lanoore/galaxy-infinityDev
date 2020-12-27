@@ -3,7 +3,8 @@
 
     <div class='afficheAllConstruEnCours'>
         <div class='afficheXEnCours'>
-                <?php if($tempsRestantCraft['nomCraft'] != null){?>
+                <?php
+                    if($tempsRestantCraft != NULL){?>
                     <p><?=$tempsRestantCraft['nomCraft']?>:</p>
                     <p id='tempsRestantCraftEnCours'><?=$tempsRestantCraft['tempsDecompteCraft']?>(<?=$tempsRestantCraft['nombreCraft']?>)</p>
                 <?php }else{?>
@@ -12,7 +13,7 @@
             
         </div>
         <div class='afficheXEnCours'>
-                <?php if($tempsRestantBat['nomBat'] != null){?>
+                <?php if($tempsRestantBat != null){?>
                     <p><?=$tempsRestantBat['nomBat']?>:</p>
                     <p id='tempsRestantBatEnCours'><?=$tempsRestantBat['tempsDecompteBat']?>(<?=$tempsRestantBat['niveauBat']?>)</p>
                 <?php }else{?>
@@ -21,7 +22,7 @@
         </div>
         <div class='afficheXEnCours'>
 
-                <?php if($tempsRestantTechno['nomTechno'] != null){?>
+                <?php if($tempsRestantTechno != null){?>
                     <p><?=$tempsRestantTechno['nomTechno']?>:</p>
                     <p id='tempsRestantTechnoEnCours'><?=$tempsRestantTechno['tempsDecompteTechno']?>(<?=$tempsRestantTechno['niveauTechno']?>)</p>
                 <?php }else{?>

@@ -37,16 +37,32 @@ class ControllerUserGIHome{
             $this->managerUserGIHome->idPlanete = $_SESSION['idPlaneteActif'];
 
             $construCraftEnCours = $this->managerUserGIHome->getConstruCraftEnCours();
-            $tempsDecompteCraft = $this->conversionSeconde($construCraftEnCours['fin_craft_actuel']-time());
-            $tempsRestantCraft = ['nomCraft' =>$construCraftEnCours['nom'], 'nombreCraft' =>$construCraftEnCours['nombre_craft_total'], 'tempsDecompteCraft' => $tempsDecompteCraft];
+            if(!empty($construCraftEnCours)){
+                $tempsDecompteCraft = $this->conversionSeconde($construCraftEnCours['fin_craft_actuel']-time());
+                $tempsRestantCraft = ['nomCraft' =>$construCraftEnCours['nom'], 'nombreCraft' =>$construCraftEnCours['nombre_craft_total'], 'tempsDecompteCraft' => $tempsDecompteCraft];
+            }
+            else{
+                $tempsRestantCraft = null;
+            } 
             
             $construBatEnCours = $this->managerUserGIHome->getConstruBatEnCours();
-            $tempsDecompteBat = $this->conversionSeconde($construBatEnCours['fin_batiment_actuel']-time());
-            $tempsRestantBat = ['nomBat' =>$construBatEnCours['nom'], 'niveauBat' =>$construBatEnCours['niveau_batiment_construction'], 'tempsDecompteBat' => $tempsDecompteBat];
+            if(!empty($construBatEnCours)){
+                $tempsDecompteBat = $this->conversionSeconde($construBatEnCours['fin_batiment_actuel']-time());
+                $tempsRestantBat = ['nomBat' =>$construBatEnCours['nom'], 'niveauBat' =>$construBatEnCours['niveau_batiment_construction'], 'tempsDecompteBat' => $tempsDecompteBat];
+            } 
+            else{
+                $tempsRestantBat = null;
+            } 
 
             $construTechnoEnCours = $this->managerUserGIHome->getConstruTechnoEnCours();
-            $tempsDecompteTechno = $this->conversionSeconde($construTechnoEnCours['fin_technologie_actuel']-time());
-            $tempsRestantTechno = ['nomTechno' =>$construTechnoEnCours['nom'], 'niveauTechno' =>$construTechnoEnCours['niveau_technologie_construction'], 'tempsDecompteTechno' => $tempsDecompteTechno];
+            if(!empty($construTechnoEnCours)){
+                $tempsDecompteTechno = $this->conversionSeconde($construTechnoEnCours['fin_technologie_actuel']-time());
+                $tempsRestantTechno = ['nomTechno' =>$construTechnoEnCours['nom'], 'niveauTechno' =>$construTechnoEnCours['niveau_technologie_construction'], 'tempsDecompteTechno' => $tempsDecompteTechno];
+            }
+            else{
+                $tempsRestantTechno = null;
+            } 
+            
 
             
 
