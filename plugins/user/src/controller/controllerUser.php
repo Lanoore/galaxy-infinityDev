@@ -136,7 +136,7 @@ class ControllerUser
                 $_SESSION['idGuilde'] = $this->managerUser->idGuilde;
                 $this->controllerUserGI->gestionUserConnectionGI();
                 $this->managerUser->updateUserConnection(); //ATTENTION si vous faites des actions sur un temps de connexion faites attention a les placer avant cette fonction qui réinitialise la dernière connection
-                header('Location:index.php?galaxyInfinity=afficheHomeUser'); //Changer si vous voulez modifier votre page de direction une fois la connexion effectuer
+                header('Location:index.php?galaxyInfinity=afficheHomeUser&tierSelect=1'); //Changer si vous voulez modifier votre page de direction une fois la connexion effectuer
                 
                 
             }

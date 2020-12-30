@@ -31,7 +31,7 @@ class ControllerUserGIHome{
      * 
      * @return void
      */
-    public function afficheHomeUser(){
+    public function afficheHomeUser(int $tierSelect){
         if(isset($_SESSION['pseudo'])){
 
             $this->managerUserGIHome->idPlanete = $_SESSION['idPlaneteActif'];
@@ -64,7 +64,7 @@ class ControllerUserGIHome{
             } 
             
 
-            
+            $this->managerUserGIHome->tierSelect = $tierSelect;
 
             $allRessources = $this->managerUserGIHome->getAllRessources();
             $allBat = $this->managerUserGIHome->getAllBatPlaneteX();

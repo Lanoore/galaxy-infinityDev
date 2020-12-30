@@ -40,8 +40,8 @@ class ManagerAdminGIRessource extends ManagerBDD
      * @return bool
      */
     public function createRessourceBase(){
-        $sql = 'INSERT INTO ressource(nom,description) VALUES(?,?)';
-        return $this->createQuery($sql,[$this->nomRessource,$this->descrRessource]);
+        $sql = 'INSERT INTO ressource(nom,description) VALUES(?,?,?)';
+        return $this->createQuery($sql,[$this->nomRessource,$this->descrRessource, $this->tierRessource]);
     }
     
     /**
@@ -78,8 +78,8 @@ class ManagerAdminGIRessource extends ManagerBDD
      * @return bool
      */
     public function modifRessourceBase(){
-        $sql = 'UPDATE ressource SET nom = ?, description = ? WHERE id = ?';
-        return $this->createQuery($sql,[$this->nomRessource,$this->descrRessource,$this->idRessource]);
+        $sql = 'UPDATE ressource SET nom = ?, description = ?, tier= ? WHERE id = ?';
+        return $this->createQuery($sql,[$this->nomRessource,$this->descrRessource,$this->tierRessource,$this->idRessource]);
         
     }
         

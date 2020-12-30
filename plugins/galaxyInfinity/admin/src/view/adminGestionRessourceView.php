@@ -15,6 +15,10 @@
                     <input type="text" id="descr" name="descr" >
                 </div>
                 <div>
+                    <label for="tier">Tier</label><br/>
+                    <input type="number" id="tier" name="tier">
+                </div>
+                <div>
                     <input type="submit">
                 </div>
             </form>
@@ -115,6 +119,10 @@
                     <input type="text" id="descr" name="descr" >
                 </div>
                 <div>
+                    <label for="tier">Tier</label><br/>
+                    <input type="number" id="tier" name="tier">
+                </div>
+                <div>
                     <input type="submit">
                 </div>
             </form>
@@ -199,6 +207,7 @@
                         <th>Id de la ressource</th>
                         <th>Nom de la ressource</th>
                         <th>Description batiment</th>
+                        <th>Tier de la ressrouce</th>
                         <th>Action ?</th>
                     </tr>
                 </thead>
@@ -209,6 +218,7 @@
                                 <td><?=$ressource['id']?></td>
                                 <td><?=$ressource['nom']?></td>
                                 <td><?=$ressource['description']?></td>
+                                <td><?=$ressource['tier']?></td>
                                 <td><form action="index.php?galaxyInfinity=supprRessourceBase&idRessource=<?=$ressource['id']?>" method="post"><input type="submit" name="Supprimer" value="Supprimer"></form></td>
                             </tr>
                         <?php   

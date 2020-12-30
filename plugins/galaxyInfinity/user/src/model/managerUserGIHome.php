@@ -63,8 +63,8 @@ class ManagerUserGIHome extends ManagerBDD
     public function getAllRessources(){
         $sql ='SELECT * FROM ressource_planete
                LEFT JOIN ressource ON ressource.id = ressource_planete.ressource_id
-        WHERE planete_id = ?';
-        $result = $this->createQuery($sql,[$this->idPlanete]);
+        WHERE planete_id = ? AND tier = ?';
+        $result = $this->createQuery($sql,[$this->idPlanete, $this->tierSelect]);
         return $result->fetchAll();
     }
 
@@ -79,8 +79,8 @@ class ManagerUserGIHome extends ManagerBDD
     public function getAllBatPlaneteX(){
         $sql ='SELECT * FROM batiment_planete
                LEFT JOIN batiment ON batiment.id = batiment_planete.batiment_id
-            WHERE planete_id = ?';
-        $result = $this->createQuery($sql,[$this->idPlanete]);
+            WHERE planete_id = ? AND tier = ?';
+        $result = $this->createQuery($sql,[$this->idPlanete, $this->tierSelect]);
         return $result->fetchAll();
     }
     
@@ -94,8 +94,8 @@ class ManagerUserGIHome extends ManagerBDD
     public function getAllCraftPlaneteX(){
         $sql='SELECT * FROM craft_planete
               LEFT JOIN craft ON craft.id = craft_planete.craft_id
-            WHERE planete_id = ?';
-        $result = $this->createQuery($sql,[$this->idPlanete]);
+            WHERE planete_id = ? AND tier = ?';
+        $result = $this->createQuery($sql,[$this->idPlanete, $this->tierSelect]);
         return $result->fetchAll();
     }
     
@@ -109,8 +109,8 @@ class ManagerUserGIHome extends ManagerBDD
     public function getAllTechnoPlaneteX(){
         $sql ='SELECT * FROM technologie_planete
                LEFT JOIN technologie ON technologie.id = technologie_planete.technologie_id
-            WHERE planete_id =?';
-        $result = $this->createQuery($sql,[$this->idPlanete]);
+            WHERE planete_id =? AND tier = ?';
+        $result = $this->createQuery($sql,[$this->idPlanete, $this->tierSelect]);
         return $result->fetchAll();
     }
 

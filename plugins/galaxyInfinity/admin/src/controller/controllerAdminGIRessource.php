@@ -62,6 +62,7 @@ class ControllerAdminGIRessource
             
             $this->managerAdminGIRessource->nomRessource = htmlentities($_POST['nom']);
             $this->managerAdminGIRessource->descrRessource = htmlentities($_POST['descr']);
+            $this->managerAdminGIRessource->tierRessource = htmlentities($_POST['tier']);
 
             $verifExist = $this->managerAdminGIRessource->verifRessourceExist();
             
@@ -121,6 +122,7 @@ class ControllerAdminGIRessource
 
             if(!empty($_POST['nom'])){$this->managerAdminGIRessource->nomRessource = htmlentities($_POST['nom']);}else{$this->managerAdminGIRessource->nomRessource = null;}
             if(!empty($_POST['descr'])){$this->managerAdminGIRessource->descrRessource = htmlentities($_POST['descr']);}else{$this->managerAdminGIRessource->descrRessource = null;}
+            if(!empty($_POST['tier'])){$this->managerAdminGIRessource->tierRessource = htmlentities($_POST['tier']);}else{$this->managerAdminGIRessource->tierRessource = null;}
             
             $verifExist =$this->managerAdminGIRessource->verifRessourceExistById();
 

@@ -30,6 +30,26 @@
                 <?php }?>
         </div>
     </div>
+
+    <div class="divTierSelect">
+        <form action="#" method="get">
+            <span>Aperçu d'un tier:</span>
+            <select name="tierSelect" id="tierSelect">
+                <option value="1">Tier 1</option>
+                <option value="2">Tier 2</option>
+                <option value="3">Tier 3</option>
+                <option value="4">Tier 4</option>
+                <option value="5">Tier 5</option>
+                <option value="6">Tier 6</option>
+                <option value="7">Tier 7</option>
+                <option value="8">Tier 8</option>
+                <option value="9">Tier 9</option>
+                <option value="10">Tier 10</option>
+            </select>
+            <input type="submit">
+        </form>
+    </div>
+    
     <div class='afficheAll'>
         <div class='afficheAllRessources'>
             <h4>Ressources</h4>
@@ -61,7 +81,7 @@
 </div>
 
 
-
+<script type='text/javascript' src='plugins/galaxyInfinity/user/public/js/jsHome/gestionHome.js'></script>
 <script type='text/javascript' src='plugins/galaxyInfinity/user/public/js/jsHome/gestionCraft.js'></script>
 <script type='text/javascript' src='plugins/galaxyInfinity/user/public/js/jsHome/gestionBat.js'></script>
 <script type='text/javascript' src='plugins/galaxyInfinity/user/public/js/jsHome/gestionRessources.js'></script>

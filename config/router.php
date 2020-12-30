@@ -400,7 +400,7 @@ class Router
                             break;
                         //Partie Home    
                         case 'afficheHomeUser':
-                            $this->controllerUserGIHome->afficheHomeUser();
+                            $this->controllerUserGIHome->afficheHomeUser($_GET['tierSelect']);
                             break;
                         case 'getAllRessources':
                             $this->controllerUserGIHome->allRessources();
