@@ -1,0 +1,22 @@
+.divPlugins{
+    margin-right: 0%;
+}
+
+.createPop{
+    display: flex;
+    justify-content: space-around;
+}
+
+.modifPop{
+    display: flex;
+    justify-content: space-around;
+}
+
+h4{
+    text-align: center;
+}
+
+
+.tableGIBAdmin{
+    text-align: center;
+}

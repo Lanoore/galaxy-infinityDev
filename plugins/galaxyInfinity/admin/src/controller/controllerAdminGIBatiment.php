@@ -94,7 +94,7 @@ class ControllerAdminGIBatiment
                                             $insertBat =$this->managerAdminGIBatiment->insertBatBase();
                                             if($insertBat){
                                                 $nomFichier = $_POST['nom'].'.'.$infosfichier['extension'];
-                                                move_uploaded_file($_FILES['image']['tmp_name'], '../plugins/galaxyInfinity/admin/public/img/batiment/' . basename($nomFichier));
+                                                move_uploaded_file($_FILES['image']['tmp_name'], 'plugins/galaxyInfinity/admin/public/img/batiment/' . basename($nomFichier));
                                                 header('Location:index.php?galaxyInfinity=afficheAdminGestionBatiment');
                                             }
                                             
@@ -138,7 +138,7 @@ class ControllerAdminGIBatiment
 
                     $confirmSuppr = $this->managerAdminGIBatiment->supprBatBase();
                     if($confirmSuppr){
-                        unlink('../plugins/galaxyInfinity/admin/public/img/batiment/'. $this->managerAdminGIBatiment->imageBat);
+                        unlink('plugins/galaxyInfinity/admin/public/img/batiment/'. $this->managerAdminGIBatiment->imageBat);
                         header("Location:index.php?galaxyInfinity=afficheAdminGestionBatiment");
                     }
                     

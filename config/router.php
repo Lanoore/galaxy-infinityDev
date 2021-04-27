@@ -26,6 +26,8 @@ use App\plugins\galaxyInfinity\user\src\controller\controllerUserGIGalaxie;
 use App\plugins\galaxyInfinity\user\src\controller\controllerUserGIPlanete;
 use App\plugins\galaxyInfinity\user\src\controller\controllerUserGIHome;
 use App\plugins\galaxyInfinity\user\src\controller\controllerUserGIGuilde;
+use App\plugins\galaxyInfinity\user\src\controller\ControllerUserGIPopulation;
+use App\plugins\galaxyInfinity\admin\src\controller\ControllerAdminGIPopulation;
 
 
 
@@ -55,6 +57,8 @@ class Router
     private $controllerUserGIPlanete;
     private $controllerUserGIHome;
     private $controllerUserGIGuilde;
+    private $controllerUserGIPopulation;
+    private $controllerAdminGIPopulation;
 
     public function __construct(){
         $this->controllerBase = new ControllerBase();
@@ -78,6 +82,8 @@ class Router
         $this->controllerUserGIPlanete = new ControllerUserGIPlanete();
         $this->controllerUserGIHome = new ControllerUserGIHome();
         $this->controllerUserGIGuilde = new ControllerUserGIGuilde();
+        $this->controllerUserGIPopulation = new ControllerUserGIPopulation();
+        $this->controllerAdminGIPopulation = new ControllerAdminGIPopulation();
 
     }
 
@@ -244,6 +250,28 @@ class Router
                             break;
                         case 'modifLiaisonRessourceBat':
                             $this->controllerAdminGIRessource->modifLiaisonRessourceBat();
+                            break;
+                        //Partie population
+                        case 'afficheAdminGestionPopulation':
+                            $this->controllerAdminGIPopulation->afficheGestionPopulation();
+                            break;
+                        case 'createPopBase':
+                            $this->controllerAdminGIPopulation->createPopBase();
+                            break;
+                        case 'modifPopBase':
+                            $this->controllerAdminGIPopulation->modifPopBase();
+                            break;
+                        case 'supprPopBase':
+                            $this->controllerAdminGIPopulation->supprPopBase($_GET['idPop']);
+                            break;
+                        case 'createPopPR':
+                            $this->controllerAdminGIPopulation->createPopPR();
+                            break;
+                        case 'supprPopPR':
+                            $this->controllerAdminGIPopulation->supprPopPR($_GET['idLigne']);
+                            break;
+                        case 'modifPopPR':
+                            $this->controllerAdminGIPopulation->modifPopPR();
                             break;
                         //Partie batiment    
                         case 'afficheAdminGestionBatiment':
@@ -438,6 +466,10 @@ class Router
                         //Partie Galaxie
                         case 'afficheGalaxieUser':
                             $this->controllerUserGIGalaxie->afficheGalaxieUser($_GET['systeme']);
+                            break;
+                        //Partie Population
+                        case 'affichePopulationUser':
+                            $this->controllerUserGIPopulation->affichePopulationUser();
                             break;
                         //Partie Guilde
                         case 'afficheGuilde':

@@ -30,6 +30,7 @@
                     <li><a href="index.php?galaxyInfinity=afficheBatimentUser&tier=1">Batiment</a></li>
                     <li><a href="index.php?galaxyInfinity=afficheTechnologieUser&tier=1">Technologie</a></li>
                     <li><a href="index.php?galaxyInfinity=afficheCraftUser&tier=1">Craft</a></li>
+                    <li><a href="index.php?galaxyInfinity=affichePopulationUser">Population</a></li>
                 </ul>
             </li>
 

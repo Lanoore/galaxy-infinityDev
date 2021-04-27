@@ -93,7 +93,7 @@ class ControllerAdminGICraft{
                             $insertCraft = $this->managerAdminGICraft->insertCraftBase();
                             if($insertCraft){
                                 $nomFichier = $_POST['nomCraft'].'.'.$infosfichier['extension'];
-                                move_uploaded_file($_FILES['image']['tmp_name'], '../plugins/galaxyInfinity/admin/public/img/craft/' . basename($nomFichier));
+                                move_uploaded_file($_FILES['image']['tmp_name'], 'plugins/galaxyInfinity/admin/public/img/craft/' . basename($nomFichier));
                                 header('Location:index.php?galaxyInfinity=afficheAdminGestionCraft');
                             }
                         }
@@ -132,7 +132,7 @@ class ControllerAdminGICraft{
                 if(isset($_POST['Supprimer'])){
                     $supprCraft=$this->managerAdminGICraft->supprCraftBase();
                     if($supprCraft){
-                        unlink('../plugins/galaxyInfinity/admin/public/img/craft/'. $this->managerAdminGICraft->imageCraft);
+                        unlink('/plugins/galaxyInfinity/admin/public/img/craft/'. $this->managerAdminGICraft->imageCraft);
                         header('Location:index?galaxyInfinity=afficheAdminGestionCraft');
                     }
                 }

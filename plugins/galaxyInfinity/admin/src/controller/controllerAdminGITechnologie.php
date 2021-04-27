@@ -93,7 +93,7 @@ class ControllerAdminGITechnologie
                                         $insertTechno =$this->managerAdminGITechnologie->insertTechnologieBase();
                                         if($insertTechno == true){
                                             $nomFichier = $_POST['nom'].'.'.$infosfichier['extension'];
-                                            move_uploaded_file($_FILES['image']['tmp_name'], '../plugins/galaxyInfinity/admin/public/img/technologie/' . basename($nomFichier));
+                                            move_uploaded_file($_FILES['image']['tmp_name'], 'plugins/galaxyInfinity/admin/public/img/technologie/' . basename($nomFichier));
                                             header('Location:index.php?galaxyInfinity=afficheAdminGestionTechnologie');
                                         }
                                     }
@@ -142,7 +142,7 @@ class ControllerAdminGITechnologie
 
                     $confirmSuppr = $this->managerAdminGITechnologie->supprTechnologieBase();
                     if($confirmSuppr){
-                        unlink('../plugins/galaxyInfinity/admin/public/img/technologie/'. $this->managerAdminGITechnologie->imageCraft);
+                        unlink('plugins/galaxyInfinity/admin/public/img/technologie/'. $this->managerAdminGITechnologie->imageCraft);
                         header("Location:index.php?galaxyInfinity=afficheAdminGestionTechnologie");
                     }
                     
