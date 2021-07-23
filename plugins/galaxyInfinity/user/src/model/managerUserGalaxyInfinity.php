@@ -142,6 +142,12 @@ class ManagerUserGalaxyInfinity extends ManagerBDD
         $result = $this->createQuery($sql);
         return $result->fetchAll();
     }
+
+    public function getPopBaseUser(){
+        $sql = 'SELECT * FROM population';
+        $result = $this->createQuery($sql);
+        return $result->fetchAll();
+    }
     
     /**
      * getBatStartPlaneteUser
@@ -155,6 +161,7 @@ class ManagerUserGalaxyInfinity extends ManagerBDD
         $result = $this->createQuery($sql);
         return $result->fetchAll();
     }
+
     
     /**
      * setBatBaseUser
@@ -220,7 +227,14 @@ class ManagerUserGalaxyInfinity extends ManagerBDD
         return $result;
 
     }
-    
+
+    public function setPopBaseUser(){
+        $sql = 'INSERT INTO population_planete(nombre_pop,planete_id,pop_id) VALUES (0,?,?)';
+        $result = $this->createQuery($sql,[$this->idPlanete, $this->idPop]);
+        return $result;
+    }
+
+
     /**
      * setBatStartPlaneteUser
      * 

@@ -48,8 +48,8 @@ class ManagerAdminGIPopulation extends ManagerBDD
     }
 
     public function insertPopBase(){
-        $sql ='INSERT INTO population(nom,description,tier,image) VALUES(?,?,?,?)';
-        return $this->createQuery($sql,[$this->nomPop,$this->descrPop,$this->tierPop,$this->imagePop]);
+        $sql ='INSERT INTO population(typeUnite,nom,description,tier,image) VALUES(?,?,?,?,?)';
+        return $this->createQuery($sql,[$this->typeUnite,$this->nomPop,$this->descrPop,$this->tierPop,$this->imagePop]);
     }
 
 
@@ -59,8 +59,8 @@ class ManagerAdminGIPopulation extends ManagerBDD
     }
 
     public function modifPopBase(){
-        $sql = 'UPDATE population SET nom = ?, description = ?, tier = ? WHERE id = ?';
-        return $this->createQuery($sql,[$this->nomPop, $this->descrPop,$this->tierPop,$this->idPop]);
+        $sql = 'UPDATE population SET typeUnite = ?, nom = ?, description = ?, tier = ? WHERE id = ?';
+        return $this->createQuery($sql,[$this->typeUnite, $this->nomPop, $this->descrPop,$this->tierPop,$this->idPop]);
 
     }
 

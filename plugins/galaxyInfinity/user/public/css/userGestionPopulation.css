@@ -2,3 +2,33 @@
     display: flex;
     justify-content: space-around;
 }
+
+
+.divCivil,.divMilitaire{
+    text-align: center;
+    width: 50%;
+}
+
+.divPop{
+    display: flex;
+    justify-content: space-between;
+    height: 2em;
+}
+
+.divPopInfo{
+    display: flex;
+    align-items: center;
+    height: 100%;
+}
+
+.divPopProd{
+    display: flex;
+}
+
+.divPopInfo img{
+    height: 100%;
+}
+
+.divPopInfo p{
+    padding-left: 10%;
+}

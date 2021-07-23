@@ -47,6 +47,7 @@ class ControllerAdminGIPopulation
 
     public function createPopBase(){
         if(isset($_SESSION['identifiantAdmin'])){
+            $this->managerAdminGIPopulation->typeUnite = htmlentities($_POST['typeUnite']);
             $this->managerAdminGIPopulation->nomPop = htmlentities($_POST['nomPop']);
             $this->managerAdminGIPopulation->descrPop = htmlentities($_POST['descr']);
             $this->managerAdminGIPopulation->tierPop = htmlentities($_POST['tier']);
@@ -121,7 +122,8 @@ class ControllerAdminGIPopulation
         if(isset($_SESSION['identifiantAdmin'])){
             $this->managerAdminGIPopulation->idPop = $_POST['idPop'];
             $this->managerAdminGIPopulation->getPopBaseById();
-            
+
+            if(!empty($_POST['typeUnite'])){$this->managerAdminGIPopulation->typeUnite = htmlentities($_POST['typeUnite']);}
             if(!empty($_POST['nomPop'])){$this->managerAdminGIPopulation->nomPop = htmlentities($_POST['nomPop']);}
             if(!empty($_POST['descr'])){$this->managerAdminGIPopulation->descrPop = htmlentities($_POST['descr']);}
             if(!empty($_POST['tier'])){$this->managerAdminGIPopulation->tierPop = htmlentities($_POST['tier']);}

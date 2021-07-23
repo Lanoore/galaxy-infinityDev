@@ -51,6 +51,7 @@ class ControllerUserGalaxyInfinity{
             $craftBase = $this->managerUserGI->getCraftBaseUser();
             $itemsBase = $this->managerUserGI->getItemsBaseUser();
             $ressourceBase = $this->managerUserGI->getRessourceBaseUser();
+            $popBase = $this->managerUserGI->getPopBaseUser();
 
             foreach($batBase as $batBase){
                 $this->managerUserGI->idBat = $batBase['id'];
@@ -83,6 +84,11 @@ class ControllerUserGalaxyInfinity{
                 $this->managerUserGI->idBat = $batStart['batiment_id'];
                 $this->managerUserGI->niveau = $batStart['niveau_start_id'];
                 $this->managerUserGI->setBatStartPlaneteUser();
+            }
+
+            foreach($popBase as $popBase){
+                $this->managerUserGI->idPop = $popBase['id'];
+                $this->managerUserGI->setPopBaseUser();
             }
 
             

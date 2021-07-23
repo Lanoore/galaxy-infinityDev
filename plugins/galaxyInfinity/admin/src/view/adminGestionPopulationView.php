@@ -6,6 +6,10 @@
             <h4>Création Population Base</h4>
             <form action="index.php?galaxyInfinity=createPopBase" method="post" enctype="multipart/form-data">
                 <div>
+                    <label for="typeUnite">Type D'unité</label><br/>
+                    <input type="number" id='typeUnite' name='typeUnite' min='0' max='1'>
+                </div>
+                <div>
                     <label for = "nomPop"> Nom de la Population</label><br/>
                     <input type="text" id="nomPop" name="nomPop"> 
                 </div>
@@ -103,6 +107,10 @@
                             <?php }
                         ?>
                     </select>
+                </div>
+                <div>
+                    <label for="typeUnite">Type D'unité</label><br/>
+                    <input type="number" id='typeUnite' name='typeUnite' min='0' max='1'>
                 </div>
                 <div>
                     <label for="nomPop">Nouveau nom de la pop</label><br/>
@@ -203,6 +211,7 @@
             <thead>
                 <tr>
                     <th>Id de la population</th>
+                    <th>Type d'unité</th>
                     <th>Nom de la population</th>
                     <th>Description de la population</th>
                     <th>Tier de la population</th>
@@ -215,6 +224,7 @@
                     foreach ($pops as $pop) {?>
                         <tr>
                             <td><?=$pop['id']?></td>
+                            <td><?=$pop['typeUnite']?></td>
                             <td><?=$pop['nom']?></td>
                             <td><?=$pop['description']?></td>
                             <td><?=$pop['tier']?></td>

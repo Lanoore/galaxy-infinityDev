@@ -574,7 +574,7 @@
                     <?php
                     foreach($adminBatPR as $batPR){?>
                         <tr>
-                            <td><?=$batPR['id']?></td>
+                            <td><?=$batPR[0]?></td>
                             <td><?=$batPR[7]?></td>
                             <td><?=$batPR[12]?></td>
                             <td><?=$batPR['niveau_id_batiment']?></td>

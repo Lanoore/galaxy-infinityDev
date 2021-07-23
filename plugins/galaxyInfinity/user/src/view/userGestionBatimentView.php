@@ -14,6 +14,7 @@
     <nav class='navTier'>
         <ul>
             <li><a href="index.php?galaxyInfinity=afficheBatimentUser&tier=1">Tier 1</a></li>
+            <li><a href="index.php?galaxyInfinity=afficheBatimentUser&tier=2">Tier 2</a></li>
         </ul>
     </nav>
 

@@ -39,7 +39,9 @@ class ControllerAdminGIBatiment
      * @return void
      */
     public function adminGestionBat(){
+        
         if(isset($_SESSION['identifiantAdmin'])){
+
             
             $adminBatBase = $this->managerAdminGIBatiment->getBatBaseAdmin();
             $adminBatNiveau = $this->managerAdminGIBatiment->getBatNiveauAdmin();
@@ -71,11 +73,11 @@ class ControllerAdminGIBatiment
      * @return void
      */
     public function createBatBase(){
-        
-        if(isset($_SESSION['identifiantAdmin'])){
-            if(!empty($_POST['nom']) && !empty($_POST['descr']) && !empty($_POST['tier']) && !preg_match("#[<>1-9]#", $_POST['nom']) && !preg_match("#[<>]#",$_POST['descr'])&& $_POST['tier'] >= 1 && $_POST['tier']<=1){
 
-                        
+        if(isset($_SESSION['identifiantAdmin'])){
+            if(!empty($_POST['nom']) && !empty($_POST['descr']) && !empty($_POST['tier']) && !preg_match("#[<>1-9]#", $_POST['nom']) && !preg_match("#[<>]#",$_POST['descr'])&& $_POST['tier'] >= 1 && $_POST['tier']<=10){
+
+                
                         $this->managerAdminGIBatiment->nomBat= htmlentities($_POST['nom']);
                         $this->managerAdminGIBatiment->descrBat = htmlentities($_POST['descr']);
                         $this->managerAdminGIBatiment->tierBat = $_POST['tier'];
@@ -83,18 +85,22 @@ class ControllerAdminGIBatiment
                         $verifExist = $this->managerAdminGIBatiment->verifBatExist();
                         
                         if($verifExist == 0){   
+                            
                                 if(isset($_FILES['image']) AND $_FILES['image']['error'] == 0){
-                                    if($_FILES['image']['size']<= 1000000){
+                                    if($_FILES['image']['size']<= 2000000){
+                                        
                                         $infosfichier = pathinfo($_FILES['image']['name']);
                                         $extension_upload = $infosfichier['extension'];
+                                        
                                         $extensions_autorisees = array('jpg', 'jpeg', 'gif', 'png');
                                         if (in_array($extension_upload, $extensions_autorisees)){
                                             $this->managerAdminGIBatiment->imageBat = $_POST['nom'].'.'.$infosfichier['extension'];
-                                            
                                             $insertBat =$this->managerAdminGIBatiment->insertBatBase();
                                             if($insertBat){
                                                 $nomFichier = $_POST['nom'].'.'.$infosfichier['extension'];
+                                                
                                                 move_uploaded_file($_FILES['image']['tmp_name'], 'plugins/galaxyInfinity/admin/public/img/batiment/' . basename($nomFichier));
+                                                
                                                 header('Location:index.php?galaxyInfinity=afficheAdminGestionBatiment');
                                             }
                                             
@@ -102,15 +108,15 @@ class ControllerAdminGIBatiment
                                     }
                                 }
                             else{
-                                header('Location:index.php?galaxyInfintiy=afficheAdminGestionBatiment');
+                                header('Location:index.php?galaxyInfinity=afficheAdminGestionBatiment');
                             }
                         }
                         else{
-                            header('Location:index.php?galaxyInfintiy=afficheAdminGestionBatiment');
+                            header('Location:index.php?galaxyInfinity=afficheAdminGestionBatiment');
                         }
             }
             else{
-                header('Location:index.php?galaxyInfintiy=afficheAdminGestionBatiment');
+                header('Location:index.php?galaxyInfinity=afficheAdminGestionBatiment');
             }
         }
         else{
