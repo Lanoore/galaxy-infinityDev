@@ -93,8 +93,21 @@ class ControllerAdminGICraft{
                             $insertCraft = $this->managerAdminGICraft->insertCraftBase();
                             if($insertCraft){
                                 $nomFichier = $_POST['nomCraft'].'.'.$infosfichier['extension'];
-                                move_uploaded_file($_FILES['image']['tmp_name'], 'plugins/galaxyInfinity/admin/public/img/craft/' . basename($nomFichier));
-                                header('Location:index.php?galaxyInfinity=afficheAdminGestionCraft');
+                                $craftBaseImgTrue = move_uploaded_file($_FILES['image']['tmp_name'], 'plugins/galaxyInfinity/admin/public/img/craft/' . basename($nomFichier));
+                                if($craftBaseImgTrue){
+
+                                    $getCraftByName = $this->managerAdminGICraft->getCraftBaseByName();
+                                    $this->managerAdminGICraft->idCraft = $getCraftByName['id'];
+                                    $getAllPlaneteActive = $this->managerAdminGICraft->getAllPlaneteActive();
+
+                                    foreach($getAllPlaneteActive as $planete){
+                                        $this->managerAdminGICraft->idPlanete = $planete['id'];
+                                        $this->managerAdminGICraft->insertCraftBasePlaneteX();
+                                    }
+                                    
+                                    header('Location:index.php?galaxyInfinity=afficheAdminGestionCraft');
+                                }
+                                
                             }
                         }
                     }

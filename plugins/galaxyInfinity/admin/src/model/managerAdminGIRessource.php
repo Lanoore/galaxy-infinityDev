@@ -40,7 +40,7 @@ class ManagerAdminGIRessource extends ManagerBDD
      * @return bool
      */
     public function createRessourceBase(){
-        $sql = 'INSERT INTO ressource(nom,description) VALUES(?,?,?)';
+        $sql = 'INSERT INTO ressource(nom,description,tier) VALUES(?,?,?)';
         return $this->createQuery($sql,[$this->nomRessource,$this->descrRessource, $this->tierRessource]);
     }
     
@@ -215,6 +215,23 @@ class ManagerAdminGIRessource extends ManagerBDD
     public function modifLiaisonRessourceBat(){
         $sql = 'UPDATE batiment_prod_ressource SET batiment_id = ? WHERE ressource_id = ?';
         return $result = $this->createQuery($sql,[$this->idBat,$this->idRessource]);  
+    }
+
+    public function getAllPlaneteActive(){
+        $sql = 'SELECT * FROM planete WHERE situation != 0';
+        $result =  $this->createQuery($sql);
+        return $result->fetchAll();
+    }
+
+    public function getRessourceBaseByName(){
+        $sql = 'SELECT * FROM ressource WHERE nom = ?';
+        $result = $this->createQuery($sql,[$this->nomRessource]);
+        return $result->fetch();
+    }
+
+    public function insertRessourceBasePlaneteX(){
+        $sql = 'INSERT INTO ressource_planete(niveau,planete_id,ressource_id) VALUES(0,?,?)';
+        return $this->createQuery($sql,[$this->idPlanete,$this->idRessource]);
     }
 
 }

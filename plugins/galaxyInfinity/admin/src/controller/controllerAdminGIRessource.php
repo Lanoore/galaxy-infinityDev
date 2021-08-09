@@ -69,6 +69,16 @@ class ControllerAdminGIRessource
             if($verifExist == 0){
                 $confirmAdd = $this->managerAdminGIRessource->createRessourceBase();
                 if($confirmAdd){
+
+                        $getRessourceByName = $this->managerAdminGIRessource->getRessourceBaseByName();
+                        $this->managerAdminGIRessource->idRessource = $getRessourceByName['id'];
+                        $getAllPlaneteActive = $this->managerAdminGIRessource->getAllPlaneteActive();
+
+                        foreach($getAllPlaneteActive as $planete){
+                            $this->managerAdminGIRessource->idPlanete = $planete['id'];
+                            $this->managerAdminGIRessource->insertRessourceBasePlaneteX();
+                        }
+                    
                     header('Location:index.php?galaxyInfinity=afficheAdminGestionRessource');
                 }
             }

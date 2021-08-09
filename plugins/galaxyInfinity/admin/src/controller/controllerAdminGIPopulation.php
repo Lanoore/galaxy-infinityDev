@@ -67,8 +67,21 @@ class ControllerAdminGIPopulation
                             $insertPop = $this->managerAdminGIPopulation->insertPopBase();
                             if($insertPop){
                                 $nomFichier = $_POST['nomPop'].'.'.$infosfichier['extension'];
-                                move_uploaded_file($_FILES['image']['tmp_name'], 'plugins/galaxyInfinity/admin/public/img/population/' . basename($nomFichier));
-                                header('Location:index.php?galaxyInfinity=afficheAdminGestionPopulation');
+                                $popBaseImgTrue = move_uploaded_file($_FILES['image']['tmp_name'], 'plugins/galaxyInfinity/admin/public/img/population/' . basename($nomFichier));
+                                if($popBaseImgTrue){
+
+                                    $getPopByName = $this->managerAdminGIPopulation->getPopBaseByName();
+                                    $this->managerAdminGIPopulation->idPop = $getPopByName['id'];
+                                    $getAllPlaneteActive = $this->managerAdminGIPopulation->getAllPlaneteActive();
+
+                                    foreach($getAllPlaneteActive as $planete){
+                                        $this->managerAdminGIPopulation->idPlanete = $planete['id'];
+                                        $this->managerAdminGIPopulation->insertPopBasePlaneteX();
+                                    }
+                                    
+                                    header('Location:index.php?galaxyInfinity=afficheAdminGestionPopulation');
+                                }
+                                
                             }
                         }
                     }

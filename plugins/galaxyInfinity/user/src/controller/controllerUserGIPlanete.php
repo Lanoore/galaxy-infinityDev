@@ -73,12 +73,16 @@ class ControllerUserGIPlanete{
             $batPlanete = $this->managerUserGIPlanete->getNiveauBatiment();
             $this->managerUserGIPlanete->niveauBat = $batPlanete['niveau'];
             $prodRessource = $this->managerUserGIPlanete->getProdRessource();
-            $this->managerUserGIPlanete->idRessource = $prodRessource['ressource_id'];
-            $ressourcePlanete = $this->managerUserGIPlanete->getRessourcePlanete();
+            if($prodRessource == true){
+                $this->managerUserGIPlanete->idRessource = $prodRessource['ressource_id'];
+                $ressourcePlanete = $this->managerUserGIPlanete->getRessourcePlanete();
+    
+                $this->managerUserGIPlanete->totalRessource = $ressourcePlanete['nombre_ressource'] + ($prodRessource['prod_ressource_niveau'] * (time() - $this->managerUserGIPlanete->lastActivite));
+    
+                $this->managerUserGIPlanete->changeNombreRessource();
+            }
 
-            $this->managerUserGIPlanete->totalRessource = $ressourcePlanete['nombre_ressource'] + ($prodRessource['prod_ressource_niveau'] * (time() - $this->managerUserGIPlanete->lastActivite));
-
-            $this->managerUserGIPlanete->changeNombreRessource();
+            
         }
     }
 

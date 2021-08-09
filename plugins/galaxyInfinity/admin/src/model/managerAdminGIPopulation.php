@@ -97,5 +97,21 @@ class ManagerAdminGIPopulation extends ManagerBDD
         
     }
 
+    public function getAllPlaneteActive(){
+        $sql = 'SELECT * FROM planete WHERE situation != 0';
+        $result =  $this->createQuery($sql);
+        return $result->fetchAll();
+    }
+
+    public function getPopBaseByName(){
+        $sql = 'SELECT * FROM population WHERE nom = ?';
+        $result = $this->createQuery($sql,[$this->nomPop]);
+        return $result->fetch();
+    }
+
+    public function insertPopBasePlaneteX(){
+        $sql = 'INSERT INTO population_planete(niveau,planete_id,pop_id) VALUES(0,?,?)';
+        return $this->createQuery($sql,[$this->idPlanete,$this->idPop]);
+    }
 
 }

@@ -261,4 +261,22 @@ class ManagerAdminGICraft extends ManagerBDD
             return $this->createQuery($sql,[$this->idCraft,$this->idBatPR,$this->niveauBatPR,$this->idTechnoPR,$this->niveauTechnoPR,$this->idLigne]);
             
         }
+
+
+        public function getAllPlaneteActive(){
+            $sql = 'SELECT * FROM planete WHERE situation != 0';
+            $result =  $this->createQuery($sql);
+            return $result->fetchAll();
+        }
+    
+        public function getCraftBaseByName(){
+            $sql = 'SELECT * FROM craft WHERE nom = ?';
+            $result = $this->createQuery($sql,[$this->nomCraft]);
+            return $result->fetch();
+        }
+    
+        public function insertCraftBasePlaneteX(){
+            $sql = 'INSERT INTO craft_planete(niveau,planete_id,craft_id) VALUES(0,?,?)';
+            return $this->createQuery($sql,[$this->idPlanete,$this->idCraft]);
+        }
 }

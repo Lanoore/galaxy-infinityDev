@@ -334,4 +334,23 @@ class ManagerAdminGITechnologie extends ManagerBDD
         return $this->createQuery($sql,[$this->idTechno,$this->idBatPR,$this->niveauBatPR,$this->idTechnoPR,$this->niveauTechnoPR,$this->idLigne]);
         
     }
+
+
+    
+    public function getAllPlaneteActive(){
+        $sql = 'SELECT * FROM planete WHERE situation != 0';
+        $result =  $this->createQuery($sql);
+        return $result->fetchAll();
+    }
+
+    public function getTechnoBaseByName(){
+        $sql = 'SELECT * FROM technologie WHERE nom = ?';
+        $result = $this->createQuery($sql,[$this->nomTechno]);
+        return $result->fetch();
+    }
+
+    public function insertTechnoBasePlaneteX(){
+        $sql = 'INSERT INTO batiment_technologie(niveau,planete_id,technologie_id) VALUES(0,?,?)';
+        return $this->createQuery($sql,[$this->idPlanete,$this->idTechno]);
+    }
 }

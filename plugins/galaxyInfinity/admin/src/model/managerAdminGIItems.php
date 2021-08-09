@@ -92,4 +92,21 @@ class ManagerAdminGIItems extends ManagerBDD
         return $this->createQuery($sql,[$this->nomItem,$this->idItem]);
         
     }
+
+    public function getAllPlaneteActive(){
+        $sql = 'SELECT * FROM planete WHERE situation != 0';
+        $result =  $this->createQuery($sql);
+        return $result->fetchAll();
+    }
+
+    public function getItemsBaseByName(){
+        $sql = 'SELECT * FROM items WHERE nom = ?';
+        $result = $this->createQuery($sql,[$this->nomItems]);
+        return $result->fetch();
+    }
+
+    public function insertItemsBasePlaneteX(){
+        $sql = 'INSERT INTO items_planete(niveau,planete_id,items_id) VALUES(0,?,?)';
+        return $this->createQuery($sql,[$this->idPlanete,$this->idItems]);
+    }
 }

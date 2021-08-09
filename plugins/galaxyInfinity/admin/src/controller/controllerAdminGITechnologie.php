@@ -75,7 +75,7 @@ class ControllerAdminGITechnologie
      */
     public function createTechnologieBase(){
         if(isset($_SESSION['identifiantAdmin'])){
-            if(!empty($_POST['nom']) && !empty($_POST['descr']) && !empty($_POST['tier']) && !preg_match("#[<>1-9]#", $_POST['nom']) && !preg_match("#[<>]#",$_POST['descr']) && $_POST['tier'] >= 1 && $_POST['tier']<=1){
+            if(!empty($_POST['nom']) && !empty($_POST['descr']) && !empty($_POST['tier']) && !preg_match("#[<>1-9]#", $_POST['nom']) && !preg_match("#[<>]#",$_POST['descr']) && $_POST['tier'] >= 1 && $_POST['tier']<=10){
                         
                         $this->managerAdminGITechnologie->nomTechno= htmlentities($_POST['nom']);
                         $this->managerAdminGITechnologie->descrTechno = htmlentities($_POST['descr']);
@@ -93,8 +93,20 @@ class ControllerAdminGITechnologie
                                         $insertTechno =$this->managerAdminGITechnologie->insertTechnologieBase();
                                         if($insertTechno == true){
                                             $nomFichier = $_POST['nom'].'.'.$infosfichier['extension'];
-                                            move_uploaded_file($_FILES['image']['tmp_name'], 'plugins/galaxyInfinity/admin/public/img/technologie/' . basename($nomFichier));
-                                            header('Location:index.php?galaxyInfinity=afficheAdminGestionTechnologie');
+                                            $technoBaseImgTrue = move_uploaded_file($_FILES['image']['tmp_name'], 'plugins/galaxyInfinity/admin/public/img/technologie/' . basename($nomFichier));
+                                            if($technoBaseImgTrue){
+
+                                                $getTechnoByName = $this->managerAdminGITechnologie->getTechnoBaseByName();
+                                                $this->managerAdminGITechnologie->idTechno = $getTechnoByName['id'];
+                                                $getAllPlaneteActive = $this->managerAdminGITechnologie->getAllPlaneteActive();
+
+                                                foreach($getAllPlaneteActive as $planete){
+                                                    $this->managerAdminGITechnologie->idPlanete = $planete['id'];
+                                                    $this->managerAdminGITechnologie->insertTechnoBasePlaneteX();
+                                                }
+                                                
+                                                header('Location:index.php?galaxyInfinity=afficheAdminGestionTechnologie');
+                                            }
                                         }
                                     }
                                     else{

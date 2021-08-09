@@ -383,4 +383,21 @@ class ManagerAdminGIBatiment extends ManagerBDD
         return $this->createQuery($sql,[$this->idBat, $this->idNiveau]);
         
     }
+
+    public function getAllPlaneteActive(){
+        $sql = 'SELECT * FROM planete WHERE situation != 0';
+        $result =  $this->createQuery($sql);
+        return $result->fetchAll();
+    }
+
+    public function getBatBaseByName(){
+        $sql = 'SELECT * FROM batiment WHERE nom = ?';
+        $result = $this->createQuery($sql,[$this->nomBat]);
+        return $result->fetch();
+    }
+
+    public function insertBatBasePlaneteX(){
+        $sql = 'INSERT INTO batiment_planete(niveau,planete_id,batiment_id) VALUES(0,?,?)';
+        return $this->createQuery($sql,[$this->idPlanete,$this->idBat]);
+    }
 }

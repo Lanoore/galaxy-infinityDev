@@ -54,7 +54,18 @@ class ControllerAdminGIItems
             if($itemsExist == 0){
                 $confirmAdd = $this->managerAdminGIitems->addItem();
                 if($confirmAdd){
+
+                    $getItemsByName = $this->managerAdminGIitems->getItemsBaseByName();
+                    $this->managerAdminGIitems->idItems = $getItemsByName['id'];
+                    $getAllPlaneteActive = $this->managerAdminGIitems->getAllPlaneteActive();
+
+                    foreach($getAllPlaneteActive as $planete){
+                        $this->managerAdminGIitems->idPlanete = $planete['id'];
+                        $this->managerAdminGIitems->insertItemsBasePlaneteX();
+                    }
+                        
                     header('Location:index.php?galaxyInfinity=afficheAdminGestionItems');
+                    
                 }
             }
             else{

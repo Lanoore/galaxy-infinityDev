@@ -99,9 +99,23 @@ class ControllerAdminGIBatiment
                                             if($insertBat){
                                                 $nomFichier = $_POST['nom'].'.'.$infosfichier['extension'];
                                                 
-                                                move_uploaded_file($_FILES['image']['tmp_name'], 'plugins/galaxyInfinity/admin/public/img/batiment/' . basename($nomFichier));
+                                                $batBaseImgTrue = move_uploaded_file($_FILES['image']['tmp_name'], 'plugins/galaxyInfinity/admin/public/img/batiment/' . basename($nomFichier));
+
+                                                if($batBaseImgTrue){
+
+                                                    $getBatByName = $this->managerAdminGIBatiment->getBatBaseByName();
+                                                    $this->managerAdminGIBatiment->idBat = $getBatByName['id'];
+                                                    $getAllPlaneteActive = $this->managerAdminGIBatiment->getAllPlaneteActive();
+
+                                                    foreach($getAllPlaneteActive as $planete){
+                                                        $this->managerAdminGIBatiment->idPlanete = $planete['id'];
+                                                        $this->managerAdminGIBatiment->insertBatBasePlaneteX();
+                                                    }
+                                                    
+                                                    header('Location:index.php?galaxyInfinity=afficheAdminGestionBatiment');
+                                                }
                                                 
-                                                header('Location:index.php?galaxyInfinity=afficheAdminGestionBatiment');
+                                                
                                             }
                                             
                                         }
