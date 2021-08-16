@@ -225,4 +225,28 @@ class ManagerUserGIPlanete extends ManagerBDD
         return $result = $this->createQuery($sql,[$this->idPlanete]);
     }
 
+
+
+    public function getFormationPopEnCours(){
+        $sql = 'SELECT * FROM formation_pop_planete WHERE planete_id = ?';
+        $result = $this->createQuery($sql,[$this->idPlanete]);
+        return $result->fetch();
+    }
+
+    public function getPopXPlaneteX(){
+        $sql ='SELECT * FROM population_planete WHERE planete_id =? AND pop_id = ?';
+        $result = $this->createQuery($sql,[$this->idPlanete, $this->idPop]);
+        return $result->fetch();
+    }
+
+    public function supprLigneFormPopEnCoursPlanete(){
+        $sql ='DELETE FROM formation_pop_planete WHERE planete_id = ?';
+        return $result = $this->createQuery($sql,[$this->idPlanete]);
+    }
+
+    public function modifNombreTotalPopPlanete(){
+        $sql ='UPDATE population_planete SET nombre_pop = ? WHERE planete_id = ? AND pop_id = ?';
+        return $result = $this->createQuery($sql,[$this->nombreTotalPopX,$this->idPlanete,$this->idPop]);    
+    }
+
 }

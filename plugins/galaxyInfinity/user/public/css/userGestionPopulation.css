@@ -1,18 +1,31 @@
 .divPlugins{
     display: flex;
-    justify-content: space-around;
+    flex-direction:column;
 }
 
-
-.divCivil,.divMilitaire{
-    text-align: center;
-    width: 50%;
+.mainDiv{
+    width: 100%;
+}
+.tempsRestantForm{
+    display: flex;
+    justify-content: center;
 }
 
 .divPop{
     display: flex;
     justify-content: space-between;
-    height: 2em;
+}
+
+.divCivil,.divMilitaire{
+    text-align: center;
+    width: 50%;
+    margin: 1%;
+}
+
+.divPopX{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1%;
 }
 
 .divPopInfo{
@@ -26,7 +39,7 @@
 }
 
 .divPopInfo img{
-    height: 100%;
+    height: 2em;
 }
 
 .divPopInfo p{

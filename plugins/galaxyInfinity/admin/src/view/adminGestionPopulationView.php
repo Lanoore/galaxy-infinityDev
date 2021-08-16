@@ -26,6 +26,10 @@
                     <input type="file" name ="image">
                 </div>
                 <div>
+                    <label for="tempsForm">Temps de formation</label><br/>
+                    <input type="number" id="tempsForm" name="tempsForm">
+                </div>
+                <div>
                     <input type="submit">
                 </div>
             </form>
@@ -93,7 +97,58 @@
                     </div>
                 </form>
             </div>
+
+            <div>
+            <h4>Création Formation population</h4>
+            <form action="index.php?galaxyInfinity=createFormationPop" method="post">
+                <div>
+                    <label for = "idPop"> Nom de la pop</label><br/>
+                    <select name="idPop" id="idPop">
+                    <option value="null"></option>
+                        <?php
+                            foreach ($pops as $pop) {?>
+                                <option value="<?=$pop['id']?>"><?=$pop['nom']?></option>
+                           <?php }
+                        ?>
+                    </select>
+                </div>
+                <div>
+                    <label for="idPopF">Nom Pop</label><br/>
+                    <select name="idPopF" id="idPopF">
+                    <option value="null"></option>
+                    <?php
+                        foreach($pops as $pop){?>
+                            <option value="<?=$pop['id']?>"><?=$pop['nom']?></option>
+                       <?php }
+                    ?>
+                    </select>
+                </div>
+                <div>
+                    <label for="nombrePopF">Nombre pop formation</label><br/>
+                    <input type="number" id="nombrePopF" name="nombrePopF">
+                </div>
+                <div>
+                    <label for="idCraft">Nom craft</label><br/>
+                    <select name="idCraft" id="idCraft">
+                    <option value="null"></option>
+                    <?php 
+                        foreach($crafts as $craft){?>
+                            <option value="<?=$craft['id']?>"><?=$craft['nom']?></option>
+                       <?php }
+                    ?>
+                    </select>
+                </div>
+                <div>
+                    <label for="nombreCraft">Nombre craft</label><br/>
+                    <input type="number" id="nombreCraft" name="nombreCraft">
+                </div>
+                <div>
+                    <input type="submit">
+                </div>
+            </form>
+        </div>
     </div>
+    
     <div class="modifPop">
             <div>
             <h4>Modification de la Population</h4>
@@ -123,6 +178,10 @@
                 <div>
                     <label for="tier">Tier de la pop</label><br/>
                     <input type="number" id="tier" name="tier" min="1" max="10">
+                </div>
+                <div>
+                    <label for="tempsForm">Temps de formation</label><br/>
+                    <input type="number" id="tempsForm" name="tempsForm">
                 </div>
                 <div>
                     <input type="submit">
@@ -203,6 +262,68 @@
                         </div>
                     </form>
             </div>
+
+            <div>
+            <h4>Modif Population Formation</h4>
+            <form action="index.php?galaxyInfinity=modifPopulationFormation" method="post">
+                <div>
+                    <label for="idLigne">Id de la ligne cible</label><br/>
+                    <select name="idLigne" id="idLigne">
+                        <option value="null"></option>
+                        <?php
+                            foreach($adminPopFormation as $popFormation){?>
+                                <option value="<?=$popFormation[0]?>"><?=$popFormation[0]?></option>
+                            <?php }
+                        ?>
+                    </select>
+                </div> 
+                <div>
+                    <label for = "idPop"> Nom de la population</label><br/>
+                    <select name="idPop" id="idPop">
+                        <option value="null"></option>
+                        <?php
+                            foreach ($pops as $pop) {?>
+                                <option value="<?=$pop['id']?>"><?=$pop['nom']?></option>
+                           <?php }
+                        ?>
+                    </select>
+                </div>
+                <div>
+                    <label for="idCraft">Nom Craft</label><br/>
+                    <select name="idCraft" id="idCraft">
+                        <option value="null"></option>
+                        <?php
+                        foreach($crafts as $craft){?>
+                            <option value="<?=$craft['id']?>"><?=$craft['nom']?></option>
+                        <?php }
+                        ?>
+                    </select>
+                </div>
+                <div>
+                    <label for="nombreCraft">Nombre craft</label><br/>
+                    <input type="number" id="nombreCraft" name="nombreCraft">
+                </div>
+                <div>
+                    <label for="idPopF">Nom population formation</label><br/>
+                    <select name="idPopF" id="idPopF">
+                        <option value="null"></option>
+                        <?php 
+                        
+                        foreach($pops as $pop){?>
+                            <option value="<?=$pop['id']?>"><?=$pop['nom']?></option>
+                       <?php }
+                    ?>
+                    </select>
+                </div>
+                <div>
+                    <label for="nombrePopF">Nombre population formation</label><br/>
+                    <input type="number" id="nombrePopF" name="nombrePopF">
+                </div>
+                <div>
+                    <input type="submit">
+                </div>
+            </form>
+        </div>
     </div>
 
     <div class="tableGICAdmin">
@@ -216,6 +337,7 @@
                     <th>Description de la population</th>
                     <th>Tier de la population</th>
                     <th>Image de la population</th>
+                    <th>Temps de formation</th>
                     <th>Action ?</th>
                 </tr>
             </thead>
@@ -229,6 +351,7 @@
                             <td><?=$pop['description']?></td>
                             <td><?=$pop['tier']?></td>
                             <td><?=$pop['image']?></td>
+                            <td><?=$pop['temps_form']?></td>
                             <td><form action="index.php?galaxyInfinity=supprPopBase&idPop=<?=$pop['id']?>" method="post"><input type="submit" name="Supprimer" value="Supprimer"></form></td>
                         </tr>
                      <?php   
@@ -267,6 +390,39 @@
                     
                 </tbody>
             </table>
+            <table class="dataTable">
+                <h4>Population formation</h4>
+                <thead>
+                    <tr>
+                        <th>Id Ligne</th>
+                        <th>Nom population</th>
+                        <th>Nom craft</th>
+                        <th>Nombre craft</th>
+                        <th>Nom population formation</th>
+                        <th>Nombre population formation</th>
+                        <th>Action ?</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php
+                        foreach ($adminPopFormation as $popFormation) {?>
+                        
+                            <tr>
+                                <td><?=$popFormation[0];?></td>
+                                <td><?=$popFormation[8];?></td>
+                                <td><?=$popFormation[13];?></td>
+                                <td><?=$popFormation['nombre_craft'];?></td>
+                                <td><?=$popFormation['nom'];?></td>
+                                <td><?=$popFormation['nombre_pop_formation'];?></td>
+                                <td><form action="index.php?galaxyInfinity=supprPopFormation&idLigne=<?=$popFormation[0]?>" method="post"><input type="submit" name="Supprimer" value="Supprimer"></form></td>
+                            </tr>
+                            <?php
+                        }
+                    
+                    ?>
+                </tbody>
+            </table>
+        
 
     </div>
 

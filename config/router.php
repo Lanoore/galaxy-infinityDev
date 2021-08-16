@@ -273,6 +273,15 @@ class Router
                         case 'modifPopPR':
                             $this->controllerAdminGIPopulation->modifPopPR();
                             break;
+                        case 'createFormationPop':
+                            $this->controllerAdminGIPopulation->createFormationPop();
+                            break;
+                        case 'modifPopulationFormation':
+                            $this->controllerAdminGIPopulation->modifPopulationFormation();
+                            break;
+                        case 'supprPopFormation':
+                            $this->controllerAdminGIPopulation->supprPopulationFormation($_GET['idLigne']);
+                            break;
                         //Partie batiment    
                         case 'afficheAdminGestionBatiment':
                             $this->controllerAdminGIBatiment->adminGestionBat();
@@ -470,6 +479,9 @@ class Router
                         //Partie Population
                         case 'affichePopulationUser':
                             $this->controllerUserGIPopulation->affichePopulationUser();
+                            break;
+                        case 'addProdPopulation':
+                            $this->controllerUserGIPopulation->addProdPopulation($_GET['idPop']);
                             break;
                         //Partie Guilde
                         case 'afficheGuilde':

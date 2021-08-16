@@ -29,6 +29,14 @@
                     <p>Aucune recherche en cours en cours</p>
                 <?php }?>
         </div>
+        <div class='afficheXEnCours'>
+                <?php if($tempsRestantFormation != null){?>
+                    <p><?=$tempsRestantFormation['nomPop']?>:</p>
+                    <p id='tempsRestantFormationEnCours'><?=$tempsRestantFormation['tempsDecompteFormation']?>(<?=$tempsRestantFormation['nombrePopForm']?>)</p>
+                <?php }else{?>
+                    <p>Aucune formation en cours</p>
+                <?php }?>
+        </div>
     </div>
 
     <div class="divTierSelect">

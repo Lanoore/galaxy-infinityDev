@@ -6,6 +6,7 @@ use App\plugins\galaxyInfinity\admin\src\model\ManagerAdminGIPopulation;
 use App\plugins\galaxyInfinity\admin\src\model\ManagerAdminGIBatiment;
 use App\plugins\galaxyInfinity\admin\src\model\ManagerAdminGITechnologie;
 use App\plugins\galaxyInfinity\admin\src\model\managerAdminGalaxyInfinity;
+use App\plugins\galaxyInfinity\admin\src\model\managerAdminGICraft;
 
 use App\config\themes\controller\ControllerBase;
 
@@ -15,6 +16,7 @@ class ControllerAdminGIPopulation
     private $managerAdminGITechnologie;
     private $managerAdminGIBatiment;
     private $managerAdminGalaxyInfinity;
+    private $managerAdminGICraft;
 
     private $controllerBase;
 
@@ -23,6 +25,7 @@ class ControllerAdminGIPopulation
         $this->managerAdminGIBatiment = new ManagerAdminGIBatiment();
         $this->managerAdminGalaxyInfinity = new ManagerAdminGalaxyInfinity();
         $this->managerAdminGITechnologie = new ManagerAdminGITechnologie();
+        $this->managerAdminGICraft = new managerAdminGICraft();
 
         $this->controllerBase = new ControllerBase;
     }
@@ -31,15 +34,17 @@ class ControllerAdminGIPopulation
     public function afficheGestionPopulation(){
         if(isset($_SESSION['identifiantAdmin'])){
 
+            $crafts = $this->managerAdminGICraft->getCraftBaseAdmin();
             $pops = $this->managerAdminGIPopulation->getPopsBaseAdmin();
             $popsPR = $this->managerAdminGIPopulation->getPopsPRAdmin();
+            $adminPopFormation = $this->managerAdminGIPopulation->getPopFormationAdmin();
 
             $technologies = $this->managerAdminGITechnologie->getTechnologieBaseAdmin();
             $niveaux = $this->managerAdminGalaxyInfinity->getNiveaux();
             $adminBatBase = $this->managerAdminGIBatiment->getBatBaseAdmin();
 
             $adminGI = 'plugins/galaxyInfinity/admin/src/view/adminGestionPopulationView.php';
-            $adminGI = $this->controllerBase->tamponView($adminGI, ['pops'=>$pops,'popsPR'=>$popsPR,'technologies'=>$technologies,'adminBatBase'=>$adminBatBase,'niveaux'=>$niveaux]);
+            $adminGI = $this->controllerBase->tamponView($adminGI, ['adminPopFormation'=> $adminPopFormation,'crafts'=> $crafts,'pops'=>$pops,'popsPR'=>$popsPR,'technologies'=>$technologies,'adminBatBase'=>$adminBatBase,'niveaux'=>$niveaux]);
             $this->controllerBase->afficheView([$adminGI],'adminGestionPopulation');
         }
 
@@ -51,6 +56,7 @@ class ControllerAdminGIPopulation
             $this->managerAdminGIPopulation->nomPop = htmlentities($_POST['nomPop']);
             $this->managerAdminGIPopulation->descrPop = htmlentities($_POST['descr']);
             $this->managerAdminGIPopulation->tierPop = htmlentities($_POST['tier']);
+            $this->managerAdminGIPopulation->tempsForm = htmlentities($_POST['tempsForm']);
 
 
             $this->managerAdminGIPopulation->verifPopExist();
@@ -140,7 +146,7 @@ class ControllerAdminGIPopulation
             if(!empty($_POST['nomPop'])){$this->managerAdminGIPopulation->nomPop = htmlentities($_POST['nomPop']);}
             if(!empty($_POST['descr'])){$this->managerAdminGIPopulation->descrPop = htmlentities($_POST['descr']);}
             if(!empty($_POST['tier'])){$this->managerAdminGIPopulation->tierPop = htmlentities($_POST['tier']);}
-              
+            if(!empty($_POST['tempsForm'])){$this->managerAdminGIPopulation->tempsForm = htmlentities($_POST['tempsForm']);}
             
             $confirmModif = $this->managerAdminGIPopulation->modifPopBase();
 
@@ -250,6 +256,116 @@ class ControllerAdminGIPopulation
             else{
                 header('Location:index.php?galaxyInfinity=afficheAdminGestionPopulation');
             }
+        }
+        else{
+            header('Location:index.php?admin=afficheConnexion');
+        }
+    }
+    
+
+    public function createFormationPop(){
+        if(isset($_SESSION['identifiantAdmin'])){
+            
+            $this->managerAdminGIPopulation->idPop = htmlentities($_POST['idPop']);
+
+            if(!empty($_POST['nombreCraft'])){
+                if(!empty($_POST['idCraft'])){$this->managerAdminGIPopulation->idCraft = htmlentities($_POST['idCraft']);}else{$this->managerAdminGIPopulation->idCraft = null;}
+                $this->managerAdminGIPopulation->nombreCraft = htmlentities($_POST['nombreCraft']);
+            }
+            else{
+                $this->managerAdminGIPopulation->idCraft = null;
+                $this->managerAdminGIPopulation->nombreCraft = null;
+            }
+            
+            if(!empty($_POST['nombrePopF'])){
+                if(!empty($_POST['idPopF'])){$this->managerAdminGIPopulation->idPopF = htmlentities($_POST['idPopF']);}else{$this->managerAdminGIPopulation->idPopF = null;}
+                $this->managerAdminGIPopulation->nombrePopF = htmlentities($_POST['nombrePopF']);
+            }
+            else{
+                $this->managerAdminGIPopulation->idPopF = null;
+                $this->managerAdminGIPopulation->nombrePopF = null;
+            }
+
+            $verifExist = $this->managerAdminGIPopulation->verifPopFormationExist();
+            
+            if($verifExist === 0){
+                
+                $confirmAdd = $this->managerAdminGIPopulation->createPopFormation();
+                
+                if($confirmAdd){
+                    header('Location:index.php?galaxyInfinity=afficheAdminGestionPopulation');
+                }
+            }
+            else{
+                header('Location:index.php?galaxyInfinity=afficheAdminGestionPopulation');
+            }
+        }
+        else{
+            header('Location:index.php?admin=afficheConnexion');
+        }
+    }
+
+    public function supprPopulationFormation(int $idLigne){
+        if(isset($_SESSION['identifiantAdmin'])){
+            $this->managerAdminGIPopulation->idLigne = $idLigne;
+
+            $LigneExist = $this->managerAdminGIPopulation->verifPopulationFormationExistById();
+            
+            if($LigneExist){
+                if(isset($_POST['Supprimer'])){
+
+                    $this->managerAdminGIPopulation->supprPopulationFormation();
+                    header("Location:index.php?galaxyInfinity=afficheAdminGestionPopulation");
+                }
+            }else{
+                
+                header("Location:index.php?galaxyInfinity=afficheAdminGestionPopulation");
+            }
+            
+        }
+        else{
+            header('Location:index.php?admin=afficheConnexion');
+        }
+    }
+
+    
+    public function modifPopulationFormation(){
+        if(isset($_SESSION['identifiantAdmin'])){
+
+            $this->managerAdminGIPopulation->idLigne = htmlentities($_POST['idLigne']);
+            $this->managerAdminGIPopulation->idPop = htmlentities($_POST['idPop']);
+            if(!empty($_POST['nombreCraft'])){
+                if(!empty($_POST['idCraft'])){$this->managerAdminGIPopulation->idCraft = htmlentities($_POST['idCraft']);}else{$this->managerAdminGIPopulation->idCraft = null;}
+                $this->managerAdminGIPopulation->nombreCraft = htmlentities($_POST['nombreCraft']);
+            }
+            else{
+                $this->managerAdminGIPopulation->idCraft = null;
+                $this->managerAdminGIPopulation->nombreCraft = null;
+            }
+            
+            if(!empty($_POST['nombrePopF'])){
+                if(!empty($_POST['idPopF'])){$this->managerAdminGIPopulation->idPopF = htmlentities($_POST['idPopF']);}else{$this->managerAdminGIPopulation->idPopF = null;}
+                $this->managerAdminGIPopulation->nombrePopF = htmlentities($_POST['nombrePopF']);
+            }
+            else{
+                $this->managerAdminGIPopulation->idPopF = null;
+                $this->managerAdminGIPopulation->nombrePopF = null;
+            }
+            $ligneExist = $this->managerAdminGIPopulation->verifPopulationFormationExistById();
+
+
+            if($ligneExist){
+                
+                $confirmModif = $this->managerAdminGIPopulation->modifPopulationFormation();
+                
+                if($confirmModif){
+                    header('Location:index.php?galaxyInfinity=afficheAdminGestionPopulation');
+                }
+            }
+            else{
+                header('Location:index.php?galaxyInfinity=afficheAdminGestionPopulation');
+            }
+
         }
         else{
             header('Location:index.php?admin=afficheConnexion');

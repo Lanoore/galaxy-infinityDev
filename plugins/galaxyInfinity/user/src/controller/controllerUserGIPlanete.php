@@ -48,6 +48,8 @@ class ControllerUserGIPlanete{
 
             $gestionConstructionTechno = $this->gestionConstruTechnoChangePage();
 
+            $gestionFormationPop = $this->gestionFormationPopChangePage();
+
             $this->managerUserGIPlanete->lastActivite = time();
 
 
@@ -144,6 +146,20 @@ class ControllerUserGIPlanete{
                 $this->managerUserGIPlanete->niveauTechnoFinal = $construTechnoEnCours['niveau_technologie_construction'];
                 $this->managerUserGIPlanete->modifNiveauTechnoPlanete();
                 $this->managerUserGIPlanete->supprLigneTechnoEnCoursPlanete();
+            }
+        }
+    }
+
+    public function gestionFormationPopChangePage(){
+        $formationPopEnCours = $this->managerUserGIPlanete->getFormationPopEnCours();
+        if(!empty($formationPopEnCours)){
+            if(time() >= $formationPopEnCours['fin_pop_actuel']){
+                $this->managerUserGIPlanete->idPop = $formationPopEnCours['population_id'];
+                $nombrePopFormation = $formationPopEnCours['nombre_pop_formation'];
+                $getPopXPlaneteX = $this->managerUserGIPlanete->getPopXPlaneteX();
+                $this->managerUserGIPlanete->nombreTotalPopX = $nombrePopFormation + $getPopXPlaneteX['nombre_pop'];
+                $this->managerUserGIPlanete->modifNombreTotalPopPlanete();
+                $this->managerUserGIPlanete->supprLigneFormPopEnCoursPlanete();
             }
         }
     }

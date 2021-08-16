@@ -62,6 +62,15 @@ class ControllerUserGIHome{
             else{
                 $tempsRestantTechno = null;
             } 
+
+            $formationPopEnCours = $this->managerUserGIHome->getFormationPopEnCours();
+            if(!empty($formationPopEnCours)){
+                $tempsDecompteFormation = $this->conversionSeconde($formationPopEnCours['fin_pop_actuel']-time());
+                $tempsRestantFormation = ['nomPop' =>$formationPopEnCours['nom'], 'nombrePopForm' =>$formationPopEnCours['nombre_pop_formation'], 'tempsDecompteFormation' => $tempsDecompteFormation];
+            }
+            else{
+                $tempsRestantFormation = null;
+            } 
             
 
             $this->managerUserGIHome->tierSelect = $tierSelect;
@@ -73,7 +82,7 @@ class ControllerUserGIHome{
 
 
             $userHome = 'plugins/galaxyInfinity/user/src/view/userGestionHomeView.php';
-            $userHome = $this->controllerBase->tamponView($userHome,['allTechno'=>$allTechno,'allCraft'=>$allCraft,'allBat'=>$allBat,'allRessources'=>$allRessources,'tempsRestantCraft'=>$tempsRestantCraft,'tempsRestantBat'=>$tempsRestantBat,'tempsRestantTechno'=>$tempsRestantTechno]);
+            $userHome = $this->controllerBase->tamponView($userHome,['allTechno'=>$allTechno,'allCraft'=>$allCraft,'allBat'=>$allBat,'allRessources'=>$allRessources,'tempsRestantCraft'=>$tempsRestantCraft,'tempsRestantBat'=>$tempsRestantBat,'tempsRestantTechno'=>$tempsRestantTechno, 'tempsRestantFormation' => $tempsRestantFormation]);
 
             $this->controllerBase->afficheView([$userHome],'userGestionHome');
         }

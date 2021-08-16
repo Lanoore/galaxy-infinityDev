@@ -48,8 +48,8 @@ class ManagerAdminGIPopulation extends ManagerBDD
     }
 
     public function insertPopBase(){
-        $sql ='INSERT INTO population(typeUnite,nom,description,tier,image) VALUES(?,?,?,?,?)';
-        return $this->createQuery($sql,[$this->typeUnite,$this->nomPop,$this->descrPop,$this->tierPop,$this->imagePop]);
+        $sql ='INSERT INTO population(typeUnite,nom,description,tier,image,temps_form) VALUES(?,?,?,?,?,?)';
+        return $this->createQuery($sql,[$this->typeUnite,$this->nomPop,$this->descrPop,$this->tierPop,$this->imagePop,$this->tempsForm]);
     }
 
 
@@ -59,8 +59,8 @@ class ManagerAdminGIPopulation extends ManagerBDD
     }
 
     public function modifPopBase(){
-        $sql = 'UPDATE population SET typeUnite = ?, nom = ?, description = ?, tier = ? WHERE id = ?';
-        return $this->createQuery($sql,[$this->typeUnite, $this->nomPop, $this->descrPop,$this->tierPop,$this->idPop]);
+        $sql = 'UPDATE population SET typeUnite = ?, nom = ?, description = ?, tier = ?, temps_form = ? WHERE id = ?';
+        return $this->createQuery($sql,[$this->typeUnite, $this->nomPop, $this->descrPop,$this->tierPop,$this->tempsForm,$this->idPop]);
 
     }
 
@@ -114,4 +114,42 @@ class ManagerAdminGIPopulation extends ManagerBDD
         return $this->createQuery($sql,[$this->idPlanete,$this->idPop]);
     }
 
+    public function verifPopFormationExist(){
+        $sql = 'SELECT craft_id, pop_id_formation FROM population_formation WHERE pop_id = ? AND craft_id =? OR pop_id_formation =?';
+        $result = $this->createQuery($sql,[$this->idPop,$this->idCraft, $this->idPopF]);
+        return $result->rowCount();
+    }
+
+    public function createPopFormation(){
+        $sql = 'INSERT INTO population_formation(pop_id,craft_id,nombre_craft,pop_id_formation,nombre_pop_formation) VALUES(?,?,?,?,?)';
+        return $this->createQuery($sql,[$this->idPop,$this->idCraft,$this->nombreCraft,$this->idPopF,$this->nombrePopF]);
+    }
+
+    public function getPopFormationAdmin(){
+
+        $sql = 'SELECT * FROM population_formation
+            LEFT JOIN population as pop ON population_formation.pop_id = pop.id
+            LEFT JOIN craft as craft ON population_formation.craft_id = craft.id
+            LEFT JOIN population as popF ON population_formation.pop_id_formation = popF.id
+        ORDER BY pop_id DESC';
+        $result = $this->createQuery($sql);
+        return $result->fetchAll();
+    }
+
+    public function verifPopulationFormationExistById(){
+        $sql = 'SELECT id FROM population_formation WHERE id= ?';
+       return $this->createQuery($sql,[$this->idLigne]);
+        
+    }
+
+    public function supprPopulationFormation(){
+        $sql = 'DELETE FROM population_formation WHERE id = ?';
+        return $this->createQuery($sql,[$this->idLigne]);
+        
+    }
+
+    public function modifPopulationFormation(){
+        $sql = 'UPDATE population_formation SET pop_id = ?, craft_id = ?,nombre_craft = ?,pop_id_formation = ?, nombre_pop_formation = ? WHERE id =?';
+        return $this->createQuery($sql,[$this->idPop,$this->idCraft,$this->nombreCraft,$this->idPopF,$this->nombrePopF,$this->idLigne]);
+    }
 }
