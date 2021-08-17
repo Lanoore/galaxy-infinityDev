@@ -483,6 +483,10 @@ class Router
                         case 'addProdPopulation':
                             $this->controllerUserGIPopulation->addProdPopulation($_GET['idPop']);
                             break;
+                        case 'getFormationPopJs':
+                            $this->controllerUserGIPopulation->getFormationPopJs();
+                            break;
+                            
                         //Partie Guilde
                         case 'afficheGuilde':
                             $this->controllerUserGIGuilde->afficheGuilde();

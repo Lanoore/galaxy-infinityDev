@@ -46,6 +46,7 @@ class ControllerUserGIPopulation{
                 $popPr = $this->ManagerUserGIPopulation->getPrPopX();
                 $nombrePop = $this->ManagerUserGIPopulation->getNombrePopX();
 
+
                 $verifPrPop = $this->verifPrPop($popPr);
                 $verifFormPop = $this->verifFormPop($popForm, 1);
                 $verifPopEnCours = $this->ManagerUserGIPopulation->verifPopEnCours();
@@ -126,7 +127,7 @@ class ControllerUserGIPopulation{
                         if(!empty($popForm['craft_id'])){
                             $this->ManagerUserGIPopulation->idPop = $popForm['craft_id'];
                             $craftPlanete = $this->ManagerUserGIPopulation->getCraftPlaneteX();
-                            $this->ManagerUserGIPopulation->nbCraftFinal = $craftPlanete['craft_id'] - ($popForm['nombre_craft'] * $_POST['nombreForm']); 
+                            $this->ManagerUserGIPopulation->nbCraftFinal = $craftPlanete['nombre_craft'] - ($popForm['nombre_craft'] * $_POST['nombreForm']); 
                             $this->ManagerUserGIPopulation->updateCraftXPlaneteX();
                         }
                         if(!empty($popForm['pop_id_formation'])){
@@ -203,5 +204,22 @@ class ControllerUserGIPopulation{
 
           return $TimeFinal; 
        }
+
+
+
+       public function getFormationPopJs(){
+        if(isset($_SESSION['pseudo'])){
+
+            $this->ManagerUserGIPopulation->idPlanete = $_SESSION['idPlaneteActif'];
+            $getFormationEnCours = $this->ManagerUserGIPopulation->getPopFormEnCours();
+
+            $formationEnCours [] = ['idPop' => $getFormationEnCours['population_id'],'nomPop' => html_entity_decode($getFormationEnCours['nom']), 'nombrePopForm' => $getFormationEnCours['nombre_pop_formation'],'finFormActuel' => $getFormationEnCours['fin_pop_actuel']];
+
+            echo json_encode($formationEnCours);
+        }
+        else{
+            throw new Exception("Vous devez être connecter pour accéder à cette page!");
+        }
+    }
 
 }

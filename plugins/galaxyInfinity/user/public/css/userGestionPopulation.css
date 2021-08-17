@@ -45,3 +45,14 @@
 .divPopInfo p{
     padding-left: 10%;
 }
+
+
+.divPopDescrX{
+    display: none;
+    position: absolute;
+
+    background-color: gray;
+    box-shadow: 9px 4px 14px gray;
+    border: 1px solid lightgray;
+    width: 22%;
+}

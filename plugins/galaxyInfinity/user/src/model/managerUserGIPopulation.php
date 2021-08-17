@@ -134,4 +134,5 @@ class ManagerUserGIPopulation extends ManagerBDD
         return $result->fetch();
     }
 
+
 }

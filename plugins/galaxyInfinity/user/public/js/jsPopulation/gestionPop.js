@@ -1,50 +1,50 @@
-class craft{
+class population{
 
     constructor(){
 
-        this.afficheCraftEnCours();
-        this.descrCraftVisible();
+        this.affichePopEnCours();
+        this.descrPopVisible();
         
         this.timeId;
     }
 
-    afficheCraftEnCours(){
+    affichePopEnCours(){
         var that = this;
 
         var xmlhttp = new XMLHttpRequest();
         xmlhttp.onreadystatechange = function() {
             if (this.readyState == 4 && this.status == 200) {
-                var construEnCours = JSON.parse(this.responseText);
-
-                if(construEnCours[0].idCraft != null){
-                    var dateFin = construEnCours[0].finCraftActuel;
+                var formationEnCours = JSON.parse(this.responseText);
+                console.log(formationEnCours);
+                if(formationEnCours[0].idPop != null){
+                    var dateFin = formationEnCours[0].finFormActuel;
                     var dateActuel = new Date();
                     dateActuel = dateActuel.getTime() /1000;
                     that.tempsRestant = Math.round(dateFin - dateActuel);
-                    that.nomCraft = construEnCours[0].nomCraft;
-                    that.nombreCraft = construEnCours[0].nombreCraft;
+                    that.nomPop = formationEnCours[0].nomPop;
+                    that.nombrePopForm = formationEnCours[0].nombrePopForm;
                     if(dateFin != null && that.tempsRestant > 0){
-                        that.timeId = setTimeout(that.decompteConstru.bind(that),1000);
+                        that.timeId = setTimeout(that.decompteFormation.bind(that),1000);
                     }
                 }
             }
         
         };
-        xmlhttp.open("GET", "index.php?galaxyInfinity=getConstruCraftJs", true);
+        xmlhttp.open("GET", "index.php?galaxyInfinity=getFormationPopJs", true);
         xmlhttp.send(); 
         
     }
 
 
-    decompteConstru(){
+    decompteFormation(){
 
 
         if (this.tempsRestant > 0) {
             var textDecompte = this.decompte(this.tempsRestant);
             this.tempsRestant = this.tempsRestant - 1;
-            pTempsRestant = textDecompte + '('+ this.nombreCraft +')';
-            var pTempsRestant = document.getElementById('tempsRestantCraftEnCours').innerHTML = pTempsRestant;
-            this.timeId = setTimeout(this.decompteConstru.bind(this),1000);
+            pTempsRestant = textDecompte + '('+ this.nombrePopForm +')';
+            var pTempsRestant = document.getElementById('tempsRestantFormEnCours').innerHTML = pTempsRestant;
+            this.timeId = setTimeout(this.decompteFormation.bind(this),1000);
         }	
         else{
             document.location.reload();
@@ -80,21 +80,20 @@ class craft{
     }
     
 
-    descrCraftVisible(){
+    descrPopVisible(){
        
-        var imgCraftX = document.getElementsByClassName('imgCraftX');
+        var imgPopX = document.getElementsByClassName('imgPopX');
 
-        for(var i =0;i < imgCraftX.length;i++){
-            imgCraftX[i].addEventListener('mouseover',function(){
+        for(var i =0;i < imgPopX.length;i++){
+            imgPopX[i].addEventListener('mouseover',function(){
                 var divDescrX =this.parentNode.parentNode.lastElementChild;
-                console.log(divDescrX);
                 divDescrX.style.display = 'block';
             });
-            imgCraftX[i].addEventListener('mouseout', function(){
+            imgPopX[i].addEventListener('mouseout', function(){
                 var divDescrX =this.parentNode.parentNode.lastElementChild;
                 divDescrX.style.display = 'none'; 
             });
-            imgCraftX[i].addEventListener('mousemove',function(event){
+            imgPopX[i].addEventListener('mousemove',function(event){
                 var divDescrX =this.parentNode.parentNode.lastElementChild;
 
                 divDescrX.style.top = event.clientY+1+'px';
