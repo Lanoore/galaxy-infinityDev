@@ -46,6 +46,8 @@ class ControllerUserGalaxyInfinity{
         $confirmAdd = $this->managerUserGI->attributPlaneteUser();
         if($confirmAdd){
 
+            $this->managerUserGI->attributPlaneteMere();
+
             $batBase = $this->managerUserGI->getBatBaseUser(); 
             $technoBase = $this->managerUserGI->getTechnoBaseUser();
             $craftBase = $this->managerUserGI->getCraftBaseUser();
@@ -106,8 +108,8 @@ class ControllerUserGalaxyInfinity{
         if(isset($_SESSION['pseudo'])){
             $this->managerUserGI->idUser = $_SESSION['idUser'];
 
-            $infoUserPlanete = $this->managerUserGI->getPlaneteUser();
-            $_SESSION['idPlaneteActif'] = $infoUserPlanete['id'];
+            $infoUserPlanete = $this->managerUserGI->getPlaneteMereUser();
+            $_SESSION['idPlaneteActif'] = $infoUserPlanete['idPlaneteMere'];
         }
         else{
             throw new Exception("Vous devez être connecter pour accéder à cette page!");

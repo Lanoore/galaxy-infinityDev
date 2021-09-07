@@ -79,6 +79,19 @@ class ManagerUserGalaxyInfinity extends ManagerBDD
         $result = $this->createQuery($sql,[$this->idUser, $this->lastActivite,$this->idPlanete]);
         return $result;
     }
+
+    public function attributPlaneteMere(){
+        $sql ='INSERT INTO user_planeteMere(idUser, idPlaneteMere) VALUES(?,?)';
+        $result = $this->createQuery($sql,[$this->idUser, $this->idPlanete]);
+        return $result;
+
+    }
+
+    public function getPlaneteMereUser(){
+        $sql = 'SELECT * FROM user_planeteMere WHERE idUser = ?';
+        $result = $this->createQuery($sql,[$this->idUser]);
+        return $result->fetch(); 
+    }
     
     /**
      * getBatBaseUser
