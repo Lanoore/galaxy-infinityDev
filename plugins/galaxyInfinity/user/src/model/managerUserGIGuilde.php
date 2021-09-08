@@ -53,7 +53,10 @@ class ManagerUserGIGuilde extends ManagerBDD
     }
 
     public function getAllMembreGuilde(){
-        $sql ='SELECT * FROM user WHERE idGuilde = ?';
+        $sql ='SELECT * FROM user 
+        LEFT JOIN user_planetemere ON user.id = user_planetemere.idUser
+        LEFT JOIN planete ON user_planetemere.idPlaneteMere = planete.id
+        WHERE idGuilde = ?';
         $result = $this->createQuery($sql,[$this->idGuilde]);
         return $result->fetchAll();
     }

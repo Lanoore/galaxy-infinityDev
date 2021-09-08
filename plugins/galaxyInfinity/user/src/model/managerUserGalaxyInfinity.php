@@ -311,5 +311,12 @@ class ManagerUserGalaxyInfinity extends ManagerBDD
         return $result->fetchAll();
     }
 
+
+    public function updateNomPlaneteMereJoueur(){
+        $sql ='UPDATE planete  SET nomPlanete = ? WHERE id = ?';
+        $result = $this->createQuery($sql,[$this->nomPlaneteMere, $this->idPlanete]);
+        return $result;
+    }
+
     
 }

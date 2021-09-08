@@ -48,6 +48,11 @@ class ControllerUserGalaxyInfinity{
 
             $this->managerUserGI->attributPlaneteMere();
 
+            //Nom de la planete par defaut = PseudoMere
+
+            $this->managerUserGI->nomPlaneteMere = $this->pseudo.'Mere';
+            $this->managerUserGI->updateNomPlaneteMereJoueur();
+
             $batBase = $this->managerUserGI->getBatBaseUser(); 
             $technoBase = $this->managerUserGI->getTechnoBaseUser();
             $craftBase = $this->managerUserGI->getCraftBaseUser();

@@ -47,8 +47,9 @@
                 foreach($guilde as $guilde){?>
                     <span class='infoMembre'>
                         <p>Pseudo: <?=ucwords($guilde['pseudo'])?></p>
+                        <p>Planete Mere: <?=ucwords($guilde['nomPlanete'])?></p>
                         <p>Dernière connexion: <?=$guilde['lastConnexion']?></p>
-                        <?php if($_SESSION['idUser'] == $infoGuilde['idChefGuilde'] AND $infoGuilde['idChefGuilde'] != $guilde['id']){?><p><a href="index.php?galaxyInfinity=supprMembreGuilde&idMembre=<?=$guilde['id']?>">Renvoyer ce membre</a></p><?php }?>
+                        <?php if($_SESSION['idUser'] == $infoGuilde['idChefGuilde'] AND $infoGuilde['idChefGuilde'] != $guilde[0]){?><p><a href="index.php?galaxyInfinity=supprMembreGuilde&idMembre=<?=$guilde['id']?>">Renvoyer ce membre</a></p><?php }?>
                     </span>
                 <?php }
                 ?>
