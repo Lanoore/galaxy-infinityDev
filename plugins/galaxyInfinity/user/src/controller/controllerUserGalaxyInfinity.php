@@ -115,6 +115,9 @@ class ControllerUserGalaxyInfinity{
 
             $infoUserPlanete = $this->managerUserGI->getPlaneteMereUser();
             $_SESSION['idPlaneteActif'] = $infoUserPlanete['idPlaneteMere'];
+
+            $getGuildePlayer = $this->managerUserGI->getGuildePlayer();
+            $_SESSION['idGuilde'] = $getGuildePlayer['idGuilde'];
         }
         else{
             throw new Exception("Vous devez être connecter pour accéder à cette page!");

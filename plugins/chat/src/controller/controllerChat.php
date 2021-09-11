@@ -92,4 +92,59 @@ class ControllerChat{
             throw new Exception("Vous devez être connecter pour accéder à cette page!");
         }
     }
+
+
+                    /////////////////// Gestion chat Guilde /////////////////////////
+
+    public function afficheChatGuilde(){
+        if(isset($_SESSION['idUser'])){
+                $this->managerChat->idGuilde = $_SESSION['idGuilde'];
+                $messagesChatGuilde = $this->managerChat->getChatGuilde();
+
+        
+                $chatGuilde = 'plugins/chat/src/view/afficheChatGuilde.php';
+                $chatGuilde = $this->controllerBase->tamponView($chatGuilde, $messagesChatGuilde);
+
+                
+                $this->controllerBase->afficheView([$chatGuilde],'afficheChatGuilde');
+            }
+    }
+
+
+    public function getChatGuildeJs(){
+        if(isset($_SESSION['idUser']) && $_SESSION['idGuilde'] !== null){
+            $this->managerChat->idGuilde = $_SESSION['idGuilde'];
+            $messagesChatGuilde = $this->managerChat->getChatGuilde();
+
+            foreach($messagesChatGuilde as $message){
+                $chat [] = ['id' => $message['id'],'pseudo' => $message['pseudo'],'message' => $message['message'],'dateMessage' => $message['dateMessage']];
+            }
+            echo json_encode($chat);
+        }
+        else{
+            throw new Exception("Vous devez être connecter pour accéder à cette page!");
+        }
+    }
+
+
+    public function addMessageGuilde(){
+        if(isset($_SESSION['idUser']) && $_SESSION['idGuilde'] !== null){
+            if(!empty($_POST['message'])){
+                $this->managerChat->idGuilde = $_SESSION['idGuilde'];
+                $this->managerChat->idUser = $_SESSION['idUser'];
+                $this->managerChat->messageGuilde = htmlspecialchars($_POST['message']);
+                $addMessageGuilde = $this->managerChat->addMessageGuilde();
+                if($addMessageGuilde == true){
+                    header('Location:index.php?chat=afficheChatGuilde');
+                }
+            }
+            else{
+                header('Location:index.php?chat=afficheChatGuilde');
+            }
+            
+        }
+        else{
+            throw new Exception("Vous devez être connecter pour accéder à cette page!");
+        }
+    }
 }

@@ -318,5 +318,12 @@ class ManagerUserGalaxyInfinity extends ManagerBDD
         return $result;
     }
 
+
+    public function getGuildePlayer(){
+        $sql = 'SELECT * FROM user WHERE id = ?';
+        $result = $this->createQuery($sql,[$this->idUser]);
+        return $result->fetch();
+    }
+
     
 }

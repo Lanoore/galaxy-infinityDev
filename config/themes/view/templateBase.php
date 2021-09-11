@@ -39,6 +39,7 @@
                     <li><a href="index.php?forum=afficheCategories">Forum</a></li>
                     <li><a href="index.php?chat=afficheChat">Chat</a></li>
                     <li><a href="index.php?galaxyInfinity=afficheGuilde">Guilde</a></li>
+                    <li><a href="index.php?chat=afficheChatGuilde">Chat Guilde</a></li>
                     <li><a href="index.php?user=afficheUser">Profil</a></li>
                 </ul>
             </li>

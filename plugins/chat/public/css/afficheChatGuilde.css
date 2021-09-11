@@ -1,0 +1,52 @@
+.divChat{
+    text-align: center;
+}
+
+.messageChat{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.messageInfo{
+    text-align: left;
+    line-height: 4px;
+    width: 22%;
+}
+
+.dateMessage{
+    font-size: 0.8em;
+}
+
+.messageChat p{
+    margin-left: 5%;
+    text-align: left;
+    width: 64%;
+}
+
+
+.messageChat:nth-child(even){
+    background-color: grey;
+}
+.messageChat:nth-child(odd){
+    background-color: lightgray;
+}
+
+form{
+    margin-bottom: 1%;
+}
+
+.messageInput{
+    width: 70%;
+}
+
+
+
+@media screen and (max-width: 480px) /* Version mobile*/
+{
+
+.dateMessage{
+    width: 100% !important;
+    line-height: 1em;
+}
+}

@@ -36,4 +36,17 @@ class ManagerChat extends ManagerBDD
 
         return $result;
     }
+
+    public function getChatGuilde(){
+        $sql = 'SELECT chat_guilde.id , user.pseudo, chat_guilde.message, chat_guilde.dateMessage FROM chat_guilde INNER JOIN user ON chat_guilde.idUser = user.id WHERE chat_guilde.idGuilde = ? ORDER BY dateMessage DESC LIMIT 20';
+        $result = $this->createQuery($sql,[$this->idGuilde]);
+        return  $result->fetchAll(); 
+    }
+
+    public function addMessageGuilde(){
+        $sql = 'INSERT INTO chat_guilde(idUser,message,dateMessage,idGuilde)VALUES(?,?,NOW(),?)';
+        $result = $this->createQuery($sql,[$this->idUser,$this->messageGuilde,$this->idGuilde]);
+
+        return $result;
+    }
 }

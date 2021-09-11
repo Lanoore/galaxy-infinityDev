@@ -41,7 +41,7 @@ class ControllerUserGIGuilde{
             $verifGuildeJoueur = $this->managerUserGIGuilde->verifJoueurInGuilde();
             $guilde = null;
             $infoGuilde = null;
-            if($verifGuildeJoueur['idGuilde'] != null){
+            if($verifGuildeJoueur['idGuilde'] != null && isset($_SESSION['idGuilde'])){
                 $this->managerUserGIGuilde->idGuilde = $_SESSION['idGuilde'];
                 $guilde = $this->managerUserGIGuilde->getAllMembreGuilde();
                 $infoGuilde = $this->managerUserGIGuilde->getGuilde();

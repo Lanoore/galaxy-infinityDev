@@ -151,6 +151,15 @@ class Router
                     case 'addMessage':
                         $this->controllerChat->addMessage();
                         break;
+                    case 'afficheChatGuilde':
+                        $this->controllerChat->afficheChatGuilde();
+                        break;
+                    case 'getChatGuildeJs':
+                        $this->controllerChat->getChatGuildeJs(); 
+                        break;
+                    case 'addMessageGuilde':
+                        $this->controllerChat->addMessageGuilde();
+                        break;    
                     default:
                         $this->controllerUser->afficheConnexion(); //Changer si vous voulez modifier l'action par défaut
                         break;

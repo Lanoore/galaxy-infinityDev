@@ -24,6 +24,7 @@ $tableCss =
 
 
      'afficheChat' => ['plugins/chat/public/css/afficheChat.css'],
+     'afficheChatGuilde' => ['plugins/chat/public/css/afficheChatGuilde.css'],
 
     //Css plugin forum
     //Css admin Forum
