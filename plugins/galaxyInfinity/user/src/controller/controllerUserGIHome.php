@@ -80,9 +80,11 @@ class ControllerUserGIHome{
             $allCraft = $this->managerUserGIHome->getAllCraftPlaneteX();
             $allTechno = $this->managerUserGIHome->getAllTechnoPlaneteX();
 
+            $this->managerUserGIHome->idUser = $_SESSION['idUser'];
+            $allPlaneteUser = $this->managerUserGIHome->getAllPlaneteUser();
 
             $userHome = 'plugins/galaxyInfinity/user/src/view/userGestionHomeView.php';
-            $userHome = $this->controllerBase->tamponView($userHome,['allTechno'=>$allTechno,'allCraft'=>$allCraft,'allBat'=>$allBat,'allRessources'=>$allRessources,'tempsRestantCraft'=>$tempsRestantCraft,'tempsRestantBat'=>$tempsRestantBat,'tempsRestantTechno'=>$tempsRestantTechno, 'tempsRestantFormation' => $tempsRestantFormation]);
+            $userHome = $this->controllerBase->tamponView($userHome,['allPlaneteUser'=>$allPlaneteUser,'allTechno'=>$allTechno,'allCraft'=>$allCraft,'allBat'=>$allBat,'allRessources'=>$allRessources,'tempsRestantCraft'=>$tempsRestantCraft,'tempsRestantBat'=>$tempsRestantBat,'tempsRestantTechno'=>$tempsRestantTechno, 'tempsRestantFormation' => $tempsRestantFormation]);
 
             $this->controllerBase->afficheView([$userHome],'userGestionHome');
         }
@@ -99,10 +101,11 @@ class ControllerUserGIHome{
      * 
      * @return array
      */
-    public function allRessources(){
+    public function allRessources(int $tierSelect){
         if(isset($_SESSION['pseudo'])){
 
         $this->managerUserGIHome->idPlanete = $_SESSION['idPlaneteActif'];
+        $this->managerUserGIHome->tierSelect = $tierSelect;
         $allRessources = $this->managerUserGIHome->getAllRessources();
 
 
@@ -161,5 +164,19 @@ class ControllerUserGIHome{
 
           return $TimeFinal; 
        }
+
+       public function changerNomPlanete(int $idPlanete){
+        if(isset($_SESSION['pseudo'])){
+
+            $verifPlaneteValide = $this->managerUserGIHome->verifPlaneteValide($idPlanete);
+
+            if($verifPlaneteValide == 1){
+                $this->managerUserGIHome->nouveauNom = htmlspecialchars($_POST['nouveauNom']);
+                $this->managerUserGIHome->changerNomPlanete($idPlanete);
+                header('Location:index.php?galaxyInfinity=afficheHomeUser&tierSelect=1');
+            }   
+        }
+       }
+
 
 }

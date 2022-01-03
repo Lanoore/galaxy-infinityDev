@@ -15,16 +15,17 @@ class craft{
         xmlhttp.onreadystatechange = function() {
             if (this.readyState == 4 && this.status == 200) {
                 var construEnCours = JSON.parse(this.responseText);
-
-                if(construEnCours[0].idCraft != null){
-                    var dateFin = construEnCours[0].finCraftActuel;
-                    var dateActuel = new Date();
-                    dateActuel = dateActuel.getTime() /1000;
-                    that.tempsRestant = Math.round(dateFin - dateActuel);
-                    that.nomCraft = construEnCours[0].nomCraft;
-                    that.nombreCraft = construEnCours[0].nombreCraft;
-                    if(dateFin != null && that.tempsRestant > 0){
-                        that.timeId = setTimeout(that.decompteConstru.bind(that),1000);
+                if(construEnCours != 0){
+                    if(construEnCours[0].idCraft != null){
+                        var dateFin = construEnCours[0].finCraftActuel;
+                        var dateActuel = new Date();
+                        dateActuel = dateActuel.getTime() /1000;
+                        that.tempsRestant = Math.round(dateFin - dateActuel);
+                        that.nomCraft = construEnCours[0].nomCraft;
+                        that.nombreCraft = construEnCours[0].nombreCraft;
+                        if(dateFin != null && that.tempsRestant > 0){
+                            that.timeId = setTimeout(that.decompteConstru.bind(that),1000);
+                        }
                     }
                 }
             }

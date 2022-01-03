@@ -93,6 +93,7 @@ class ControllerUserGIPopulation{
                 $this->ManagerUserGIPopulation->idCraft = $popForm['craft_id'];
                 $craftPlanete = $this->ManagerUserGIPopulation->getCraftPlaneteX();
                 if($popForm['nombre_craft'] *$nombre  > $craftPlanete['nombre_craft']){
+
                     $countPop++;
                 }
             }
@@ -211,11 +212,19 @@ class ControllerUserGIPopulation{
         if(isset($_SESSION['pseudo'])){
 
             $this->ManagerUserGIPopulation->idPlanete = $_SESSION['idPlaneteActif'];
-            $getFormationEnCours = $this->ManagerUserGIPopulation->getPopFormEnCours();
+            $verifPopEnCours = $this->ManagerUserGIPopulation->verifPopEnCours();
+            if($verifPopEnCours == 1){
 
-            $formationEnCours [] = ['idPop' => $getFormationEnCours['population_id'],'nomPop' => html_entity_decode($getFormationEnCours['nom']), 'nombrePopForm' => $getFormationEnCours['nombre_pop_formation'],'finFormActuel' => $getFormationEnCours['fin_pop_actuel']];
+                
+                $getFormationEnCours = $this->ManagerUserGIPopulation->getPopFormEnCours();
 
-            echo json_encode($formationEnCours);
+                $formationEnCours [] = ['idPop' => $getFormationEnCours['population_id'],'nomPop' => html_entity_decode($getFormationEnCours['nom']), 'nombrePopForm' => $getFormationEnCours['nombre_pop_formation'],'finFormActuel' => $getFormationEnCours['fin_pop_actuel']];
+
+                echo json_encode($formationEnCours);
+            }
+            else{
+                echo json_encode(0);
+            }
         }
         else{
             throw new Exception("Vous devez être connecter pour accéder à cette page!");

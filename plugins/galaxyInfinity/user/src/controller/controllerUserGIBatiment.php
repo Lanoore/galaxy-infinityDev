@@ -88,11 +88,19 @@ class ControllerUserGIBatiment{
     public function getConstruBatJs(){
         if(isset($_SESSION['pseudo'])){
             $this->managerUserGIBatiment->idPlanete = $_SESSION['idPlaneteActif'];
-            $getBatEnCours = $this->managerUserGIBatiment->getConstruBatEnCours();
+            $verifBatEnCours = $this->managerUserGIBatiment->verifBatEnCours();
+                if($verifBatEnCours == 1){
 
-            $construEnCours [] = ['idBat' => $getBatEnCours['batiment_id'], 'nomBat' =>html_entity_decode($getBatEnCours['nom']), 'niveauBat' => $getBatEnCours['niveau_batiment_construction'], 'finBatActuel' => $getBatEnCours['fin_batiment_actuel']];
-            
-            echo json_encode($construEnCours);
+                
+                $getBatEnCours = $this->managerUserGIBatiment->getConstruBatEnCours();
+
+                $construEnCours [] = ['idBat' => $getBatEnCours['batiment_id'], 'nomBat' =>html_entity_decode($getBatEnCours['nom']), 'niveauBat' => $getBatEnCours['niveau_batiment_construction'], 'finBatActuel' => $getBatEnCours['fin_batiment_actuel']];
+                
+                echo json_encode($construEnCours);
+            }
+            else{
+                echo json_encode(0);
+            }
         }
         else{
             throw new Exception("Vous devez être connecter pour accéder à cette page!");

@@ -1,6 +1,7 @@
 <div class='mainDiv' id='mainDiv'>
 
 
+
     <div class='afficheAllConstruEnCours'>
         <div class='afficheXEnCours'>
                 <?php
@@ -86,6 +87,18 @@
         </div>
     </div>
     
+    <div>
+        <?php
+        foreach($allPlaneteUser as $planeteUser){?>
+        <div>
+            <p id="<?=$planeteUser['id']?>">Nom planete: <?=$planeteUser['nomPlanete']?> </p><button class="nomPlanete">Changer nom</button>
+        </div>
+
+        <?php }
+        ?>
+
+    </div>
+
 </div>
 
 

@@ -68,6 +68,7 @@ class ManagerUserGIHome extends ManagerBDD
         return $result->fetchAll();
     }
 
+
     
     /**
      * getAllBatPlaneteX
@@ -124,4 +125,23 @@ class ManagerUserGIHome extends ManagerBDD
 
     }
 
+
+    public function getAllPlaneteUser(){
+        $sql = 'SELECT * FROM planete WHERE user_id = ? ORDER BY last_activite DESC';
+        $result = $this->createQuery($sql,[$this->idUser]);
+        return $result->fetchAll();
+    }
+
+
+    public function verifPlaneteValide($idPlanete){
+        $sql ='SELECT * FROM planete WHERE id = ? AND user_id = ?';
+        $result = $this->createQuery($sql,[$idPlanete, $_SESSION['idUser']]);
+        return $result->rowCount();
+    }
+
+    public function changerNomPlanete($idPlanete){
+        $sql='UPDATE planete SET nomPlanete = ? WHERE id= ?';
+        $result = $this->createQuery($sql,[$this->nouveauNom, $idPlanete]);
+        return $result;
+    }
 }

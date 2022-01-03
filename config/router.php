@@ -449,7 +449,10 @@ class Router
                             $this->controllerUserGIHome->afficheHomeUser($_GET['tierSelect']);
                             break;
                         case 'getAllRessources':
-                            $this->controllerUserGIHome->allRessources();
+                            $this->controllerUserGIHome->allRessources($_GET['tierSelect']);
+                            break;
+                        case 'changerNomPlanete':
+                            $this->controllerUserGIHome->changerNomPlanete($_GET['idPlanete']);
                             break;
                         //Partie Batiment    
                         case 'afficheBatimentUser':

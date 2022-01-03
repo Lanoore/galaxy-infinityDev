@@ -15,18 +15,19 @@ class techno{
         xmlhttp.onreadystatechange = function() {
             if (this.readyState == 4 && this.status == 200) {
                 var construEnCours = JSON.parse(this.responseText);
-                
-                if(construEnCours[0].idTechno != null){
-                    var dateFin = construEnCours[0].finTechnoActuel;
-                    var dateActuel = new Date();
-                    dateActuel = dateActuel.getTime() /1000;
-                    that.tempsRestant = Math.round(dateFin - dateActuel);
-                    that.nomTechno = construEnCours[0].nomTechno;
-                    that.niveauTechno = construEnCours[0].niveauTechno;
+                if(construEnCours !=0){
+                    if(construEnCours[0].idTechno != null){
+                        var dateFin = construEnCours[0].finTechnoActuel;
+                        var dateActuel = new Date();
+                        dateActuel = dateActuel.getTime() /1000;
+                        that.tempsRestant = Math.round(dateFin - dateActuel);
+                        that.nomTechno = construEnCours[0].nomTechno;
+                        that.niveauTechno = construEnCours[0].niveauTechno;
 
-                    if(dateFin != null && that.tempsRestant > 0){
-                        
-                        that.timeId = setTimeout(that.decompteConstru.bind(that),1000);
+                        if(dateFin != null && that.tempsRestant > 0){
+                            
+                            that.timeId = setTimeout(that.decompteConstru.bind(that),1000);
+                        }
                     }
                 }
             }

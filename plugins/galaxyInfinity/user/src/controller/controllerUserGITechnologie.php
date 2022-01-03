@@ -86,11 +86,18 @@ class ControllerUserGITechnologie{
     public function getConstruTechnoJs(){
         if(isset($_SESSION['pseudo'])){
             $this->managerUserGITechnologie->idPlanete = $_SESSION['idPlaneteActif'];
+            $verifTechnoEnCours = $this->managerUserGITechnologie->verifTechnoEncours();
+            if($verifTechnoEnCours == 1){
+
             $getTechnoEnCours = $this->managerUserGITechnologie->getConstruTechnoEnCours();
             
             $construEnCours [] = ['idTechno' => $getTechnoEnCours['technologie_id'], 'nomTechno' =>html_entity_decode($getTechnoEnCours['nom']), 'niveauTechno' => $getTechnoEnCours['niveau_technologie_construction'], 'finTechnoActuel' => $getTechnoEnCours['fin_technologie_actuel']];
             
             echo json_encode($construEnCours);
+            }
+            else{
+                echo json_encode(0);
+            }
         }
         else{
             throw new Exception("Vous devez être connecter pour accéder à cette page!");

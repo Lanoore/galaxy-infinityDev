@@ -88,11 +88,17 @@ class ControllerUserGICraft{
         if(isset($_SESSION['pseudo'])){
 
             $this->managerUserGICraft->idPlanete = $_SESSION['idPlaneteActif'];
-            $getCraftEnCours = $this->managerUserGICraft->getConstruCraftEnCours();
+            $verifCraftEnCours = $this->managerUserGICraft->verifCraftEnCours();
+            if($verifCraftEnCours == 1){
+                $getCraftEnCours = $this->managerUserGICraft->getConstruCraftEnCours();
 
-            $craftEnCours [] = ['idCraft' => $getCraftEnCours['craft_id'],'nomCraft' => html_entity_decode($getCraftEnCours['nom']), 'nombreCraft' => $getCraftEnCours['nombre_craft_total'],'finCraftActuel' => $getCraftEnCours['fin_craft_actuel']];
+                $craftEnCours [] = ['idCraft' => $getCraftEnCours['craft_id'],'nomCraft' => html_entity_decode($getCraftEnCours['nom']), 'nombreCraft' => $getCraftEnCours['nombre_craft_total'],'finCraftActuel' => $getCraftEnCours['fin_craft_actuel']];
 
-            echo json_encode($craftEnCours);
+                echo json_encode($craftEnCours);
+            }
+            else{
+                echo json_encode(0);
+            }
         }
         else{
             throw new Exception("Vous devez être connecter pour accéder à cette page!");

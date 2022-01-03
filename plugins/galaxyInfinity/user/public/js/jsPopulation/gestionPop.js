@@ -16,15 +16,18 @@ class population{
             if (this.readyState == 4 && this.status == 200) {
                 var formationEnCours = JSON.parse(this.responseText);
                 console.log(formationEnCours);
-                if(formationEnCours[0].idPop != null){
-                    var dateFin = formationEnCours[0].finFormActuel;
-                    var dateActuel = new Date();
-                    dateActuel = dateActuel.getTime() /1000;
-                    that.tempsRestant = Math.round(dateFin - dateActuel);
-                    that.nomPop = formationEnCours[0].nomPop;
-                    that.nombrePopForm = formationEnCours[0].nombrePopForm;
-                    if(dateFin != null && that.tempsRestant > 0){
-                        that.timeId = setTimeout(that.decompteFormation.bind(that),1000);
+                if(formationEnCours != 0){
+
+                    if(formationEnCours[0].idPop != null){
+                        var dateFin = formationEnCours[0].finFormActuel;
+                        var dateActuel = new Date();
+                        dateActuel = dateActuel.getTime() /1000;
+                        that.tempsRestant = Math.round(dateFin - dateActuel);
+                        that.nomPop = formationEnCours[0].nomPop;
+                        that.nombrePopForm = formationEnCours[0].nombrePopForm;
+                        if(dateFin != null && that.tempsRestant > 0){
+                            that.timeId = setTimeout(that.decompteFormation.bind(that),1000);
+                        }
                     }
                 }
             }
