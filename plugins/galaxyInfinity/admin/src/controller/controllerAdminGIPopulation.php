@@ -118,9 +118,8 @@ class ControllerAdminGIPopulation
             if($popExist == 1){
                 
                 if(isset($_POST['Supprimer'])){
-                    
                     $supprPop=$this->managerAdminGIPopulation->supprPopBase();
-                    if($supprPop){
+                    if($supprPop ){
                         unlink('plugins/galaxyInfinity/admin/public/img/population/'. $this->managerAdminGIPopulation->imagePop);
                         header('Location:index?galaxyInfinity=afficheAdminGestionPopulation');
                     }

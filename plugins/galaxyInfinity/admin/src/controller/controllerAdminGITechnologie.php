@@ -151,9 +151,8 @@ class ControllerAdminGITechnologie
             $technoExist = $this->managerAdminGITechnologie->verifTechnologieExist();
             if($technoExist == 1){
                 if(isset($_POST['Supprimer'])){
-
-                    $confirmSuppr = $this->managerAdminGITechnologie->supprTechnologieBase();
-                    if($confirmSuppr){
+                    $supprTechno = $this->managerAdminGITechnologie->supprTechnologieBase();
+                    if( $supprTechno){
                         unlink('plugins/galaxyInfinity/admin/public/img/technologie/'. $this->managerAdminGITechnologie->imageCraft);
                         header("Location:index.php?galaxyInfinity=afficheAdminGestionTechnologie");
                     }

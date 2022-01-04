@@ -230,7 +230,7 @@ class ManagerAdminGIRessource extends ManagerBDD
     }
 
     public function insertRessourceBasePlaneteX(){
-        $sql = 'INSERT INTO ressource_planete(niveau,planete_id,ressource_id) VALUES(0,?,?)';
+        $sql = 'INSERT INTO ressource_planete(nombre_ressource,planete_id,ressource_id) VALUES(0,?,?)';
         return $this->createQuery($sql,[$this->idPlanete,$this->idRessource]);
     }
 

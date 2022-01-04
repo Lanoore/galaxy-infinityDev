@@ -363,7 +363,7 @@
             </thead>
             <tbody>
                 <?php
-                    foreach ($craftCrafts as $craftCraft) {?>
+                    foreach ($craftCrafts as $craftCraft) { ?>
                         <tr>
                             <td><?=$craftCraft[0]?></td>
                             <td><?=$craftCraft[7]?></td>
@@ -371,7 +371,7 @@
                             <td><?=$craftCraft['nombre_ressource']?></td>
                             <td><?=$craftCraft[13]?></td>
                             <td><?=$craftCraft['nombre_craft_travail']?></td>
-                            <td><form action="index.php?galaxyInfinity=supprCraftCraft&idLigne=<?=$craftCraft['id']?>" method="post"><input type="submit" name="Supprimer" value="Supprimer"></form></td>
+                            <td><form action="index.php?galaxyInfinity=supprCraftCraft&idLigne=<?=$craftCraft[0]?>" method="post"><input type="submit" name="Supprimer" value="Supprimer"></form></td>
                         </tr>
                      <?php   
                     }
@@ -394,7 +394,7 @@
                 </thead>
                 <tbody>
                     <?php
-                    foreach($craftsPR as $craftPR){?>
+                    foreach($craftsPR as $craftPR){ ?>
                         <tr>
                             <td><?=$craftPR[0]?></td>
                             <td><?=$craftPR[7]?></td>
@@ -402,7 +402,7 @@
                             <td><?=$craftPR['niveau_id_batiment']?></td>
                             <td><?=$craftPR[18]?></td>
                             <td><?=$craftPR['niveau_id_technologie']?></td>
-                            <td><form action="index.php?galaxyInfinity=supprCraftPR&idLigne=<?=$craftPR['id']?>" method='post'><input type="submit" name="Supprimer" value="Supprimer"></form></td>
+                            <td><form action="index.php?galaxyInfinity=supprCraftPR&idLigne=<?=$craftPR[0]?>" method='post'><input type="submit" name="Supprimer" value="Supprimer"></form></td>
                         </tr>
                   <?php  } ?>
                     

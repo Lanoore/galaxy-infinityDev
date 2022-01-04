@@ -350,7 +350,10 @@ class ManagerAdminGITechnologie extends ManagerBDD
     }
 
     public function insertTechnoBasePlaneteX(){
-        $sql = 'INSERT INTO batiment_technologie(niveau,planete_id,technologie_id) VALUES(0,?,?)';
+        $sql = 'INSERT INTO technologie_planete(niveau,planete_id,technologie_id) VALUES(0,?,?)';
         return $this->createQuery($sql,[$this->idPlanete,$this->idTechno]);
     }
+
+
+
 }

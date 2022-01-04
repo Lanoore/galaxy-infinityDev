@@ -400,4 +400,5 @@ class ManagerAdminGIBatiment extends ManagerBDD
         $sql = 'INSERT INTO batiment_planete(niveau,planete_id,batiment_id) VALUES(0,?,?)';
         return $this->createQuery($sql,[$this->idPlanete,$this->idBat]);
     }
+
 }

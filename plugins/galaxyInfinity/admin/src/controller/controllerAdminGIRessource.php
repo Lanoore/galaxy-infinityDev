@@ -105,8 +105,9 @@ class ControllerAdminGIRessource
             
             $verifExist = $this->managerAdminGIRessource->verifRessourceExistById();
             if($verifExist == 1){
-                $confirmSuppr = $this->managerAdminGIRessource->supprRessourceBase();
-                if($confirmSuppr){
+                
+                $supprRessource = $this->managerAdminGIRessource->supprRessourceBase();
+                if($supprRessource){
                     header('Location:index.php?galaxyInfinity=afficheAdminGestionRessource');
                 }
             }

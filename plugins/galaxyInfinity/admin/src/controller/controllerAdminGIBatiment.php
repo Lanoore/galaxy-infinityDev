@@ -156,8 +156,8 @@ class ControllerAdminGIBatiment
             if($batimentExist == 1){
                 if(isset($_POST['Supprimer'])){
 
-                    $confirmSuppr = $this->managerAdminGIBatiment->supprBatBase();
-                    if($confirmSuppr){
+                    $supprBat = $this->managerAdminGIBatiment->supprBatBase();
+                    if($supprBat){
                         unlink('plugins/galaxyInfinity/admin/public/img/batiment/'. $this->managerAdminGIBatiment->imageBat);
                         header("Location:index.php?galaxyInfinity=afficheAdminGestionBatiment");
                     }

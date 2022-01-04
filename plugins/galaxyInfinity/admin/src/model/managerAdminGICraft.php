@@ -24,7 +24,7 @@ class ManagerAdminGICraft extends ManagerBDD
      */
     public function getCraftBaseById(){
         
-        $sql = 'SELECT nom,description,tier,temps_base FROM craft WHERE id =?';
+        $sql = 'SELECT nom,description,tier,temps_base, image FROM craft WHERE id =?';
         $result = $this->createQuery($sql,[$this->idCraft]);
         $result = $result->fetch();
     
@@ -49,6 +49,12 @@ class ManagerAdminGICraft extends ManagerBDD
            $result = $result->rowCount();
 
            $this->craftExist = $result;
+       }
+
+       public function verifCraftExistById(){
+        $sql ='SELECT nom FROM craft WHERE id = ?';
+        $result = $this->createQuery($sql,[$this->idCraft]);
+        return  $result->rowCount();
        }
            
        /**
@@ -128,7 +134,7 @@ class ManagerAdminGICraft extends ManagerBDD
          * @return int
          */
         public function verifCraftCraftExist(){
-            $sql = 'SELECT ressource_id, craft_id FROM craft_craft WHERE craft_id = ? AND ressource_id =? OR craft_id_travail =?';
+            $sql = 'SELECT ressource_id, craft_id FROM craft_craft WHERE craft_id = ? AND (ressource_id =? OR craft_id_travail =?)';
             $result = $this->createQuery($sql,[$this->idCraft,$this->idRessource,$this->craftTravail]);
             return $result->rowCount();
         }
@@ -171,6 +177,8 @@ class ManagerAdminGICraft extends ManagerBDD
             return $this->createQuery($sql,[$this->idLigne]);
             
         }
+
+
         
         /**
          * modifCraftCraft
@@ -247,6 +255,7 @@ class ManagerAdminGICraft extends ManagerBDD
             return $this->createQuery($sql,[$this->idLigne]);
             
         }
+        
             
         /**
          * modifCraftPR
@@ -276,7 +285,7 @@ class ManagerAdminGICraft extends ManagerBDD
         }
     
         public function insertCraftBasePlaneteX(){
-            $sql = 'INSERT INTO craft_planete(niveau,planete_id,craft_id) VALUES(0,?,?)';
+            $sql = 'INSERT INTO craft_planete(nombre_craft,planete_id,craft_id) VALUES(0,?,?)';
             return $this->createQuery($sql,[$this->idPlanete,$this->idCraft]);
         }
 }

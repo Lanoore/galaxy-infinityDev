@@ -110,7 +110,7 @@ class ManagerAdminGIPopulation extends ManagerBDD
     }
 
     public function insertPopBasePlaneteX(){
-        $sql = 'INSERT INTO population_planete(niveau,planete_id,pop_id) VALUES(0,?,?)';
+        $sql = 'INSERT INTO population_planete(nombre_pop,planete_id,pop_id) VALUES(0,?,?)';
         return $this->createQuery($sql,[$this->idPlanete,$this->idPop]);
     }
 
@@ -152,4 +152,7 @@ class ManagerAdminGIPopulation extends ManagerBDD
         $sql = 'UPDATE population_formation SET pop_id = ?, craft_id = ?,nombre_craft = ?,pop_id_formation = ?, nombre_pop_formation = ? WHERE id =?';
         return $this->createQuery($sql,[$this->idPop,$this->idCraft,$this->nombreCraft,$this->idPopF,$this->nombrePopF,$this->idLigne]);
     }
+
+
+
 }

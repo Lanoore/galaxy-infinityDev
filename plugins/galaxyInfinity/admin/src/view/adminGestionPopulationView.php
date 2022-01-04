@@ -379,10 +379,10 @@
                     foreach($popsPR as $popPR){?>
                         <tr>
                             <td><?=$popPR[0]?></td>
-                            <td><?=$popPR[7]?></td>
-                            <td><?=$popPR[12]?></td>
+                            <td><?=$popPR[8]?></td>
+                            <td><?=$popPR[14]?></td>
                             <td><?=$popPR['niveau_id_batiment']?></td>
-                            <td><?=$popPR[17]?></td>
+                            <td><?=$popPR[19]?></td>
                             <td><?=$popPR['niveau_id_technologie']?></td>
                             <td><form action="index.php?galaxyInfinity=supprPopPR&idLigne=<?=$popPR[0]?>" method='post'><input type="submit" name="Supprimer" value="Supprimer"></form></td>
                         </tr>
@@ -405,12 +405,12 @@
                 </thead>
                 <tbody>
                     <?php
-                        foreach ($adminPopFormation as $popFormation) {?>
+                        foreach ($adminPopFormation as $popFormation) { ?>
                         
                             <tr>
                                 <td><?=$popFormation[0];?></td>
                                 <td><?=$popFormation[8];?></td>
-                                <td><?=$popFormation[13];?></td>
+                                <td><?=$popFormation[14];?></td>
                                 <td><?=$popFormation['nombre_craft'];?></td>
                                 <td><?=$popFormation['nom'];?></td>
                                 <td><?=$popFormation['nombre_pop_formation'];?></td>

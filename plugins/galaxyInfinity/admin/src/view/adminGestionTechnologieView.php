@@ -512,7 +512,7 @@
                 </thead>
                 <tbody>
                     <?php
-                    foreach($adminTechnologiePR as $technoPR){?>
+                    foreach($adminTechnologiePR as $technoPR){ ?>
                         <tr>
                             <td><?=$technoPR[0]?></td>
                             <td><?=$technoPR[7]?></td>
@@ -520,7 +520,7 @@
                             <td><?=$technoPR['niveau_id_batiment']?></td>
                             <td><?=$technoPR[17]?></td>
                             <td><?=$technoPR['niveau_id_technologie']?></td>
-                            <td><form action="index.php?galaxyInfinity=supprTechnologiePR&idLigne=<?=$technoPR['id']?>" method='post'><input type="submit" name="Supprimer" value="Supprimer"></form></td>
+                            <td><form action="index.php?galaxyInfinity=supprTechnologiePR&idLigne=<?=$technoPR[0]?>" method='post'><input type="submit" name="Supprimer" value="Supprimer"></form></td>
                         </tr>
                   <?php  } ?>
                     
