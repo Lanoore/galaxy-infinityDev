@@ -79,6 +79,20 @@
                        <?php }
                     ?>
                     </div>
+                    <div class='divPopDescrX' id='divPopDescrX'>
+                        <p>Description: <?=$pop['descrPop']?></p>
+                        <p>Temps construction : <?php if($pop['nomPop'] == 'Civil'){echo($pop['tempsForm'] * 5);}else{echo($pop['tempsForm']);} ?></p>
+                        <div>
+                        <?php foreach($pop['popForm'] as $popForm){
+                                if($popForm['craft_id'] != null){?>
+                                    <p><?=$popForm[7]?> : <?=$popForm['nombre_craft']?></p>
+                               <?php }
+                               if($popForm['pop_id_formation'] != null){?>
+                                <p><?=$popForm[14]?> : <?=$popForm['nombre_pop_formation']?></p>
+                           <?php }
+                            }?>
+                        </div>
+                    </div>
                 </div>
            <?php }
         }
