@@ -87,12 +87,14 @@
         </div>
     </div>
     
-    <div>
+    <div class="planetes">
         <?php
         foreach($allPlaneteUser as $planeteUser){?>
-        <div>
-            <p id="<?=$planeteUser['id']?>">Nom planete: <?=$planeteUser['nomPlanete']?> </p><button class="nomPlanete">Changer nom</button>
+        <div class="planete">
+            <div class="planeteNom"><p id="<?=$planeteUser['id']?>"><?=$planeteUser['nomPlanete']?> </p><button class="nomPlanete">Changer nom</button></div>
+            <img class="imgPlanete" src="plugins/galaxyInfinity/admin/public/img/general/planete.jpg" alt="">            
         </div>
+        
 
         <?php }
         ?>

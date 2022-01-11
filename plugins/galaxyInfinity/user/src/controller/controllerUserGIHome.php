@@ -169,10 +169,13 @@ class ControllerUserGIHome{
         if(isset($_SESSION['pseudo'])){
 
             $verifPlaneteValide = $this->managerUserGIHome->verifPlaneteValide($idPlanete);
-
-            if($verifPlaneteValide == 1){
+            $verifLenghtNom = strlen($_POST['nouveauNom']);
+            if($verifPlaneteValide == 1 && $verifLenghtNom < 20){
                 $this->managerUserGIHome->nouveauNom = htmlspecialchars($_POST['nouveauNom']);
                 $this->managerUserGIHome->changerNomPlanete($idPlanete);
+                header('Location:index.php?galaxyInfinity=afficheHomeUser&tierSelect=1');
+            }
+            else{
                 header('Location:index.php?galaxyInfinity=afficheHomeUser&tierSelect=1');
             }   
         }

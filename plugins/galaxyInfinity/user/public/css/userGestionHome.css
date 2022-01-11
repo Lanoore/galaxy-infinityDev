@@ -29,6 +29,28 @@
     text-align: center;
 }
 
+.planetes{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+.planete{
+    display: flex;
+    flex-direction: column;
+    margin-right: 1%;
+    margin-left: 1%;
+    text-align: center;
+    width: 17%;
+}
+.planeteNom{
+    display: flex;
+    justify-content: space-around;
+}
+.planete img{
+    border: black 1px solid;
+    width: 100%;
+}
+
 
 @media screen and (max-width: 1024px) /* Version tablette*/
 {
