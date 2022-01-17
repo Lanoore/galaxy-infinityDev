@@ -31,6 +31,7 @@
                     <li><a href="index.php?galaxyInfinity=afficheTechnologieUser&tier=1">Technologie</a></li>
                     <li><a href="index.php?galaxyInfinity=afficheCraftUser&tier=1">Craft</a></li>
                     <li><a href="index.php?galaxyInfinity=affichePopulationUser">Population</a></li>
+                    <li><a href="index.php?galaxyInfinity=afficheMissionsUser">Missions</a></li>
                 </ul>
             </li>
 

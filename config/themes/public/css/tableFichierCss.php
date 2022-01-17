@@ -46,6 +46,7 @@ $tableCss =
     'adminGestionGalaxie' => ['plugins/galaxyInfinity/admin/public/css/adminGestionGalaxie.css'],
     'adminGestionGeneralGI' => ['plugins/galaxyInfinity/admin/public/css/adminGestionGeneralGI.css'],
     'adminGestionPopulation' => ['plugins/galaxyInfinity/admin/public/css/adminGestionPopulation.css'],
+    'adminGestionMissions' => ['plugins/galaxyInfinity/admin/public/css/adminGestionMissions.css'],
     //Css user GalaxyInfinity
 
     'reglesGI' => ['plugins/galaxyInfinity/user/public/css/reglesGI.css'],
@@ -57,6 +58,7 @@ $tableCss =
     'userGestionHome' => ['plugins/galaxyInfinity/user/public/css/userGestionHome.css'],
     'userGestionGuilde' => ['plugins/galaxyInfinity/user/public/css/userGestionGuilde.css'],
     'userGestionPopulation' => ['plugins/galaxyInfinity/user/public/css/userGestionPopulation.css'],
+    'userGestionMissions' => ['plugins/galaxyInfinity/user/public/css/userGestionMissions.css'],
 ];
 
 

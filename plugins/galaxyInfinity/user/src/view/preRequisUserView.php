@@ -5,6 +5,7 @@
             <li><a href="index.php?galaxyInfinity=affichePreRequisUser&page=batiment">Batiment</a></li>
             <li><a href="index.php?galaxyInfinity=affichePreRequisUser&page=technologie">Technologie</a></li>
             <li><a href="index.php?galaxyInfinity=affichePreRequisUser&page=craft">Craft</a></li>
+            <li><a href="index.php?galaxyInfinity=affichePreRequisUser&page=population">Population</a></li>
         </ul>
 
     </nav>

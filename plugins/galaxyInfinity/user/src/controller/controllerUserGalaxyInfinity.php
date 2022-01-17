@@ -139,6 +139,7 @@ class ControllerUserGalaxyInfinity{
             if($page == 'batiment'){$this->managerUserGI->pRTable = 'pre_requis_batiment';$this->managerUserGI->pRBaseTable = 'batiment';$this->managerUserGI->prX = 'batiment_id';}
             elseif($page == 'technologie'){$this->managerUserGI->pRTable = 'pre_requis_technologie';$this->managerUserGI->pRBaseTable = 'technologie';$this->managerUserGI->prX = 'technologie_id';}
             elseif($page == 'craft'){$this->managerUserGI->pRTable = 'pre_requis_craft';$this->managerUserGI->pRBaseTable = 'craft';$this->managerUserGI->prX = 'craft_id';}
+            elseif($page == 'population'){$this->managerUserGI->pRTable = 'pre_requis_population';$this->managerUserGI->pRBaseTable= 'population'; $this->managerUserGI->prX= 'pop_id';}
             else{echo('Variable non valide');}
             
             $preRequisBaseX = $this->managerUserGI->preRequisBaseX();

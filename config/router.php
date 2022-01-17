@@ -28,6 +28,8 @@ use App\plugins\galaxyInfinity\user\src\controller\controllerUserGIHome;
 use App\plugins\galaxyInfinity\user\src\controller\controllerUserGIGuilde;
 use App\plugins\galaxyInfinity\user\src\controller\ControllerUserGIPopulation;
 use App\plugins\galaxyInfinity\admin\src\controller\ControllerAdminGIPopulation;
+use App\plugins\galaxyInfinity\user\src\controller\ControllerUserGIMissions;
+use App\plugins\galaxyInfinity\admin\src\controller\ControllerAdminGIMissions;
 
 
 
@@ -59,6 +61,8 @@ class Router
     private $controllerUserGIGuilde;
     private $controllerUserGIPopulation;
     private $controllerAdminGIPopulation;
+    private $controllerUserGIMissions;
+    private $controllerAdminGIMissions;
 
     public function __construct(){
         $this->controllerBase = new ControllerBase();
@@ -84,6 +88,8 @@ class Router
         $this->controllerUserGIGuilde = new ControllerUserGIGuilde();
         $this->controllerUserGIPopulation = new ControllerUserGIPopulation();
         $this->controllerAdminGIPopulation = new ControllerAdminGIPopulation();
+        $this->controllerUserGIMissions = new ControllerUserGIMissions();
+        $this->controllerAdminGIMissions = new ControllerAdminGIMissions();
 
     }
 
@@ -437,6 +443,19 @@ class Router
                         case 'modifSituationPlanete':
                             $this->controllerAdminGIGalaxie->modifSituationPlanete();
                             break;
+                        //Partie Missions
+                        case 'afficheAdminGestionMissions':
+                            $this->controllerAdminGIMissions->adminGestionMissions();
+                            break;
+                        case 'createMissionBase':
+                            $this->controllerAdminGIMissions->createMissionBase();
+                            break;
+                        case 'supprMissionBase':
+                            $this->controllerAdminGIMissions->supprMissionBase($_GET['idMission']);
+                            break;
+                        case 'modifMissionBase':
+                            $this->controllerAdminGIMissions->modifMissionBase();
+                            break;
                     //Gestion partie user
                         case 'affichePreRequisUser':
                             $this->controllerUserGI->affichePreRequisUser($_GET['page']);
@@ -521,6 +540,11 @@ class Router
                         default:
                         $this->controllerUser->afficheConnexion();//Changer si vous voulez modifier l'action par défaut
                             break;
+                        //Partie Missions
+                        case 'afficheMissionsUser':
+                            $this->controllerUserGIMissions->afficheMissionsUser();
+                            break;
+                        
                     }
                 }
             else{
