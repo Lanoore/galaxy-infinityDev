@@ -40,14 +40,14 @@
                                 <hr>
                                 <div class="recompensePréRequis">
                                     <div class="Récompenses">
-                                        Récompenses
+                                        Récompenses :
                                     </div>
                                     <div class="preRequis">
-                                        Pré requis
+                                        Pré requis :
                                     </div>
                                 </div>
                                 <hr>
-                                <p class="lancerMissionDiplo">Lancer</p>
+                                <button class="lancerMissionDiplo">Lancer</button>
                             </div>
                         </div>
                         

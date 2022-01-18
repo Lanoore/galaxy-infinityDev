@@ -106,7 +106,7 @@ class ManagerAdminGIItems extends ManagerBDD
     }
 
     public function insertItemsBasePlaneteX(){
-        $sql = 'INSERT INTO items_planete(niveau,planete_id,items_id) VALUES(0,?,?)';
+        $sql = 'INSERT INTO items_planete(,nombre_itemsplanete_id,items_id) VALUES(0,?,?)';
         return $this->createQuery($sql,[$this->idPlanete,$this->idItems]);
     }
 }

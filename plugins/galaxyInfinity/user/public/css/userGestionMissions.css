@@ -61,6 +61,10 @@
     margin-left: 5%;
 }
 
+hr{
+    width: 80%;
+}
+
 
 @keyframes animatetop {
     from {top: -300px; opacity: 0}

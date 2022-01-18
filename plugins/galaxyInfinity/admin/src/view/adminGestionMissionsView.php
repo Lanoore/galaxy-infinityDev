@@ -29,8 +29,70 @@
                     <input type="submit">
                 </div>
             </form>
-
-
+        </div>
+        <div>
+            <h4>Création Récompenses Mission Base</h4>
+            <form action="index.php?galaxyInfinity=createRecompensesMissionBase" method="post" enctype="multipart/form-data">
+                <div>
+                    <label for = "idMission"> Nom mission</label><br/>
+                    <select name="idMission" id="idMission">
+                        <option value="null"></option>
+                        <?php
+                            foreach($adminMissionsBase as $mission){?>
+                                <option value="<?=$mission['id']?>"><?=$mission['nom']?></option>
+                           <?php }
+                        ?>
+                    </select>
+                </div>
+                <div>
+                    <label for="idItem">Nom items</label><br/>
+                    <select name="idItem" id="idItem">
+                        <option value="null"></option>
+                        <?php
+                            foreach($adminItems as $item){?>
+                                <option value="<?=$item['id']?>"><?=$item['nom']?></option>
+                           <?php }
+                        ?>
+                    </select>
+                </div>
+                <div>
+                    <label for="nombreItems">Nombre items</label><br/>
+                    <input type="number" id="nombreItems" name="nombreItems" >
+                </div>
+                <div>
+                    <label for="idRessource">Nom ressource</label><br/>
+                    <select name="idRessource" id="idRessource">
+                        <option value="null"></option>
+                        <?php
+                            foreach($adminRessource as $ressource){?>
+                                <option value="<?=$ressource['id']?>"><?=$ressource['nom']?></option>
+                           <?php }
+                        ?>
+                    </select>
+                </div>
+                <div>
+                    <label for="nombreRessource">Nombre ressource</label><br/>
+                    <input type="number" id='nombreRessource' name="nombreRessource">
+                </div>
+                <div>
+                    <label for="idCraft">Nom craft</label><br/>
+                    <select name="idCraft" id="idCraft">
+                        <option value="null"></option>
+                        <?php
+                            foreach($adminCraft as $craft){?>
+                                <option value="<?=$craft['id']?>"><?=$craft['nom']?></option>
+                           <?php }
+                        ?>
+                    </select>
+                </div>
+                <div>
+                    <label for="nombreCraft">Nombre craft</label><br/>
+                    <input type="number" id="nombreCraft" name="nombreCraft">
+                </div>
+                <div>
+                    <input type="submit">
+                </div>
+            </form>
         </div>
     </div>
     <div class="modifMissions">
@@ -73,6 +135,84 @@
                 </div>
             </form>
         </div>
+        <div>
+            <h4>Modif Recompense Mission</h4>
+            <form action="index.php?galaxyInfinity=modifRecompenseMissionBase" method="post">
+                <div>
+                    <label for="idLigne">Id de la ligne cible</label>
+                    <select name="idLigne" id="idLigne">
+                        <option value="null"></option>
+                        <?php
+                            foreach($adminRecompensesMissionBase as $recompenseMission){?>
+
+                                <option value="<?=$recompenseMission[0]?>"><?=$recompenseMission[0]?></option>
+                            <?php }
+                        ?>
+                    </select>
+                </div> 
+                <div>
+                    <label for = "idMission"> Nom de la mission</label><br/>
+                    <select name="idMission" id="idMission">
+                        <option value="null"></option>
+                        <?php
+                            foreach ($adminMissionsBase as $mission) {?>
+                                <option value="<?=$mission['id']?>"><?=$mission['nom']?></option>
+                           <?php }
+                        ?>
+                    </select>
+                </div>
+                <div>
+                    <label for="idItem">Nom item</label><br/>
+                    <select name="idItem" id="idItem">
+                        <option value="null"></option>
+                        <?php
+                        foreach($adminItems as $item){?>
+                            <option value="<?=$item['id']?>"><?=$item['nom']?></option>
+                        <?php }
+                        ?>
+                    </select>
+                </div>
+                <div>
+                    <label for="nombreItem">Nombre item</label><br/>
+                    <input type="number" id="nombreItem" name="nombreItem">
+                </div>
+                <div>
+                    <label for="idRessource">Nom ressource</label><br/>
+                    <select name="idRessource" id="idRessource">
+                        <option value="null"></option>
+                        <?php 
+                        
+                        foreach($adminRessource as $ressource){?>
+                            <option value="<?=$ressource['id']?>"><?=$ressource['nom']?></option>
+                       <?php }
+                    ?>
+                    </select>
+                </div>
+                <div>
+                    <label for="nombreRessource">Nombre ressource</label><br/>
+                    <input type="number" id="nombreRessource" name="nombreRessource">
+                </div>
+                <div>
+                    <label for="idCraft">Nom craft</label><br/>
+                    <select name="idCraft" id="idCraft">
+                        <option value="null"></option>
+                        <?php 
+                        
+                        foreach($adminCraft as $craft){?>
+                            <option value="<?=$craft['id']?>"><?=$craft['nom']?></option>
+                       <?php }
+                    ?>
+                    </select>
+                </div>
+                <div>
+                    <label for="nombreCraft">Nombre craft</label><br/>
+                    <input type="number" id="nombreCraft" name="nombreCraft">
+                </div>
+                <div>
+                    <input type="submit">
+                </div>
+            </form>
+        </div>
     </div>
     <div class='tableGITAdmin'>
         <div>
@@ -100,6 +240,43 @@
                                 <td><?=$missionBase['genre']?></td>
                                 <td><?=$missionBase['niveau']?></td>
                                 <td><form action="index.php?galaxyInfinity=supprMissionBase&idMission=<?=$missionBase['id']?>" method="post"><input type="submit" name="Supprimer" value="Supprimer"></form></td>
+                            </tr>
+                        <?php   
+                        }
+
+                    ?>
+                </tbody>
+            </table>
+        </div>
+        <div>
+            <table class="dataTable">
+            <h4>Missions de base</h4>
+                <thead>
+                    <tr>
+                        <th>Id de la ligne</th>
+                        <th>Nom de la Mission</th>
+                        <th>Nom Items</th>
+                        <th>Nombre Items</th>
+                        <th>Nom Ressource</th>
+                        <th>Nombre Ressource</th>
+                        <th>Nom Craft</th>
+                        <th>Nombre Craft</th>
+                        <th>Action ?</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php
+                        foreach ($adminRecompensesMissionBase as $recompensesMissionBase) {?>
+                            <tr>
+                                <td><?=$recompensesMissionBase[0]?></td>
+                                <td><?=$recompensesMissionBase[9]?></td>
+                                <td><?=$recompensesMissionBase[15]?></td>
+                                <td><?=$recompensesMissionBase['nombre_items']?></td>
+                                <td><?=$recompensesMissionBase[17]?></td>
+                                <td><?=$recompensesMissionBase['nombre_ressource']?></td>
+                                <td><?=$recompensesMissionBase[21]?></td>
+                                <td><?=$recompensesMissionBase['nombre_craft']?></td>
+                                <td><form action="index.php?galaxyInfinity=supprRecompensesMissionBase&idLigne=<?=$recompensesMissionBase[0]?>" method="post"><input type="submit" name="Supprimer" value="Supprimer"></form></td>
                             </tr>
                         <?php   
                         }
