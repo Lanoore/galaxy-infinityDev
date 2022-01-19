@@ -60,9 +60,7 @@ class ManagerAdminGIMissions extends ManagerBDD
         LEFT JOIN missions as missionsId ON missionsId.id = recompenses_missions.id_mission 
         LEFT JOIN items as itemsId ON itemsId.id = recompenses_missions.id_items
         LEFT JOIN ressource as ressourceId ON ressourceId.id = recompenses_missions.id_ressource
-        LEFT JOIN craft as craftId ON craftId.id = recompenses_missions.id_craft
-        
-        WHERE id_mission';
+        LEFT JOIN craft as craftId ON craftId.id = recompenses_missions.id_craft';
 
         $result = $this->createQuery($sql);
         return $result->fetchAll();
@@ -80,6 +78,16 @@ class ManagerAdminGIMissions extends ManagerBDD
     }
     public function getAllCraftAdmin(){
         $sql= "SELECT * FROM craft";
+        $result = $this->createQuery($sql);
+        return $result->fetchAll();
+    }
+    public function getAllBatAdmin(){
+        $sql = 'SELECT * FROM batiment';
+        $result = $this->createQuery($sql);
+        return $result->fetchAll();
+    }
+    public function getAllPopAdmin(){
+        $sql = 'SELECT * FROM population';
         $result = $this->createQuery($sql);
         return $result->fetchAll();
     }
@@ -112,6 +120,42 @@ class ManagerAdminGIMissions extends ManagerBDD
         
         $sql = 'UPDATE recompenses_missions SET id_mission = ?, id_ressource = ?,nombre_ressource = ?,id_items = ?, nombre_items = ?, id_craft = ?, nombre_craft = ? WHERE id =?';
         return $this->createQuery($sql,[$this->idMission, $this->idRessource,$this->nombreRessouce,$this->idItem,$this->nombreItem,$this->idCraft,$this->nombreCraft,$this->idLigne]);
+    }
+
+    public function getPreRequisMissionsBaseAdmin(){
+        $sql = 'SELECT * FROM pre_requis_missions
+                LEFT JOIN missions as missionsId ON missionsId.id = pre_requis_missions.id_mission 
+                LEFT JOIN batiment as batimentId ON batimentId.id = pre_requis_missions.id_bat
+                LEFT JOIN population as populationId ON populationId.id = pre_requis_missions.id_pop ';
+        $result = $this->createQuery($sql);
+        return $result->fetchAll();
+    }
+
+    public function createPrMissionBase(){
+           
+        $sql = 'INSERT INTO pre_requis_missions(id_mission,id_bat,niveau_bat,id_pop,nombre_pop)VALUES (?,?,?,?,?)';
+        return $this->createQuery($sql,[$this->idMission,$this->idBat,$this->niveauBat,$this->idPop,$this->nombrePop]);
+       
+    }
+
+    public function verifMissionPRExistById(){
+        
+        $sql = 'SELECT id FROM pre_requis_missions WHERE id = ?';
+        
+        $result = $this->createQuery($sql,[$this->idLigne]);
+       
+        return $result->rowCount();
+    }
+
+    public function supprMissionPR(){
+        $sql= 'DELETE FROM pre_requis_missions WHERE id = ?';
+        return $this->createQuery($sql,[$this->idLigne]);
+        
+    }
+
+    public function modifPrMissionBase(){
+        $sql = 'UPDATE pre_requis_missions SET id_mission = ?, id_bat = ?,niveau_bat = ?,id_pop = ?, nombre_pop = ? WHERE id =?';
+        return $this->createQuery($sql,[$this->idMission, $this->idBat,$this->niveauBat,$this->idPop,$this->nombrePop,$this->idLigne]);
     }
 
 }

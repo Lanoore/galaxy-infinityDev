@@ -64,6 +64,15 @@
 hr{
     width: 80%;
 }
+.recompensePréRequis div{
+    width: 30%;
+}
+
+.recX, .prX{
+    text-align: left;
+    margin: 1%;
+}
+
 
 
 @keyframes animatetop {

@@ -1,3 +1,4 @@
-.createMission{
+.createMission, .modifMissions{
     display: flex;
+    justify-content: space-around;
 }

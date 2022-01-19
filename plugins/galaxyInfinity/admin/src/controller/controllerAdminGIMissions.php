@@ -26,11 +26,15 @@ class ControllerAdminGIMissions
             $adminItems = $this->managerAdminGIMissions->getAllItemsAdmin();
             $adminRessource = $this->managerAdminGIMissions->getAllRessouceAdmin();
             $adminCraft = $this->managerAdminGIMissions->getAllCraftAdmin();
+            $adminBat = $this->managerAdminGIMissions->getAllBatAdmin();
+            $adminPop = $this->managerAdminGIMissions->getAllPopAdmin();
             $adminMissionsBase = $this->managerAdminGIMissions->getMissionsBaseAdmin();
             $adminRecompensesMissionBase = $this->managerAdminGIMissions->getRecompenseMissionsBaseAdmin();
+            $adminPreRequisMissionBase = $this->managerAdminGIMissions->getPreRequisMissionsBaseAdmin();
+
 
             $adminGI = 'plugins/galaxyInfinity/admin/src/view/adminGestionMissionsView.php';
-            $adminGI = $this->controllerBase->tamponView($adminGI, ['adminItems'=>$adminItems,'adminRessource'=>$adminRessource,'adminCraft'=>$adminCraft,'adminMissionsBase' => $adminMissionsBase, 'adminRecompensesMissionBase' => $adminRecompensesMissionBase]);
+            $adminGI = $this->controllerBase->tamponView($adminGI, ['adminPreRequisMissionBase'=>$adminPreRequisMissionBase,'adminPop'=>$adminPop,'adminBat'=>$adminBat,'adminItems'=>$adminItems,'adminRessource'=>$adminRessource,'adminCraft'=>$adminCraft,'adminMissionsBase' => $adminMissionsBase, 'adminRecompensesMissionBase' => $adminRecompensesMissionBase]);
             $this->controllerBase->afficheView([$adminGI],'adminGestionMissions');
         }
     }
@@ -229,6 +233,97 @@ class ControllerAdminGIMissions
                 
                 
                 $confirmModif = $this->managerAdminGIMissions->modifRecompenseMissionBase();
+                
+                if($confirmModif){
+                    header('Location:index.php?galaxyInfinity=afficheAdminGestionMissions');
+                }
+            }
+            else{
+                header("Location:index.php?galaxyInfinity=afficheAdminGestionMissions");  
+            }
+        }
+        else{
+            header('Location:index.php?admin=afficheConnexion');
+        }  
+    }
+
+    public function createPreRequisMissionBase(){
+        if(isset($_SESSION['identifiantAdmin'])){
+            if(!empty($_POST['idMission'])){
+                $this->managerAdminGIMissions->idMission = htmlentities($_POST['idMission']);
+                
+                if(!empty($_POST['niveauBat'])){
+                    if(!empty($_POST['idBat'])){$this->managerAdminGIMissions->idBat = htmlentities($_POST['idBat']);}else{$this->managerAdminGIMissions->idBat = null;}
+                    $this->managerAdminGIMissions->niveauBat = htmlentities($_POST['niveauBat']);
+                }
+                else{
+                    $this->managerAdminGIMissions->idBat = null;
+                    $this->managerAdminGIMissions->niveauBat = null;
+                }
+                
+                if(!empty($_POST['nombrePop'])){
+                    if(!empty($_POST['idPop'])){$this->managerAdminGIMissions->idPop = htmlentities($_POST['idPop']);}else{$this->managerAdminGIMissions->idPop = null;}
+                    $this->managerAdminGIMissions->nombrePop = htmlentities($_POST['nombrePop']);
+                }
+                else{
+                    $this->managerAdminGIMissions->idPop = null;
+                    $this->managerAdminGIMissions->nombrePop = null;
+                }
+                
+                    $confirmAdd = $this->managerAdminGIMissions->createPrMissionBase();
+                    if($confirmAdd){
+                        header('Location:index.php?galaxyInfinity=afficheAdminGestionMissions');
+                    }
+
+            }
+        }
+    }
+
+    public function supprPrMissionBase($idLigne){
+        if(isset($_SESSION['identifiantAdmin'])){
+            $this->managerAdminGIMissions->idLigne = $idLigne;
+
+            $verifExist = $this->managerAdminGIMissions->verifMissionPRExistById();
+
+            if($verifExist == 1){
+                
+                $confirmSuppr = $this->managerAdminGIMissions->supprMissionPR();
+                if($confirmSuppr){
+                    header('Location:index.php?galaxyInfinity=afficheAdminGestionMissions');
+                }
+            }
+            else{
+                header('Location:index.php?galaxyInfinity=afficheAdminGestionMissions');
+            }
+        }
+    }
+
+
+    public function modifPRMissionBase(){
+        if(isset($_SESSION['identifiantAdmin'])){
+
+            $this->managerAdminGIMissions->idLigne = htmlentities($_POST['idLigne']);
+            $this->managerAdminGIMissions->idMission = htmlentities($_POST['idMission']);
+            if(!empty($_POST['niveauBat'])){
+                if(!empty($_POST['idBat'])){$this->managerAdminGIMissions->idBat = htmlentities($_POST['idBat']);}else{$this->managerAdminGIMissions->idBat = null;}
+                $this->managerAdminGIMissions->niveauBat = htmlentities($_POST['niveauBat']);
+            }
+            else{
+                $this->managerAdminGIMissions->idBat = null;
+                $this->managerAdminGIMissions->niveauBat = null;
+            }
+            
+            if(!empty($_POST['nombrePop'])){
+                if(!empty($_POST['idPop'])){$this->managerAdminGIMissions->idPop = htmlentities($_POST['idPop']);}else{$this->managerAdminGIMissions->idPop = null;}
+                $this->managerAdminGIMissions->nombrePop = htmlentities($_POST['nombrePop']);
+            }
+            $ligneExist = $this->managerAdminGIMissions->verifMissionPRExistById();
+
+
+            if($ligneExist){
+                
+                
+                $confirmModif = $this->managerAdminGIMissions->modifPrMissionBase();
                 
                 if($confirmModif){
                     header('Location:index.php?galaxyInfinity=afficheAdminGestionMissions');

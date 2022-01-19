@@ -465,6 +465,15 @@ class Router
                         case 'modifRecompenseMissionBase':
                             $this->controllerAdminGIMissions->modifRecompenseMissionBase();
                             break;
+                        case 'createPreRequisMissionBase':
+                            $this->controllerAdminGIMissions->createPreRequisMissionBase();
+                            break;
+                        case 'supprPrMissionBase':
+                            $this->controllerAdminGIMissions->supprPrMissionBase($_GET['idLigne']);
+                            break;
+                        case 'modifPRMissionBase':
+                            $this->controllerAdminGIMissions->modifPRMissionBase();
+                            break;
                     //Gestion partie user
                         case 'affichePreRequisUser':
                             $this->controllerUserGI->affichePreRequisUser($_GET['page']);

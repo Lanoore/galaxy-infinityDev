@@ -94,6 +94,55 @@
                 </div>
             </form>
         </div>
+        <div>
+            <h4>Création Pré requis Mission Base</h4>
+            <form action="index.php?galaxyInfinity=createPreRequisMissionBase" method="post" enctype="multipart/form-data">
+                <div>
+                    <label for = "idMission"> Nom mission</label><br/>
+                    <select name="idMission" id="idMission">
+                        <option value="null"></option>
+                        <?php
+                            foreach($adminMissionsBase as $mission){?>
+                                <option value="<?=$mission['id']?>"><?=$mission['nom']?></option>
+                           <?php }
+                        ?>
+                    </select>
+                </div>
+                <div>
+                    <label for = "idBat"> Nom batiment</label><br/>
+                    <select name="idBat" id="idBat">
+                        <option value="null"></option>
+                        <?php
+                            foreach($adminBat as $bat){?>
+                                <option value="<?=$bat['id']?>"><?=$bat['nom']?></option>
+                            <?php }
+                        ?>
+                    </select>
+                </div>
+                <div>
+                    <label for="niveauBat">Niveau Bat</label><br/>
+                    <input type="number" id="niveauBat" name="niveauBat">
+                </div>
+                <div>
+                    <label for = "idPop"> Nom population</label><br/>
+                    <select name="idPop" id="idPop">
+                        <option value="null"></option>
+                        <?php
+                            foreach($adminPop as $pop){?>
+                                <option value="<?=$pop['id']?>"><?=$pop['nom']?></option>
+                            <?php }
+                        ?>
+                    </select>
+                </div>
+                <div>
+                    <label for="nombrePop">Nombre population</label><br/>
+                    <input type="number" id="nombrePop" name="nombrePop">
+                </div>
+                <div>
+                    <input type="submit">
+                </div>
+            </form>
+        </div>
     </div>
     <div class="modifMissions">
         <div>
@@ -213,6 +262,68 @@
                 </div>
             </form>
         </div>
+        <div>
+            <h4>Modif Pre-requis Mission</h4>
+            <form action="index.php?galaxyInfinity=modifPRMissionBase" method="post">
+                <div>
+                    <label for="idLigne">Id de la ligne cible</label>
+                    <select name="idLigne" id="idLigne">
+                        <option value="null"></option>
+                        <?php
+                            foreach($adminPreRequisMissionBase as $prMission){?>
+
+                                <option value="<?=$prMission[0]?>"><?=$prMission[0]?></option>
+                            <?php }
+                        ?>
+                    </select>
+                </div> 
+                <div>
+                    <label for = "idMission"> Nom de la mission</label><br/>
+                    <select name="idMission" id="idMission">
+                        <option value="null"></option>
+                        <?php
+                            foreach ($adminMissionsBase as $mission) {?>
+                                <option value="<?=$mission['id']?>"><?=$mission['nom']?></option>
+                           <?php }
+                        ?>
+                    </select>
+                </div>
+                <div>
+                    <label for="idBat">Nom item</label><br/>
+                    <select name="idBat" id="idBat">
+                        <option value="null"></option>
+                        <?php
+                        foreach($adminBat as $bat){?>
+                            <option value="<?=$bat['id']?>"><?=$bat['nom']?></option>
+                        <?php }
+                        ?>
+                    </select>
+                </div>
+                <div>
+                    <label for="niveauBat">Niveau bat</label><br/>
+                    <input type="number" id="niveauBat" name="niveauBat">
+                </div>
+                <div>
+                    <label for="idPop">Nom population</label><br/>
+                    <select name="idPop" id="idPop">
+                        <option value="null"></option>
+                        <?php 
+                        
+                        foreach($adminPop as $pop){?>
+                            <option value="<?=$pop['id']?>"><?=$pop['nom']?></option>
+                       <?php }
+                    ?>
+                    </select>
+                </div>
+                <div>
+                    <label for="nombrePop">Nombre popuation</label><br/>
+                    <input type="number" id="nombrePop" name="nombrePop">
+                </div>
+                <div>
+                    <input type="submit">
+                </div>
+            </form>
+        </div>
     </div>
     <div class='tableGITAdmin'>
         <div>
@@ -250,7 +361,7 @@
         </div>
         <div>
             <table class="dataTable">
-            <h4>Missions de base</h4>
+            <h4>Récompenses Missions de base</h4>
                 <thead>
                     <tr>
                         <th>Id de la ligne</th>
@@ -277,6 +388,39 @@
                                 <td><?=$recompensesMissionBase[21]?></td>
                                 <td><?=$recompensesMissionBase['nombre_craft']?></td>
                                 <td><form action="index.php?galaxyInfinity=supprRecompensesMissionBase&idLigne=<?=$recompensesMissionBase[0]?>" method="post"><input type="submit" name="Supprimer" value="Supprimer"></form></td>
+                            </tr>
+                        <?php   
+                        }
+
+                    ?>
+                </tbody>
+            </table>
+        </div>
+        <div>
+            <table class="dataTable">
+                <h4>Pré-requis Mission de base</h4>
+                    <thead>
+                        <tr>
+                            <th>Id de la ligne</th>
+                            <th>Nom de la mission</th>
+                            <th>Nom du batiment</th>
+                            <th>Niveau du batiment</th>
+                            <th>Nom de la population</th>
+                            <th>Nombre population</th>
+                            <th>Action ?</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    <?php
+                        foreach ($adminPreRequisMissionBase as $prMissionBase) {?>
+                            <tr>
+                                <td><?=$prMissionBase[0]?></td>
+                                <td><?=$prMissionBase[7]?></td>
+                                <td><?=$prMissionBase[13]?></td>
+                                <td><?=$prMissionBase['niveau_bat']?></td>
+                                <td><?=$prMissionBase[19]?></td>
+                                <td><?=$prMissionBase['nombre_pop']?></td>
+                                <td><form action="index.php?galaxyInfinity=supprPrMissionBase&idLigne=<?=$prMissionBase[0]?>" method="post"><input type="submit" name="Supprimer" value="Supprimer"></form></td>
                             </tr>
                         <?php   
                         }

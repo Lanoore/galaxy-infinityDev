@@ -24,10 +24,21 @@ class ControllerUserGIMissions{
     public function afficheMissionsUser(){
         if(isset($_SESSION['pseudo'])){
 
-            $getMissions = $this->managerUserGIMissions->getAllMissions();
+            $missionsBase = $this->managerUserGIMissions->getAllMissions();
+            
+
+
+            foreach($missionsBase as $missionBase){
+                $this->managerUserGIMissions->idMission = $missionBase['id'];
+                $recompenseMission = $this->managerUserGIMissions->getRecMissionX();
+                $preRequisMission = $this->managerUserGIMissions->getPrMissionX();
+
+                $missions[] = ['preRequisMission'=>$preRequisMission,'recMission'=>$recompenseMission,'idMission'=> $missionBase['id'], 'nomMission' => $missionBase['nom'], 'descrMission' => $missionBase['description'], 'typeMission' => $missionBase['type'], 'genreMission' => $missionBase['genre'], 'niveauMission' => $missionBase['niveau']];
+            }
+
 
             $userMissions = 'plugins/galaxyInfinity/user/src/view/userGestionMissionsView.php';
-            $userMissions = $this->controllerBase->tamponView($userMissions,['missions' => $getMissions]);
+            $userMissions = $this->controllerBase->tamponView($userMissions,['missions' => $missions,]);
 
             $this->controllerBase->afficheView([$userMissions],'userGestionMissions');
         }
