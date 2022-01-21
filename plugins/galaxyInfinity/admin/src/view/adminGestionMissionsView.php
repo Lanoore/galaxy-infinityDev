@@ -325,6 +325,185 @@
             </form>
         </div>
     </div>
+    <div class="missionCMQuestion">
+        <div>
+            <h4>Création mission question</h4>
+            <form action="index.php?galaxyInfinity=createMissionQuestion" method="post">
+                <div>
+                    <label for="idMission">Nom mission</label>
+                    <select name="idMission" id="idMission">
+                        <option value="null"></option>
+                        <?php
+                            foreach ($adminMissionsBase as $mission) {?>
+                                <option value="<?=$mission['id']?>"><?=$mission['nom']?></option>
+                           <?php }
+                        ?>
+                    </select>
+                </div>
+                <div>
+                    <label for="texteQuestionM">Question:</label>
+                    <textarea name="texteQuestionM" id="" cols="30" rows="10"></textarea>
+                </div>
+                <div>
+                    <label for="lastQuestion">Fin de la mission?</label>
+                    <input type="checkbox" id="lastQuestion" name="lastQuestion">
+                </div>
+                <div>
+                    <label for="firstQuestion">Première question?</label>
+                    <input type="checkbox" id="firstQuestion" name="firstQuestion">
+                </div>
+                <div>
+                    <input type="submit">
+                </div>
+            </form>
+        </div>
+        <div>
+            <h4>Modif mission question</h4>
+            <form action="index.php?galaxyInfinity=modifMissionQuestion" method="post">
+                <div>
+                    <label for="idLigne">Id de la ligne cible</label>
+                    <select name="idLigne" id="idLigne">
+                        <option value="null"></option>
+                        <?php
+                            foreach($adminQuestionMission as $question){?>
+
+                                <option value="<?=$question[0]?>"><?=$question[0]?></option>
+                            <?php }
+                        ?>
+                    </select>
+                </div> 
+                <div>
+                    <label for="idMission">Nom mission</label>
+                    <select name="idMission" id="idMission">
+                        <option value="null"></option>
+                        <?php
+                            foreach ($adminMissionsBase as $mission) {?>
+                                <option value="<?=$mission['id']?>"><?=$mission['nom']?></option>
+                           <?php }
+                        ?>
+                    </select>
+                </div>
+                <div>
+                    <label for="texteQuestionM">Question:</label>
+                    <textarea name="texteQuestionM" id="" cols="30" rows="10"></textarea>
+                </div>
+                <div>
+                    <label for="lastQuestion">Fin de la mission?</label>
+                    <input type="checkbox" id="lastQuestion" name="lastQuestion">
+                </div>
+                <div>
+                    <label for="firstQuestion">Première question?</label>
+                    <input type="checkbox" id="firstQuestion" name="firstQuestion">
+                </div>
+                <div>
+                    <input type="submit">
+                </div>
+                </form>
+        </div>
+    </div>
+    <div class="missionCMReponse">
+        <div>
+            <h4>Création mission reponse</h4>
+            <form action="index.php?galaxyInfinity=createMissionReponse" method="post">
+                <div>
+                    <label for="idMission">Nom mission</label>
+                    <select name="idMission" id="idMission">
+                        <option value="null"></option>
+                        <?php
+                            foreach ($adminMissionsBase as $mission) {?>
+                                <option value="<?=$mission['id']?>"><?=$mission['nom']?></option>
+                           <?php }
+                        ?>
+                    </select>
+                </div>
+                <div>
+                    <label for="texteReponseM">reponse:</label>
+                    <textarea name="texteReponseM" id="" cols="30" rows="10"></textarea>
+                </div>
+                <div>
+                    <label for="idTexteQLien">Liaison Question</label>
+                    <select name="idTexteQLien" id="idTexteQLien">
+                        <option value="null"></option>
+                        <?php
+                            foreach ($adminQuestionMission as $question) {?>
+                                <option value="<?=$question[0]?>"><?=$question[0]?></option>
+                           <?php }
+                        ?>
+                    </select>
+                </div>
+                <div>
+                    <label for="idTexteQCible">Question cible</label>
+                    <select name="idTexteQCible" id="idTexteQCible">
+                        <option value="null"></option>
+                        <?php
+                            foreach ($adminQuestionMission as $question) {?>
+                                <option value="<?=$question[0]?>"><?=$question[0]?></option>
+                           <?php }
+                        ?>
+                    </select>
+                </div>
+                <div>
+                    <input type="submit">
+                </div>
+            </form>
+        </div>
+        <div>
+            <h4>modif mission reponse</h4>
+            <form action="index.php?galaxyInfinity=modifMissionReponse" method="post">
+                <div>
+                    <label for="idLigne">Id ligne</label>
+                    <select name="idLigne" id="idLigne">
+                        <option value="null"></option>
+                        <?php
+                            foreach ($adminReponseMission as $reponse) {?>
+                                <option value="<?=$reponse[0]?>"><?=$reponse[0]?></option>
+                           <?php }
+                        ?>
+                    </select>
+                </div>
+                <div>
+                    <label for="idMission">Nom mission</label>
+                    <select name="idMission" id="idMission">
+                        <option value="null"></option>
+                        <?php
+                            foreach ($adminMissionsBase as $mission) {?>
+                                <option value="<?=$mission['id']?>"><?=$mission['nom']?></option>
+                           <?php }
+                        ?>
+                    </select>
+                </div>
+                <div>
+                    <label for="texteReponseM">reponse:</label>
+                    <textarea name="texteReponseM" id="" cols="30" rows="10"></textarea>
+                </div>
+                <div>
+                    <label for="idTexteQLien">Liaison Question</label>
+                    <select name="idTexteQLien" id="idTexteQLien">
+                        <option value="null"></option>
+                        <?php
+                            foreach ($adminQuestionMission as $question) {?>
+                                <option value="<?=$question[0]?>"><?=$question[0]?></option>
+                           <?php }
+                        ?>
+                    </select>
+                </div>
+                <div>
+                    <label for="idTexteQCible">Question cible</label>
+                    <select name="idTexteQCible" id="idTexteQCible">
+                        <option value="null"></option>
+                        <?php
+                            foreach ($adminQuestionMission as $question) {?>
+                                <option value="<?=$question[0]?>"><?=$question[0]?></option>
+                           <?php }
+                        ?>
+                    </select>
+                </div>
+                <div>
+                    <input type="submit">
+                </div>
+            </form>
+        </div>
+    </div>
     <div class='tableGITAdmin'>
         <div>
             <table class="dataTable">
@@ -421,6 +600,68 @@
                                 <td><?=$prMissionBase[19]?></td>
                                 <td><?=$prMissionBase['nombre_pop']?></td>
                                 <td><form action="index.php?galaxyInfinity=supprPrMissionBase&idLigne=<?=$prMissionBase[0]?>" method="post"><input type="submit" name="Supprimer" value="Supprimer"></form></td>
+                            </tr>
+                        <?php   
+                        }
+
+                    ?>
+                </tbody>
+            </table>
+        </div>
+        <div>
+            <table class="dataTable">
+                <h4>Questions Mission</h4>
+                    <thead>
+                        <tr>
+                            <th>Id de la ligne</th>
+                            <th>Nom de la mission</th>
+                            <th>Texte Question</th>
+                            <th>Fin Mission?</th>
+                            <th>Début Mission?</th>
+                            <th>Action ?</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    <?php
+                        foreach ($adminQuestionMission as $questionMission) {?>
+                            <tr>
+                                <td><?=$questionMission[0]?></td>
+                                <td><?=$questionMission[6]?></td>
+                                <td><?=$questionMission[2]?></td>
+                                <td><?=$questionMission[3]?></td>
+                                <td><?=$questionMission[4]?></td>
+                                <td><form action="index.php?galaxyInfinity=supprMissionQuestion&idLigne=<?=$questionMission[0]?>" method="post"><input type="submit" name="Supprimer" value="Supprimer"></form></td>
+                            </tr>
+                        <?php   
+                        }
+
+                    ?>
+                </tbody>
+            </table>
+        </div>
+        <div>
+            <table class="dataTable">
+                <h4>Reponses Mission</h4>
+                    <thead>
+                        <tr>
+                            <th>Id de la ligne</th>
+                            <th>Nom de la mission</th>
+                            <th>Id Question</th>
+                            <th>Texte Reponse</th>
+                            <th>Cible Question</th>
+                            <th>Action ?</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    <?php
+                        foreach ($adminReponseMission as $reponse) {?>
+                            <tr>
+                                <td><?=$reponse[0]?></td>
+                                <td><?=$reponse[6]?></td>
+                                <td><?=$reponse[2]?></td>
+                                <td><?=$reponse[4]?></td>
+                                <td><?=$reponse[3]?></td>
+                                <td><form action="index.php?galaxyInfinity=supprMissionReponse&idLigne=<?=$reponse[0]?>" method="post"><input type="submit" name="Supprimer" value="Supprimer"></form></td>
                             </tr>
                         <?php   
                         }

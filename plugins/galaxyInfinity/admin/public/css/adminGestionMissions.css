@@ -1,4 +1,4 @@
-.createMission, .modifMissions{
+.createMission, .modifMissions,.missionCMQuestion,.missionCMReponse{
     display: flex;
     justify-content: space-around;
 }

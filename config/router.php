@@ -474,6 +474,24 @@ class Router
                         case 'modifPRMissionBase':
                             $this->controllerAdminGIMissions->modifPRMissionBase();
                             break;
+                        case 'createMissionQuestion':
+                            $this->controllerAdminGIMissions->createMissionQuestion();
+                            break;
+                        case 'supprMissionQuestion':
+                            $this->controllerAdminGIMissions->supprMissionQuestion($_GET['idLigne']);
+                            break;
+                        case 'modifMissionQuestion':
+                            $this->controllerAdminGIMissions->modifMissionQuestion();
+                            break;
+                        case 'createMissionReponse':
+                            $this->controllerAdminGIMissions->createMissionReponse();
+                            break;
+                        case 'supprMissionReponse':
+                            $this->controllerAdminGIMissions->supprMissionReponse($_GET['idLigne']);
+                            break;
+                        case 'modifMissionReponse':
+                            $this->controllerAdminGIMissions->modifMissionReponse();
+                            break;
                     //Gestion partie user
                         case 'affichePreRequisUser':
                             $this->controllerUserGI->affichePreRequisUser($_GET['page']);

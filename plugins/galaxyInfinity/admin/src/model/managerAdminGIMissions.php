@@ -158,4 +158,68 @@ class ManagerAdminGIMissions extends ManagerBDD
         return $this->createQuery($sql,[$this->idMission, $this->idBat,$this->niveauBat,$this->idPop,$this->nombrePop,$this->idLigne]);
     }
 
+    public function getQuestionMissionBaseAdmin(){
+        $sql ='SELECT * FROM missions_texte_q
+               LEFT JOIN missions as missionsId ON missionsId.id = missions_texte_q.id_mission ';
+        $result = $this->createQuery($sql);
+        return $result->fetchAll();
+    }    
+
+    public function createMissionQuestion(){
+        $sql = 'INSERT INTO missions_texte_q(id_mission,texte,last_question,first_question) VALUES(?,?,?,?)';
+        return $this->createQuery($sql,[$this->idMission,$this->texteMission, $this->lastQuestion,$this->firstQuestion]);
+    }
+
+    public function verifQuestionMissionExistById(){
+        
+        $sql = 'SELECT id FROM missions_texte_q WHERE id = ?';
+        
+        $result = $this->createQuery($sql,[$this->idLigne]);
+       
+        return $result->rowCount();
+    }
+
+    public function supprMissionQ(){
+        $sql= 'DELETE FROM missions_texte_q WHERE id = ?';
+        return $this->createQuery($sql,[$this->idLigne]);
+        
+    }
+
+    public function modifMissionQuestion(){
+        $sql = 'UPDATE missions_texte_q SET id_mission = ?, texte = ?, last_question = ?, first_question = ? WHERE id= ?';
+        return $this->createQuery($sql,[$this->idMission, $this->texteMission, $this->lastQuestion, $this->firstQuestion, $this->idLigne]);
+    }
+
+    public function getReponseMissionBaseAdmin(){
+        $sql = 'SELECT * FROM missions_texte_r
+                LEFT JOIN missions as missionsId ON missionsId.id = missions_texte_r.id_mission';
+        $result = $this->createQuery($sql);
+        return $result->fetchAll();
+
+    }
+
+    public function createMissionReponse(){
+        $sql = 'INSERT INTO missions_texte_r(id_mission, id_question, id_texte_q_cible, texte) VALUES (?,?,?,?)';
+        return $this->createQuery($sql,[$this->idMission,$this->texteQLien, $this->texteQCible,$this->texteMission]);
+    }
+
+    public function verifReponseMissionExistById(){
+        
+        $sql = 'SELECT id FROM missions_texte_r WHERE id = ?';
+        
+        $result = $this->createQuery($sql,[$this->idLigne]);
+       
+        return $result->rowCount();
+    }
+
+    public function supprMissionR(){
+        $sql= 'DELETE FROM missions_texte_r WHERE id = ?';
+        return $this->createQuery($sql,[$this->idLigne]);
+        
+    }
+
+    public function modifMissionReponse(){
+        $sql = 'UPDATE missions_texte_r SET id_mission = ?, texte = ?, id_question = ?, id_texte_q_cible = ? WHERE id= ?';
+        return $this->createQuery($sql,[$this->idMission, $this->texteMission, $this->texteQLien, $this->texteQCible, $this->idLigne]);
+    }
 }
