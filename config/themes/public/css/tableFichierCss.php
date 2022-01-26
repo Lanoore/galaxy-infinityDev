@@ -59,6 +59,7 @@ $tableCss =
     'userGestionGuilde' => ['plugins/galaxyInfinity/user/public/css/userGestionGuilde.css'],
     'userGestionPopulation' => ['plugins/galaxyInfinity/user/public/css/userGestionPopulation.css'],
     'userGestionMissions' => ['plugins/galaxyInfinity/user/public/css/userGestionMissions.css'],
+    'userGestionMissionTextuel' => ['plugins/galaxyInfinity/user/public/css/userGestionMissionTextuel.css']
 ];
 
 

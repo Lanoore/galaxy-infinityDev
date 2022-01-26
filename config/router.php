@@ -580,7 +580,12 @@ class Router
                         case 'afficheMissionsUser':
                             $this->controllerUserGIMissions->afficheMissionsUser();
                             break;
-                        
+                        case 'lancementMissionTextuel':
+                            $this->controllerUserGIMissions->lancementMissionTextuel($_GET['idMission']);
+                            break;
+                        case 'getMissionJs':
+                            $this->controllerUserGIMissions->getMissionJs($_GET['idMission']);
+                            break;
                     }
                 }
             else{

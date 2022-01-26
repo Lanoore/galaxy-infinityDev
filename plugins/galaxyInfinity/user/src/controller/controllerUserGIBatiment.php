@@ -63,7 +63,10 @@ class ControllerUserGIBatiment{
                 $verifBatEnCours = $this->managerUserGIBatiment->verifBatEnCours();
 
                 $tempsConstru = $this->managerUserGIBatiment->getTempsConstruBat();
-                $tempsConstru = $this->conversionSeconde($tempsConstru['temps_construction']);
+                if($tempsConstru != false){
+                    $tempsConstru = $this->conversionSeconde($tempsConstru['temps_construction']);
+                }
+                
                 $batiment[] = ['tempsConstru' =>$tempsConstru,'batCraft'=>$batCraft,'verifBatEnCours'=>$verifBatEnCours,'idBat' => $batBase['id'], 'nomBat' => $batBase['nom'], 'descrBat' => $batBase['description'], 'tierBat' => $batBase['tier'],'imageBat' =>$batBase['image'], 'prValide' => $verifPrBat, 'craftValide'=>$verifCraftBat, 'niveauBatPlanete' => $batBase['niveau']];
             }
 

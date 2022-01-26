@@ -43,13 +43,13 @@
                                         <p>Récompenses :</p>
                                         <?php foreach($mission['recMission'] as $recMission){
                                         if($recMission['id_ressource'] != null){?>
-                                            <p class="recX"><?=$recMission[11]?> : <?=$recMission['nombre_ressource']?></p>
+                                            <p class="recX"><?=$recMission[11]?> : <?=$recMission['nombre_ressource']?> (+/-10%)</p>
                                         <?php }
                                         if($recMission['id_items'] != null){?>
-                                            <p class="recX"><?=$recMission[9]?> : <?=$recMission['nombre_items']?></p>
+                                            <p class="recX"><?=$recMission[9]?> : <?=$recMission['nombre_items']?> (+/-10%)</p>
                                         <?php }
                                         if($recMission['id_craft'] != null){?>
-                                            <p class="recX"><?=$recMission[15]?> : <?=$recMission['nombre_craft']?></p>
+                                            <p class="recX"><?=$recMission[15]?> : <?=$recMission['nombre_craft']?> (+/-10%)</p>
                                         <?php }
                                         }?>
                                     </div>
@@ -66,7 +66,12 @@
                                     </div>
                                 </div>
                                 <hr>
-                                <button class="lancerMissionDiplo">Lancer</button>
+                                <?php if($mission['verifPrMission'] == 0){ ?>
+                                    <button class="lancerMissionTextuel" id="<?=$mission['idMission']?>">Lancer</button>
+                                <?php }else{?>
+                                    <p>Vous ne remplissez pas les pré-requis pour lancer la mission!</p>
+                                <?php } ?>
+                                
                             </div>
                         </div>
                         

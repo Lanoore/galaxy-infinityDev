@@ -2,6 +2,7 @@ class missions{
 
     constructor(){
         this.afficheInfosMissionsDiplo();
+        this.lancerMissionTextuel();
     }
 
     afficheInfosMissionsDiplo(){
@@ -31,6 +32,33 @@ class missions{
           }
         }
     }
+
+
+    lancerMissionTextuel(){
+        var allButtonsMissionTextuels = document.getElementsByClassName('lancerMissionTextuel');
+        var that = this;
+        for(var i =0;i<allButtonsMissionTextuels.length;i++){
+            allButtonsMissionTextuels[i].addEventListener('click', function(){
+                var idMission = this.id;
+                var intIdMission = that.isInt(idMission);
+                if(idMission !== '' && intIdMission === true){
+                    window.location.href = 'index.php?galaxyInfinity=lancementMissionTextuel&idMission='+idMission;
+                }
+                
+            });
+        }
+    }
+
+
+
+    isInt(variable) {
+        if (!Number.isNaN(Number.parseInt(variable))) {
+          return true
+        }
+        else {
+          return false
+        }
+      }
 
     
 

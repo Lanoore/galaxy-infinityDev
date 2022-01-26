@@ -39,4 +39,39 @@ class ManagerUserGIMissions extends ManagerBDD{
         $result = $this->createQuery($sql,[$this->idMission]);
         return $result->fetchAll();
     }
+
+    public function getBatPlaneteX(){
+        $sql = 'SELECT * FROM batiment_planete WHERE planete_id = ? AND batiment_id = ?';
+        $result = $this->createQuery($sql,[$this->idPlanete,$this->idBatRequis]);
+        return $result->fetch();
+    }
+
+    public function getPopPlaneteX(){
+        $sql = 'SELECT * FROM population_planete WHERE planete_id = ? AND pop_id = ?';
+        $result = $this->createQuery($sql,[$this->idPlanete,$this->idPopRequis]);
+        return $result->fetch();
+    }
+
+    public function verifMissionExistById(){
+        $sql = 'SELECT * FROM missions WHERE id= ?';
+        $result = $this->createQuery($sql,[$this->idMission]);
+        return $result->rowCount();
+    }
+
+    public function getMission(){
+        $sql = 'SELECT * FROM missions WHERE id=?';
+        $result = $this->createQuery($sql,[$this->idMission]);
+        return $result->fetchAll();
+    }
+
+    public function getAllQMission(){
+        $sql = 'SELECT * FROM missions_texte_q WHERE id_mission= ?';
+        $result = $this->createQuery($sql,[$this->idMission]);
+        return $result->fetchAll();
+    }
+    public function getAllRMission(){
+        $sql = 'SELECT * FROM missions_texte_r WHERE id_mission= ?';
+        $result = $this->createQuery($sql,[$this->idMission]);
+        return $result->fetchAll();
+    }
 }

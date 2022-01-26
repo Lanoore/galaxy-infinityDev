@@ -1,0 +1,1 @@
+const gestionMissionsTextuel = new missionTextuel;

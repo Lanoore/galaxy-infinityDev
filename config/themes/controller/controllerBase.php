@@ -35,6 +35,7 @@ class ControllerBase
         
 
         require 'config/themes/view/templateBase.php';
-    }    
+    }
+    
 
 }
