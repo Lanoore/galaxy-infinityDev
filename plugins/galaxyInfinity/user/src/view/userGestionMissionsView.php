@@ -1,6 +1,12 @@
 
 
-<div class="mainDiv">   
+<div class="mainDiv">
+    <?php if($verifMissionEncours > 0){?>
+        <div>
+        <button><a href="index.php?galaxyInfinity=reprendreMissionEnCours">Reprendre mission en cours</a></button>
+    </div>
+    <?php }?>
+    
     <div>
         <p>Missions Principales (A venir avec la feature "Histoire")</p>
         <?php
@@ -66,10 +72,10 @@
                                     </div>
                                 </div>
                                 <hr>
-                                <?php if($mission['verifPrMission'] == 0){ ?>
+                                <?php if($mission['verifPrMission'] == 0 && $verifMissionEncours == 0){ ?>
                                     <button class="lancerMissionTextuel" id="<?=$mission['idMission']?>">Lancer</button>
                                 <?php }else{?>
-                                    <p>Vous ne remplissez pas les pré-requis pour lancer la mission!</p>
+                                    <p>Vous ne remplissez pas les pré-requis pour lancer la mission ou une mission est déjà en cours!</p>
                                 <?php } ?>
                                 
                             </div>

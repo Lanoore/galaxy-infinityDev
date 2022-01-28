@@ -166,8 +166,8 @@ class ManagerAdminGIMissions extends ManagerBDD
     }    
 
     public function createMissionQuestion(){
-        $sql = 'INSERT INTO missions_texte_q(id_mission,texte,last_question,first_question) VALUES(?,?,?,?)';
-        return $this->createQuery($sql,[$this->idMission,$this->texteMission, $this->lastQuestion,$this->firstQuestion]);
+        $sql = 'INSERT INTO missions_texte_q(id_mission,texte,last_question,first_question,reussite_echec) VALUES(?,?,?,?,?)';
+        return $this->createQuery($sql,[$this->idMission,$this->texteMission, $this->lastQuestion,$this->firstQuestion, $this->reussiteEchec]);
     }
 
     public function verifQuestionMissionExistById(){
@@ -186,8 +186,8 @@ class ManagerAdminGIMissions extends ManagerBDD
     }
 
     public function modifMissionQuestion(){
-        $sql = 'UPDATE missions_texte_q SET id_mission = ?, texte = ?, last_question = ?, first_question = ? WHERE id= ?';
-        return $this->createQuery($sql,[$this->idMission, $this->texteMission, $this->lastQuestion, $this->firstQuestion, $this->idLigne]);
+        $sql = 'UPDATE missions_texte_q SET id_mission = ?, texte = ?, last_question = ?, first_question = ?, reussite_echec = ? WHERE id= ?';
+        return $this->createQuery($sql,[$this->idMission, $this->texteMission, $this->lastQuestion, $this->firstQuestion, $this->reussiteEchec, $this->idLigne]);
     }
 
     public function getReponseMissionBaseAdmin(){

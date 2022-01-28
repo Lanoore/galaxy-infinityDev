@@ -26,7 +26,7 @@ class ControllerUserGIMissions{
 
             $missionsBase = $this->managerUserGIMissions->getAllMissions();
             $this->managerUserGIMissions->idPlanete = $_SESSION['idPlaneteActif'];
-
+            $verifMissionEncours = $this->managerUserGIMissions->verifMissionEnCours();
 
             foreach($missionsBase as $missionBase){
                 $countPr = 0;
@@ -44,7 +44,7 @@ class ControllerUserGIMissions{
 
 
             $userMissions = 'plugins/galaxyInfinity/user/src/view/userGestionMissionsView.php';
-            $userMissions = $this->controllerBase->tamponView($userMissions,['missions' => $missions,]);
+            $userMissions = $this->controllerBase->tamponView($userMissions,['verifMissionEncours'=>$verifMissionEncours,'missions' => $missions,]);
 
             $this->controllerBase->afficheView([$userMissions],'userGestionMissions');
         }
@@ -79,21 +79,26 @@ class ControllerUserGIMissions{
     public function lancementMissionTextuel($idMission){
         if(isset($_SESSION['pseudo'])){
             $this->managerUserGIMissions->idMission = $idMission;
+            $this->managerUserGIMissions->idPlanete = $_SESSION['idPlaneteActif'];
             $verifMissionExist = $this->managerUserGIMissions->verifMissionExistById();
-            if($verifMissionExist == 1){
-                $this->managerUserGIMissions->idPlanete = $_SESSION['idPlaneteActif'];
-                $preRequisMission = $this->managerUserGIMissions->getPrMissionX();
-                $verifPrMission = $this->verifPrMission($preRequisMission);
-                if($verifPrMission == 0){
-                    $userMission = 'plugins/galaxyInfinity/user/src/view/userMissionTextuelView.php';
-                    $userMission = $this->controllerBase->tamponView($userMission);
-        
-                    $this->controllerBase->afficheView([$userMission],'userGestionMissionTextuel');
-                }
+            $verifMissionEncours = $this->managerUserGIMissions->verifMissionEnCours();
+            if($verifMissionExist == 1 ){
+                if($verifMissionEncours == 0){
+                    $preRequisMission = $this->managerUserGIMissions->getPrMissionX();
+                    $verifPrMission = $this->verifPrMission($preRequisMission);
+                        if($verifPrMission == 0){
+                            $setMissionEnCours = $this->managerUserGIMissions->setMissionEnCours();
+                            $userMission = 'plugins/galaxyInfinity/user/src/view/userMissionTextuelView.php';
+                            $userMission = $this->controllerBase->tamponView($userMission);
                 
+                            $this->controllerBase->afficheView([$userMission],'userGestionMissionTextuel');
+                        }
+                }
+                else{
+                    throw new Exception('Une mission est déjà en cours sur cette planète merci de la terminer avant d\'en lancer une autre');
+                }
             }
-
-            
+                
         }
         else{
             throw new Exception("Vous devez être connecter pour accéder à cette page!");
@@ -106,9 +111,55 @@ class ControllerUserGIMissions{
             $getMission = $this->managerUserGIMissions->getMission();
             $getAllQMission = $this->managerUserGIMissions->getAllQMission();
             $getAllRMission = $this->managerUserGIMissions->getAllRMission();
-
-            $mission [] = ['mission' => $getMission, 'missionTexteQ' => $getAllQMission, 'missionTexteR' =>$getAllRMission];
+            $planeteActive = $_SESSION['idPlaneteActif'];
+            $mission [] = ['mission' => $getMission, 'missionTexteQ' => $getAllQMission, 'missionTexteR' =>$getAllRMission, 'planeteActive' =>$planeteActive];
             echo json_encode($mission);
+        }
+    }
+
+    public function sauvegardeMissionTextuelJs($idMission,$idQuestionActive,$idPlaneteActive){
+        if(isset($_SESSION['pseudo'])){
+            $this->managerUserGIMissions->idPlanete = $idPlaneteActive;
+            $this->managerUserGIMissions->idMission = $idMission;
+            $this->managerUserGIMissions->idQuestionActive = $idQuestionActive;
+            $sauvegardeMissionTextuel = $this->managerUserGIMissions->sauvegardeMissionTextuel();
+            if($sauvegardeMissionTextuel){
+                $getSauvegardeMissionTextuel = $this->managerUserGIMissions->getSauvegardeMissionTextuel();
+                $sauvegarde [] =  ['getSauvegardeMissionTextuel' => $getSauvegardeMissionTextuel];
+                echo json_encode($sauvegarde);
+            }
+        }
+    }
+
+    public function modifSauvegardeJsMissionTextuel($idQuestionActive,$idPlaneteActive,$idSauvegarde){
+        if(isset($_SESSION['pseudo'])){
+            $this->managerUserGIMissions->idPlanete = $idPlaneteActive;
+            $this->managerUserGIMissions->idQuestionActive = $idQuestionActive;
+            $this->managerUserGIMissions->idSauvegarde = $idSauvegarde;
+            $modifSauvegardeMissionTextuel = $this->managerUserGIMissions->modifSauvegardeMissionTextuel();
+            if($modifSauvegardeMissionTextuel){
+                $getSauvegardeMissionTextuel = $this->managerUserGIMissions->getSauvegardeMissionTextuel();
+                $sauvegarde [] =  ['getSauvegardeMissionTextuel' => $getSauvegardeMissionTextuel];
+                echo json_encode($sauvegarde);
+            }
+        }
+    }
+
+    public function getSauvegardeJsMissionTextuel(){
+        if(isset($_SESSION['pseudo'])){
+            $this->managerUserGIMissions->idPlanete = $_SESSION['idPlaneteActif'];
+            $getSauvegardeMissionTextuel = $this->managerUserGIMissions->getSauvegardeMissionTextuel();
+            $sauvegarde [] =  ['getSauvegardeMissionTextuel' => $getSauvegardeMissionTextuel];
+                echo json_encode($sauvegarde);
+        }
+    }
+
+    public function reprendreMissionEnCours(){
+        if(isset($_SESSION['pseudo'])){
+            $userMission = 'plugins/galaxyInfinity/user/src/view/userMissionTextuelView.php';
+            $userMission = $this->controllerBase->tamponView($userMission);
+                
+            $this->controllerBase->afficheView([$userMission],'userGestionMissionTextuel');
         }
     }
     

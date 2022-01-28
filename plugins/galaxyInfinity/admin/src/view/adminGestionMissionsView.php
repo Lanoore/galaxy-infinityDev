@@ -353,6 +353,10 @@
                     <input type="checkbox" id="firstQuestion" name="firstQuestion">
                 </div>
                 <div>
+                    <label for="reussiteEchec">Ressuite ou echec?</label>
+                    <input type="checkbox" id="reussiteEchec" name="reussiteEchec">
+                </div>
+                <div>
                     <input type="submit">
                 </div>
             </form>
@@ -394,6 +398,10 @@
                 <div>
                     <label for="firstQuestion">Première question?</label>
                     <input type="checkbox" id="firstQuestion" name="firstQuestion">
+                </div>
+                <div>
+                    <label for="reussiteEchec">Ressuite ou echec?</label>
+                    <input type="checkbox" id="reussiteEchec" name="reussiteEchec">
                 </div>
                 <div>
                     <input type="submit">
@@ -618,6 +626,7 @@
                             <th>Texte Question</th>
                             <th>Fin Mission?</th>
                             <th>Début Mission?</th>
+                            <th>Réussite/Echec?</th>
                             <th>Action ?</th>
                         </tr>
                     </thead>
@@ -630,6 +639,7 @@
                                 <td><?=$questionMission[2]?></td>
                                 <td><?=$questionMission[3]?></td>
                                 <td><?=$questionMission[4]?></td>
+                                <td><?=$questionMission[5]?></td>
                                 <td><form action="index.php?galaxyInfinity=supprMissionQuestion&idLigne=<?=$questionMission[0]?>" method="post"><input type="submit" name="Supprimer" value="Supprimer"></form></td>
                             </tr>
                         <?php   

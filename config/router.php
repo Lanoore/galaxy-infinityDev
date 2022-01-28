@@ -586,6 +586,18 @@ class Router
                         case 'getMissionJs':
                             $this->controllerUserGIMissions->getMissionJs($_GET['idMission']);
                             break;
+                        case 'sauvegardeMissionTextuelJs':
+                            $this->controllerUserGIMissions->sauvegardeMissionTextuelJs($_GET['idMission'],$_GET['idQuestionActive'], $_GET['idPlaneteActive']);
+                            break;
+                        case 'reprendreMissionEnCours':
+                            $this->controllerUserGIMissions->reprendreMissionEnCours();
+                            break;
+                        case 'getSauvegardeJsMissionTextuel':
+                            $this->controllerUserGIMissions->getSauvegardeJsMissionTextuel();
+                            break;
+                        case 'modifSauvegardeJsMissionTextuel':
+                            $this->controllerUserGIMissions->modifSauvegardeJsMissionTextuel($_GET['idQuestionActive'], $_GET['idPlaneteActive'], $_GET['idSauvegarde']);
+                            break;
                     }
                 }
             else{

@@ -348,6 +348,7 @@ class ControllerAdminGIMissions
                 $this->managerAdminGIMissions->texteMission = htmlentities($_POST['texteQuestionM']);
                 if(!empty($_POST['lastQuestion'])){$this->managerAdminGIMissions->lastQuestion = true;}else{$this->managerAdminGIMissions->lastQuestion = null;}
                 if(!empty($_POST['firstQuestion'])){$this->managerAdminGIMissions->firstQuestion = true;}else{$this->managerAdminGIMissions->firstQuestion = null;}
+                if(!empty($_POST['reussiteEchec'])){$this->managerAdminGIMissions->reussiteEchec = true;}else{$this->managerAdminGIMissions->reussiteEchec = null;}
                 $addQMission = $this->managerAdminGIMissions->createMissionQuestion();
                 if($addQMission){
                     header('Location:index.php?galaxyInfinity=afficheAdminGestionMissions');
@@ -389,6 +390,7 @@ class ControllerAdminGIMissions
                 $this->managerAdminGIMissions->texteMission = htmlentities($_POST['texteQuestionM']);
                 if(!empty($_POST['lastQuestion'])){$this->managerAdminGIMissions->lastQuestion = true;}else{$this->managerAdminGIMissions->lastQuestion = null;}
                 if(!empty($_POST['firstQuestion'])){$this->managerAdminGIMissions->firstQuestion = true;}else{$this->managerAdminGIMissions->firstQuestion = null;}
+                if(!empty($_POST['reussiteEchec'])){$this->managerAdminGIMissions->reussiteEchec = true;}else{$this->managerAdminGIMissions->reussiteEchec = null;}
                 $addQMission = $this->managerAdminGIMissions->modifMissionQuestion();
                 if($addQMission){
                     header('Location:index.php?galaxyInfinity=afficheAdminGestionMissions');

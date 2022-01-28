@@ -74,4 +74,32 @@ class ManagerUserGIMissions extends ManagerBDD{
         $result = $this->createQuery($sql,[$this->idMission]);
         return $result->fetchAll();
     }
+
+    public function setMissionEnCours(){
+        $sql = 'INSERT INTO missions_en_cours(id_planete,id_mission) VALUES(?,?)';
+        return $this->createQuery($sql,[$this->idPlanete,$this->idMission]);
+
+    }
+
+    public function verifMissionEnCours(){
+        $sql = 'SELECT * FROM missions_en_cours WHERE id_planete = ?';
+        $result = $this->createQuery($sql,[$this->idPlanete]);
+        return $result->rowCount();
+    }
+
+    public function sauvegardeMissionTextuel(){
+        $sql = 'INSERT INTO sauvegarde_mission_textuel(id_planete,id_mission,id_question) VALUES (?,?,?)';
+        return $this->createQuery($sql,[$this->idPlanete,$this->idMission,$this->idQuestionActive]);
+    }
+
+    public function modifSauvegardeMissionTextuel(){
+        $sql = 'UPDATE sauvegarde_mission_textuel SET id_question = ? WHERE id = ?';
+        return $this->createQuery($sql,[$this->idQuestionActive,$this->idSauvegarde]);
+    }
+
+    public function getSauvegardeMissionTextuel(){
+        $sql = 'SELECT * FROM sauvegarde_mission_textuel WHERE id_planete = ?';
+        $result =  $this->createQuery($sql,[$this->idPlanete]);
+        return $result->fetchAll();
+    }
 }

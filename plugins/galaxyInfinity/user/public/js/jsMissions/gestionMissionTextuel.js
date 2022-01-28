@@ -1,15 +1,46 @@
 class missionTextuel{
 
     constructor(){
-        this.getMission();
+
+        this.verifSauvegarde();
         
+
         
     }
 
-    getMission(){
-        var idMission = this.$_GET('idMission');
+    verifSauvegarde(){
+        var requestURL = 'index.php?galaxyInfinity=getSauvegardeJsMissionTextuel';
         var that = this;
-        var requestURL = 'index.php?galaxyInfinity=getMissionJs&idMission='+idMission;
+        var xmlhttp = new XMLHttpRequest();
+        xmlhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                
+                var verifSauvegarde = JSON.parse(this.responseText);
+                if(verifSauvegarde[0].getSauvegardeMissionTextuel.length == 0){
+                    var urlGI = that.$_GET('galaxyInfinity');
+                    if(urlGI == 'lancementMissionTextuel'){
+                        that.getMission();
+                    }
+                    else{
+                        window.location.href='index.php?galaxyInfinity=afficheMissionsUser'
+                    }
+                    
+                }
+                else{
+                    that.reprendreMission(verifSauvegarde);
+                }
+                
+            }
+        
+        };
+        xmlhttp.open("GET", requestURL, true);
+        xmlhttp.send();
+    }
+
+    getMission(){
+        this.idMission = this.$_GET('idMission');
+        var that = this;
+        var requestURL = 'index.php?galaxyInfinity=getMissionJs&idMission='+this.idMission;
 
         var xmlhttp = new XMLHttpRequest();
         xmlhttp.onreadystatechange = function() {
@@ -19,6 +50,7 @@ class missionTextuel{
                 that.missionTexteQ = getMission[0].missionTexteQ;
                 that.missionTexteR = getMission[0].missionTexteR;
                 that.missionActive = that.missionBase[0].id;
+                that.planeteActive = getMission[0].planeteActive;
                 that.afficheFirstQR();
             }
         
@@ -33,6 +65,7 @@ class missionTextuel{
         this.missionTexteQ.forEach(elementQ => {
             if(elementQ.first_question == 1){
                 this.questionActive = elementQ.id;
+                this.sauvegardeMission();
                 var pTexteQ = document.createElement('p');
                 pTexteQ.className = 'pTexteQ';
                 pTexteQ.id = 'pTexteQ';
@@ -55,6 +88,32 @@ class missionTextuel{
         this.verifieActionSurReponse();
     }
 
+    reprendreMission(sauvegarde){
+        var that = this;
+        this.idMission = sauvegarde[0].getSauvegardeMissionTextuel[0].id_mission;
+        var requestURL = 'index.php?galaxyInfinity=getMissionJs&idMission='+this.idMission;
+
+        var xmlhttp = new XMLHttpRequest();
+        xmlhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                var getMission = JSON.parse(this.responseText);
+                that.missionBase = getMission[0].mission;
+                that.missionTexteQ = getMission[0].missionTexteQ;
+                that.missionTexteR = getMission[0].missionTexteR;
+                that.missionActive = that.missionBase[0].id;
+                that.planeteActive = getMission[0].planeteActive;
+                that.nextQuestion = sauvegarde[0].getSauvegardeMissionTextuel[0].id_question;
+                
+                that.afficheProchaineQR();
+                that.verifieActionSurReponse();
+            }
+        
+        };
+        xmlhttp.open("GET", requestURL, true);
+        xmlhttp.send();
+
+        
+    }
 
     verifieActionSurReponse(){
         var allButtonsReponse = document.getElementsByClassName('pTexteR');
@@ -75,7 +134,10 @@ class missionTextuel{
         var that = this;
         //Supprime la question et les reponses précédentes//
         var missionQ = document.getElementById('pTexteQ');
-        missionQ.remove();
+        if(missionQ != null){
+            missionQ.remove();
+        }
+        
         var reponseDiv = document.getElementById('reponseDiv')
         while(reponseDiv.firstChild){
             reponseDiv.removeChild(reponseDiv.firstChild);
@@ -85,10 +147,11 @@ class missionTextuel{
         var reponseDiv = document.getElementById('reponseDiv');
         this.missionTexteQ.forEach(elementQ => {
             if(elementQ.id == that.nextQuestion){
+                this.questionActive = elementQ.id;
+                this.modifSauvegardeMission();
                 if(elementQ.last_question == 1){
                     console.log('fin');
                 }else{
-                    this.questionActive = elementQ.id;
                     var pTexteQ = document.createElement('p');
                     pTexteQ.className = 'pTexteQ';
                     pTexteQ.id = 'pTexteQ';
@@ -116,6 +179,39 @@ class missionTextuel{
 
     afficheLastQ(){
 
+    }
+
+    sauvegardeMission(){
+
+        var requestURL = 'index.php?galaxyInfinity=sauvegardeMissionTextuelJs&idMission='+this.idMission+'&idQuestionActive='+this.questionActive+'&idPlaneteActive='+this.planeteActive;
+        var that = this;
+        var xmlhttp = new XMLHttpRequest();
+        xmlhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+
+                var sauvegardeMission = JSON.parse(this.responseText);
+                that.idSauvegarde = sauvegardeMission[0].getSauvegardeMissionTextuel[0].id;  
+            }
+        
+        };
+        xmlhttp.open("GET", requestURL, true);
+        xmlhttp.send();
+    }
+
+    modifSauvegardeMission(){
+
+        var requestURL = 'index.php?galaxyInfinity=modifSauvegardeJsMissionTextuel&idQuestionActive='+this.questionActive+'&idPlaneteActive='+this.planeteActive+'&idSauvegarde='+this.idSauvegarde;
+        var that = this;
+        var xmlhttp = new XMLHttpRequest();
+        xmlhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                var sauvegardeMission = JSON.parse(this.responseText);
+                that.idSauvegarde = sauvegardeMission[0].getSauvegardeMissionTextuel[0].id;  
+            }
+        
+        };
+        xmlhttp.open("GET", requestURL, true);
+        xmlhttp.send();
     }
 
 
